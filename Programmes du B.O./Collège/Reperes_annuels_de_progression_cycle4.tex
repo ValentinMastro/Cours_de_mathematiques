@@ -1,0 +1,147 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=0.6cm]{geometry}
+\usepackage{frenchmath}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{colortbl}
+\usepackage{fontspec}
+\usepackage{lipsum}
+
+\definecolor{bleu}{HTML}{61A3C9}
+
+\newcommand{\titre}{\sffamily{\huge\color{bleu}\centerline{REPÈRES ANNUELS DE PROGRESSION POUR LE CYCLE 4}}\rmfamily}
+\newcommand{\categorie}[1]{\hline\multicolumn{3}{|c|}{\color{white}\LARGE\cellcolor{bleu}\sffamily\phantom{É} #1 \phantom{É}}\rmfamily \\\hline}
+\newcommand{\souscategorie}[1]{\hline\multicolumn{3}{|c|}{\color{bleu}\Large\bf\rmfamily\phantom{É}#1\phantom{É}\rmfamily}\\\hline}
+\newcommand{\note}[1]{\hline\multicolumn{3}{|p{18.6cm}|}{#1} \\ \hline}
+
+\newcommand{\cinquieme}{\multicolumn{1}{|c|}{\textbf{5e}}}
+\newcommand{\quatrieme}{\multicolumn{1}{|c|}{\textbf{4e}}}
+\newcommand{\troisieme}{\multicolumn{1}{|c|}{\textbf{3e}}}
+\newcommand{\niveau}[1]{\multicolumn{1}{|c|}{\textbf{#1~niveau}}}
+
+\newcommand{\cc}[1]{\multicolumn{1}{c|}{#1}}
+
+\frenchspacing
+\renewcommand{\baselinestretch}{0.85}
+\pagestyle{empty}
+
+
+\setsansfont{Archive}[
+    Path=./Archive/,
+    Extension = .otf,
+    UprightFont=*
+    ]
+    
+\setromanfont{Marianne}[
+    Path=./Marianne/,
+    Scale=0.8,
+    Extension = .otf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-RegularItalic,
+    BoldItalicFont=*-BoldItalic
+    ]
+
+\newenvironment{programme}
+{
+    \setlength{\arrayrulewidth}{0.5pt}
+    \arrayrulecolor{bleu}
+    \begin{center}
+    \begin{tabular}{|p{6.4cm}|p{6.4cm}|p{6.4cm}|}
+}
+{
+    \hline
+    \end{tabular}
+    \end{center}
+}
+
+\begin{document}
+
+
+\rmfamily
+
+\titre
+
+\begin{programme}
+    \categorie{Nombres et calculs}
+    \souscategorie{Nombres décimaux relatifs}
+    \cinquieme & \quatrieme & \troisieme \\ \hline
+    Le travail mené au cycle 3 sur l’enchaînement des opérations, les comparaisons et le repérage sur une droite graduée de nombres décimaux positifs est poursuivi. Les nombres relatifs (d’abord entiers, puis décimaux) sont construits pour rendre possibles toutes les soustractions. La notion d’opposé est introduite, l’addition et la soustraction sont étendues aux nombres décimaux (positifs ou négatifs). Il est possible de mettre en évidence que soustraire un nombre revient à additionner son opposé, en s’appuyant sur des exemples à valeur générique du type : $3,1 - (-2) = 3,1 + 0 - (-2) = 3,1 + 2 + (-2) - (-2)$, donc $3,1 - (-2) = 3,1 + 2 + 0 = 3,1 + 2 = 5,1$ & Le produit et le quotient de décimaux relatifs sont abordés. & Le travail est consolidé notamment lors des résolutions de problèmes. \\
+    \souscategorie{Fractions, nombres rationnels} 
+    La conception d’une fraction en tant que nombre, déjà abordée en sixième, est consolidée. Les élèves sont amenés à reconnaître et à produire des fractions égales (sans privilégier de méthode en particulier), à comparer, additionner et soustraire des fractions dont les dénominateurs sont égaux ou multiples l’un de l’autre. & Un nombre rationnel est défini comme quotient d’un entier relatif par un entier relatif non nul, ce qui renvoie à la notion de fraction. Le quotient de deux nombres décimaux peut ne pas être un nombre décimal. La notion d’inverse est introduite, les opérations entre fractions sont étendues à la multiplication et la division. Les élèves sont conduits à comparer des nombres rationnels, à en utiliser différentes représentations et à passer de l’une à l’autre. & La notion de fraction irréductible est abordée, en lien avec celles de multiple et de diviseur qui sont travaillées tout au long du cycle. \\
+    Au moins une des propriétés suivantes est démontrée, à partir de la définition d’un quotient : 
+    \begin{multicols}{2}
+    \begin{itemize}
+        \item $\frac{ab}{ac} = \frac{b}{c}$
+        \item $a\frac{b}{c} = \frac{ab}{c}$
+        \item $\frac{a}{c} + \frac{b}{c} = \frac{a+b}{c}$
+        \item $\frac{a}{c} - \frac{b}{c} = \frac{a-b}{c}$
+    \end{itemize}
+    \end{multicols}
+    Il est possible, à ce niveau, de se limiter à des exemples à valeur générique. Cependant, le professeur veille à spécifier que la vérification d’une propriété, même sur plusieurs exemples, n’en constitue pas une démonstration. Exemple de calcul fractionnaire permettant de démontrer que15 $\frac{2}{3} = \frac{10}{15}$
+    On commence par calculer $\frac{2}{3} \times 15$ : $\frac{2}{3} \times 15 = \frac{2}{3} \times 3 \times 5$.
+    La définition du quotient permet de simplifier par $3$, puisque $\frac{2}{3}$ est le nombre qui, multiplié par $3$, donne $2$. Donc $\frac{2}{3} \times 15 = 2 \times 5 = 10$. Par définition du quotient, il vient donc $\frac{2}{3} = \frac{10}{15}$, puisque $\frac{2}{3}$ multiplié par 15 donne 10. & Une ou plusieurs démonstrations de calculs fractionnaires sont présentées. Le recours au calcul littéral vient compléter pour tout ou partie des élèves l’utilisation d’exemples à valeurs génériques. & \\
+\end{programme}
+
+\begin{programme}
+    \categorie{Nombres et calculs (suite)} 
+    \souscategorie{Racine carrée} 
+    & La racine carrée est introduite, en lien avec des situations géométriques (théorème de Pythagore, agrandissement des aires) et à l’appui de la connaissance des carrés parfaits de 1 à 144 et de l’utilisation de la calculatrice. & La racine carrée est utilisée dans le cadre de la résolution de problèmes. \textit{Aucune connaissance n’est attendue sur les propriétés algébriques des racines carrées.} \\
+    \souscategorie{Puissances}
+    & Les puissances de 10 sont d’abord introduites avec des exposants positifs, puis négatifs, afin de définir les préfixes de nano à giga et la notation scientifique. Celle-ci est utilisée pour comparer des nombres et déterminer des ordres de grandeurs, en lien d’autres disciplines. Les puissances de base quelconque d’exposants positifs sont introduites pour simplifier l’écriture de produits. \textit{La connaissance des formules générales sur les produits ou quotients de puissances de 10 n’est pas un attendu du programme : la mise en œuvre des calculs sur les puissances découle de leur définition.} & Les puissances de base quelconque d’exposants négatifs sont introduites et utilisées pour simplifier des quotients. \textit{La connaissance des formules générales sur les produits ou quotients de puissances n’est pas un attendu du programme : la mise en œuvre des calculs sur les puissances découle de leur définition.} \\
+    \souscategorie{Divisibilité, nombres premiers}
+    \note{Tout au long du cycle, les élèves sont amenés à modéliser et résoudre des problèmes mettant en jeu la divisibilité et les nombres premiers.}
+    Le travail sur les multiples et les diviseurs, déjà abordé au cycle 3, est poursuivi. Il est enrichi par l’introduction de la notion de nombre premier. Les élèves se familiarisent avec la liste des nombres premiers inférieurs ou égaux à $30$. Ceux-ci sont utilisés pour la décomposition en produit de facteurs premiers. Cette décomposition est utilisée pour reconnaître et produire des fractions égales. & Les élèves déterminent la liste des nombres premiers inférieurs ou égaux à $100$ et l’utilisent pour décomposer des nombres en facteurs premiers, reconnaître et produire des fractions égales, simplifier des fractions. & La notion de fraction irréductible est introduite. L’utilisation d’un tableur, d’un logiciel de programmation ou d’une calculatrice permet d’étendre la procédure de décomposition en facteurs premiers. \\
+    \souscategorie{Calcul littéral}
+    \note{Expressions littéraires}
+    Les expressions littérales sont introduites à travers des formules mettant en jeu des grandeurs ou traduisant des programmes de calcul. L’usage de la lettre permet d’exprimer un résultat général (par exemple qu’un entier naturel est pair ou impair) ou de démontrer une propriété générale (par exemple que la somme de trois entiers consécutifs est un multiple de 3). Les notations du calcul littéral (par exemple $2a$ pour $a \times 2$ ou $2 \times a$, $ab$ pour $a \times b$) sont progressivement utilisées, en lien avec les propriétés de la multiplication. Les élèves substituent une valeur numérique à une lettre pour calculer la valeur d’une expression littérale. & Le travail sur les formules est poursuivi, parallèlement à la présentation de la notion d’identité (égalité vraie pour toute valeur des indéterminées). La notion de solution d’une équation est formalisée. & Le travail sur les expressions littérales est consolidé avec des transformations d’expressions, des programmes de calcul, des mises en équations, des fonctions... \\
+    \note{Distributivité}
+    Tôt dans l’année, sans attendre la maîtrise des opérations sur des nombres relatifs, la propriété de distributivité simple est utilisée pour réduire une expression littérale de la forme $ax + bx$, où $a$ et $b$ sont des nombres décimaux. Le lien est fait avec des procédures de calcul numérique déjà rencontrées au cycle 3 (calculs du type $12 \times 50$ ; $37 \times 99$ ; $3 \times 23 + 7 \times 23$). & La structure d’une expression littérale (somme ou produit) est étudiée. La propriété de distributivité simple est formalisée et est utilisée pour développer un produit, factoriser une somme, réduire une expression littérale. & La double distributivité est abordée. Le lien est fait avec la simple distributivité. Il est possible de démontrer l’identité $(a + b)(c + d) = ac + ad + bc + bd$ en posant $k = a + b$ et en utilisant la simple distributivité. \\
+\end{programme}
+
+\begin{programme}
+    \categorie{Organisation et gestion de données, fonctions}
+    \souscategorie{Statistiques}
+    Le traitement de données statistiques se prête à des calculs d’effectifs, de fréquences et de moyennes. Selon les situations, la représentation de données statistiques sous forme de tableaux, de diagrammes ou de graphiques est réalisée à la main ou à l’aide d’un tableur-grapheur. Les calculs et les représentations donnent lieu à des interprétations. & Un nouvel indicateur de position est introduit : la médiane. Le travail sur les représentations graphiques, le calcul, en particulier celui des effectifs et des fréquences, et l’interprétation des indicateurs de position est poursuivi. & Un indicateur de dispersion est introduit : l’étendue. Le travail sur les représentations graphiques, le calcul, en particulier celui des effectifs et des fréquences, et l’interprétation des indicateurs de position est consolidé. Un nouveau type de diagramme est introduit : les histogrammes pour des classes de même amplitude. \\
+    \souscategorie{Probabilités}
+    Les élèves appréhendent le hasard à travers des expériences concrètes : pile ou face, dé, roue de loterie, urne... Le vocabulaire relatif aux probabilités (expérience aléatoire, issue, événement, probabilité) est utilisé. Le placement d’un événement sur une échelle de probabilités et la détermination de probabilités dans des situations très simples d’équiprobabilité contribuent à une familiarisation avec la modélisation mathématique du hasard. Pour exprimer une probabilité, on accepte des formulations du type « 2 chances sur 5 ». & Les calculs de probabilités concernent des situations simples, mais ne relevant pas nécessairement du modèle équiprobable. Le lien est fait entre les probabilités de deux événements contraires. & Le constat de la stabilisation des fréquences s’appuie sur la simulation d’expériences aléatoires à une épreuve à l’aide d’un tableur ou d’un logiciel de programmation. Les calculs de probabilités, à partir de dénombrements, s’appliquent à des contextes simples faisant prioritairement intervenir une seule épreuve. Dans des cas très simples, il est cependant possible d’introduire des expériences à deux épreuves. Les dénombrements s’appuient alors uniquement sur des tableaux à double entrée, la notion d’arbre ne figurant pas au programme. Les élèves simulent une expérience aléatoire à l’aide d’un tableur ou d’un logiciel de programmation. \\
+    \souscategorie{Proportionnalité}
+    Les élèves sont confrontés à des situations relevant ou non de la proportionnalité. Des procédures variées (linéarité, passage par l’unité, coefficient de proportionnalité), déjà étudiées au cycle 3, permettent de résoudre des problèmes relevant de la proportionnalité. & Le calcul d’une quatrième proportionnelle est systématisé et les points de vue se diversifient avec l’utilisation de représentations graphiques, du calcul littéral et de problèmes de géométrie relevant de la proportionnalité (configuration de Thalès dans le cas des triangles emboîtés, agrandissement et réduction). & Le lien est fait entre taux d’évolution et coefficient multiplicateur, ainsi qu’entre la proportionnalité et les fonctions linéaires. Le champ des problèmes de géométrie relevant de la proportionnalité est élargi (homothéties, triangles semblables, configurations de Thalès). \\
+    \souscategorie{Fonctions}
+    La dépendance de deux grandeurs est traduite par un tableau de valeurs ou une formule. & La dépendance de deux grandeurs est traduite par un tableau de valeurs, une formule, un graphique. Les représentations graphiques permettent de déterminer des images et des antécédents, qui sont interprétés en fonction du contexte. La notation et le vocabulaire fonctionnels ne sont pas formalisés en 4e. & Les notions de variable, de fonction, d’antécédent, d’image sont formalisées et les notations fonctionnelles sont utilisées. Un travail est mené sur le passage d’un mode de représentation d’une fonction (graphique, symbolique, tableau de valeurs) à un autre. Les fonctions affines et linéaires sont présentées par leurs expressions algébriques et leurs représentations graphiques. Les fonctions sont utilisées pour modéliser des phénomènes continus et résoudre des problèmes. \\
+\end{programme}
+
+\begin{programme}
+    \categorie{Grandeurs et mesures}
+    \souscategorie{Calculs sur des grandeurs mesurables}
+    La connaissance des formules donnant les aires du rectangle, du triangle et du disque, ainsi que le volume du pavé droit est entretenue à travers la résolution de problèmes. Elle est enrichie par celles de l’aire du parallélogramme, du volume du prisme et du cylindre. La correspondance entre unités de volume et de contenance est faite. Les calculs portent aussi sur des durées et des horaires, en prenant appui sur des contextes issus d’autres disciplines ou de la vie quotidienne. Les élèves sont sensibilisés au contrôle de la cohérence des résultats du point de vue des unités. & Le lexique des formules s’étend au volume des pyramides et du cône. Le lien est fait entre le volume d’une pyramide (respectivement d’un cône) et celui du prisme droit (respectivement du cylindre) construit sur sa base et ayant même hauteur. Des grandeurs produits (par exemple trafic, énergie) et des grandeurs quotients (par exemple vitesse, débit, concentration, masse volumique) sont introduites à travers la résolution de problèmes. Les conversions d’unités sont travaillées. Les élèves sont sensibilisés au contrôle de la cohérence des résultats du point de vue des unités des grandeurs composées. & La formule donnant le volume d’une boule est utilisée. Le travail sur les grandeurs mesurables et les unités est poursuivi. Il est possible de réinvestir le calcul avec les puissances de 10 pour les conversions d’unités. Par exemple, à partir de : $1~m = 10^2~cm$, il vient $1~m^3 = (1~m)^3 = (10^2 cm)^3 = 10^6~cm^3$ ou, à partir de : $1~dm = 10^{-1}~m$, il vient $1~dm^3 = (10^{-1}~m)^3 = 10^{-3}~m^3$.\\
+    \souscategorie{Effet des transformations sur des grandeurs géométriques} 
+    Les élèves connaissent et utilisent l’effet des symétries axiale et centrale sur les longueurs, les aires, les angles. & Les élèves connaissent et utilisent l’effet d’un agrandissement ou d’une réduction sur les longueurs, les aires et les volumes. Ils le travaillent en lien avec la proportionnalité. & Les élèves connaissent et utilisent l’effet des transformations au programme (symétries, translations, rotations, homothéties) sur les longueurs, les angles, les aires et les volumes. Le lien est fait entre la proportionnalité et certaines configurations ou transformations géométriques (triangles semblables, homothéties). \\
+\end{programme}
+
+\begin{programme}
+    \categorie{Espace et géométrie} 
+    \souscategorie{Représenter l’espace} 
+    Le repérage se fait sur une droite graduée ou dans le plan muni d’un repère orthogonal. Dans la continuité de ce qui a été travaillé au cycle 3, la reconnaissance de solides (pavé droit, cube, cylindre, pyramide, cône, boule) s’effectue à partir d’un objet réel, d’une image, d’une représentation en perspective cavalière ou sur un logiciel de géométrie dynamique. Les élèves construisent et mettent en relation une représentation en perspective cavalière et un patron d’un pavé droit ou d’un cylindre. & Le repérage se fait dans un pavé droit (abscisse, ordonnée, altitude). Les élèves produisent et mettent en relation une représentation en perspective cavalière et un patron d’une pyramide ou d’un cône. & Le repérage s’étend à la sphère (latitude, longitude). Un logiciel de géométrie est utilisé pour visualiser des solides et leurs sections planes. Les élèves produisent et mettent en relation différentes représentations des solides étudiés (patrons, représentation en perspective cavalière, vues de face, de dessus, en coupe). \\
+    \souscategorie{Géométrie plane}
+    \note{Figures et configurations} 
+    La caractérisation angulaire du parallélisme (angles alternes-internes et angles correspondants) est énoncée. La valeur de la somme des angles d’un triangle peut être démontrée et est utilisée. L’inégalité triangulaire est énoncée. Le lien est fait entre l’inégalité triangulaire et la construction d’un triangle à partir de la donnée de trois longueurs. Des constructions de triangles à partir de la mesure d’une longueur et de deux angles ou d’un angle et de deux longueurs sont proposées. Le parallélogramme est défini à partir de l’une de ses propriétés : parallélisme des couples de côtés opposés ou intersection des diagonales. L’autre propriété est démontrée et devient une propriété caractéristique. Il est alors montré que les côtés opposés d’un parallélogramme sont deux à deux de même longueur grâce aux propriétés de la symétrie. Les propriétés relatives aux côtés et aux diagonales d’un parallélogramme sont mises en œuvre pour effectuer des constructions et mener des raisonnements. Les élèves consolident le travail sur les codages de figures : interprétation d’une figure codée ou réalisation d’un codage. Les élèves découvrent de nouvelles droites remarquables du triangle : les hauteurs. Ils poursuivent le travail engagé au cycle 3 sur la médiatrice dans le cadre de résolution de problèmes. Ils peuvent par exemple être amenés à démontrer que les médiatrices d’un triangle sont concourantes. & Les cas d’égalité des triangles sont présentés et utilisés pour résoudre des problèmes. Le lien est fait avec la construction d’un triangle de mesures données (trois longueurs, une longueur et deux angles, deux longueurs et un angle). Le théorème de Thalès et sa réciproque dans la configuration des triangles emboîtés sont énoncés et utilisés, ainsi que le théorème de Pythagore (plusieurs démonstrations possibles) et sa réciproque. La définition du cosinus d’un angle d’un triangle rectangle découle, grâce au théorème de Thalès, de l’indépendance du rapport des longueurs le définissant. Une progressivité dans l’apprentissage de la recherche de preuve est aménagée, de manière à encourager les élèves dans l’exercice de la démonstration. Aucun formalisme excessif n’est exigé dans la rédaction. & Une définition et une caractérisation des triangles semblables sont données. Le théorème de Thalès et sa réciproque dans la configuration du papillon sont énoncés et utilisés (démonstration possible, utilisant une symétrie centrale pour se ramener à la configuration étudiée en quatrième). Les lignes trigonométriques (cosinus, sinus, tangente) dans le triangle rectangle sont utilisées pour calculer des longueurs ou des angles. Deux triangles semblables peuvent être définis par la proportionnalité des mesures de leurs côtés. Une caractérisation angulaire de cette définition peut être donnée et démontrée à partir d’un cas d’égalité des triangles et d’une caractérisation angulaire du parallélisme.\\
+\end{programme}
+
+\begin{programme}
+    \categorie{Espace et géométrie (suite)}
+    \note{Transformations}
+    Les élèves transforment (à la main ou à l’aide d’un logiciel) une figure par symétrie centrale. Cela permet de découvrir les propriétés de la symétrie centrale (conservation de l’alignement, du parallélisme, des longueurs, des angles) qui sont ensuite admises et utilisées. Le lien est fait entre la symétrie centrale et le parallélogramme. Les élèves identifient des symétries axiales ou centrales dans des frises, des pavages, des rosaces. & Les élèves sont amenés à transformer (à la main ou à l’aide d’un logiciel) une figure par translation. Ils identifient des translations dans des frises ou des pavages ; le lien est alors fait entre translation et parallélogramme. La définition ponctuelle d’une translation ne figure pas au programme. Toutefois, par commodité, la translation transformant le point A en le point B pourra être nommée « translation de vecteur $\vec{AB}$ », mais aucune connaissance n’est attendue sur l’objet « vecteur ». & Les élèves transforment (à la main ou à l’aide d’un logiciel) une figure par rotation et par homothétie (de rapport positif ou négatif). Le lien est fait entre angle et rotation, entre le théorème de Thalès et les homothéties. Les élèves identifient des transformations dans des frises, des pavages, des rosaces. Les définitions ponctuelles d’une translation, d’une rotation et d’une homothétie ne figurent pas au programme. Pour faire le lien entre les transformations et les configurations du programme, il est possible d’identifier (à la main ou à l’aide d’un logiciel de géométrie) l’effet, sur un triangle donné, de l’enchaînement d’une translation, d’une rotation et d’une homothétie, voire d’une symétrie axiale et réciproquement, pour deux triangles semblables donnés, chercher des transformations transformant l’un en l’autre. \\
+\end{programme}
+
+\begin{programme}
+    \categorie{Algorithmique et programmation} 
+    \souscategorie{Écrire, mettre au point, exécuter un programme}
+    \note{Les repères qui suivent indiquent une progressivité dans le niveau de complexité des activités relevant de ce thème. Certains élèves sont capables de réaliser des activités de troisième niveau dès le début du cycle.}
+    \niveau{1er} & \niveau{2e} & \niveau{3e} \\ \hline
+    À un premier niveau, les élèves mettent en ordre et/ou complètent des blocs Scratch fournis par le professeur pour construire un programme simple. L’utilisation progressive des instructions conditionnelles et/ou de la boucle « répéter ... fois ») permet d’écrire des scripts de déplacement, de construction géométrique ou de programme de calcul. & À un deuxième niveau, les connaissances et les compétences en algorithmique et en programmation s’élargissent par : - l’écriture d’une séquence d’instructions (condition « si ... alors » et boucle « répéter ... fois ») ; - l’écriture de programmes déclenchés par des événements extérieurs ; - l’intégration d’une variable dans un programme de déplacement, de construction géométrique, de calcul ou de simulation d’une expérience aléatoire. & À un troisième niveau, l’utilisation simultanée de boucles « répéter ... fois », et « répéter jusqu’à ... » et d’instructions conditionnelles permet de réaliser des figures, des calculs et des déplacements plus complexes. L’écriture de plusieurs scripts fonctionnant en parallèle permet de gérer les interactions et de créer des jeux. La décomposition d’un problème en sous- problèmes et la traduction d’un sous-problème par la création d’un bloc-utilisateur contribuent au développement des compétences visées. \\
+\end{programme}
+
+\end{document}
