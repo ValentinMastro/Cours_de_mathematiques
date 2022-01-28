@@ -1,0 +1,152 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=0.6cm]{geometry}
+\usepackage{frenchmath}
+\usepackage{multirow}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{colortbl}
+\usepackage{fontspec}
+\usepackage{lipsum}
+
+\definecolor{or}{HTML}{EE7444}
+
+\newcommand{\titre}{\sffamily{\huge\color{or}\centerline{REPÈRES ANNUELS DE PROGRESSION POUR LE CYCLE 3}}\rmfamily}
+\newcommand{\categorie}[1]{\hline\multicolumn{3}{|c|}{\color{white}\Large\cellcolor{or}\sffamily\phantom{É} #1 \phantom{É}}\rmfamily \\\hline}
+\newcommand{\souscategorie}[1]{\hline\multicolumn{3}{|c|}{\color{or}\sffamily\phantom{É}#1\phantom{É}\rmfamily}\\\hline}
+\newcommand{\note}[1]{\hline\multicolumn{3}{|p{18.6cm}|}{#1} \\ \hline}
+
+\newcommand{\cmun}{\multicolumn{1}{|c|}{\textbf{CM1}}}
+\newcommand{\cmdeux}{\multicolumn{1}{|c|}{\textbf{CM2}}}
+\newcommand{\sixieme}{\multicolumn{1}{|c|}{\textbf{6e}}}
+
+\newcommand{\cc}[1]{\multicolumn{1}{c|}{#1}}
+
+\frenchspacing
+\renewcommand{\baselinestretch}{0.85}
+\pagestyle{empty}
+
+
+\setsansfont{Archive}[
+    Path=./Archive/,
+    Extension = .otf,
+    UprightFont=*
+    ]
+    
+\setromanfont{Marianne}[
+    Path=./Marianne/,
+    Scale=0.8,
+    Extension = .otf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-RegularItalic,
+    BoldItalicFont=*-BoldItalic
+    ]
+
+\newenvironment{programme}
+{
+    \setlength{\arrayrulewidth}{0.5pt}
+    \arrayrulecolor{or}
+    \begin{center}
+    \begin{tabular}{|p{6.4cm}|p{6.4cm}|p{6.4cm}|}
+}
+{
+    \hline
+    \end{tabular}
+    \end{center}
+}
+
+\begin{document}
+
+
+\rmfamily
+
+\titre
+
+\begin{programme}
+    \categorie{Nombres et calculs}
+    \souscategorie{Les nombres entiers}
+    \cmun & \cmdeux & \sixieme \\ \hline
+    Les élèves apprennent à utiliser et à représenter les grands nombres entiers jusqu’au million. Il s'agit d'abord de consolider les connaissances (écritures, représentations...). & Le répertoire est étendu jusqu’au milliard. & En \textbf{période 1}, dans un premier temps, les principes de la numération décimale de position sur les entiers sont repris jusqu’au million, puis au milliard comme en CM, et mobilisés sur les situations les plus variées possibles, notamment en relation avec d’autres disciplines. \\
+    \note{La valeur positionnelle des chiffres doit constamment être mise en lien avec des activités de groupements et d’échanges.} 
+    \souscategorie{Fractions} 
+    Dès la \textbf{période 1} les élèves utilisent d’abord les fractions simples (comme $\frac{2}{3}$, $\frac{1}{4}$, $\frac{5}{2}$) dans le cadre de partage de grandeurs. Ils travaillent des fractions inférieures et des fractions supérieures à 1. Dès la \textbf{période 2}, les fractions décimales sont régulièrement mobilisées : elles acquièrent le statut de nombre et sont positionnées sur une droite graduée. Les élèves comparent des fractions de même dénominateur. Ils ajoutent des fractions décimales de même dénominateur. Ils apprennent à écrire des fractions décimales sous forme de somme d’un nombre entier et d’une fraction décimale inférieure à 1. & Dès la \textbf{période 1}, dans la continuité du CM1, les élèves étendent le registre des fractions qu’ils manipulent (en particulier $\frac{1}{1000}$ ) ; ils apprennent à écrire des fractions sous forme de somme d’un nombre entier et d’une fraction inférieure à 1. & En \textbf{période 1}, sont réactivées les fractions comme opérateurs de partage vues en CM, puis les fractions décimales en relation avec les nombres décimaux (par exemple à partir de mesures de longueurs) ; les élèves ajoutent des fractions décimales de même dénominateur. En \textbf{période 2} l’addition est étendue à des fractions de même dénominateur (inférieur ou égal à 5 et en privilégiant la vocalisation : deux cinquièmes plus un cinquième égale trois cinquièmes). En \textbf{période 3}, les élèves apprennent que $\frac{a}{b}$ est le nombre qui, multiplié par b, donne a (définition du quotient de a par b). \\
+    \souscategorie{Nombres décimaux} 
+    \note{Tout au long du cycle, les désignations orale et écrite des nombres décimaux basées sur les unités de numération contribuent à l’acquisition du sens des nombres décimaux (par exemple pour $3,12$ : « trois unités et douze centièmes » ou « trois unités, un dixième et deux centièmes » ou « trois cent douze centièmes »).} 
+    À partir de la \textbf{période 2}, les élèves apprennent à utiliser les nombres décimaux ayant au plus deux décimales en veillant à mettre en relation fractions décimales et écritures à virgule (ex : $3,12 = 3 + \frac{12}{100}$). Ils connaissent des écritures décimales de fractions simples ($\frac{1}{2} = 0,5 = \frac{5}{10}$ ; $\frac{1}{4} = \frac{25}{100} = 0,25$ ; la moitié d'un entier sur des petits nombres). & Dès la \textbf{période 1}, les élèves rencontrent et utilisent des nombres décimaux ayant une, deux ou trois décimales. Ils connaissent des écritures décimales de fractions simples ($\frac{1}{5} = 0,2 = \frac{2}{10}$ ; $\frac{3}{4} = \frac{75}{100} = 0,75$ ; la moitié d’un entier). & Dès la \textbf{période 1}, dans le prolongement des acquis du CM, on travaille sur les décimaux jusqu’à trois décimales. La quatrième décimale sera introduite en \textbf{période 2} au travers des diverses activités.\\
+\end{programme}
+
+\begin{programme}
+    \categorie{Nombres et calculs (suite)} 
+    \souscategorie{Calcul} 
+    \note{Tout au long du cycle, la pratique régulière du calcul conforte et consolide la mémorisation des tables de multiplication jusqu’à 9 dont la maîtrise est attendue en fin de cycle 2.} 
+    \note{\textit{Calcul mental}} 
+    Dans la continuité du travail conduit au cycle 2, les élèves mémorisent les quatre premiers multiples de 25 et de 50. À partir de la \textbf{période 3}, ils apprennent à multiplier et à diviser par 10 des nombres décimaux ; ils apprennent à rechercher le complément au nombre entier supérieur. & Dès le début de l’année, les élèves apprennent à diviser un nombre décimal (entier ou non) par 100. En \textbf{période 3} les élèves apprennent à multiplier un nombre décimal (entier ou non) par 5 et par 50. Au plus tard en période 4, ils apprennent les critères de divisibilité par 3 et par 9. & Dès la \textbf{période 1}, dans le prolongement des acquis du CM, on réactive la multiplication et la division par 10, 100, 1 000. À partir de la \textbf{période 2}, les élèves apprennent à multiplier un nombre entier puis décimal par 0,1 et par 0,5 (différentes stratégies sont envisagées selon les situations). \\
+    Tout au long de l’année, ils stabilisent leur connaissance des propriétés des opérations (ex : $12 + 199 = 199 + 12$ ; $5 \times 21 = 21 \times 5$ ; $45 \times 21 = 45 \times 20 + 45 \times 1$ ; $6 \times 18 = 6 \times 20 - 6 \times 2$). À partir de la \textbf{période 3}, ils apprennent les critères de divisibilité par $2$, $5$ et $10$. En \textbf{période 4 ou 5}, ils apprennent à multiplier par $1 000$ un nombre décimal. & Tout au long de l’année, ils étendent l’utilisation des principales propriétés des opérations à des calculs rendus plus complexes par la nature des nombres en jeu, leur taille ou leur nombre (exemples : $1,2 + 27,9 + 0,8 = 27,9 + 2$ ; $3,2 \times 25 \times 4 = 3,2 \times 100$). Ils étendent l’utilisation des principales propriétés des opérations (notamment la commutativité de la multiplication) à des calculs rendus plus complexes par la nature des nombres en jeu, leur taille, ou leur nombre (exemple : $1,2 + 27,9 + 0,8 = 27,9 + 2$ ; $3,2 \times 10 = 10 \times 3,2$ ; $3,2 \times 25 \times 4 = 3,2 \times 100$). & Tout au long de l’année, ils stabilisent la connaissance des propriétés des opérations et les procédures déjà utilisées à l’école élémentaire, et utilisent la propriété de distributivité simple dans les deux sens (par exemple : $23 \times 12 = 23 \times 10 + 23 \times 2$ et $23 \times 7 + 23 \times 3 = 23 \times 10$). \\ 
+    \note{\textit{Calcul en ligne}} 
+    \multicolumn{2}{|p{12.4cm}|}{Les connaissances et compétences mises en œuvre pour le calcul en ligne sont les mêmes que pour le calcul mental, le support de l’écrit permettant d’alléger la mémoire de travail et ainsi de traiter des calculs portant sur un registre numérique étendu.} & Dans des calculs simples, confrontés à des problématiques de priorités opératoires, par exemple en relation avec l’utilisation de calculatrices, les élèves utilisent des parenthèses. \\
+    \note{\textit{Calcul posé}} 
+    Dès la \textbf{période 1}, les élèves renforcent leur maîtrise des algorithmes appris au cycle 2 (addition, soustraction et multiplication de deux nombres entiers). En \textbf{période 2}, ils étendent aux nombres décimaux les algorithmes de l’addition et de la soustraction. En \textbf{période 3} ils apprennent l’algorithme de la division euclidienne de deux nombres entiers. & Les élèves apprennent les algorithmes : - de la multiplication d’un nombre décimal par un nombre entier (dès la \textbf{période 1}, en relation avec le calcul de l’aire du rectangle) ; - de la division de deux nombres entiers (quotient décimal ou non : par exemple, 10 : 4 ou 10 : 3), dès la \textbf{période 2} ; - de la division d’un nombre décimal par un nombre entier dès la \textbf{période 3}. & Tout au long de l’année, au travers de situations variées, les élèves entretiennent leurs acquis de CM sur les algorithmes opératoires. Au plus tard en \textbf{période 3}, ils apprennent l’algorithme de la multiplication de deux nombres décimaux. \\
+\end{programme}
+
+\begin{programme}
+    \categorie{Nombres et calculs (suite)}
+    \souscategorie{La résolution de problèmes} 
+    \note{Dès le début du cycle, les problèmes proposés relèvent des quatre opérations. La progressivité sur la résolution de problèmes combine notamment : - les nombres mis en jeu : entiers (tout au long du cycle) puis décimaux dès le CM1 sur des nombres très simples ; - le nombre d’étapes que l’élève doit mettre en œuvre pour leur résolution ; - les supports proposés pour la prise d’informations : texte, tableau, représentations graphiques. La communication de la démarche prend différentes formes : langage naturel, schémas, opérations.} 
+    \note{\textit{Problèmes relevant de la proportionnalité}} 
+    Le recours aux propriétés de linéarité (multiplicative et additive) est privilégié. Ces propriétés doivent être explicitées ; elles peuvent être institutionnalisées de façon non formelle à l’aide d’exemples verbalisés (« Si j’ai deux fois, trois fois... plus d’invités, il me faudra deux fois, trois fois... plus d’ingrédients » ; « Je dispose de briques de masses identiques. Si je connais la masse de 7 briques et celle de 3 briques alors je peux connaître la masse de 10 briques en faisant la somme des deux masses »). Dès la période 1, des situations de proportionnalité peuvent être proposées (recettes...). L'institutionnalisation des propriétés se fait progressivement à partir de la période 2. & Dès la période 1, le passage par l’unité vient enrichir la palette des procédures utilisées lorsque cela s’avère pertinent. À partir de la période 3, le symbole \% est introduit dans des cas simples, en lien avec les fractions d’une quantité (50 \% pour la moitié ; 25 \% pour le quart ; 75 \% pour les trois quarts ; 10 \% pour le dixième). & Tout au long de l’année, les procédures déjà étudiées en CM sont remobilisées et enrichies par l’utilisation explicite du coefficient de proportionnalité lorsque cela s’avère pertinent. Dès la période 2, en relation avec le travail effectué en CM, les élèves appliquent un pourcentage simple (en relation avec les fractions simples de quantité : 10 \%, 25 \%, 50 \%, 75 \%). Dès la \textbf{période 3}, ils apprennent à appliquer un pourcentage dans des registres variés. \\
+\end{programme}
+
+\begin{programme}
+    \categorie{Grandeurs et mesures} 
+    \note{L’étude d’une grandeur nécessite des activités ayant pour but de définir la grandeur (comparaison directe ou indirecte, ou recours à la mesure), d’explorer les unités du système international d’unités correspondant, de faire usage des instruments de mesure de cette grandeur, de calculer des mesures avec ou sans formule. Toutefois, selon la grandeur ou selon la fréquentation de celle-ci au cours du cycle précédent, les comparaisons directes ou indirectes de grandeurs (longueur, masse et durée) ne seront pas reprises systématiquement. Tout au long du cycle et en relation avec l’apprentissage des nombres décimaux, les élèves font le lien entre les unités de numération et les unités de mesure (par exemple : dixième $\longrightarrow$ $dm$, $dg$, $d\ell$ ; centième $\longrightarrow$ $m$, $cg$, $c\ell$, centimes d’euros).} 
+    \souscategorie{Les longueurs} 
+    Les élèves comparent des périmètres sans avoir recours à la mesure, mesurent des périmètres par report d’unités et de fractions d’unités ou par report des longueurs des côtés sur un segment de droite avec le compas ; ils calculent le périmètre d’un polygone en ajoutant les longueurs de ses côtés (avec des entiers et fractions puis avec des décimaux à deux décimales). & Ils établissent les formules du périmètre du carré et du rectangle. Ils les utilisent tout en continuant à calculer des périmètres de polygones variés en ajoutant les longueurs de leurs côtés. & Selon l’avancement du thème « nombres et calcul », les élèves réinvestissent leurs acquis de CM pour calculer des périmètres simples ou complexes. Ils apprennent la formule de la longueur d’un cercle et l’utilisent après consolidation du produit d’un entier par un décimal, dans un premier temps, puis du produit de deux décimaux. \\
+    \souscategorie{Les durées} 
+    Tout au long de l’année, les élèves consolident la lecture de l’heure et l’utilisation des unités de mesure des durées et de leurs relations ; des conversions peuvent être nécessaires (siècle/années ; semaine/jours ; heure/minutes ; minute/secondes). Ils les réinvestissent dans la résolution de problèmes de deux types : calcul d’une durée connaissant deux instants et calcul d’un instant connaissant un instant et une durée. & Tout au long de l’année, les élèves poursuivent le travail d’appropriation des relations entre les unités de mesure des durées. Des conversions nécessitant l’interprétation d’un reste peuvent être demandées (transformer des heures en jours, avec un reste en heures ou des secondes en minutes, avec un reste en secondes). & Selon les situations, les élèves utilisent leurs acquis de CM sur les durées. Des conversions nécessitant deux étapes de traitement peuvent être demandées (transformer des heures en semaines, jours et heures ; transformer des secondes en heures, minutes et secondes). \\
+\end{programme}
+
+\begin{programme}
+    \categorie{Grandeurs et mesures (suite)} 
+    \souscategorie{Les aires} \\ 
+    Les élèves comparent des surfaces selon leur aire par estimation visuelle, par superposition ou découpage et recollement. Ils estiment des aires, ou les déterminent, en faisant appel à une aire de référence. Le lien est fait chaque fois que possible avec le travail sur les fractions. & L’utilisation d’une unité de référence est systématique. Cette unité peut être une maille d’un réseau quadrillé adapté, le $cm^2$, le $dm^2$ ou le $m^2$. Les élèves apprennent à utiliser les formules d’aire du carré, du rectangle et du triangle rectangle. & En relation avec le travail sur la quatrième décimale, les élèves utilisent les multiples et sous-multiples du $m^2$ et les relations qui les lient. Ils utilisent la formule pour calculer l’aire d’un triangle quelconque lorsque les données sont exprimées avec des nombres entiers. Après avoir consolidé le produit de décimaux, ils utilisent les formules pour calculer l’aire d’un triangle quelconque et celle d’un disque. \\
+    \souscategorie{Les contenances et volumes} 
+    Les élèves comparent des contenances sans les mesurer, puis en les mesurant. Ils découvrent et apprennent qu’un litre est la contenance d’un cube de 10 cm d’arête. Ils font des analogies avec les autres unités de mesure à l’appui des préfixes. & Ils poursuivent ce travail en utilisant de nouvelles unités de contenance : $d\ell$, $c\ell$ et $m\ell$. & Ils relient les unités de volume et de contenance ($\ell = 1~dm^3$ ; $1 000 \ell = 1~m^3$). Ils utilisent les unités de volume : cm3, dm3, m3 et leurs relations. Ils calculent le volume d’un cube ou d’un pavé droit en utilisant une formule. \\
+    \souscategorie{Les angles} 
+    \multicolumn{2}{|p{12.4cm}}{Dès le CM1, les élèves apprennent à repérer les angles d’une figure plane, puis à comparer ces angles par superposition (utilisation du papier calque) ou en utilisant un gabarit. Ils estiment, puis vérifient en utilisant l’équerre, qu’un angle est droit, aigu ou obtus.} & Avant d’utiliser le rapporteur, les élèves poursuivent le travail entrepris au CM en attribuant des mesures en degrés à des multiples ou sous-multiples de l’angle droit de mesure 90° (par exemple, on pourra considérer que la diagonale d’un carré partage l’angle droit en deux angles égaux de 45°). Les élèves apprennent à utiliser un rapporteur pour mesurer un angle en degrés ou construire un angle de mesure donnée en degrés. \\
+    \souscategorie{Proportionnalité} 
+    Les élèves commencent à identifier et à résoudre des problèmes de proportionnalité portant sur des grandeurs. & Des situations très simples impliquant des échelles et des vitesses constantes peuvent être rencontrées. & Sur des situations très simples en relation avec l’utilisation d’un rapporteur, les élèves construisent des représentations de données sous la forme de diagrammes circulaires ou semi-circulaires. \\
+\end{programme}
+
+\begin{programme}
+    \categorie{Espace et géométrie} 
+    \note{\textit{Il est possible, lors de la résolution de problèmes, d’aller avec certains élèves ou toute la classe au-delà des repères de progression identifiés pour chaque niveau.}} 
+    \souscategorie{Les apprentissages spatiaux} 
+    \note{Dans la continuité du cycle 2 et tout au long du cycle, les apprentissages spatiaux, en une, deux ou trois dimensions, se réalisent à partir de problèmes de repérage de déplacement d’objets, d’élaboration de représentation dans des espaces réels, matérialisés (plans, cartes...) ou numériques.} 
+    \souscategorie{Initiation à la programmation} 
+    \multicolumn{2}{|p{12.4cm}|}{Au CM1 puis au CM2, les élèves apprennent à programmer le déplacement d’un personnage sur un écran. Ils commencent par compléter de tels programmes, puis ils apprennent à corriger un programme erroné. Enfin, ils créent eux-mêmes des programmes permettant d’obtenir des déplacements d’objets ou de personnages. Les instructions correspondent à des déplacements absolus (liés à l’environnement : « aller vers l’ouest », « aller vers la fenêtre ») ou relatifs (liés au personnage : « tourner d’un quart de tour à gauche »).} & La construction de figures géométriques de simples à plus complexes, permet d’amener les élèves vers la répétition d’instructions. Ils peuvent commencer à programmer, seuls ou en équipe, des saynètes impliquant un ou plusieurs personnages interagissant ou se déplaçant simultanément ou successivement. \\
+    \souscategorie{Les apprentissages géométriques} 
+    Les élèves tracent avec l’équerre la droite perpendiculaire à une droite donnée en un point donné de cette droite. Ils tracent un carré ou un rectangle de dimensions données. Ils tracent un cercle de centre et de rayon donnés, un triangle rectangle de dimensions données. Ils apprennent à reconnaître et à nommer une boule, un cylindre, un cône, un cube, un pavé droit, un prisme droit, une pyramide. Ils apprennent à construire un patron d’un cube de dimension donnée. & 
+    Les élèves apprennent à reconnaître et nommer un triangle isocèle, un triangle équilatéral, un losange, ainsi qu’à les décrire à partir des propriétés de leurs côtés. Ils tracent avec l’équerre la droite perpendiculaire à une droite donnée passant par un point donné qui peut être extérieur à la droite. Ils tracent la droite parallèle à une droite donnée passant par un point donné. Ils apprennent à construire, pour un cube de dimension donnée, des patrons différents. Ils apprennent à reconnaître, parmi un ensemble de patrons et de faux patrons donnés, ceux qui correspondent à un solide donné : cube, pavé droit, pyramide. & 
+    Les élèves sont confrontés à la nécessité de représenter une figure à main levée avant d’en faire un tracé instrumenté. C’est l’occasion d’instaurer le codage de la figure à main levée (au fur et à mesure, égalités de longueurs, perpendicularité, égalité d’angles). Les figures étudiées sont de plus en plus complexes et les élèves les construisent à partir d’un programme de construction. Ils utilisent selon les cas les figures à main levée, les constructions aux instruments et l’utilisation d’un logiciel de géométrie dynamique. Ils définissent et différencient le cercle et le disque. Ils réalisent des patrons de pavés droits. Ils travaillent sur des assemblages de solides simples. \\
+    \souscategorie{Le raisonnement} 
+    \note{La dimension perceptive, l’usage des instruments et les propriétés élémentaires des figures sont articulés tout au long du cycle.} 
+    \multicolumn{2}{|p{12.4cm}|}{Le raisonnement peut prendre appui sur différents types de codage : \newline - signe ajouté aux traits constituant la figure (signe de l’angle droit, mesure, coloriage...) ; \newline - qualité particulière du trait lui-même (couleur, épaisseur, pointillés, trait à main levée...) ; \newline - élément de la figure qui traduit une propriété implicite (appartenance ou non appartenance, égalité...) ; \newline - nature du support de la figure (quadrillage, papier à réseau pointé, papier millimétré).\vspace{1cm}} & \multirow{2}{6.4cm}{Tout le long de l’année se poursuit le travail entrepris au CM2 visant à faire évoluer la perception qu’ont les élèves des activités géométriques (passer de l’observation et du mesurage au codage et au raisonnement). On s’appuie sur l’utilisation des codages. Les élèves utilisent les propriétés relatives aux droites parallèles ou perpendiculaires pour valider la méthode de construction d’une parallèle à la règle et à l’équerre, et établir des relations de perpendicularité ou de parallélisme entre deux droites. Ils complètent leurs acquis sur les propriétés des côtés des figures par celles sur les diagonales et les angles. Dès que l’étude de la symétrie est suffisamment avancée, ils utilisent les propriétés de conservation de longueur, d’angle, d’aire et de parallélisme pour justifier une procédure de la construction de la figure symétrique ou pour répondre à des problèmes de longueur, d’angle, d’aire ou de parallélisme sans recours à une vérification instrumentée.} \\ \cline{1-2}
+    Un vocabulaire spécifique est employé dès le début du cycle pour désigner des objets, des relations et des propriétés.\vspace{5cm} & On amène progressivement les élèves à dépasser la dimension perceptive et instrumentée des propriétés des figures planes pour tendre vers le raisonnement hypothético-déductif. Il s'agit de conduire sans formalisme des raisonnements simples utilisant les propriétés des figures usuelles ou de la symétrie axiale. & \\
+\end{programme}
+
+\begin{programme}
+    \categorie{Espace et géométrie (suite)} 
+    
+    \souscategorie{Le vocabulaire et les notations} 
+    \note{Tout au long du cycle, les notations $(AB)$, $[AB)$, $[AB]$, $AB$, sont toujours précédées du nom de l’objet qu’elles désignent : droite $(AB)$, demi-droite $[AB)$, segment $[AB]$, longueur $AB$. Les élèves apprennent à utiliser le symbole d’appartenance ($\in$) d’un point à une droite, une demi-droite ou un segment. Le vocabulaire et les notations nouvelles ($\in$, $[AB]$, $(AB)$, $[AB)$, $AB$, $\widehat{AOB}$) sont introduits au fur et à mesure de leur utilité, et non au départ d’un apprentissage.} 
+    Le vocabulaire utilisé est le même qu’en fin de cycle 2 : côté, sommet, angle, angle droit, face, arête, milieu, droite, segment. Les élèves commencent à rencontrer la notation « segment $[AB]$ » pour désigner le segment d’extrémités $A$ et $B$ mais cette notation n’est pas exigible ; pour les droites, on parle de la droite « qui passe par les points $A$ et $B$ », ou de « la droite $d$ ». & Les élèves commencent à rencontrer la notation « droite $(AB)$ », et nomment les angles par leur sommet : par exemple, « l’angle $\hat{A}$ ». & Les élèves utilisent la notation $AB$ pour désigner la longueur d’un segment qu’ils différencient de la notation du segment $[AB]$. Dès que l’on utilise les objets concernés, les élèves utilisent aussi la notation « angle $\widehat{ABC}$», ainsi que la notation courante pour les demi-droites. Les élèves apprennent à rédiger un programme de construction en utilisant le vocabulaire et les notations appropriés pour des figures simples au départ puis pour des figures plus complexes au fil des périodes suivantes. \\
+    \souscategorie{Les instruments} 
+    Tout au long de l’année, les élèves utilisent la règle graduée ou non graduée ainsi que des bandes de papier à bord droit pour reporter des longueurs. Ils utilisent l’équerre pour repérer ou construire un angle droit. Ils utilisent aussi d’autres gabarits d’angle ainsi que du papier calque. Ils utilisent le compas pour tracer un cercle, connaissant son centre et un point du cercle ou son centre et la longueur d’un rayon, ou bien pour reporter une longueur. & Le travail sur les angles se poursuit, notamment sur des fractions simples de l’angle droit (ex : un « demi angle droit », « un tiers d’angle droit », « l’angle plat comme la somme de deux angles droits »). Les élèves doivent comprendre que la mesure d’un angle (« l’ouverture » formée par les deux demi- droites) ne change pas lorsque l’on prolonge ces demi-droites. & Les élèves se servent des instruments (règle, équerre, compas) pour reproduire des figures simples, notamment un triangle de dimensions données. Cette utilisation est souvent combinée à des tracés préalables codés à main levée. Ils utilisent le rapporteur pour mesurer et construire des angles. Dès que le cercle a été défini, puis que la propriété caractéristique de la médiatrice d’un segment est connue, les élèves peuvent enrichir leurs procédures de construction à la règle et au compas. \\
+    \souscategorie{La symétrie axiale} 
+    \note{Reconnaître si une figure présente un axe de symétrie : on conjecture visuellement l’axe à trouver et on valide cette conjecture en utilisant du papier calque, des découpages, des pliages. Compléter une figure pour qu'elle devienne symétrique par rapport à un axe donné. - Symétrie axiale. - Figure symétrique, axe de symétrie d’une figure, figures symétriques par rapport à un axe. - Propriétés conservées par symétrie axiale.} 
+    Les élèves reconnaissent qu’une figure admet un (ou plusieurs) axe de symétrie, visuellement et/ou par pliage ou en utilisant du papier calque. Ils complètent une figure par symétrie ou construisent le symétrique d’une figure donnée par rapport à un axe donné, par pliage et piquage ou en utilisant du papier calque. & Ils observent que deux points sont symétriques par rapport à une droite donnée lorsque le segment qui les joint coupe cette droite perpendiculairement en son milieu. Ils construisent, à l’équerre et à la règle graduée, le symétrique d’un point, d’un segment, d’une figure par rapport à une droite. & Les élèves consolident leurs acquis du CM sur la symétrie axiale et font émerger l’image mentale de la médiatrice d’une part et certaines conservations par symétrie d’autre part. Ils donnent du sens aux procédures utilisées en CM2 pour la construction de symétriques à la règle et à l’équerre. À cette occasion : - la médiatrice d’un segment est définie et les élèves apprennent à la construire à la règle et à l’équerre ; - ils étudient les propriétés de conservation de la symétrie axiale. En lien avec les propriétés de la symétrie axiale, ils connaissent la propriété caractéristique de la médiatrice d’un segment et l’utilisent à la fois pour tracer à la règle non graduée et au compas : - la médiatrice d’un segment donné ; - la figure symétrique d’une figure donnée par rapport à une droite donnée. \\
+    \souscategorie{La proportionnalité} 
+    & Les élèves agrandissent ou réduisent une figure dans un rapport simple donné (par exemple $\times\frac{1}{2}$, $\times 2$, $\times 3$). & Les élèves agrandissent ou réduisent une figure dans un rapport plus complexe qu’au CM2 (par exemple $\frac{3}{2}$ ou $\frac{3}{4}$) ; ils reproduisent une figure à une échelle donnée et complètent un agrandissement ou une réduction d’une figure donnée à partir de la connaissance d’une des mesures agrandie ou réduite. \\
+\end{programme}
+
+\end{document}
