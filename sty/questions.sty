@@ -1,0 +1,70 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sty/questions}[2022/02/16 questions]
+
+
+%%%%%%%%%%%%%%%%
+% COUNTERS
+%%%%%%%%%%%%%%%%
+
+\newcounter{exercice}
+\newcounter{question}
+\newcounter{subpart}
+
+
+%%%%%%%%%%%%%%%%
+% QUESTIONS 
+%%%%%%%%%%%%%%%%
+%   \exercice
+%       \question
+%           \subpart
+
+\newcommand{\exercice}[1][Rien]
+{
+    % #1 (optionel) : nombre de points que vaut l'exercice
+    \bigskip
+    \setcounter{question}{0}
+    \setcounter{subpart}{0}
+    \stepcounter{exercice}
+    
+    \par\underline{\textbf{Exercice \theexercice~:~%
+    \ifthenelse{\equal{#1}{Rien}}%
+    {}{#1 points}%
+    }}%
+}
+
+\newcommand{\question}
+{
+    \setcounter{subpart}{0}
+    \stepcounter{question}
+    \par\hspace{2em}\textbf{\arabic{question})}
+}
+
+\newcommand{\subpart}
+{
+    \stepcounter{subpart}
+    \par\hspace{4em}\textbf{\alph{subpart})}
+}
+
+
+\newenvironment{questions}
+{
+    \setcounter{question}{0}
+    \setcounter{part}{0}
+    \setcounter{subpart}{0}
+}
+{
+
+}
+
+
+\newlength{\hauteurRappels}
+\newcommand{\rappels}[1]
+{
+    \settoheight{\hauteurRappels}{\hbox{#1}}
+    \printlength{\hauteurRappels}
+    \begin{center}
+        \begin{tikzpicture}
+            \draw (0,0) -- (0, \hauteurRappels) -- (\hauteurRappels, \hauteurRappels) -- (\hauteurRappels, 0) -- cycle;
+        \end{tikzpicture}
+    \end{center}
+}

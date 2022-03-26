@@ -1,0 +1,272 @@
+\documentclass[../Cours.tex]{subfiles}
+
+\color{bleu}
+\usepackage{framed}
+
+\begin{document}
+\setcounter{chapitre}{6}
+\chapitre{Comportement des suites numériques}
+
+\partie{Sens de variation d'une suite}
+\souspartie{Définition du sens de variation d'une suite}
+
+\renewcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\un}{$\left(u_n\right)$~}
+\newcommand{\limn}{\lim\limits_{n\to+\infty}}
+
+\definition{Soit une suite \un définie sur $\N$.\\
+Dire que \un est \emph{croissante} signifie que pour tout entier naturel $n$ : $u_{n+1} \supeg u_{n}$\\
+Dire que \un est \emph{décroissante} signifie que pour tout entier naturel $n$ : $u_{n+1} \infeg u_{n}$}
+
+\remarque{Une suite qui est soit croissante soit décroissante est dite monotone.\\Une suite pour laquelle $u_{n} = u_{n+1}$ pour tout $n\in\N$ est dite constante.\\Il existe des suites qui ne sont ni croissantes ni décroissantes.}
+
+\souspartie{Étude du sens de variation d'une suite}
+
+\begin{framed}
+Méthode 1 : étudier la différence $u_{n+1} - u_n$\\[1ex]
+Si pour tout $n \in \N$, $u_{n+1} - u_n \supeg 0$ alors la suite \un est croissante\\
+Si pour tout $n \in \N$, $u_{n+1} - u_n \infeg 0$ alors la suite \un est décroissante
+\end{framed}
+
+\begin{framed}
+Méthode 2 : utiliser le sens de variation d'une fonction\\[1ex]
+Si $f$ est définie sur $ [0;+\infty[ $ et si pour tout $n\in\N$, $u_n = f(n)$ alors\\
+$\longrightarrow$ si $f$ est croissante sur $[0;+\infty[$ alors la suite \un est croissante\\
+$\longrightarrow$ si $f$ est décroissante sur $[0;\infty[$ alors la suite \un est décroissante
+\end{framed}
+
+\begin{framed}
+Méthode 3 : comparer $\dfrac{u_{n+1}}{u_n}$ à 1\\[1ex]
+
+Lorsque les termes de la suite sont strictement positifs\\
+$\longrightarrow$ si pour tout $n\in\N$, $\dfrac{u_{n+1}}{u_n} \supeg 1$ alors la suite \un est croissante\\
+$\longrightarrow$ si pour tout $n\in\N$, $\dfrac{u_{n+1}}{u_n} \infeg 1$ alors la suite \un est décroissante
+\end{framed}
+
+\clearpage
+\exemple{Soit la suite \un définie pour tout $n\in\N$ par $u_n = 2n+1$}
+\vfill
+\exemple{Soit la suite \un définie pour tout $n\in\N$ par $u_n = \dfrac{1}{n+1}$}
+\vfill
+
+\souspartie{Les suites arithmétiques}
+
+\propriete{Considérons la suite arithmétique \un de raison $r$. \\
+Comme $u_{n+1}-u_n = r$, le sens de variation dépend du signe de r.\\[1ex]
+Si $r<0$, la suite est décroissante.\\
+Si $r=0$, la suite est constante.\\
+Si $r>0$, la suite est croissante.}
+
+\souspartie{Les suites géométriques}
+
+\propriete{Considérons la suite géométrique \un de raison $q$ et de premier terme $u_0>0$.\\
+Le sens de variation dépend de la valeur de la raison $q$.\\[1ex]
+Si $0<q<1$, la suite est décroissante.\\
+Si $q=1$, la suite est constante.\\
+Si $q>1$, la suite est croissante.\\
+Si $q<0$, la suite n'est pas monotone.}
+
+\clearpage
+\partie{Limites de suites}
+\souspartie{Suites convergentes}
+
+\definition{Dire que la suite \un converge vers un réel $l$ signifie que tout intervalle ouvert contenant $l$ contient tous les termes de la suite à partir d'un certain rang.\\ 
+On note $\limn u_n = l$.}
+
+\medskip
+Autrement dit, une suite \un$_{n\in\N}$ a pour limite $l$ quand $n$ tend vers $+\infty$, si les termes de la suite deviennent tous aussi proches de $l$ que l'on veut, à condition de prendre $n$ suffisamment grand.
+
+\begin{wrapfigure}{r}{0.2\linewidth}
+    \vspace{-2cm}
+    \begin{tikzpicture}[scale=0.1]
+        \draw[black,-latex] (0,0) -- (40,0);
+        \draw[black,-latex] (0,0) -- (0,40);
+        \foreach \y in {0.2,0.4,0.6,0.8,1}
+        {
+            \node[black,left] at (0,40*\y) {\tiny{\y}};
+            \draw[black,dashed] (0,40*\y) -- (40,40*\y);
+        }
+        \foreach \x in {0,10,...,40}
+        {
+            \node[black,below] at (\x,0) {\tiny{\x}};
+        }
+        \foreach \n in {1,...,40}
+        {
+            \draw (\n,40-40/\n) circle (0.15);
+        }
+    \end{tikzpicture}
+    
+        \begin{tikzpicture}[scale=0.1]
+        \draw[black,-latex] (0,20) -- (40,20);
+        \draw[black,-latex] (0,0) -- (0,40);
+        \foreach \y in {-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1}
+        {
+            \node[black,left] at (0,20+20*\y) {\tiny{\y}};
+            \draw[black,dashed] (0,20+20*\y) -- (40,20+20*\y);
+        }
+        \foreach \x in {0,10,...,40}
+        {
+            \node[black,below] at (\x,0) {\tiny{\x}};
+        }
+        \foreach \n in {0,1,...,40}
+        {
+            \draw[rouge] (0,40.00) circle (0.15);
+            \draw[rouge] (1,4.00) circle (0.15);
+            \draw[rouge] (2,32.80) circle (0.15);
+            \draw[rouge] (3,9.76) circle (0.15);
+            \draw[rouge] (4,28.19) circle (0.15);
+            \draw[rouge] (5,13.45) circle (0.15);
+            \draw[rouge] (6,25.24) circle (0.15);
+            \draw[rouge] (7,15.81) circle (0.15);
+            \draw[rouge] (8,23.36) circle (0.15);
+            \draw[rouge] (9,17.32) circle (0.15);
+            \draw[rouge] (10,22.15) circle (0.15);
+            \draw[rouge] (11,18.28) circle (0.15);
+            \draw[rouge] (12,21.37) circle (0.15);
+            \draw[rouge] (13,18.90) circle (0.15);
+            \draw[rouge] (14,20.88) circle (0.15);
+            \draw[rouge] (15,19.30) circle (0.15);
+            \draw[rouge] (16,20.56) circle (0.15);
+            \draw[rouge] (17,19.55) circle (0.15);
+            \draw[rouge] (18,20.36) circle (0.15);
+            \draw[rouge] (19,19.71) circle (0.15);
+            \draw[rouge] (20,20.23) circle (0.15);
+            \draw[rouge] (21,19.82) circle (0.15);
+            \draw[rouge] (22,20.15) circle (0.15);
+            \draw[rouge] (23,19.88) circle (0.15);
+            \draw[rouge] (24,20.09) circle (0.15);
+            \draw[rouge] (25,19.92) circle (0.15);
+            \draw[rouge] (26,20.06) circle (0.15);
+            \draw[rouge] (27,19.95) circle (0.15);
+            \draw[rouge] (28,20.04) circle (0.15);
+            \draw[rouge] (29,19.97) circle (0.15);
+            \draw[rouge] (30,20.02) circle (0.15);
+            \draw[rouge] (31,19.98) circle (0.15);
+            \draw[rouge] (32,20.02) circle (0.15);
+            \draw[rouge] (33,19.99) circle (0.15);
+            \draw[rouge] (34,20.01) circle (0.15);
+            \draw[rouge] (35,19.99) circle (0.15);
+            \draw[rouge] (36,20.01) circle (0.15);
+            \draw[rouge] (37,19.99) circle (0.15);
+            \draw[rouge] (38,20.00) circle (0.15);
+            \draw[rouge] (39,20.00) circle (0.15);
+            \draw[rouge] (40,20.00) circle (0.15);
+        }
+    \end{tikzpicture}
+\end{wrapfigure}
+
+\vspace{2cm}
+\exemple{Soit la suite \un$_{n\in\N^*}$ définie pour tout $n\in\N^*$ par : $u_n = 1-\frac{1}{n}$\\
+Plus la valeur de $n$ est grande, plus la valeur de $u_n$ se rapproche vers un nombre.\\
+On dit que la suite \un admet pour limite 1 lorsque $n$ tend vers $+\infty$.\\
+On note $\limn u_n = 1$}
+
+\exemple{Soit la suite \un$_{n\in\N}$ définie pour tout $n\in\N$ par : $u_n = \left(-0,8\right)^n$\\
+Plus la valeur de $n$ est grande, plus la valeur de $u_n$ se rapproche vers un nombre.\\
+On dit que la suite \un admet pour limite 1 lorsque $n$ tend vers $+\infty$.\\
+On note $\limn u_n = 1$}
+
+\vspace{1.2cm}
+
+\souspartie{Suites divergentes}
+
+\definition{Une suite divergente est une suite qui :
+\begin{itemize}
+    \item a pour limite $+\infty$ ou $-\infty$
+    \item n'a pas de limite
+\end{itemize}}
+
+\soussouspartie{Suites de limite infinie}
+
+\definition{Dire que $u$ a pour limite $+\infty$ signifie que tout intervalle $[a;+\infty[$, avec $a$ un réel, contient tous les termes de la suite à partir d'un certain rang.\\
+On dit alors que la suite $u$ diverge vers $+\infty$ et on note : $\limn u_n = +\infty$.\\[1ex]
+De même, dire que $u$ a pour limite $-\infty$ signifie que tout intervalle $]-\infty;b]$, avec $b$ un réel, contient tous les termes de la suite à partir d'un certain rang.\\
+On dit alors que la suite $u$ diverge vers $-\infty$ et on note : $\limn u_n = -\infty$.}
+
+\medskip
+Autrement dit, une suite \un a pour limite $+\infty$ quand $n$ tend vers $+\infty$, si les termes de la suite sont tous aussi grands que l'on veut, à condition de prendre $n$ suffisamment grand.\\[1ex]
+Et une suite \un a pour limite $-\infty$ quand $n$ tend vers $+\infty$, si les termes de la suite sont tous aussi petits que l'on veut, à condition de prendre $n$ suffisamment grand. (ou tous aussi grand que l'on veut en valeur absolue).
+
+
+\exemple{Soit la suite \un définie pour tout $n\in\N$ par : $u_n = n^2$\\
+Plus la valeur de $n$ est grande, plus celle de $u_n$ augmente sans jamais se stabiliser.\\
+On dit que la suite \un admet pour limite $+\infty$ lorsque $n$ tend vers $+\infty$.\\
+On note $\limn u_n = +\infty$
+}
+
+\exemple{Soit la suite \un définie pour tout $n\in\N$ par : $u_n = -n^2$\\
+Plus la valeur de $n$ est grande, plus celle de $u_n$ diminue sans jamais se stabiliser.\\
+On dit que la suite \un admet pour limite $-\infty$ lorsque $n$ tend vers $+\infty$.\\
+On note $\limn u_n = -\infty$ 
+}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.15]
+    \draw[black,-latex] (0,0) -- (40,0);
+    \draw[black,-latex] (0,0) -- (0,40);
+    \foreach \x in {0,10,...,40}
+    {
+        \node[black,below] at (\x,0) {\tiny{\x}};
+    }
+    \foreach \n in {1,...,40}
+    {
+        \draw (\n,\n^2/50) circle (0.15);
+    }
+\end{tikzpicture}\hfill
+\begin{tikzpicture}[scale=0.15]
+    \draw[black,-latex] (0,0) -- (40,0);
+    \draw[black,-latex] (0,0) -- (0,-40);
+    \foreach \x in {0,10,...,40}
+    {
+        \node[black,above] at (\x,0) {\tiny{\x}};
+    }
+    \foreach \n in {1,...,40}
+    {
+        \draw (\n,-\n^2/50) circle (0.15);
+    }
+\end{tikzpicture}
+\end{center}
+
+\soussouspartie{Suites qui n'ont pas de limite}
+
+\exemples{
+\begin{itemize}
+    \item la suite \un définie pour tout $n\in\N$ par : $u_n = (-1)^n$
+    \item la suite \un définie pour tout $n\in\N$ par : $u_n = \sin(n)$ 
+\end{itemize}}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.15]
+    \draw[black,-latex] (0,20) -- (40,20);
+    \draw[black,-latex] (0,0) -- (0,40);
+    \foreach \x in {0,10,...,40}
+    {
+        \node[black,below] at (\x,0) {\tiny{\x}};
+    }
+    \foreach \n in {0,2,...,38}
+    {
+        \draw[rouge] (\n,20+10) circle (0.15);
+        \draw[rouge] (\n,20-10) circle (0.15);
+    }
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.15]
+    \draw[black,-latex] (0,20) -- (40,20);
+    \draw[black,-latex] (0,0) -- (0,40);
+    \foreach \y in {-1,1}
+    {
+        \draw[black,dashed] (0,20+20*\y) -- (40,20+20*\y);
+    }
+    \foreach \x in {0,10,...,40}
+    {
+        \node[black,below] at (\x,0) {\tiny{\x}};
+    }
+    \foreach \n in {0,1,...,40}
+    {
+        \draw[rouge] (\n,{20+20*sin(\n*180/3.14)}) circle (0.15);
+    }
+\end{tikzpicture}
+\end{center}
+
+\end{document}

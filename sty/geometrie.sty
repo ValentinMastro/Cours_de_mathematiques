@@ -1,0 +1,17 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sty/geometrie}[2022/01/28 geometrie]
+
+\RequirePackage{tikz}
+\RequirePackage{xargs}
+\usetikzlibrary{angles,quotes}
+
+\newcommandx{\point}[3][3={north}]
+{
+    % #1 : nom du point
+    % #2 : coordonnées du point
+    % #3 : ancre pour l'affichage du nom du point
+    \coordinate (#1) at #2;
+    \node[anchor=#3] at #2 {#1};
+}
+
+\RequirePackage{scratch}

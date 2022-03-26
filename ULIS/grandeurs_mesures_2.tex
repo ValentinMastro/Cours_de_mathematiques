@@ -1,0 +1,82 @@
+\documentclass[12pt]{memoir}
+\usepackage{importationsprojet}
+\usepackage{setspace}
+
+
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyhead[C]{
+        \begin{tabular}{*{3}{|p{5.7cm}}|}\hline
+            \large{Nom : .........................\phantom{É}} & \large{Prénom :} ......................... & \large{Classe :} .....................\\\hline
+        \end{tabular}
+    }
+    \fancyfoot[R]{\textbf{Page~\thepage~sur~\pageref{LastPage}}}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+\pagestyle{plain}
+
+\begin{document}
+\linespread{1.5}
+
+\begin{tabular}{*{1}{|p{18cm}}|}\hline
+    \normalsize Compétence travaillée : Calculer et convertir une durée ; calcul d'instant\\\hline
+\end{tabular}
+
+\vspace{2cm}
+
+\textbf{\underline{Cours :}}
+\par L'unité légale de la durée est la seconde.
+\par Un jour est la durée que met la planète Terre pour faire un tour sur elle-même.
+\par Une année est la durée que met la planète Terre pour faire une révolution autour du Soleil.
+
+\begin{center}
+\begin{tabular}{|p{2.5cm}*{5}{|c}|}\hline
+    \textit{Unité} & année & jour & heure & minute & seconde \\\hline
+    \textit{Abréviation} & an(s) & j & h & min & s \\\hline
+    & = 365[,25] j & = \qty{24}{h} & = \qty{60}{min} & = \qty{60}{s} & \\\hline
+\end{tabular}
+\end{center}
+
+\textit{\underline{Exemple 1 : }} \textsc{Lire l'heure}\\[-0.2cm]
+
+\newcommand{\horloge}
+{
+    \begin{tikzpicture}
+        \draw (0,0) circle (2);
+        \draw[fill=black] (0,0) circle (0.05);
+    \end{tikzpicture}
+}
+
+\textit{\underline{Exemple 2 : }} \textsc{Calculer une durée entre deux instants}\\[-0.2cm]
+
+\clearpage
+
+\newcommand{\dotss}{..................}
+\newcommand{\dotsss}{............................................}
+
+\begin{questions}
+\setlength\itemsep{2em}
+
+\exercice ~~~Calculer\\
+\begin{itemize}
+\setlength\itemsep{1em}
+    \item 4 semaines = \dotss jours
+    \item 3 jours = \dotss heures
+    \item 10 heures = \dotss minutes
+    \item 1 heure = \dotss secondes
+\end{itemize}
+
+\exercice ~~~Compléter les horloges avec les heures correspondantes\\
+\begin{itemize}
+\setlength\itemsep{1em}
+    \item 10h10
+    \item << 9 heures et quart >>
+    \item << 7 heures moins le quart >>
+    \item 20h50
+\end{itemize}
+
+\end{questions}
+
+
+\end{document}

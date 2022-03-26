@@ -1,17 +1,15 @@
-\documentclass[a4paper, 11pt]{memoir}
+\documentclass[a4paper, 11pt, oneside]{memoir}
 
-\usepackage{gestiondessections}
-\usepackage{numerique}
-\usepackage{geometrie}
+\usepackage{importationsprojet}
 
 \pagestyle{plain}
-
-
 
 \begin{document}
 
 \titre{sixième}
-\tableofcontents
+
+\setcounter{tocdepth}{3}
+\tableofcontents*
 
 \ajouterChapitre{chapitres/01 - Nombres entiers et nombres décimaux.tex}
 \ajouterChapitre{chapitres/02 - Rappels de géométrie.tex}

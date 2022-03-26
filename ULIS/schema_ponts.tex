@@ -1,0 +1,21 @@
+\documentclass[convert]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[scale=3]
+    \draw (0,0) -- (1,0) -- (2,0) -- (3,0);
+    
+    \draw[-latex] (0,0) arc [start angle=180, end angle = 5, x radius = 0.5, y radius = 0.3];
+    \draw[-latex] (1,0) arc [start angle=180, end angle = 5, x radius = 0.5, y radius = 0.3];
+    \draw[-latex] (2,0) arc [start angle=180, end angle = 5, x radius = 0.5, y radius = 0.3];
+    
+    \node[below] at (0,0) {20h54min};
+    \node[below] at (1,0) {21h00min};
+    \node[below] at (2,0) {22h00min};
+    \node[below] at (3,0) {22h33min};
+    
+    \node[above] at (0.5,0.3) {+6min};
+    \node[above] at (1.5,0.3) {+1h};
+    \node[above] at (2.5,0.3) {+33min};
+\end{tikzpicture}
+\end{document}

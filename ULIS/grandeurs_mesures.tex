@@ -1,0 +1,107 @@
+\documentclass[12pt]{memoir}
+\usepackage{importationsprojet}
+\usepackage{setspace}
+
+
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyhead[C]{
+        \begin{tabular}{*{3}{|p{5.7cm}}|}\hline
+            \large{Nom : .........................\phantom{É}} & \large{Prénom :} ......................... & \large{Classe :} .....................\\\hline
+        \end{tabular}
+    }
+    \fancyfoot[R]{\textbf{Page~\thepage~sur~\pageref{LastPage}}}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+\pagestyle{plain}
+
+\begin{document}
+\linespread{1.5}
+
+\begin{tabular}{*{1}{|p{18cm}}|}\hline
+    \normalsize Compétence travaillée : Convertir une longueur en utilisant les multiples et sous-multiples du mètre.\\\hline
+\end{tabular}
+
+\vspace{2cm}
+
+\textbf{\underline{Cours :}}
+\par L'unité légale de la longueur est le mètre.
+
+\begin{center}
+\begin{tabular}{|p{2.7cm}*{7}{|c}|}\hline
+    \textit{Préfixe + unité} & \textbf{kilo}mètre & \textbf{hecto}mètre & \textbf{déca}mètre & mètre & \textbf{déci}mètre & \textbf{centi}mètre & \textbf{milli}mètre \\\hline
+    \textit{Abréviation} & \unit{\kilo\meter} & \unit{\hecto\meter} & \unit{\deca\meter} & \unit{\meter} & \unit{\deci\meter} & \unit{\centi\meter} & \unit{\milli\meter}\\\hline
+    & = \qty{1000}{\meter} & = \qty{100}{\meter} & = \qty{10}{\meter} & = \qty{1}{\meter} & = \qty{0.1}{\meter} & = \qty{0.01}{\meter} & = \qty{0.001}{\meter}\\\hline
+\end{tabular}
+\end{center}
+
+\textit{\underline{Exemple 1 : }} \textsc{Convertir une longueur}\\[-0.2cm]
+
+Pour convertir \qty{12,5}{hm} en \unit{cm}, j'écris que $\qty{12,5}{hm} = 12,5 \times \qty{1}{hm}$.\\
+Puis je me demande combien fait \qty{1}{hm} en \unit{cm}.\\
+Pour cela j'utilise le tableau, et je trouve que $\qty{1}{hm} = \qty{10000}{cm}$.\\
+Je remplace dans mon calcul : $12,5 \times \qty{1}{m} = 12,5 \times \qty{10000}{cm} = \qty{125000}{cm}$.\\
+
+\textit{\underline{Exemple 2 : }} \textsc{Comparer deux longueurs}\\[-0.2cm]
+
+Règle : on ne peut comparer deux longueurs que \textbf{lorsqu'elles possèdent la même unité}.\\[-0.2cm]
+
+Je veux comparer \qty{72}{cm} et \qty{5}{dm}.\\
+J'ai un problème, les deux unités ne sont pas les mêmes.\\
+Je vais convertir \qty{5}{dm} en \unit{cm}.\\
+Je trouve que $\qty{5}{dm} = \qty{50}{cm}$.\\
+Je dois donc comparer \qty{72}{cm} et \qty{50}{cm}.\\
+Je trouve que $\qty{72}{cm} > \qty{50}{cm}$ donc $\qty{72}{cm} > \qty{5}{dm}$.\\
+
+
+\textit{\underline{Exemple 3 : }} \textsc{Décomposer une longueur}\\[-0.2cm]
+
+$\qty{12,345}{m} = \qty{10}{m} + \qty{2}{m} + \qty{0,3}{m} + \qty{0,04}{m} + \qty{0,005}{m}$\\
+$\qty{12,345}{m} = \qty{1}{dam} + \qty{2}{m} + \qty{3}{dm} + \qty{4}{cm} + \qty{5}{mm}$\\
+
+\clearpage
+
+\newcommand{\dotss}{..................}
+\newcommand{\dotsss}{............................................}
+
+\begin{questions}
+\setlength\itemsep{2em}
+
+\exercice ~~~Convertir les longueurs suivantes\\
+\begin{itemize}
+\setlength\itemsep{1em}
+    \item la hauteur de la tour Eiffel : ~~~$\qty{3,24}{hm}~= \dotsss~\unit{m}$ 
+    \item la distance d'un marathon : ~~~$\qty{4212,5}{dam}~= \dotsss~\unit{km}$
+    \item la taille d'une fourmi : ~~~$\qty{0,0025}{m}~= \dotsss~\unit{mm}$
+\end{itemize}
+
+\exercice ~~~Comparer les longueurs suivantes (avec les symboles $>, <$ ou $=$)\\
+\begin{itemize}
+\setlength\itemsep{1em}
+    \item \qty{52}{hm} ............ \qty{5,2}{dam}
+    \item \qty{7000}{m} ............ \qty{8}{km}
+    \item \qty{9}{mm} ............ \qty{0,000 009}{km}
+\end{itemize}
+
+\exercice ~~~Décomposer les longueurs suivantes\\
+\begin{itemize}
+\setlength\itemsep{1em}
+    \item $\qty{76,543}{hm} =~\dotss~\unit{km}~+~\dotss~\unit{hm}~+~\dotss~\unit{dam}~+~\dotss~\unit{m}~+~\dotss~\unit{dm}$
+    \item $\qty{19,04}{dm} =~\dotss~\unit{m}~+~\dotss~\unit{dm}~+~\dotss~\unit{mm}$
+    \item $\qty{90,034}{dam}~=~\dotss~\unit{hm}~+~\dotss~\unit{dm}~+~\dotss~\unit{cm}$
+    \item $\qty{193,5}{cm} =~\dotsss\dotsss\dotsss$
+    \item $\qty{934}{dm} =~\dotsss\dotsss\dotsss$
+\end{itemize}
+
+\exercice ~~~Tracer un triangle $ABC$ tel que\\
+\begin{itemize}
+\setlength\itemsep{1em}
+    \item $AB = \qty{3}{cm}$
+    \item $BC = \qty{35}{mm}$
+    \item $AC = \qty{0,042}{m}$
+\end{itemize}
+
+\end{questions}
+
+\end{document}
