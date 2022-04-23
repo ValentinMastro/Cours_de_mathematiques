@@ -1,0 +1,92 @@
+\documentclass[11pt,addpoints]{exam}
+
+\usepackage{tikz}
+\usepackage{tkz-tab}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsmath,amssymb}
+
+\newcommand{\N}{\mathbb{N}}
+
+\begin{document}
+
+\begin{center}
+    \huge{Interrogation sur le comportement des suites numériques}
+\end{center}
+
+\vfill
+
+\qformat{\textbf{Exercice \thequestion)}~\hfill}
+\begin{questions}
+
+\question[2] Recopier et compléter les phrases suivantes
+\begin{parts}
+    \part << Si une suite $(u_n)_{_{n\in\N}}$ est croissante, alors pour tout $n\in\N$, $u_{n+1}-u_n$......... >>
+    \part << Si une suite $(v_n)_{_{n\in\N}}$ est décroissante, et que tous ses termes sont ............., alors pour tout $n\in\N$, $\frac{v_{n+1}}{v_n}$......... >>
+    \part << Si une suite $(w_n)_{_{n\in\N}}$ est croissante, et qu'il existe une fonction $f$ définie sur $[0;+\infty[$ telle que pour tout $n\in\N$, $w_n = f(n)$ alors $f$ est .............. sur $[0;
+    +\infty[$ >>
+    \part << Si une suite $(t_n)_{_{n\in\N}}$ est constante, alors pour tout $n\in\N$, $t_{n+1}-t_n$......... >>
+\end{parts}
+
+\question[10] Donner les variations des suites suivantes
+\begin{parts}
+    \part Pour tout $n\in\N$, $u_n = 2n+5$
+    \part Pour tout $n\in\N$, $v_n = 0{,}7^n$
+    \part Pour tout $n\in\N$, $w_n = 3\sqrt{n}$
+    \part Pour tout $n\in\N$, $x_{n+1} = x_n - n^2$
+    \part Pour tout $n\in\N$, $y_{n+1} = y_n \times n$
+    \part Pour tout $n\in\N$, $z_n = -2\times 3^n$
+\end{parts}
+
+\question[2] Conjecturer les limites des suites suivantes.
+\begin{center}
+    \begin{tikzpicture}[scale=0.1]
+        \draw[black,-latex] (0,0) -- (60,0);
+        \draw[black,-latex] (0,0) -- (0,40);
+        \foreach \x in {0,10,...,60}
+        {
+            \node[black,below] at (\x,0) {\small{\x}};
+        }
+        \foreach \n in {1,...,60}
+        {
+            \draw (\n,{(30*\n)/(\n+3)}) circle (0.15);
+        }
+        \foreach \y in {1,...,4} 
+        {
+            \node[black,left] at (0,10*\y) {\small{\y}};
+        }
+        \draw[black,dashed] (0,30) -- (60,30);
+    \end{tikzpicture}\hfill
+    \begin{tikzpicture}[scale=0.1]
+        \draw[black,-latex] (0,0) -- (40,0);
+        \draw[black,-latex] (0,0) -- (0,40);
+        \foreach \x in {0,10,...,40}
+        {
+            \node[black,below] at (\x,0) {\small{\x}};
+            \node[black,left] at (0,\x) {\small{\x}};
+        }
+        \foreach \n in {1,...,40}
+        {
+            \draw (\n,\n^2/50) circle (0.15);
+        }
+    \end{tikzpicture}
+\end{center}
+
+\question[6] Soit la suite $(a_n)_{_{n\in\N}}$ définie pour tout $n\in\N$ par $a_n = 2n^2+5n+4$.
+\begin{parts}
+    \part De trois manières différentes, déterminer les variations de la suite $(a_n)$.
+    \part Que peut-on conjecturer quant à la limite de la suite $(a_n)$ ?
+\end{parts}
+
+
+\vfill
+
+\hqword{Exercice}
+\hpword{Barème}
+\hsword{Points obtenus}
+
+\begin{center}
+\gradetable[h][questions]
+\end{center}
+
+\end{questions}
+\end{document}

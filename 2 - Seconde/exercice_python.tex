@@ -1,0 +1,92 @@
+\documentclass[11pt]{exam}
+\usepackage{listings}
+\usepackage[margin=2cm]{geometry}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Coloration
+\usepackage{xcolor}
+
+%New colors defined below
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%Code listing style named "mystyle"
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour}, commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+}
+
+%"mystyle" code listing set
+\lstset{style=mystyle}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\begin{questions}
+\qformat{\textbf{Q\thequestion)\hfill}}
+
+\question Compléter le code ci-dessous pour que la fonction \emph{somme} retourne la somme de tous les arguments $a$, $b$ et $c$.
+
+\begin{lstlisting}[language=Python]
+def somme(a, b, c):
+    return 
+\end{lstlisting}
+
+\question Compléter le code ci-dessous pour que la fonction \emph{signe} qui prend pour argument $x$ retourne $+1$ si $x$ est positif, $-1$ si $x$ est négatif et $0$ sinon.
+
+\begin{lstlisting}[language=Python]
+def signe(x):
+    if (           ):
+        return 
+    elif (           ):
+        return 
+    elif (           ):
+        return
+\end{lstlisting}
+
+\question Compléter le code ci-dessous pour que la fonction \emph{signe\_produit} qui prend pour arguments $a$ et $b$ retourne le signe du produit $a\times b$ ($+1$ si c'est positif, $-1$ si c'est négatif, $0$ sinon). Vous devez réutiliser la fonction \emph{signe} vue à la question précédente.
+
+\begin{lstlisting}[language=Python]
+def signe_produit(a,b):
+    return 
+\end{lstlisting}
+
+\question Compléter le code ci-dessous pour que la fonction \emph{duree} qui prend en arguments $j$, $h$, $m$ et $s$ et qui renvoie le nombre de secondes qui s'est écoulé durant $j$ jours, $h$ heures, $m$ minutes et $s$ secondes.
+
+\begin{lstlisting}[language=Python]
+def duree(j, h, m, s):
+    jours_en_secondes = 
+    heures_en_secondes = 
+    minutes_en_secondes = 
+    
+    return jours_en_secondes + heures_en_secondes + minutes_en_secondes + s
+\end{lstlisting}
+
+\question Écrire une fonction \emph{annee\_bissextile} qui prend en argument une année $n$ et qui renvoie $True$ si une année est bissextile et $False$ sinon.\\
+Une année est bissextile si elle est multiple de 4, sauf lorsqu'elle est multiple de 100, mais elle l'est quand même si elle est multiple de 400.\\[1em]
+Tester la fonction avec les valeurs 2000, 2100, 2022, 2023.
+
+\question Écrire une fonction \emph{fizzbuzz} qui prend en argument un entier $n$ et qui affiche (avec $print$) : $Fizz$ si $n$ est multiple de 3, $Buzz$ si $n$ est multiple de $5$, $FizzBuzz$ si $n$ est multiple de $3$ et de $5$, l'entier $n$ sinon.\\[1em]
+Pour tester votre programme, utilisez le code suivant :
+\begin{lstlisting}[language=Python]
+for i in range(0,100):
+    fizzbuzz(i)
+\end{lstlisting}
+
+
+
+\end{questions}
+\end{document}

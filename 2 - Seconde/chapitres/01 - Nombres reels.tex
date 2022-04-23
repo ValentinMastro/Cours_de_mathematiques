@@ -1,0 +1,55 @@
+\documentclass[../Cours.tex]{subfiles}
+
+\begin{document}
+
+\chapitre{Les nombres réels}
+\partie{Les ensembles de nombres}
+
+\theoreme{}{Pour tout point $M$ d'une droite graduée, il existe un nombre appelée l'\emph{abscisse} qui décrit la position du point $M$ sur la droite graduée.}
+
+\exemple{L'abscisse du point $M$ est $2$, celle du point $N$ est -4.\\
+\begin{tikzpicture}
+    \draw[draw=none] (-15,0) -- (-5,0); % pour aligner à droite
+    \draw[black,thick,-latex] (-5,0) -- (3,0);
+    \foreach \x in {-4,...,2} {
+        \node[black,below] at (\x,0) {\x};
+        \draw[thick,rouge] (\x,-0.1) -- (\x,0.1);
+    }
+    \node[above] at (2,0) {$M$};
+    \node[above] at (-4,0) {$N$};
+\end{tikzpicture}}
+
+\definition{L'ensemble des points de la droite numérique graduée est appelé \emph{ensemble des nombres réels}. Il est noté \R.}
+
+\definition{De la même manière, nous définissons des sous-ensembles de \R, selon le tableau suivant.}\\
+
+\begin{tabular}{|l|>{\centering}p{6cm}|>{\centering}p{1.8cm}|r|}\hline
+    Ensemble de nombres & Caractérisation & Notation & Exemples \\\hline
+    Les entiers naturels & Un nombre qui n'a pas de partie décimale et qui est positif & \N & $0 ; 1; 2; 3$\\\hline
+    Les entiers relatifs & Un nombre qui n'a pas de partie décimale et qui peut être positif ou négatif & \Z & $-3 ; -2 ; -1 ; 0 ; -1 ; -2 ; -3$\\\hline
+    Les décimaux & Un nombre qui peut s'écrire avec un nombre fini de chiffres après la virgule & \D & $2,47 ; 7 ; -2,746~35$\\\hline
+    Les rationnels & Un nombre qui peut s'écrire comme une fraction & \Q & $0,5 ; \dfrac{2}{3} ; -6,58 $\\\hline
+\end{tabular}
+
+\illustration{
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    \draw[draw=none,fill=noir] (4,0) ellipse (6 cm and 5 cm);
+    \draw[draw=none,fill=rouge] (3,0) ellipse (5 cm and 4 cm);
+    \draw[draw=none,fill=bleu] (2,0) ellipse (4 cm and 3 cm);
+    \draw[draw=none,fill=vert] (1,0) ellipse (3 cm and 2 cm);
+    \draw[draw=none,fill=jaune] (0,0) ellipse (2 cm and 1 cm);
+    \node[blanc] at (0,0) {\N};
+    \node[blanc] at (3,0) {\Z};
+    \node[blanc] at (5,0) {\D};
+    \node[blanc] at (7,0) {\Q};
+    \node[blanc] at (9,0) {\R};
+\end{tikzpicture}    
+\end{center}
+}
+
+
+
+
+
+\end{document}

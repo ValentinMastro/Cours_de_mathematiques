@@ -1,25 +1,9 @@
-\documentclass[a4paper, 11pt, oneside]{memoir}
-
-\usepackage{importationsprojet}
-
-\pagestyle{plain}
-
-\begin{document}
-
-\titre{première spé maths}
-
-\setcounter{tocdepth}{3}
-\tableofcontents*
-
-\setcounter{chapitre}{6}
-\ajouterChapitre{chapitres/07 - Comportement des suites numeriques.tex}
-
 \clearpage
 \begin{questions}
 \setcounter{exercice}{30}
 
 \exercice\\
-Nous avons que lorsque la dérivée est positive sur un intervalle, la fonction est croissante sur ce même intervalle, etq ue de la même façon, lorsque la dérivée est négative sur un interavlle, la fonction est décroissante sur cet intervalle\\
+Nous avons que lorsque la dérivée est positive sur un intervalle, la fonction est croissante sur ce même intervalle, et que de la même façon, lorsque la dérivée est négative sur un intervalle, la fonction est décroissante sur cet intervalle\\
 
 Ici, $f'$ est positive sur $[-3;-1]$ et sur $[3;4]$ et $f'$ est négative sur $[-1;3]$.\\
 On en déduit que $f$ est croissante sur $[-3;-1]$ et sur $[3;4]$ et que $f$ est décroissante sur $[-1;3]$.\\
@@ -52,7 +36,12 @@ D'après la question 2), $f$ est décroissante sur $[-2;2]$ donc en particulier 
 \subpart $f'(x) \infeg 0$ \ssi $x$ appartient à $[-2,5;4]$\\
 \subpart $f'(x) \supeg 0$ \ssi $x$ appartient à $[-5;-2;5] \cup [4;8]$\\
 
+\exercice 
+\question Pour chaque suite ci-dessous, utiliser trois méthodes différentes pour étudier les variations de la suite, puis conjecturer la limite de la suite en utilisant la calculatrice
+\subpart $u_n = 3n+7$
+\subpart $v_n = 3\sqrt(n)$                           \textit{pour la méthode 1, utiliser l'identité remarquable $a^2 - b^2$ en multipliant $u_{n+1} - u_n$ par $\sqrt(n+1) + sqrt(n)$}
+\subpart $w_n = \dfrac{2n^2+2}{3n^2+3}$              
+\subpart $x_n = 3$ et $x_{n+1} = x_n + 2n^2+2$       \textit{juste la méthode 1 pour le dernier}
+
+
 \end{questions}
-
-
-\end{document}

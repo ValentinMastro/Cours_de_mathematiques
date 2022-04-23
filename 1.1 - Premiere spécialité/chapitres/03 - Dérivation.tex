@@ -1,0 +1,61 @@
+\documentclass[../Cours.tex]{subfiles}
+
+\begin{document}
+\setcounter{chapitre}{2}
+\chapitre{Dérivation}
+
+\partie{Nombre dérivé}
+
+\begin{wrapfigure}{r}{0.4\linewidth}
+\vspace{-2cm}
+\begin{tikzpicture}
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (4,3);
+    
+    \draw ($(A)-0.2*(B)$) -- ($(A)+1.2*(B)$);
+    \node[above] at (A) {$A$};
+    \node[above] at (B) {$B$};
+    \draw (A) -- (B |- A) -- (B);
+    \node[below] at ($(A)!0.5!(B|-A)$) {$\Delta x = x_B - x_A$};
+    \node[right] at ($(B|-A)!0.5!(B)$) {$\Delta y = y_B - y_A$};
+\end{tikzpicture}
+\end{wrapfigure}
+\rappel{Le coefficient directeur d'une droite $$m = \dfrac{\Delta y}{\Delta x} = \dfrac{y_B - y_A}{x_B - x_A}$$}
+
+\souspartie{Taux d'accroissement}
+
+\definition{Soit $f$ une fonction définie sur un intervalle $I$ contenant les réels $a$ et $b$ et avec $a \neq b$. Le \emph{taux d'accroissement ou de variation} de la fonction $f$ entre $a$ et $b$ est le quotient :$$\dfrac{\Delta y}{\Delta x} = \dfrac{f(b) - f(a)}{b-a}$$}
+
+\remarque{C'est le \emph{coefficient directeur} de la droite sécante $(AB)$ où $A$ est le point de la courbe représentative d'abscisse $a$ et $B$ celui d'abscisse $b$.}
+
+\remarque{Si $a$ est un réel appartenant à l'ensemble de définition de $f$, le taux d'accroissement entre $a$ et $a+h$, avec $h$ non nul tel que $a+h$ soit encore dans l'ensemble de définition, est : $$\tau_a(h) = \dfrac{f(a+h) - f(a)}{h}$$}
+
+\exemples{1) Soit $f$ la fonction définie sur \R par $f(x) = x^2-1$.\\Déterminer le taux d'accroissement de $f$ entre 0 et 2.\\ 2) Soit $f$ la fonction définie sur \R par $f(x) = -2x^2+5$. Soit $h$ un réel non nul.\\ Déterminer le taux d'accroissement de $f$ entre 4 et $4 + h$.}
+
+\souspartie{Nombre dérivé de $f$ en $a$}
+
+\definition{Soit $f$ une fonction, définie sur un intervalle $I$ contenant le réel $a$, et $h$ un non nul tel que $a+h$ soit encore dans l'ensemble de définition.\\ On appelle \emph{nombre dérivé} de $f$ en $a$ la limite, lorsqu'elle existe, du taux d'accroissement entre $a$ et $a+h$, lorsque $h$ tend vers 0. On dit alors que la fonction est \emph{dérivable} en $a$ et on note $f'(a)$ son nombre dérivé. $$f'(a) = \lim\limits_{h\to0} ~~\dfrac{f(a+h) - f(a)}{h}$$}
+
+\exemples{1) La fonction $f:x\to x^2$ est-elle dérivable en $a$ ? (pour tout $a\in\R$)\\2) La fonction inverse est-elle dérivable en 1 ? \\ 3) La fonction $f:x\to x^2-2x-1$ est dérivable en 3 ?\\ 4) La fonction racine carrée est-elle dérivable en 0 (démonstration) ? }
+
+\partie{Tangente en un point $A$}
+
+Soit $f$ une fonction dérivable en $a$ et $C_f$ sa courbe représentative, $A$ est le point d'abscisse $a$ de la courbe et $M$ le point d'abscisse $a+h$ avec $h$ très proche de 0. (donc $M$ très proche de $A$ sur la courbe), le coefficient directeur de la droite $(AM)$ est $$\dfrac{\Delta y}{\Delta x} = \dfrac{y_M - y_A}{x_M - x_M} = \dfrac{f(a+h) - f(a)}{h} = \tau (h)$$
+
+Dire que $f'(a) = \lim\limits_{h\to 0} ~~ \dfrac{f(a+h) - f(a)}{h}$ c'est dire que le coefficient directeur de la droite $(AM)$ tend vers $f'(a)$.
+
+Géométriquement, quand $M$ se rapproche de $A$ sur la courbe, la droite $(AM)$ tend vers une position limite, celle de la droite qui passe par $A$ et de coefficient directeur $f'(a)$ c'est ce que l'on appelle la tangente à la courbe $C_f$ au point $A$ d'abscisse $a$.
+
+\definition{La droite passant par le point $A(a;f(a))$ et de coefficient directeur $f'(a)$ est appelée la tangente à la courbe $C_f$ au point $A$ d'abscisse $a$.}
+
+\propriete{L'équation réduite de la tangente à $C_f$ au point $A$ d'abscisse $a$ est $$y = f'(a)(x-a) + f(a)$$}
+
+\demonstration{}
+
+\exemple{Trouver l'équation de la tangente à la courbe représentative de la fonction carrée au point d'abscisse 3.}
+
+\exemples{1) Déterminer graphiquement, une équation de la tangente à la courbe au point d'abscisse 2.\\2) Déterminer graphiquement, une équation de la tangente à la courbe au point d'abscisse 1.}
+
+
+
+\end{document}

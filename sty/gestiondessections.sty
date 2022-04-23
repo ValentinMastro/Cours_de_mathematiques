@@ -58,11 +58,12 @@
     }
 }
 
-
+\definecolor{blanc}{HTML}{ffffff}
 \definecolor{rouge}{HTML}{bb0000}
 \definecolor{vert}{HTML}{008800}
 \definecolor{bleu}{HTML}{0000ff}
 \definecolor{noir}{HTML}{000000}
+\definecolor{jaune}{HTML}{dddd00}
 
 \newcounter{chapitre}
 \newcounter{partie}
@@ -117,7 +118,13 @@
 \newcommand{\theoreme}[2]{\paragraphe{rouge}{Théorème~#1}{#2}}
 \newcommand{\definition}[1]{\paragraphe{vert}{Définition}{#1}}
 \newcommand{\vocabulaire}[1]{\paragraphe{vert}{Vocabulaire}{#1}}
-\newcommand{\remarque}[1]{\paragraphe{black}{Remarque}{#1}}
-\newcommand{\notation}[1]{\paragraphe{black}{Notation}{#1}}
+\newcommand{\remarque}[1]{\paragraphe{noir}{Remarque}{#1}}
+\newcommand{\rappel}[1]{\paragraphe{noir}{Rappel}{#1}}
+\newcommand{\illustration}[1]{\paragraphe{noir}{Illustration}{#1}}
+\newcommand{\notation}[1]{\paragraphe{noir}{Notation}{#1}}
 \newcommand{\exemple}[1]{\paragraphe{bleu}{Exemple}{#1}}
 \newcommand{\exemples}[1]{\paragraphe{bleu}{Exemples}{#1}}
+\newcommand{\demonstration}[1]{\paragraphe{bleu}{Démonstration}{#1}}
+
+% Pour encadrer
+\usepackage{framed}
