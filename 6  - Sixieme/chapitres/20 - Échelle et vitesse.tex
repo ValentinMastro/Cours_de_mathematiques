@@ -1,5 +1,52 @@
 \documentclass[../Cours.tex]{subfiles}
 
 \begin{document}
-\chapitre{Échelle et vitesse}
+\setcounter{chapitre}{12}
+\chapitre{Application de la proportionnalité : échelles}
+
+\definition{L'échelle sur une carte est le coefficient de proportionnalité entre les distances réelles et les distances représentées sur la carte.}
+
+\formule{$$\text{échelle} = \dfrac{\text{distance sur la carte}}{\text{distance réelle}}$$}
+
+\exemple{Si une carte est à l'échelle $\frac{1}{2000}$, cela signifie que \qty{1}{cm} sur la carte représente \qty{2000}{cm} ($=\qty{20}{m}$) en réalité.\\Pour l'illustrer, construisons le tableau suivant :\\
+\begin{center}
+\begin{tabular}{|c|c|c}\hline
+    Distance en réalité (en \unit{cm}) & \num{2000} & \hspace{3cm} \\\hline
+    Distance sur la carte (en \unit{cm}) &  1 &  \\\hline
+\end{tabular}%
+\end{center}%
+Sur cette même carte, si on mesure une distance de \qty{5,2}{cm}, à quelle distance réelle cela correspond-il ? (arrondir au \unit{\meter} si nécessaire). 
+}
+
+\remarque{Le numérateur et le dénominateur de l'échelle doivent être exprimés dans la même unité.}
+
+\clearpage
+
+\begin{questions}
+
+\exercice\\ Sur un plan, un appartement est représenté par un rectangle de dimensions \qty{18}{cm} sur \qty{16,2}{cm}. La longueur réelle de l'appartement est de \qty{9}{m}.
+
+\question Recopier et compléter le tableau suivant 
+\begin{center}
+\begin{tabular}{|c|c|c|c|}\hline
+    Distance sur le plan (en \unit{cm}) & 18 & 1 & 16,2 \\\hline
+    Distance dans la réalité (en \unit{cm}) & .... & .... & ....\\\hline
+\end{tabular}
+\end{center}
+
+\question Écrire l'échelle de ce plan sous la forme $\dfrac{1}{....}$
+
+
+\exercice\\ Sur un plan, un couloir de \qty{10}{m} de long est représenté par une longueur de \qty{20}{cm}.
+\question Exprimer ces deux dimensions en \unit{cm}.
+\question Déterminer l'échelle de ce plan
+
+\exercice\\ Sur une carte au $\dfrac{1}{100000}$ la distance entre deux villes mesure \qty{9}{cm}.
+\question Quelle est (en \unit{km}) la distance réelle entre ces deux villes ?
+
+\exercice\\ On dispose d'une carte routière au $\dfrac{1}{1000000}$. \\Sachant que la distance entre Bourg-en-Bresse et Lyon est de \qty{62}{km}, quelle sera la distance \emph{sur la carte} entre ces deux villes ?
+
+\end{questions}
+
+
 \end{document}

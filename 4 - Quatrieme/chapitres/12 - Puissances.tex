@@ -1,0 +1,128 @@
+\documentclass[../Cours.tex]{subfiles}
+\usepackage{multicol}
+
+\begin{document}
+\setcounter{chapitre}{11}
+\chapitre{Puissances}
+
+\partie{Les puissances de 10}
+
+\definition{$n$ désigne un nombre entier positif no nul. $10^n$ désigne le produit de $n$ facteurs égaux à 10. $1O^n$ est une puissance de $10$, et se lit << 10 exposant $n$ >>.}
+
+\exemple{%
+\begin{itemize}
+    \item $10^4 = $
+    \item $10^5 = $
+    \item $10^2 = $
+\end{itemize}%
+}
+
+\remarque{$a$ est un nombre entier non nul
+\begin{itemize}
+    \item Par convention, $a^0=1$
+    \item $a^2$ se lit << $a$ au carré >>
+    \item $a^3$ se lit << $a$ au cube >>
+\end{itemize}}
+
+\formule{$$10^{-n} = \dfrac{1}{10^n} ~~~~~~ 10^n \times 10^p = 10^{n+p} ~~~~~~ \dfrac{10^n}{10^p} = 10^{n-p} ~~~~~~ \left(10^n\right)^p = 10^{n\times p} $$}
+
+\exemple{\begin{itemize}
+    \item $10^3\times 10^2 = $
+    \item $10^2 \times 10^4 = $
+    \item $\dfrac{10^4}{10^1} = $
+    \item $10^3 \times 10^{-2} = $
+    \item $\left(10^2\right)^3 = $
+    \item $\left(10^4\right)$
+\end{itemize}}
+
+\partie{Écriture scientifique d'un nombre décimal}
+
+\propriete{$n$ est un nombre entier positif.\\
+Quand on multiplie un nombre par $10^n$ , on déplace la virgule de n rangs vers la droite.\\
+Quand on multiplie un nombre par $10^{-n}$ , on déplace la virgule de n rangs vers la gauche.}
+
+\remarque{Un nombre décimal peut s'écrire de plusieurs façons à l'aide de puissances 
+de 10.}
+
+\exemple{\begin{itemize}
+    \item $\num{1234} = $
+    \item $\num{98.76} = $
+\end{itemize}}
+
+\definition{L'écriture scientifique d'un nombre décimal, différent de 0, est l'unique 
+écriture de la forme $a x 10^n$  où :
+\begin{itemize}
+    \item a est un nombre décimal avec un seul chiffre autre que 0 avant la virgule.
+    \item n est un nombre entier relatif.
+\end{itemize}}
+
+\exemple{Donner l'écriture scientifique des nombres suivants
+\begin{itemize}
+    \item \num{120 546} = 
+    \item \num{0,436} = 
+    \item \num{540 000} = 
+\end{itemize}}
+
+\partie{Préfixes multiplicatifs du SI}
+
+Afin de faciliter la lecture de nombres sans forcément avoir recours à l'écriture scientifique, un système de notation avec des préfixes a été mis en place selon le tableau suivant, utilisé avec l'ensemble des unités du système international :
+
+{
+\small
+\newcommand*\rot{\rotatebox{90}}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}\hline
+    \multicolumn{3}{|c}{Milliards} & \multicolumn{3}{|c}{Million} & \multicolumn{3}{|c}{Milliers} & \multicolumn{3}{|c}{Unité} & \multicolumn{3}{|c}{Millièmes} & \multicolumn{3}{|c}{Millionièmes} & \multicolumn{3}{|c|}{Milliardièmes}  \\\hline
+    & & giga & & & méga & & & kilo & hecto & déca & & déci & centi & milli & & & micro & & & nano \\\hline
+    & & $G$ & & & $M$ & & & $k$ & $h$ & $da$ & & $d$ & $c$ & $m$ & & & $\mu$ & & & $n$\\\hline
+    & & $10^9$ & \hspace{-3em}\phantom{$10^{1^2}$}& & $10^6$ & & & $10^3$ & $10^2$ & $10^1$ & $10^0$ & $10^{-1}$ & $10^{-2}$ & $10^{-3}$ & & & $10^{-6}$ & & & $10^{-9}$ \\\hline
+    \rot{centaine de milliards} & \rot{dizaine de milliards} & \rot{milliards} & \rot{centaine de millions} & \rot{dizaine de millions} & \rot{millions} & \rot{centaine de milliers} & \rot{dizaine de milliers} & \rot{milliers} & \rot{centaines} & \rot{dizaines} & \rot{unités} & \rot{dixièmes} & \rot{centièmes} & \rot{millièmes} & \rot{dix-millièmes} & \rot{cent-millièmes} & \rot{millionièmes} & \rot{dix-millionièmes} & \rot{cent-millionièmes} & \rot{milliardièmes} \\\hline
+\end{tabular}
+\end{center}
+}
+\DeclareSIUnit\octet{o}
+\begin{listedexemples}
+    \item \qty{1}{\giga\octet} = \qty{}{\octet}
+    \item \qty{30}{\kilo\metre} = \qty{}{\metre}
+\end{listedexemples}
+
+\clearpage
+
+\begin{questions}
+    \exercice ~~Écrire les nombres suivants avec la notation scientifique\vspace{1ex}
+    \subpart \num{34,5} = \vspace{1ex}
+    \subpart \num{17,897654} = \vspace{1ex}
+    \subpart \num{0,0000123} = \vspace{1ex}
+    \subpart \num{9823,12} = \vspace{1ex}
+    \subpart \num{0,100234010} = \vspace{1ex}
+    
+    \exercice ~~Écrire les nombres suivants avec l'écriture décimale\vspace{1ex}
+    \subpart $4,2 \times 10^3$ = \vspace{1ex}
+    \subpart $6,07 \times 10^{-2}$ = \vspace{1ex}
+    \subpart $4,23 \times 10^2$ = \vspace{1ex}
+    \subpart $8,923 \times 10^{-6}$ = \vspace{1ex}
+    \subpart $9,98 \times 10^{2}$ = \vspace{1ex}
+    
+    \exercice ~~Convertir les quantités suivantes en mètres\vspace{1ex}
+    \subpart \qty{4,2}{\kilo\metre} = \vspace{1ex}
+    \subpart \qty{2,5}{\giga\metre} = \vspace{1ex}
+    \subpart \qty{9,8}{\milli\metre} = \vspace{1ex}
+    \subpart \qty{8,1}{\nano\metre} = \vspace{1ex}
+    
+    \exercice ~~Convertir les quantités suivantes selon l'unité demandée\vspace{1ex}
+    \subpart \qty{2,3}{\metre} = \hspace{3cm} \unit{\centi\metre}\vspace{1ex}
+    \subpart \qty{0,02}{\metre} = \hspace{3cm} \unit{\kilo\metre}\vspace{1ex}
+    \subpart \qty{0,002}{\metre} = \hspace{3cm} \unit{\nano\metre}\vspace{1ex}
+    \subpart \qty{0,035}{\metre} = \hspace{3cm} \unit{\deca\metre}\vspace{1ex}
+    
+    \exercice ~~Convertir\vspace{1ex}
+    \subpart \qty{2,5}{\kilo\metre} = \hspace{8cm}\unit{\centi\metre}\vspace{1ex}
+    \subpart \qty{0,1}{\nano\metre} = \hspace{8cm}\unit{\micro\metre}\vspace{1ex}
+    \subpart \qty{9}{\giga\metre} = \hspace{8cm}\unit{\deci\metre}\vspace{1ex}
+    \subpart \qty{7,8}{\mega\metre} = \hspace{8cm}\unit{\milli\metre}\vspace{1ex}
+    
+
+\end{questions}
+
+
+\end{document}

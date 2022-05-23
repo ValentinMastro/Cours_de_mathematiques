@@ -116,15 +116,29 @@
 \newcommand{\propriete}[1]{\paragraphe{rouge}{Propriété}{#1}}
 \newcommand{\corollaire}[1]{\paragraphe{rouge}{Corollaire}{#1}}
 \newcommand{\theoreme}[2]{\paragraphe{rouge}{Théorème~#1}{#2}}
+\newcommand{\formule}[1]{\paragraphe{rouge}{Formule}{#1}}
 \newcommand{\definition}[1]{\paragraphe{vert}{Définition}{#1}}
 \newcommand{\vocabulaire}[1]{\paragraphe{vert}{Vocabulaire}{#1}}
 \newcommand{\remarque}[1]{\paragraphe{noir}{Remarque}{#1}}
 \newcommand{\rappel}[1]{\paragraphe{noir}{Rappel}{#1}}
 \newcommand{\illustration}[1]{\paragraphe{noir}{Illustration}{#1}}
 \newcommand{\notation}[1]{\paragraphe{noir}{Notation}{#1}}
+\newcommand{\methode}[1]{\paragraphe{noir}{Méthode}{#1}}
 \newcommand{\exemple}[1]{\paragraphe{bleu}{Exemple}{#1}}
 \newcommand{\exemples}[1]{\paragraphe{bleu}{Exemples}{#1}}
 \newcommand{\demonstration}[1]{\paragraphe{bleu}{Démonstration}{#1}}
+
+\newenvironment{listedexemples}
+{
+    \medskip
+    \par
+    \color{bleu}
+    \begin{itemize}
+}
+{
+    \end{itemize}
+    \color{noir}
+}
 
 % Pour encadrer
 \usepackage{framed}
