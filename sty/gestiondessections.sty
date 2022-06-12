@@ -117,6 +117,7 @@
 \newcommand{\corollaire}[1]{\paragraphe{rouge}{Corollaire}{#1}}
 \newcommand{\theoreme}[2]{\paragraphe{rouge}{Théorème~#1}{#2}}
 \newcommand{\formule}[1]{\paragraphe{rouge}{Formule}{#1}}
+\newcommand{\convention}[1]{\paragraphe{rouge}{Convention}{#1}}
 \newcommand{\definition}[1]{\paragraphe{vert}{Définition}{#1}}
 \newcommand{\vocabulaire}[1]{\paragraphe{vert}{Vocabulaire}{#1}}
 \newcommand{\remarque}[1]{\paragraphe{noir}{Remarque}{#1}}
@@ -131,8 +132,8 @@
 \newenvironment{listedexemples}
 {
     \medskip
-    \par
     \color{bleu}
+    \par \underline{Exemples :~}
     \begin{itemize}
 }
 {
@@ -141,4 +142,6 @@
 }
 
 % Pour encadrer
-\usepackage{framed}
+\RequirePackage{framed}
+
+\RequirePackage{makecell}

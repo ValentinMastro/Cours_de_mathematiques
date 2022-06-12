@@ -1,0 +1,103 @@
+\documentclass[10pt,addpoints]{exam}
+
+\usepackage[margin=1cm]{geometry}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{siunitx}
+\usepackage{soul}
+\usepackage{fancybox}
+
+\begin{document}
+
+\begin{center}
+    \Huge{Contrôle sur les puissances}
+\end{center}
+
+\newcommand{\sol}[1]
+{%
+\ifprintanswers \textbf{#1} \fi%
+}
+
+\unframedsolutions
+
+\begin{questions}
+\qformat{\textbf{Exercice~\thequestion)}\hfill(\thepoints)}
+
+\question[2] Compléter le tableau ci-dessous.
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|}\hline
+    Préfixe & giga & méga & kilo & hecto & déca & déci & centi & milli & \sol{micro} & nano  \\\hline
+    Symbole & G & \sol{M} & k & h & \sol{da} & d & c & m & $\mu$ & n \\\hline
+    Puissance de 10\phantom{$1^{2^3}$} & $10^9$ & $10^6$ & $10^3$ & $10^2$ & $10^1$ & $10^{-1}$ & \sol{$10^{-2}$} & $10^{-3}$ & $10^{-6}$ & $10^{-9}$ \\\hline
+    \end{tabular}
+\end{table}
+
+\question[4] \textsc{Calculs avec des puissances}
+\begin{parts}
+    \part Donner chaque résultat sous la forme d'une puissance de 10
+    \begin{subparts}
+        \subpart $10^2 \times 10^3 = $ \fillin[$10^5$]
+        \subpart $10^6 \times 10^9 \times 10^{11} = $ \fillin[$10^{26}$]
+        \subpart $\left(10^4\right)^9 = $ \fillin[$10^{36}$]
+        \subpart $\dfrac{10^4}{10^2} = $  \fillin[$10^2$]
+    \end{subparts}
+    \part Donner chaque résultat sous la forme d'une puissance de 2
+    \begin{subparts}
+        \subpart $2^3 \times 2^4 = $ \fillin[$2^7$]
+        \subpart $\left(2^5\right)^8 = $ \fillin[$2^{40}$]
+        \subpart $\left(2^3\right)^4 \times 2^6 = $ \fillin[$2^{18}$]
+        \subpart $\dfrac{2^2 \times 2^4}{2^7} = $ \fillin[$2^{-1}$]
+    \end{subparts}
+\end{parts}
+
+\newcommand{\vrai}[1]{\ifprintanswers \ovalbox{#1} \else #1 \fi}
+\newcommand{\faux}[1]{\ifprintanswers \st{#1} \else #1 \fi}
+
+\question[9] \textsc{Écriture scientifique}
+\begin{parts}
+    \part Compléter la phrase suivante : << L'écriture scientifique d'un nombre se compose d'un nombre décimal compris entre \fillin[1] et \fillin[10] multiplié par une puissance de \fillin[10]. >>
+    \part Parmi les nombres suivants, entourer ceux qui sont en notation scientifique, et barrer les autres.
+    \begin{multicols}{4}
+    \begin{subparts}
+        \subpart \faux{$12,5 \times 10^4$} 
+        \subpart \faux{$0,1 \times 10^{-1}$}
+        \subpart \vrai{$1,7 \times 10^2$}
+        \subpart \vrai{$9,9 \times 10^0$}
+        \subpart \faux{$10 \times 10^1$}
+        \subpart \faux{$5,834 \times 8^2$}
+        \subpart \faux{$3$}
+        \subpart \vrai{$7,1 \times 10^{189}$}
+    \end{subparts}
+    \end{multicols}
+    \part Écrire les nombres suivants sous forme d'écriture scientifique
+    \begin{subparts}
+        \subpart $123,4 = $ \fillin[$1,234 \times 10^2$]
+        \subpart $0,000~045 = $ \fillin[$4,5 \times 10^{-5}$]
+        \subpart $17 \times 10^2 = $ \fillin[$1,7 \times 10^3$]
+        \subpart $0,8 \times 10^{-2} = $ \fillin[$8 \times 10^{-3}$]
+    \end{subparts}
+\end{parts}
+
+\question[3] \textsc{Conversion d'unités} (Donner les résultats en écriture scientifique)
+
+\begin{parts}
+    \part \qty{32}{km} = \fillin[$3,2 \times 10^{10}$] \unit{\micro\metre}
+    \part \qty{3,8}{mm} = \fillin[$3,8  \times 10^{6}$] \unit{\nano\metre}
+    \part \qty{4,5}{dam} = \fillin[$4,5 \times 10^{-8}$] \unit{\giga\metre}
+\end{parts}
+
+
+\question[2] \textsc{Utiliser la proportionnalité}
+\begin{parts}
+    \part Sachant que la vitesse de la lumière est de \qty{300000}{\kilo\metre/s}, quelle est la distance parcourue par la lumière sur une période de 1 semaine. Donner le résultat sous forme d'écriture scientifique. \fillin[$1,8144 \times 10^{11}$~km]
+    \part Sachant que 1 mole correspond à $6,02 \times 10^{23}$ atomes, à combien d'atomes correspond $1,5 \times 10^{-2}$ mole ? Donner le résultat sous forme d'écriture scientifique. \fillin[]
+\end{parts}
+
+\begin{center}
+    \gradetable[h][questions]
+\end{center}
+
+\end{questions}
+\end{document}
