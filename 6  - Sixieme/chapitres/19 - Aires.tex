@@ -19,7 +19,7 @@
     \end{center}%
 }
 
-\partie{Formules de mesures d'aires}
+\partie{Formules de mesures d'aires} 
 
 \begin{tabular}{|c|c|c|c|}\hline
     Forme géométrique & Formule & Formule abrégée & Schéma  \\\hline
@@ -99,9 +99,9 @@
 \end{center}
 
 \begin{listedexemples}
-    \item \qty{13}{hm\squared} = .......... \unit{m\squared}
-    \item \qty{2,5}{km\squared} = .......... \unit{dm\squared}
-    \item \qty{0,02}{dm\squared} = .......... \unit{dam\squared}
+    \item \qty{13}{hm\squared} = \qty{130000}{m\squared}
+    \item \qty{2,5}{km\squared} = \qty{250000000}{dm\squared}
+    \item \qty{0,02}{dm\squared} = \qty{0,000002}{dam\squared}
 \end{listedexemples}
 
 \remarque{Un hectare (noté \unit{ha}) est égal à \qty{1}{hm\squared}.\\ Un are (noté \unit{a}) est égal à \qty{1}{dam\squared}.}
@@ -122,16 +122,53 @@
         \question \qty{5,2764}{dam\squared} en \unit{mm\squared}
         \question \qty{7,2846}{m\squared} en \unit {cm\squared}
         \question \qty{1,0023}{km\squared} en \unit{m\squared}
-    \exercice\\ Calculer l'aire des figures suivantes
+        
+    \exercice\\ Ranger ces départements d'outre-mer dans l'ordre croissant de leur superficie
+        \question La Martinique : \qty{1128000000}{m\squared}
+        \question La Guyane : \qty{83846}{km\squared}
+        \question La Guadeloupe : \qty{16280000}{dam\squared}
+        \question La Réunion : \qty{251200}{hm\squared}
+        
+    \exercice\\
+        Le rectangle ci-dessous a pour dimension \qty{17}{dm} par \qty{24}{dm}.
+        \question Compléter les dimensions manquantes sur le schéma ci-dessous
+        \question Calculer l'aire de la surface grisée
+        
         \begin{center}
-            \begin{tabular}{p{7cm}|p{7cm}}
-                \geocell{
-                    \rectangleCODAGE{0,0}{3}{1}{||}{|}
-                    \node[below] at (0,1.5) {}
-                } &  \\\hline
-                \geocell{}
-            \end{tabular}
+        \begin{tikzpicture}[scale=0.2]
+            \draw (0,0) rectangle (24,17);
+            \coordinate (A) at (0,7);
+            \coordinate (B) at (9,17);
+            \coordinate (C) at (24,11.5);
+            \coordinate (D) at (12.5,0);
+            \draw[fill=lightgray] (A) -- (B) -- (C) -- (D) -- cycle;
+            \node[below] at (5,-0.8) {............};
+            \node[below] at (19,-0.8) {\qty{11.5}{dm}};
+            \node[above] at (4.5,17.8) {\qty{9}{dm}};
+            \node[above] at (16,17.8) {.......};
+            \node[left] at (-1,3) {\qty{7}{dm}};
+            \node[left] at (-1,13) {........};
+            \node[right] at (24.5,5) {........};
+            \node[right] at (24.5,13) {\qty{5.5}{cm}};
+            
+            \draw[latex-latex] (-0.8,0) -- (-0.8,6.5);
+            \draw[latex-latex] (-0.8,7.5) -- (-0.8,17);
+            \draw[latex-latex] (0.5,17.5) -- (8.5,17.5);
+            \draw[latex-latex] (9.5,17.5) -- (24,17.5);
+            \draw[latex-latex] (24.8,0) -- (24.8,10.5);
+            \draw[latex-latex] (24.8,11.5) -- (24.8,17);
+            \draw[latex-latex] (0.5,-0.5) -- (11.5,-0.5);
+            \draw[latex-latex] (13.5,-0.5) -- (24,-0.5);
+        \end{tikzpicture}
         \end{center}
+        
+    \question 
+        \subpart \qty{54}{dm\squared} = 
+        \subpart \qty{75}{cm\squared} = 
+        \subpart \qty{250}{dam\squared} = 
+        \subpart \qty{0,25}{km\squared} = 
+        \subpart \qty{7}{hm\squared} = 
+        \subpart \qty{2750}{mm\squared} = 
 \end{questions}
 
 \end{document}

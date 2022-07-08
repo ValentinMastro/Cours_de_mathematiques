@@ -8,12 +8,15 @@
 \RequirePackage{fancyhdr}
 \RequirePackage{lastpage}
 \RequirePackage[vmargin=2cm, hmargin=1.5cm]{geometry}
-\RequirePackage[french]{babel}
+
+\makeatletter
+\newcommand{\HUGEE}{\@setfontsize\Huge{60}{60}}
+\makeatother
 
 \newcommand{\titre}[2]{
 \begin{vplace}[0.5]
-    \centerline{\Huge \textbf{Cours de #1}}
-    \vspace{2ex}
+    \centerline{\HUGEE{Cours de #1}}
+    \vspace{7ex}
     \centerline{\normalsize\textit{À jour avec le programme officiel}}
     \centerline{\normalsize\textit{Compilé le \today}}
     \end{vplace}
@@ -118,13 +121,13 @@
 \newcommand{\theoreme}[2]{\paragraphe{rouge}{Théorème~#1}{#2}}
 \newcommand{\formule}[1]{\paragraphe{rouge}{Formule}{#1}}
 \newcommand{\convention}[1]{\paragraphe{rouge}{Convention}{#1}}
+\newcommand{\methode}[1]{\paragraphe{rouge}{Méthode}{#1}}
 \newcommand{\definition}[1]{\paragraphe{vert}{Définition}{#1}}
 \newcommand{\vocabulaire}[1]{\paragraphe{vert}{Vocabulaire}{#1}}
 \newcommand{\remarque}[1]{\paragraphe{noir}{Remarque}{#1}}
 \newcommand{\rappel}[1]{\paragraphe{noir}{Rappel}{#1}}
 \newcommand{\illustration}[1]{\paragraphe{noir}{Illustration}{#1}}
 \newcommand{\notation}[1]{\paragraphe{noir}{Notation}{#1}}
-\newcommand{\methode}[1]{\paragraphe{noir}{Méthode}{#1}}
 \newcommand{\exemple}[1]{\paragraphe{bleu}{Exemple}{#1}}
 \newcommand{\exemples}[1]{\paragraphe{bleu}{Exemples}{#1}}
 \newcommand{\demonstration}[1]{\paragraphe{bleu}{Démonstration}{#1}}

@@ -1,48 +1,128 @@
 \documentclass[../Cours.tex]{subfiles}
 
 \begin{document}
-\chapitre{Gestion de données\\ Lire et représenter des données}
+\chapitre{Diagrammes}
 
-\partie{Avec un tableau}
+\partie{Diagrammes en bâtons}
 
-Pour représenter des données, on peut utiliser un tableau.\\
-Un tableau comporte des \emph{lignes} (horizontales) et des \emph{colonnes} (verticales).\\
+\definition{Un diagramme en bâtons ou en barres permet de représenter les données d'un tableau par des barres proportionnelles aux données.}
 
-\exemple{Le tableau ci-dessous représente le développement d'un oeuf d'autruche en fonction de la température.
+\exemple{}
+\begin{center}%
+Nombre d'habitants dans 3 pays en 2020\\
+\begin{tabular}{|c|c|}\hline
+    \textsc{Pays} & \textsc{Nombre d'habitants} (en millions) \\\hline
+    France & 67 \\\hline
+    Pologne & 38 \\\hline
+    Corée du sud & 51 \\\hline
+\end{tabular}%
+\end{center}%
+
+\begin{flushright}
+    \tiny{Sources : Instituts nationaux officiels de statistiques}
+\end{flushright}
+
+
 \begin{center}
-    \begin{tabular}{|c|c|c|c|c|}\hline
-    Température (en degrés Celcius) & \num{36.5} & \num{36} & \num{35.5} & \num{35} \\\hline   
-    Durée de développement (en jours) & 40 & 42 & 44 & 47 \\\hline
+    \begin{tikzpicture}
+        \draw[->] (-1,0) -- (11,0);
+        \draw[->] (0,-1) -- (0,8);
+        \foreach \y in {10,20,...,70} {
+            \draw (-0.2,{0.1*\y}) -- (0.2,{0.1*\y});
+            \node[left] at (-0.2,{0.1*\y}) {\y};
+        }
+        \node[below] at (2,0) {France};
+        \node[below] at (5,0) {Pologne};
+        \node[below] at (8,0) {Corée du Sud};
+        \draw[fill=noir] (1.8,0) rectangle (2.2,6.7);
+        \draw[fill=noir] (4.8,0) rectangle (5.2,3.8);
+        \draw[fill=noir] (7.8,0) rectangle (8.2,5.1);
+        \draw[dashed] (0,6.7) -- (1.8,6.7);
+        \draw[dashed] (0,3.8) -- (4.8,3.8);
+        \draw[dashed] (0,5.1) -- (7.8,5.1);
+        \node[thin, above left] at (0,5.1) {\small{51}};
+        \node[thin, left] at (0,6.7) {\small{67}};
+        \node[thin, below left] at (0,3.8) {\small{38}};
+    \end{tikzpicture}
+\end{center}
+
+\clearpage
+\partie{Diagrammes circulaires}
+
+\definition{Un diagramme circulaire permet de représenter les données d'un tableau par des secteurs de disque d'angles proportionnels aux données du tableau.}
+
+\exemple{}
+
+\begin{center}
+    Estimation du nombre d'habitants par continent en 2021\\
+    \begin{tabular}{|c|c||c|}\hline
+        \textsc{Continent} & \makecell{\textsc{Nombre d'habitants}\\ (en millions)} & \textsc{Angle} (en °) \\\hline
+        Asie & 4 679 & 213 \\\hline
+        Afrique & 1 373 & 62 \\\hline
+        Europe & 747 & 34 \\\hline
+        Amérique latine et Caraïbes & 659 & 30 \\\hline
+        États-Unis et Canada & 371 & 16 \\\hline
+        Océanie & 43 & 1 \\\hline 
+        Antartique & 0 & 0 \\\hline
+        \textsc{TOTAL} & 7872 & 360 \\\hline 
     \end{tabular}
 \end{center}
-\begin{enumerate}
-    \item Combien de lignes et de colonnes contient ce tableau ?
-    \item Qu'indique la première ligne ?
-    \item Qu'indique la deuxième ligne ?
-    \item S'il fait 36°C, combien de temps l’œuf mettra-t-il à se développer ?
-    \item Si l'œuf a mis 44 jours à se développer, à quelle température était-il placé ?
-\end{enumerate}
-\begin{enumerate}
-    \item Ce tableau contient deux lignes et cinq colonnes.
-    \item La première ligne indique la température de développement.
-    \item La deuxième ligne indique la durée de développement de l’œuf.
-    \item S’il fait 36°C, l’œuf mettra 42 jours à se développer.
-    \item Si l’œuf a mis 44 jours à se développer, il était placé à 35,5°C.
-\end{enumerate}
+
+\begin{flushright}
+    \tiny{Source : https://www.un.org/development/desa/publications/world-population-prospects-the-2017-revision.html}
+\end{flushright}
+
+\vspace{1cm}
+
+\newcommand{\macroLegende}[3]{ % position, nom, couleur
+    \draw[fill=#3] (4,#1) rectangle (4,{#1+0.3});
+    \node[above right] (4,#1) {#2};
 }
 
-\partie{Avec un graphique ou un diagramme}
+\begin{center}
+    \begin{tikzpicture}
+        \draw (0,0) circle (3);
+        \foreach \y in {-1.5,-1,...,1.5} {
+            \draw (4.5,\y) -- (8,\y);
+        }
+        
+        \macroLegende{-1.5}{}{}
+        
+        \draw (4,-1) rectangle (4.3,-0.7);
+        \draw (4,-0.5) rectangle (4.3,-0.2);
+        \draw (4,0) rectangle (4.3,0.3);
+        \draw (4,0.5) rectangle (4.3,0.8);
+        \draw (4,1) rectangle (4.3,1.3);
+        \draw (4,1.5) rectangle (4.3,1.8);
+        
+        \draw[fill=noir] (0,0) circle (0.03);
+        \draw[very thin] (0,0) -- (3,0);
+    \end{tikzpicture}
+\end{center}
 
-Pour représenter l'évolution d'une grandeur par rapport à une autre, on utilise un graphique cartésien.
+\clearpage
+\begin{questions}
+    \exercice\\ Ces graphiques indiquent l'ensoleillement par moi à Lille au cours des années 2016 et 2017.
+    
+    \begin{tikzpicture}
+        % Axe des abscisses
+        \coordinate (A) at (-0.75,0);
+        \coordinate (decal) at (1.5,0);
+        \draw (0,0) -- (18,0);
+        
+        \newcommand{\dataA}[1]{\ifcase#1\or62,1\or80,2\or121,5\or163,6\or197,8\or124,9\or211,4\or243,2\or179,8\or115\or74,5\or80,9\fi}
+        \newcommand{\dataB}[1]{\ifcase#1\or81,5\or50,1\or153,9\or201,2\or216,6\or254,7\or197,2\or183,5\or137,5\or101,7\or89,5\or26,3\fi}
 
-\exemple{Le graphique ci-dessous représente l'évolution de la 
-hauteur d'une tige de blé en fonction de son âge.
-\begin{enumerate}
-    \item Que lit-on sur l'axe vertical ?
-    \item Que lit-on sur l'axe horizontal ?
-    \item Au bout de 6 jours, combien mesure la tige ?
-    \item Si la tige mesure 10 mm, quel âge a le blé ?
-\end{enumerate}}
+        \foreach \x in {1,2,...,12} {
+            \node[below] at ($(A)+\x*(decal)$) {\tiny{\DTMfrenchmonthname{\x}}};
+            \draw[fill=rouge] ($(A)-(0.3,0)+\x*(decal)$) rectangle ($(A)+(0.3,0)+\x*(decal)+(0,{\dataA{\x}/10})$);
+        }
+    \end{tikzpicture}
+    
+    \clearpage
+    \exercice 
+\end{questions}
+
 
 
 
