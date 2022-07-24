@@ -1,0 +1,738 @@
+\documentclass[10pt]{article}
+\usepackage{iftex}
+\RequireLuaTeX
+
+\usepackage[hmargin=2.2cm, vmargin=2cm]{geometry}
+\usepackage{frenchmath}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{colortbl}
+\usepackage{fontspec}
+\usepackage{tabularx}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usetikzlibrary{calc}
+\usetikzlibrary{math}
+\usepackage{amsmath}
+\usepackage{scratch3}
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\usepackage{luacode}
+
+\usepackage[locale=FR, group-digits=all, group-separator=\ , group-minimum-digits=4]{siunitx}
+\DeclareSIUnit{\cube}{\cubed}
+\DeclareSIUnit{\carre}{\squared}
+\DeclareSIUnit{\litre}{\ell}
+\usepackage{eurosym}
+\DeclareSIUnit{\EURO}{\text{\footnotesize{\euro}}}
+
+\definecolor{BleuRoi}{HTML}{005DA1}
+\setlength{\parindent}{0pt}
+
+\setsansfont{Archive}[
+    Path=../../Polices/Archive/,
+    Extension = .otf,
+    UprightFont=*
+    ]
+    
+\setromanfont{Marianne}[
+    Path=../../Polices/Marianne/,
+    Scale=0.8,
+    Extension = .otf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-RegularItalic,
+    BoldItalicFont=*-BoldItalic
+    ]
+    
+\DeclareMathSizes{10}{8}{7}{7} % Pour ajuster la taille des mathématiques et du reste du texte
+
+\pagestyle{empty}
+\rmfamily
+
+% Titre du document
+\newcommand{\titre}{\sffamily{\huge\color{BleuRoi}\centerline{ATTENDUS DE FIN D'ANNÉE DE 4\textsuperscript{E}}}\rmfamily}
+
+
+% Trois symboles
+\newcommand{\RR}{\begin{tikzpicture} \draw[BleuRoi,fill=BleuRoi] (0,0) circle (0.06); \end{tikzpicture}}
+\newcommand{\LR}{\begin{tikzpicture} \draw[BleuRoi,fill=BleuRoi] (0.05,0) -- (0,0.075) -- (-0.05,0) -- (0,-0.075) --cycle; \end{tikzpicture}}
+\newcommand{\CR}{\begin{tikzpicture} \draw[BleuRoi,fill=BleuRoi] (0,0) -- (0,0.1) -- (0.1,0.1) -- (0.1,0) -- cycle; \end{tikzpicture}}
+
+% Thèmes
+\newcommand{\theme}[1]
+{\vspace{4ex}\begin{tabularx}{\textwidth}{|XXXX|}\arrayrulecolor{BleuRoi}
+    \multicolumn{4}{c}{\sffamily\color{white}\cellcolor{BleuRoi}\Large{\phantom{É}#1\phantom{É}}\rmfamily} \\\normalsize
+    \RR{} Ce que sait faire l'élève & \LR{} Type d'exercice & \CR{} Exemple d'énoncé & \textit{Indication générale} \\\hline
+\end{tabularx}\vspace{3ex}}
+
+% Compétences
+\newcommand{\competence}[1]{\par\color{BleuRoi}\makebox[\linewidth]{\rule{\textwidth}{2pt}}\\{\bfseries\Large#1}\color{black}\vspace{1em}}
+\newcommand{\souscompetence}[1]{\par\color{BleuRoi}\textbf{\large{#1}}\color{black}\vspace{1em}}
+
+% Liste "ce que sait faire l'élève"
+\newenvironment{savoireleves}{%
+    \renewcommand{\labelitemi}{\RR}%
+    \color{black}%
+    \par\textbf{Ce que sait faire l'élève}
+    \begin{itemize}
+    \setlength{\itemsep}{-0.2em}%
+}{
+    \end{itemize}
+}
+
+% Liste "exemples de réussite"
+\newenvironment{exemplesreussite}{%
+    \renewcommand{\labelitemi}{\LR}%
+    \renewcommand{\labelitemii}{-}%
+    \color{black}%
+    \par\textbf{Exemples de réussite}
+    \begin{itemize}
+    \setlength{\itemsep}{-0.2em}%
+}{
+    \end{itemize}
+}
+
+\newenvironment{sousitemize}{
+    \color{black}%
+    \vspace{-1em}%
+    \begin{itemize}
+    \setlength{\itemsep}{0em}%
+}{
+    \end{itemize}
+}
+
+\newenvironment{sousenumerate}{
+    \color{black}%
+    \vspace{-1em}%s
+    \begin{enumerate}
+    \setlength{\itemsep}{0em}%
+}{
+    \end{enumerate}
+}
+
+\begin{document}
+
+    \titre
+    \theme{NOMBRES ET CALCULS}
+    \competence{Utiliser les nombres pour comparer, calculer et résoudre des problèmes}
+    \souscompetence{Nombres}
+
+    \begin{savoireleves}
+        \item Il utilise les puissances de $10$ d’exposants positifs ou négatifs.
+        \item Il associe, dans le cas des nombres décimaux, écriture décimale, écriture fractionnaire et notation scientifique.
+        \item Il utilise les préfixes de nano à giga.
+        \item Il utilise les carrés parfaits de $1$ à $144$.
+        \item Il connaît la définition de la racine carrée d’un nombre positif.
+        \item Il utilise les puissances d’exposants strictement positifs d’un nombre pour simplifier l’écriture des produits.
+    \end{savoireleves}
+
+    \begin{exemplesreussite}
+        \item Il établit des correspondances du type : $10^4 = \num{10000}$ et $10^{-3} = \frac{1}{1000} = \num{0.001}$
+        \item Il établit des correspondances du type : $\num{3900000000} = \num{3.9e9}$ et $\frac{783}{1000000} = \num{0.000783} = \num{7.83e-4}$.
+        \item Il établit des correspondances du type : $3$ microlitres = \num{3e-6} litre ou $7$ mégamètres = \num{7e6} mètres.
+        \item Il connaît les égalités du type : $11^2 = 121$ et $\sqrt{81} = 9$.
+        \item Complète l’égalité suivante : $7 \times 7 \times 7 \times 7 \times 7 = 7^{\blacksquare}$.
+    \end{exemplesreussite}
+
+    \souscompetence{Comparaison de nombres}
+    \begin{savoireleves}
+        \item Il utilise des puissances de $10$ pour comparer des nombres.
+        \item Il compare, range et encadre des nombres rationnels (positifs ou négatifs).
+        \item Il encadre la racine carrée d’un nombre positif entre deux entiers.
+        \item Il associe à des objets des ordres de grandeur en lien avec d’autres disciplines.
+    \end{savoireleves}
+    \begin{exemplesreussite}
+        \item Il compare des très grands ou très petits nombres positifs en utilisant l’écriture scientifique.
+        \item[\CR] Complète par $>$, $<$ ou $=$ : ~~~~ $\frac{5}{18} ~\blacksquare~ \frac{7}{12}$ ~~~~ $\frac{5}{12} ~\blacksquare~ \frac{4}{3}$ ~~~~ $-3 ~\blacksquare~ \frac{-22}{7}$.
+        \item Encadre $\sqrt{7}$ entre deux entiers consécutifs sans en chercher une valeur approchée.
+        \item Il résout des problèmes faisant intervenir la taille d’un atome, d’une bactérie, d’une alvéole pulmonaire, la distance Terre-Lune, la longueur d’une piscine olympique...
+    \end{exemplesreussite}
+
+    \clearpage
+    \souscompetence{Pratiquer le calcul exact ou approché, mental, à la main ou instrumenté}
+    \begin{savoireleves}
+        \item Il effectue avec des nombres décimaux relatifs, des produits et des quotients.
+        \item Il calcule avec les nombres rationnels : addition, soustraction, multiplication, division.
+        \item Il utilise l’inverse pour calculer.
+        \item Il résout des problèmes avec des nombres rationnels.
+        \item Il utilise la calculatrice pour déterminer une valeur approchée de la racine carrée d’un nombre positif.
+        \item Il utilise la racine carrée d’un nombre positif en lien avec des situations géométriques (théorème de Pythagore ; agrandissement, réduction et aires).
+        \item Il utilise les ordres de grandeur pour vérifier ses résultats
+    \end{savoireleves}
+
+    \begin{exemplesreussite}
+        \item Il calcule mentalement :
+        \[ -7 \times 3 ~~~~ -2,5 \times (-4) ~~~~ 2,4 \times (-0,5) ~~~~ -12,8 \div 2 ~~~~ -63 \div (-0,7) ~~~~ 7,2 \div (-5) \]
+        \item Il détermine le signe de $(-6,7) × 7 × (-1,24) × (-0,7)$ et $\frac{11.4 \times \left(-3,5\right)}{-\left(5,6 \times 123\right)}$, il vérifie le signe et effectue le calcul en utilisant une calculatrice.
+        \item{\CR} Calcule mentalement :
+        \[ \frac{5}{2} \times \frac{-7}{3} ~~~~~~~~~~ -7 \times \frac{8}{5} ~~~~~~~~~~ -\frac{3}{7} \times \frac{14}{-5} ~~~~~~~~~~ \frac{5}{9} \div \frac{1}{2} \]
+        \item{\CR} Calcule à la main : 
+        \[ \frac{5}{3}-6 \times \frac{1}{5} ~~~~~~~~~~ \frac{7}{6} - \left( \frac{-1}{2} + \frac{1}{3} \right) ~~~~~~~~~~ \frac{-7}{4} + \frac{1}{9} \div 4 \]
+        \item Il vérifie ses résultats à l’aide de la calculatrice.
+        \item À l’aide de sa calculatrice, il détermine que $2,65$ est une valeur approchée au centième près de $7$.
+        \item Il détermine la valeur exacte et une valeur approchée du périmètre d’un carré d’aire \qty{15}{\centi\metre\carre}.
+        \item Il estime mentalement que l’aire d’un disque de rayon \qty{2}{\centi\metre} est proche de \qty{12}{\centi\metre\carre}.
+    \end{exemplesreussite}
+
+    \competence{Comprendre et utiliser les notions de divisibilité et de nombres premiers}
+
+    \begin{savoireleves}
+        \item Il détermine la liste des nombres premiers inférieurs à $100$.
+        \item Il décompose un nombre entier en produit de facteurs premiers.
+        \item Il utilise les nombres premiers inférieurs à $100$ pour :
+        \begin{sousitemize}
+            \item reconnaître et produire des fractions égales
+            \item simplifier des fractions
+        \end{sousitemize}
+        \item Il modélise et résout des problèmes simples mettant en jeu les notions de divisibilité et de nombre premier.
+    \end{savoireleves}
+
+    \begin{exemplesreussite}
+        \item[\CR] Énumère tous les nombres premiers compris entre $50$ et $70$.
+        \item Il décompose $780$ en produit de facteurs premiers.
+        \item Il reconnaît les fractions égales parmi les suivantes sans utiliser de calculatrice :
+        \[ \frac{14}{19} ~~~~ \frac{22}{55} ~~~~ \frac{34}{85} ~~~~ \frac{62}{155} \]
+
+        \clearpage
+        \item Il simplifie $\frac{140}{135}$.
+        \item[\CR] Un fleuriste doit réaliser des bouquets tous identiques. Il dispose pour cela de $434$ roses et $620$ tulipes.\\
+        Quelles sont toutes les compositions de bouquets possibles ?
+    \end{exemplesreussite}
+
+    \competence{Utiliser le calcul littéral}
+    \begin{savoireleves}
+        \item Il identifie la structure d’une expression littérale (somme, produit).
+        \item Il utilise la propriété de distributivité simple pour développer un produit, factoriser une somme ou réduire une expression littérale.
+        \item Il démontre l’équivalence de deux programmes de calcul.
+        \item Il introduit une lettre pour désigner une valeur inconnue et met un problème en équation.
+        \item Il teste si un nombre est solution d’une équation.
+        \item Il résout algébriquement une équation du premier degré.
+    \end{savoireleves}
+
+    \begin{exemplesreussite}
+        \item Il identifie $3x + 12$ comme une somme et $3(x + 4)$ comme un produit.
+        \item Il développe et réduit les expressions suivantes : 
+        \[ 3(4x - 2) ~~~~~~ 3x(4 + 8x) ~~~~~~ 17x + 4x(5 - x) ~~~~~~ 6(3 - 1,5x) – 9x. \]
+        \item Il factorise les expressions suivantes : 
+        \[ 12x - 30 ~~~~~~ 15x^2 + 18x ~~~~~~ 27x^2 +3 \]
+        \item Compare les programmes de calcul suivants :
+        \begin{sousitemize}
+            \item choisir un nombre, le tripler puis ajouter $15$ au résultat ;
+            \item choisir un nombre, lui ajouter $5$ puis multiplier le résultat par $3$.
+        \end{sousitemize}
+        \item Il met en équation le problème suivant : \\
+        On juxtapose un triangle équilatéral et un carré comme schématisé ci-dessous. \\
+        Est-il possible que le triangle et le carré aient le même périmètre ?
+
+        \begin{center}
+        \begin{tikzpicture}[scale=0.25]
+            \draw[latex-latex] (0,-0.3) -- (14,-0.3);
+            \draw (0,0) -- ({cos(60)*8},{sin(60)*8}) -- (8,0) -- (8,6) -- (14,6) -- (14,0) -- cycle;
+            \node at (7,-1) {\qty{14}{\centi\metre}};
+        \end{tikzpicture}
+        \end{center}
+        
+        \item $4$ est-il solution des équations suivantes ?
+        \[ 3x+2=8 ~~~~~~ 5x-6=3x+2 ~~~~~~ x^2-9 = 3x-5 ~~~~~~ \frac{x-1}{12} = \frac{1}{4} \]
+        \item Il résout les équations du type :
+        \[ 4x + 2 = 0 ~~~~~~ 5x – 7 = 3 ~~~~~~ 2x + 5 = -x - 4 \]
+    \end{exemplesreussite}
+
+    \clearpage 
+    \theme{ORGANISATION ET GESTION DE DONNÉES, FONCTIONS}
+    \competence{Interpréter, représenter et traiter des données}
+
+    \begin{savoireleves}
+        \item Il lit, interprète et représente des données sous forme de diagrammes circulaires.
+        \item Il calcule et interprète la médiane d’une série de données de petit effectif total.
+    \end{savoireleves}
+
+    \begin{exemplesreussite}
+        \item Il lit et interprète des données sous la forme :
+
+        \hspace{0.4\textwidth}
+        \begin{tikzpicture}
+            \node at (0,1.4) {\footnotesize{\textbf{Âge des adhérents}}};
+            \node at (0,1.1) {\scriptsize{\textbf{du club d'échecs du collège}}};
+            \draw[gray,fill=gray] (0,0) -- (1,0) arc (0:50:1) -- cycle;
+            \draw[black,fill=black] (0,0) -- ({cos(50)},{sin(50}) arc (50:70:1) -- cycle;
+            \draw[gray!30!white,fill=gray!30!white] (0,0) -- ({cos(70)},{sin(70}) arc (70:160:1) -- cycle;
+            \draw[gray!60!white,fill=gray!60!white] (0,0) -- ({cos(160)},{sin(160}) arc (160:360:1) -- cycle;
+
+            \node[anchor=west] at (1.3,0.3) {\scriptsize{\textcolor{gray!30!white}{\blacksquare{}} 11 ans}};
+            \node[anchor=west] at (1.3,0) {\scriptsize{\textcolor{gray!60!white}{\blacksquare{}} 13 ans}};
+            \node[anchor=west] at (1.3,-0.3) {\scriptsize{\textcolor{gray}{\blacksquare{}} 14 ans}};
+            \node[anchor=west] at (1.3,-0.6) {\scriptsize{\textcolor{black}{\blacksquare{}} 15 ans}};
+        \end{tikzpicture}
+
+        \item Construis un diagramme circulaire à partir du tableau suivant :
+        
+        \begin{table}[h!]
+            \centering
+            \textbf{Âge des adhérents du club d’échecs du collège}\\
+            \begin{tabularx}{0.5\textwidth}{|l|C|C|C|C|}\hline
+                Âges & 11 & 13 & 14 & 15 \\\hline
+                Effectifs & 5 & 20 & 9 & 2 \\\hline
+            \end{tabularx}
+        \end{table}
+        \textit{L’exercice pourra être fait sur papier ou à l’aide d’un tableur-grapheur.}
+        \item Il détermine et interprète la médiane de séries dont l’effectif total (pair ou impair) est inférieur ou égal à $30$, présentées sous forme de données brutes, d’un tableau ou d’un diagramme en bâtons.
+    \end{exemplesreussite}
+
+    \competence{Comprendre et utiliser des notions élémentaires de probabilités}
+    \begin{savoireleves}
+        \item Il utilise le vocabulaire des probabilités : expérience aléatoire, issues, événement, probabilité, événement certain, événement impossible, événement contraire.
+        \item Il reconnaît des événements contraires et s’en sert pour calculer des probabilités.
+        \item Il calcule des probabilités.
+        \item Il sait que la probabilité d’un événement est un nombre compris entre $0$ et $1$.
+        \item Il exprime des probabilités sous diverses formes.
+    \end{savoireleves}
+
+    \begin{exemplesreussite}
+        \item[\CR] On considère une urne contenant des boules blanches ou grises, et numérotées :
+        \begin{itemize}
+            \item Si on s’intéresse à la couleur de la boule, quelles sont les issues possibles ?
+            \item Si on s’intéresse au numéro écrit sur la boule, quelles sont les issues possibles ?
+            \item Donne un événement certain de se réaliser.
+            \item Donne un événement impossible.
+        \end{itemize}
+
+        \begin{center}
+        \begin{tikzpicture}
+            \foreach \n/\p in {1/1,2/1,5/2,6/6,10/4,11/4,12/6} {
+                \tikzmath{
+                \x = Mod(\n-1,4);
+                \y = -int((\n-1)/4);
+                }
+                \draw[very thick,fill=gray!70!white] (\x,\y) circle (0.47);
+                \node[white] at (\x,\y) {$\p$};
+            }
+            \foreach \n/\p in {3/1,4/5,7/6,8/2,9/2} {
+                \tikzmath{
+                \x = Mod(\n-1,4);
+                \y = -int((\n-1)/4);
+                }
+                \draw[very thick] (\x,\y) circle (0.5);
+                \node at (\x,\y) {$\p$};
+            }
+            \draw (-0.6,-2.6) rectangle (3.6,0.6);
+        \end{tikzpicture}
+        \end{center}
+
+        \clearpage
+        \item Sachant que la probabilité de gagner à un jeu est égale $0,4$ calcule la probabilité de perdre.
+        \item Il calcule des probabilités dans des cas d’équiprobabilité comme les osselets (à partir d’informations admises sur les probabilités de chaque face), des cibles (par calcul d’aires)...
+        \item Une urne contient $1$ boule rouge et $4$ boules oranges. Combien y a-t-il de chances de tirer une boule orange ? À quelle probabilité cela correspond-il ?\\
+        \textit{Les $4$ chances sur $5$ de tirer une boule orange correspondent à une probabilité égale à $\frac{4}{5}$ ou $0,8$.}\\
+        \textit{Il peut également verbaliser qu’il y a $80~\%$ de chances de tirer une boule orange.}
+    \end{exemplesreussite}
+
+    \competence{Résoudre des problèmes de proportionnalité}
+
+    \begin{savoireleves}
+        \item Il reconnaît sur un graphique une situation de proportionnalité ou de non proportionnalité.
+        \item Il calcule une quatrième proportionnelle par la procédure de son choix.
+        \item Il utilise une formule liant deux grandeurs dans une situation de proportionnalité.
+        \item Il résout des problèmes en utilisant la proportionnalité dans le cadre de la géométrie.
+    \end{savoireleves}
+
+    \begin{exemplesreussite}
+        \item À partir d’un graphique, il traduit l’alignement des points avec l’origine par une situation de proportionnalité.
+        \item Lors d’activités rituelles tout au long de l’année, il calcule une quatrième proportionnelle par différentes procédures (un pourcentage, une échelle...).
+        \item Sachant que huit briques de masse identique pèsent \qty{13.6}{\kilo\gram}, calcule la masse de six de ces briques.
+        \textit{%
+        Il pourra le faire en utilisant la procédure de son choix :
+        \begin{sousitemize}
+            \item en calculant la masse d’une brique, puis en la multipliant par $6$ ;
+            \item à l’aide d’un tableau en calculant le coefficient de proportionnalité ;
+            \item en calculant la somme de la masse de deux briques et de la masse de quatre briques, ou la différence de la masse de huit briques et de la masse de deux briques ;
+            \item en calculant directement : $6 \times 13,6 \div 8$ ;
+            \item toute autre procédure juste.
+        \end{sousitemize}
+        }
+        \item Il utilise des formules telles que la loi d’Ohm, la longueur d’un cercle en fonction du diamètre, la longueur parcourue à vitesse constante en fonction du temps ou la longueur d’un arc de cercle en fonction de la mesure de l’angle au centre pour calculer des grandeurs.
+        \item Dans le cadre d’un agrandissement-réduction ou dans une configuration de Thalès, il sait calculer une longueur manquante en utilisant la proportionnalité.
+    \end{exemplesreussite}
+
+    \competence{Comprendre et utiliser la notion de fonction}
+    \begin{savoireleves}
+        \item Il produit une formule littérale représentant la dépendance de deux grandeurs.
+        \item Il représente la dépendance de deux grandeurs par un graphique.
+        \item Il utilise un graphique représentant la dépendance de deux grandeurs pour lire et interpréter différentes valeurs sur l’axe des abscisses ou l’axe des ordonnées.
+    \end{savoireleves}
+
+    \begin{exemplesreussite}
+        \item[\CR] On enlève quatre carrés superposables aux quatre coins d'un rectangle de \qty{20}{\centi\metre} de longueur et \qty{13}{\centi\metre} de largeur.\\
+        On s'intéresse à l'aire de la figure restante (en blanc).\\
+        En prenant comme variable le côté d’un carré, exprime l’aire de la figure restante.
+
+        \begin{center}
+        \begin{tikzpicture}
+            \draw (0,0) rectangle (4,2);
+            \draw[fill=gray] (0,0) rectangle (0.5,0.5);
+            \draw[fill=gray] (4,0) rectangle (4-0.5,0.5);
+            \draw[fill=gray] (0,2) rectangle (0.5,2-0.5);
+            \draw[fill=gray] (4,2) rectangle (4-0.5,2-0.5);
+        \end{tikzpicture}
+        \end{center}
+
+        \clearpage
+        \item Il sait construire la représentation graphique de l'aire blanche en fonction de la longueur du côté des carrés.
+        \item[\CR] Le graphique ci-dessous représente la température d’un four en fonction du temps.
+
+        \begin{center}
+        \begin{tikzpicture}[scale=0.5]
+            \draw[black!20!white] (0,0) grid (18,18);
+            \draw[-latex] (0,0) -- (18.5,0);
+            \draw[-latex] (0,0) -- (0,18.5);
+            \foreach \n in {0,2,...,18} {
+                \tikzmath{\nn = int(10*\n);}
+                \draw (\n,0) -- (\n,-0.2);
+                \draw (0,\n) -- (-0.2,\n);
+                \node[below] at (\n,-0.2) {$\n$};
+                \node[left] at (-0.2,\n) {$\nn$};
+            }
+            \node[rotate=90] at (-2,15) {Température (en \unit{\degreeCelsius)}};
+            \node at (16,-1.5) {Temps (en minutes)};
+            \node at (9,18.6) {Évolution de la température en fonction du temps};
+        \end{tikzpicture}
+        \end{center}
+
+        Détermine :
+        \begin{sousitemize}
+            \item la température du four au bout de \qty{7}{min} 
+            \item le temps au bout duquel il atteint \qty{110}{\degreeCelsius}
+        \end{sousitemize}
+    \end{exemplesreussite}
+
+    \clearpage
+    \theme{GRANDEURS ET MESURES}
+    \competence{Calculer avec des grandeurs mesurables ; exprimer les résultats dans les unités adaptées}
+
+    \begin{savoireleves}
+        \item Il calcule le volume d’une pyramide, d’un cône.
+        \item Il effectue des conversions d’unités sur des grandeurs composées.
+    \end{savoireleves}
+
+    \begin{exemplesreussite}
+        \item Il connaît les formules du volume d’une pyramide et d’un cône et sait les utiliser.
+        \item Il sait convertir des \unit{\metre\cube/\second} en \unit{\litre/\minute} et inversement (pour des débits) ;\\
+        il sait convertir des \unit{\kilo\metre/\hour} en \unit{\metre/\second} et inversement (pour des vitesses).
+    \end{exemplesreussite}
+
+    \competence{Comprendre l’effet de quelques transformations sur les figures géométriques}
+    \begin{savoireleves}
+        \item Il utilise un rapport d’agrandissement ou de réduction pour calculer, des longueurs, des aires, des volumes.
+        \item Il construit un agrandissement ou une réduction d’une figure donnée.
+        \item Il comprend l’effet d’une translation : conservation du parallélisme, des longueurs, des aires et des angles.
+    \end{savoireleves}
+
+    \begin{exemplesreussite}
+        \item Il calcule la longueur d’une arête, l’aire d’une face et le volume de l’agrandissement ou de la réduction d’un solide du programme avec une échelle donnée.
+        \item Un pavé droit a les dimensions suivantes : $L = \qty{12}{\centi\metre}$, $l = \qty{6}{\centi\metre}$, $h = \qty{4}{\centi\metre}$.
+        \begin{sousitemize}
+            \item Donne les aires de chacune de ses faces, puis le volume du solide considéré.
+            \item On décide de réduire au tiers toutes les dimensions du pavé droit. Calcule alors les aires de chacun des surfaces, puis le volume du nouveau pavé droit.
+        \end{sousitemize}
+        \item Il détermine des longueurs, des aires et des mesures d’angles en utilisant les propriétés de conservation de la translation.
+        \item Il démontre que deux droites sont parallèles en utilisant la conservation du parallélisme dans une translation.
+    \end{exemplesreussite}
+
+    \clearpage
+    \theme{ESPACE ET GÉOMÉTRIE}
+    \competence{Représenter l'espace}
+
+    \begin{savoireleves}
+        \item Il utilise le vocabulaire du repérage : abscisse, ordonnée, altitude.
+        \item Il se repère dans un pavé droit.
+        \item Il construit et met en relation une représentation en perspective cavalière et un patron d’une pyramide, d’un cône de révolution.
+    \end{savoireleves}
+
+    \begin{exemplesreussite}
+        \item Dans un repère de l’espace, il lit les coordonnées d’un point et place un point de coordonnées données.
+        \item[\CR] Dans la figure ci-dessous, quelles sont les coordonnées des points $A$, $H$ et $L$ ? Place le point de coordonnées $(2;3;4)$.
+
+        \begin{center}
+        \begin{tikzpicture}[scale=0.8]
+            \coordinate (A) at (0,0);
+            \coordinate (D) at (5,0);
+            \coordinate (E) at (0,4);
+            \coordinate (H) at (5,4);
+            \coordinate (v) at (-1,-2);
+            \coordinate (B) at ($(A)+(v)$);
+            \coordinate (C) at ($(D)+(v)$);
+            \coordinate (G) at ($(H)+(v)$);
+            \coordinate (F) at ($(E)+(v)$);
+
+            \draw[gray!20!white,step=0.2] (-3.4,-4.8) grid (6.9,5.4);
+            \draw[gray!50!white] (-3.4,-4.8) grid (6.9,5.4);
+
+            \draw[-latex] (0,0) -- (6,0);
+            \draw[-latex] (0,0) -- (0,5);
+            \draw[-latex] (0,0) -- ($2*(v)$);
+            
+
+            \draw (A) -- (D) -- (H) -- (E) -- cycle;
+            \draw (D) -- (C) -- (B) -- (A);
+            \draw (B) -- (F) -- (E);
+            \draw (C) -- (G) -- (F);
+            \draw (G) -- (H);
+
+            \foreach \p in {A,B,C,D,E,F,G,H} {
+                \tikzmath{\taille = 0.07;}
+                \draw ($(\p)+(\taille,\taille)$) -- ($(\p)+(-\taille,-\taille)$);
+                \draw ($(\p)+(-\taille,\taille)$) -- ($(\p)+(\taille,-\taille)$);
+                \node[below right] at (\p) {$\p$};
+            }
+            \foreach \x in {1,2,3} {
+                \draw (\x,0.1) -- (\x,-0.1);
+            }
+            \node[above right] at (1,0) {$1$};
+            \foreach \y in {1,3} {
+                \draw (-0.1,\y) -- (0.1,\y);
+            }
+            \node[above right] at (0,1) {$1$};
+            \node at ($(A)!0.5!(B)$) {$+$};
+            \node[above left] at ($(A)!0.5!(B)$) {$1$};
+            \node at ($(3,0)+(v)$) {$+$};
+            \node[above right] at ($(3,0)+(v)$) {$L$};
+
+            \node at (-1.5,-3.5) {$x$};
+            \node at (6,0.3) {$y$};
+            \node at (0.4,4.7) {$z$};
+            
+        \end{tikzpicture}  
+        \end{center}
+        
+        \item Il représente un cône en perspective cavalière.
+        \item Il réalise le patron d’une pyramide
+    \end{exemplesreussite}
+
+    \competence{Utiliser les notions de géométrie plane pour démontrer}
+    \begin{savoireleves}
+        \item À partir des connaissances suivantes :
+        \begin{sousitemize}
+            \item les cas d’égalité des triangles ;
+            \item le théorème de Thalès et sa réciproque dans la configuration des triangles emboîtés ;
+            \item le théorème de Pythagore et sa réciproque ;
+            \item le cosinus d’un angle d’un triangle rectangle ;
+            \item effet d’une translation : conservation du parallélisme, des longueurs, des aires et des angles,
+        \end{sousitemize}
+        il met en \oe{}uvre et écrit un protocole de construction de figures.
+        \item Il transforme une figure par translation.
+        \item Il identifie des translations dans des frises et des pavages.
+
+        \clearpage
+        \item Il mobilise les connaissances des figures, des configurations et de la translation pour déterminer des \raggedright{grandeurs géométriques.}
+        \item Il mène des raisonnements en utilisant des propriétés des figures, des configurations et de la translation.
+    \end{savoireleves}
+
+    \begin{exemplesreussite}
+        \item Il construit à l’aide d’un logiciel de géométrie dynamique la figure suivante en utilisant des translations.
+
+        \begin{center}
+        \begin{tikzpicture}[scale=0.8]
+            \draw[gray!20!white,step=0.2] (-2.4,-2.6) grid (8.6,2.4);
+            \draw[gray!50!white] (-2.4,-2.6) grid (8.6,2.4);
+            \coordinate (v) at (1,0);
+            \foreach \n in {0,1,...,7} {
+                \draw[fill=gray] (${\n}*(v)$) -- ++(0,1) -- ++(1,1) -- ++(-2,-1) -- ++(1,-1);
+                \draw[fill=gray] (${\n}*(v)$) -- ++(0,-1) -- ++(1,-1) -- ++(-2,1) --  ++(1,1);
+            }
+        \end{tikzpicture}
+        \end{center}    
+        
+        \item Il identifie des translations dans le pavage suivant :
+
+        \begin{center}
+        \begin{tikzpicture}[scale=0.5]
+            \clip ({-sqrt(3)/2},{-sqrt(3)/2}) rectangle (15.5,{9*sqrt(3)/2});
+            \begin{luacode}
+                function hexa(cx, cy, color1, coolor2, color3)
+                    centre = "(" .. cx .. "," .. cy .. ")"
+                    tex.sprint("\\fill[", color1, "] ", centre, "+(1,0) -- +(0.5,{sqrt(3)/2}) -- +(-0.5,{sqrt(3)/2}) -- +(-1,0) -- +(-0.5,{-sqrt(3)/2}) -- +(0.5,-{sqrt(3)/2}) -- cycle;")
+                    for rotate = 0,300,60 do
+                        tex.sprint("\\fill[rotate around={", rotate, ":", centre, "},", color2, "] ", centre, " arc (270:290:1.46) coordinate (finearc) -- ($", centre, "+(1,0)$) arc (290:250:1.46);")
+                        tex.sprint("\\fill[rotate around={", rotate, ":", centre, "},", color3, "] ", "(finearc) -- ($", centre, "+(1,0)$) -- ($", centre, "+(0.5,{sqrt(3)/2})$) -- cycle;")
+                    end
+                end
+
+                function hexa1(cx,cy)
+                    hexa(cx, cy, "white", "black", "gray!80!white")
+                end
+
+                function hexa2(cx,cy)
+                    hexa(cx, cy, "gray!50!white", "black", "white")
+                end
+
+                function hexa3(cx,cy)
+                    hexa(cx, cy, "white", "black", "gray!50!white")
+                end
+
+                for n=0,6,1 do
+                    local y = math.sqrt(3)
+                    hexa1(3*n,0*y)
+                    hexa3(3*n,1*y)
+                    hexa2(3*n,2*y)
+                    hexa1(3*n,3*y)
+                    hexa3(3*n,4*y)
+
+                    hexa3(3*(n-1)+1.5,-0.5*y)
+                    hexa2(3*(n-1)+1.5,0.5*y)
+                    hexa1(3*(n-1)+1.5,1.5*y)
+                    hexa3(3*(n-1)+1.5,2.5*y)
+                    hexa2(3*(n-1)+1.5,3.5*y)
+                    hexa1(3*(n-1)+1.5,4.5*y)
+                end
+            \end{luacode}
+        \end{tikzpicture}
+        \end{center}
+        
+        \item Il sait calculer une longueur d’un côté d’un triangle rectangle à partir de la connaissance des longueurs des deux autres côtés.
+        \item Dans un triangle rectangle, il utilise le cosinus pour déterminer la mesure d’un angle.
+        \item[\CR] Un constructeur d’échelle recommande un angle entre le sol et l’échelle compris entre \ang{65} et \ang{75} pour assurer la sécurité physique de la personne l’utilisant. On pose contre un mur vertical (et perpendiculaire au sol) une échelle de \qty{13}{\metre} de long et dont les pieds sont situés à \qty{5}{\metre} de la base du mur. Quelle hauteur peut-on atteindre ? L’échelle, ainsi posée, respecte-t-elle la recommandation du constructeur ? \\
+        \textit{L’échelle permettra d’atteindre une hauteur de \qty{12}{\metre} d’après le théorème de Pythagore et un calcul, à l’aide du cosinus, permet d’obtenir un angle d’environ \ang{67}.}
+        \item Il démontre qu’un triangle est un triangle rectangle à partir de la connaissance des longueurs de ses côtés.
+        \item[\CR] 
+        \begin{minipage}[t]{0.63\textwidth}
+        Alan a posé une étagère sur un mur vertical. On sait que $RS = \qty{42}{\centi\metre}$, $TR = \qty{40}{\centi\metre}$ et $SI = \qty{58}{\centi\metre}$. L’étagère est-elle horizontale ? (Justifie ta réponse.)
+        \end{minipage}\hspace{0.1\textwidth}
+        \begin{minipage}{0.2\textwidth}
+        \begin{tikzpicture}[scale=0.7]
+            \draw[pattern = north east lines] (0.2,1) rectangle (1,4);
+            \coordinate (R) at (1,3.5);
+            \coordinate (T) at ($(R)+(1.1,0)$);
+            \coordinate (S) at (1,2.5);
+            \draw (S) -- (T) (R) -- ($(R)!1.6!(T)$);
+            \node[above right] at (R) {$R$};
+            \node[above] at (T) {$T$};
+            \node[below right] at (S) {$S$};
+        \end{tikzpicture}
+        \end{minipage}
+
+        \item Il démontre le parallélisme de deux droites en s’appuyant sur des rapports de longueurs.
+        \item Il détermine la nature du quadrilatère $ABCD$ sur la figure c, construite à l’aide de translations à partir du motif de droite :
+
+        \begin{center}
+        \begin{tikzpicture}[scale=0.9]
+            \foreach \x in {0,2,4,8} {
+                \draw[fill=gray!50!white, even odd rule] (\x,0) -- ++(1,1) -- ++(-2,1) -- ++(1,-1) -- ++(1,1) -- ++(-2,-1) -- cycle;
+                \draw[fill=gray!50!white, even odd rule] (\x,0) -- ++(1,-1) -- ++(-2,-1) -- ++(1,1) -- ++(1,-1) -- ++(-2,1) -- cycle;
+                \draw (\x,-1) -- (\x,1);
+            }
+            \draw (3,1) node {$+$} node[above] {$A$};
+            \draw (4,0) node {$+$} node[right] {$B$};
+            \draw (3,-1) node {$+$} node[above] {$C$};
+            \draw (2,0) node {$+$} node[left] {$D$};
+
+            \tikzmath{\taille = 0.15;}
+            \draw[fill=black] (0,0) -- ++(-\taille,\taille) -- ++(-\taille,-\taille) -- ++(\taille,-\taille) -- ++(\taille,\taille);
+            \draw (0.5,0.5) arc (45:90:0.707);
+            \draw (-0.5,0.5) arc (135:90:0.707);
+            \draw (0.5,-0.5) arc (315:270:0.707);
+            \draw (-0.5,-0.5) arc (225:270:0.707);
+            \node[rotate=-45] at (0.28,0.62) {||};
+            \node[rotate=45] at (-0.28,0.62) {||};
+            \node[rotate=45] at (0.28,-0.62) {||};
+            \node[rotate=-45] at (-0.28,-0.62) {||};
+            \draw[fill=black] (8,0) -- ++(-\taille,\taille) -- ++(-\taille,-\taille) -- ++(\taille,-\taille) -- ++(\taille,\taille);
+            \draw (8.5,0.5) arc (45:90:0.707);
+            \draw (7.5,0.5) arc (135:90:0.707);
+            \draw (8.5,-0.5) arc (315:270:0.707);
+            \draw (7.5,-0.5) arc (225:270:0.707);
+            \node[rotate=-45] at (8.28,0.62) {||};
+            \node[rotate=45] at (8-0.28,0.62) {||};
+            \node[rotate=45] at (8.28,-0.62) {||};
+            \node[rotate=-45] at (8-0.28,-0.62) {||};
+        \end{tikzpicture}
+        \end{center}
+    \end{exemplesreussite}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \clearpage
+    \theme{ALGORITHME ET PROGRAMMATION}
+    \centerline{\textbf{\textit{Les niveaux $1$ et $2$ sont attendus en fin de $4^e$ ; il est possible que certains élèves aillent au-delà.}}}
+    \competence{Écrire, mettre au point, exécuter un programme}
+
+    \begin{savoireleves}
+        \item[] \textbf{\textit{Niveau $1$}}
+        \item Il réalise des activités d’algorithmique débranchée.
+        \item Il met en ordre et/ou complète des blocs fournis par le professeur pour construire un programme simple sur un logiciel de programmation.
+        \item Il écrit un script de déplacement ou de construction géométrique utilisant des instructions conditionnelles et/ou la boucle « Répéter ... fois ».
+        \item[] \textbf{\textit{Niveau $2$}}
+        \item Il gère le déclenchement d'un script en réponse à un événement.
+        \item Il écrit une séquence d’instructions (condition « si ... alors » et boucle « répéter ... fois »).
+        \item Il intègre une variable dans un programme de déplacement, de construction géométrique ou de calcul.
+        \item[] \textbf{\textit{Niveau $3$}}
+        \item Il décompose un problème en sous-problèmes et traduit un sous-problème en créant un « bloc-personnalisé ».
+        \item Il construit une figure en créant un motif et en le reproduisant à l’aide d’une boucle.
+        \item Il utilise simultanément les boucles « Répéter ... fois », et « Répéter jusqu’à ... » ainsi que les instructions conditionnelles pour réaliser des figures, des programmes de calculs, des déplacements, des simulations d’expérience aléatoire.
+        \item Il écrit plusieurs scripts fonctionnant en parallèle pour gérer des interactions et créer des jeux.
+    \end{savoireleves}
+
+    \begin{exemplesreussite}
+        \item[] \textbf{\textit{Niveau $1$}}
+        \item Il comprend ce que font des assemblages simples de blocs de programmation, par exemple au travers de questions flash.
+        \item Il retrouve parmi des programmes donnés celui qui permet d'obtenir une figure donnée, et inversement.
+        \item Sans utiliser de langage informatique formalisé, il écrit un algorithme pour décrire un déplacement ou un calcul.
+        \item Il décrit ce que fait un assemblage simple de blocs de programmation.
+        \item Il ordonne des blocs en fonction d'une consigne donnée.
+        \item[\CR] Assemble correctement les blocs ci-contre pour permettre au lutin de tracer un carré de longueur $100$ pixels :
+
+        \begin{center}
+        \begin{tikzpicture}
+            \draw[white,fill=gray!20!white] (-5,-1) rectangle (5,6);
+            \node at (0,0) {\begin{scratch}[pre text=\rmfamily]\blockmove{tourner \turnright{} de \ovalnum{90} degrés}\end{scratch}};
+            \node at (-2.5,1.5) {\begin{scratch}[pre text=\rmfamily]\blockinit{quand \greenflag est cliqué}\end{scratch}};
+            \node at (2,3) {\begin{scratch}[pre text=\rmfamily]\blockpen{stylo en position d'écriture}\end{scratch}};
+            \node at (-3.5,4) {\begin{scratch}[pre text=\rmfamily]\blockrepeat{répéter \ovalnum{4} fois}{\blockspace}\end{scratch}};
+            \node at (2,5) {\begin{scratch}[pre text=\rmfamily]\blockmove{avancer de \ovalnum{100}}\end{scratch}};
+        \end{tikzpicture}
+        \end{center}
+        
+        \clearpage
+        \item[\CR] Il produit seul un programme de construction d’un triangle équilatéral, d’un carré ou d’un rectangle en utilisant la boucle~:
+        \begin{center}
+        \begin{scratch}[pre text=\rmfamily]
+            \blockrepeat{répéter \ovalnum{} fois}{\blockspace}
+        \end{scratch}
+        \end{center}
+        \item[] \textbf{\textit{Niveau $2$}}
+        \item Il gère l’interaction entre deux lutins, par exemple en faisant dire une phrase à l’un lorsque l’autre le touche.
+        \item Il produit des scripts du type :
+
+        \begin{center}
+        \begin{scratch}[pre text=\rmfamily]
+            \blockinit{quand \greenflag est cliqué}
+            \blockrepeat{répéter \ovalnum{20} fois}{
+                \blockvariable{mettre \selectmenu{Nombre aléatoire choisi} à \ovaloperator{nombre aléatoire entre \ovalnum{0} et \ovalnum{1}}}
+                \blockif{si \booloperator{\ovalvariable{Nombre aléatoire choisi} = \ovalnum{0}} alors}{
+                    \blocklook{dire \ovalnum{Le nombre choisi est 0} pendant \ovalnum{1} secondes}
+                }
+                \blockif{si \booloperator{\ovalvariable{Nombre aléatoire choisi} = \ovalnum{1}} alors}{
+                    \blocklook{dire \ovalnum{Le nombre choisi est 1} pendant \ovalnum{1} secondes}
+                }
+            }
+        \end{scratch}
+        \end{center}
+        
+        \item Il produit seul un programme de construction d’un triangle équilatéral, d’un carré, d’un rectangle ou d’un parallélogramme dans lequel l’utilisateur saisi la mesure de la longueur d’au moins un côté.
+        \item[] \textbf{\textit{Niveau $3$}}
+        \item Il reproduit une frise donnée reproduisant un motif grâce à un bloc personnalisé.
+        \item Il produit un programme réalisant une figure du type :
+
+        \begin{center}
+        \begin{tikzpicture}[scale=0.4]
+            \foreach \n in {1,2,...,9} {
+                \draw (\n,0) -- (\n,\n) -- (0,\n);
+            }
+            \draw (0,0) rectangle (10,10);
+        \end{tikzpicture}
+        \end{center}
+        
+        \item Il utilise un logiciel de programmation pour réaliser la simulation d’une expérience aléatoire, par exemple : « Programmer un lutin pour qu’il énonce $100$ nombres aléatoires « $0$ » ou « $1$ » et qu’il compte le nombre de « $0$ » et de « $1$ » obtenus. »
+        \item Il programme un jeu avec un logiciel de programmation par blocs utilisant au moins $2$ lutins avec des scripts en parallèle. Il mobilise des capacités acquises précédemment dans les niveaux $1$, $2$ et $3$.
+    \end{exemplesreussite}
+
+\end{document}
