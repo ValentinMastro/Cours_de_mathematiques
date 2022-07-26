@@ -8,12 +8,26 @@
 %   - gère la génération de nombres aléatoires
 
 
-
 % Base du document
 \LoadClass[10pt]{article}
+\RequirePackage[a5paper,margin=1cm]{geometry}
+\RequirePackage{tabularx}
+\RequirePackage{qrcode}
+\RequirePackage{tikz}
+\usetikzlibrary{calc,math}
+
+
+% Graine (nombre qui rend l'aléatoire déterministe)
+\newcommand{\VMQCMgraine}[1]{
+    \pgfmathsetseed{#1}
+    \directlua{
+        local graine = #1;
+        math.randomseed(graine)
+    }
+    
+}
 
 % Gestion des marges
-\RequirePackage[a5paper,margin=1cm]{geometry}
 \pagestyle{empty}
 
 % Titre
@@ -40,19 +54,11 @@
 }
 
 % Formatage des questions et des réponses
-\RequirePackage{tabularx}
 \setlength{\parindent}{0pt}
 
 \newenvironment{VMQCM}{\tabularx{\textwidth}{@{}l|X|p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|r @{}} & \centering Question & \centering A & \centering B & \centering C & \centering D & ~ \\\hline}{\endtabularx}
 
-\newcommand{\VMQCMDebut}{}
-     
-\newcommand{\VMQCMFin}{\endtabularx}
 
-
-\RequirePackage{tikz}
-\usetikzlibrary{calc,math}
-\RequirePackage{qrcode}
 % À la fin du document, on affiche la grille de réponse (incluant le niveau [6ème, 5ème, ...], la classe [A, B, C, ...], et le numéro d'élève, ainsi que les réponses aux questions) et le QR code de réponse
 \AtEndDocument{
     \vfill
