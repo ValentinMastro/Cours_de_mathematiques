@@ -24,7 +24,6 @@
         local graine = #1;
         math.randomseed(graine)
     }
-    
 }
 
 % Gestion des marges
