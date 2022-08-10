@@ -43,6 +43,7 @@
 \RequirePackage{tkz-tab}
 \RequirePackage{xcolor}
 \RequirePackage{fontspec}
+\RequirePackage{soul}
 
 
 \newcommand{\ajouterChapitre}[1]{\subfile{#1}}
@@ -73,30 +74,41 @@
 \newcounter{souspartie}
 \newcounter{soussouspartie}
 
+\newcommand{\NomDuTheme}{}
+
+\newcommand{\theme}[1]{
+    \renewcommand{\NomDuTheme}{#1}
+}
+
 \newcommand{\chapitre}[1]{
     \stepcounter{chapitre}
     \setcounter{partie}{0}
     \titreChapitre{\thechapitre}{#1}
     \addcontentsline{toc}{chapter}{\textcolor{rouge}{Chapitre \thechapitre~-~#1}}
+    \ifdefempty{\NomDuTheme}{}{%
+        \addtocontents{toc}{%
+            \protect\noindent\hspace{0.6cm}Thème : \NomDuTheme\protect\par%
+        }%
+    }
 }
 
 \newcommand{\partie}[1]{
     \stepcounter{partie}
     \setcounter{souspartie}{0}
-    \section*{\textcolor{vert}{\Roman{partie}~-~#1}}
+    \section*{\ul{\mbox{\textcolor{rouge}{\Roman{partie}~-~#1}}}}
     \addcontentsline{toc}{section}{\textcolor{vert}{\Roman{partie}~-~#1}}
 }
 
 \newcommand{\souspartie}[1]{
     \stepcounter{souspartie}
     \setcounter{soussouspartie}{0}
-    \subsection*{ \textcolor{bleu}{\underline{\alph{souspartie})~#1}} }
+    \subsection*{\ul{\mbox{\textcolor{vert}{\alph{souspartie})~#1}}}}
     \addcontentsline{toc}{subsection}{\textcolor{bleu}{\alph{souspartie})~#1}}
 }
 
 \newcommand{\soussouspartie}[1]{
     \stepcounter{soussouspartie}
-    \subsubsection*{ \textcolor{noir}{\underline{\roman{soussouspartie})~#1}} }
+    \subsubsection*{\ul{\mbox{\textcolor{bleu}{\roman{soussouspartie})~#1}}}}
     \addcontentsline{toc}{subsubsection}{\textcolor{noir}{\roman{soussouspartie})~#1}}
 }
 
