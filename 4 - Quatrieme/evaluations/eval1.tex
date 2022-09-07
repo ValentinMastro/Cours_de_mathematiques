@@ -1,0 +1,52 @@
+\documentclass{vmqcm}
+\VMQCMgraine{9999}
+
+\VMQCMTitre{Évaluation n°1}
+
+%%%%%%%%%%%%%%%
+%% QUESTIONS %%
+%%%%%%%%%%%%%%%
+
+\directlua{eval = require("eval1.lua")}
+
+\newcommand{\questionA}{%
+    \directlua{eval.qA()}
+}
+
+\newcommand{\questionB}{
+    \directlua{eval.qB()}
+}
+
+\newcommand{\questionC}[1]{
+    \directlua{eval.qC(#1)}
+}
+
+\newcommand{\questionD}{
+    \directlua{eval.qD()}
+}
+
+\newcommand{\questionE}{
+    \directlua{eval.qE()}
+}
+
+\newcommand{\questionF}{
+    \directlua{eval.qF()}
+}
+
+\newcommand{\questionG}{
+    \directlua{eval.qG()}
+}
+
+\begin{document}
+
+\begin{VMQCM}
+    \questionD\questionD
+    \questionE\questionE
+    \questionF\questionF
+    \questionG\questionG
+    \questionA\questionA
+    \questionB\questionB
+    \questionC{40}\questionC{40}\questionC{40}\questionC{40}\questionC{1000}\questionC{1000}\questionC{10000}\questionC{10000}
+\end{VMQCM}
+
+\end{document}

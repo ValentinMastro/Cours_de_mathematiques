@@ -1,0 +1,103 @@
+\documentclass["../Cours.tex"]{subfiles}
+
+\begin{document}
+\theme{exemple}
+\chapitre{Théorème de Pythagore}
+
+\partie{Carré et racine carrée}
+\souspartie{Le carré d'un nombre}
+
+\definition{Le carré d'un nombre est égal à ce nombre multiplié par lui-même. On le note avec un << 2 >> en exposant (c'est-à-dire en petit, en haut à droite).}
+
+\begin{listedexemples}
+    \item $12^2 = 12 \times 12 = 144$
+    \item $8^2 = 8 \times 8 = 64$
+    \item $a^2 = a \times a$
+\end{listedexemples}
+
+\souspartie{La racine carrée d'un nombre}
+
+\vocabulaire{La racine carrée est l'opération réciproque du calcul du carré d'un nombre. On le note avec le symbole radical << $\sqrt{}$ >>.}
+
+\begin{listedexemples}
+    \item Si le carré de 12 est 144, alors $\sqrt{144} = 12$.
+    \item Si $8^2 = 64$ alors $\sqrt{64} = 8$. 
+\end{listedexemples}
+
+\clearpage
+\partie{Triangle rectangle et hypoténuse}
+\souspartie{Triangle rectangle}
+
+\definition{Un triangle rectangle est une figure à 3 côtés possédant un angle droit ($= \ang{90}$).}
+
+\souspartie{Hypoténuse}
+
+\definition{L'hypoténuse d'un triangle rectangle est le côté opposé à l'angle droit.}
+
+\illustration{%
+    \begin{figure}[ht]
+        \centering
+        \begin{tikzpicture}[rotate=15]
+            \coordinate (A) at (0,0);
+            \coordinate (B) at (3,0);
+            \coordinate (C) at (3,4);
+            \coordinate (I) at ($(A)!0.5!(C)$);
+            \draw (A) -- (B) -- (C) -- cycle;
+            \draw[fill=black] (B) rectangle ($(B)+(-0.25,0.25)$);
+            \draw[very thick,red] (A) -- (C);
+            \draw[very thick,-latex] ($(B)!0.1!(I)$) -- ($(B)!0.95!(I)$);
+            \node[rotate=69] at ($(I)+(-0.32,0)$) {\textcolor{rouge}{hypoténuse}};
+        \end{tikzpicture}
+        \caption{Identifier l'hypoténuse d'un angle droit}
+    \end{figure}
+}
+
+\propriete{L'hypoténuse est le plus grand côté d'un triangle rectangle.}
+
+\clearpage
+\partie{Énoncé et application du théorème}
+
+\theoreme{de Pythagore}{Si un triangle est rectangle, alors le carré de la longueur de son hypoténuse est égal à la somme des carrés des longueurs des deux autres côtés.}
+
+\theoreme{de Pythagore}{Si $ABC$ est un triangle rectangle en $B$, alors $AB^2+BC^2 = AC^2$.}
+
+\illustration{
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[scale=0.7]
+            \coordinate (A) at (0,0);
+            \coordinate (B) at (3,0);
+            \coordinate (C) at (3,4);
+            \draw (A) -- (B) -- (C) -- cycle;
+            \node[below] at (A) {$A$};
+            \node[below] at (B) {$B$};
+            \node[right] at (C) {$C$};
+            \draw[fill=black] (B) rectangle ($(B)+(-0.25,0.25)$);
+            \node[below] at ($(A)!0.5!(B)$) {\qty{3}{\centi\metre}};
+            \node[right] at ($(B)!0.5!(C)$) {\qty{4}{\centi\metre}};
+            \node[above left] at ($(A)!0.5!(C)$) {\qty{5}{\centi\metre}};
+        \end{tikzpicture}
+        \caption{Triangle rectangle utilisant le triplet pythagoricien (3,4,5)}
+    \end{figure}
+}
+
+On vérifie bien :
+\begin{itemize}
+    \item que $AB^2+BC^2 = 3^2+4^2 = 9 + 16 = 25$
+    \item et que $BC^2 = 5^2 = 25$
+\end{itemize}
+
+\begin{redaction}{Soit $DEF$ un triangle rectangle en $E$, tel que $DE=\qty{6}{cm}$ et $EF=\qty{8}{cm}$.\\ Déterminer la longueur de $DF$.}
+    On sait que : le triangle $DEF$ est rectangle en $E$, donc l'hypoténuse est $[DF]$.\\
+    D'après le théorème de Pythagore : 
+    $$ DE^2 + EF^2 = DF^2$$
+    Application numérique : $$ 6^2 + 8^2 = DF^2 $$
+    $$ 36 + 64 = DF^2 $$
+    $$ 100 = DF^2 $$
+    $$ DF = \sqrt{100} $$
+    $$ DF = \qty{10}{cm} $$
+    Phrase réponse : La longueur $DF$ mesure \qty{10}{cm}.
+\end{redaction}
+    
+
+\end{document}

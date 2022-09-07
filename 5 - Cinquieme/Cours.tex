@@ -1,4 +1,4 @@
-\documentclass[a4paper, 11pt, oneside]{memoir}
+\documentclass[a4paper, 14pt, oneside]{memoir}
 
 \usepackage{importationsprojet}
 
@@ -7,5 +7,12 @@
 \begin{document}
 
 \titre{cinquième}
+
+\setcounter{tocdepth}{3}
+\renewcommand{\contentsname}{Sommaire de l'année}
+\tableofcontents*
+
+\ajouterChapitre{chapitres/00 - Ecriture et comparaison de nombres.tex}
+
 
 \end{document}

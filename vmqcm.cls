@@ -15,6 +15,9 @@
 \RequirePackage{qrcode}
 \RequirePackage{tikz}
 \RequirePackage{luacode}
+\RequirePackage{luatexbase}
+\RequirePackage[locale=FR, group-digits=all, group-separator=\ , group-minimum-digits=4]{siunitx}
+\RequirePackage{amsmath, amssymb}
 \usetikzlibrary{calc,math}
 
 
@@ -137,62 +140,3 @@
         \node at (-0.35,-2) {\qrcode[height=1.1cm]{\directlua{tex.print("\theVMQCMNumeroQuestion" .. "Q" .. table.concat(solutions))}}};
     \end{tikzpicture}
 }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% FONCTIONS POUR LA GÉNÉRATION DE QUESTIONS %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{luacode}
-    function entier_aleatoire(inf, sup)
-        -- inf et sup sont inclusifs
-        return math.random(inf, sup)
-    end
-
-    function decimal_aleatoire_virgule_fixe(inf, sup, precision)
-        local nombre = math.random() * (sup-inf) + inf
-        return string.format("\%." .. precision .. "f", nombre)
-    end
-
-    function objet_aleatoire_dans(liste)
-        local index = math.random(1,#liste)
-        return liste[index]
-    end
-
-    function melanger(liste)
-        for i = #liste, 2, -1 do
-            local j = math.random(i)
-            liste[i], liste[j] = liste[j], liste[i]
-        end
-    end
-
-    function trouver_element_dans_liste(element, liste)
-        for i = 1, #liste do
-            if liste[i] == element then
-                return i
-            end
-        end
-    end
-
-    operateurs = {"+", "-", "\\times", "\\div"}
-    function operation(a, b, op_index)
-        if op_index == 1 then
-            return a+b
-        elseif op_index == 2 then
-            return a-b
-        elseif op_index == 3 then
-            return a*b
-        elseif op_index == 4 then
-            return a/b
-        end
-    end
-
-    function ajouter_question(enonce, reponses, points)
-        -- la première réponse est toujours la bonne
-        local bonne_reponse = reponses[1]
-        melanger(reponses)
-        local index_bonne_reponse = trouver_element_dans_liste(bonne_reponse, reponses)
-        local lettre_bonne_reponse = string.char(index + 65 - 1)
-        
-        tex.sprintf("\\VMQCMAjouterQuestion{", enonce, "}{", reponses[1], "}{", reponses[2], "}{", reponses[3], "}{", reponses[4], "}{", lettre_bonne_reponse, "}{", points, "}")
-    end
-\end{luacode}

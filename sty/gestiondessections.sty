@@ -53,12 +53,12 @@
     % #2 : titre du chapitre
     \clearpage
     
-    {\sffamily
-    \color{rouge}\Huge
+    {\sffamily%
+    \color{rouge}\Huge%
     \begin{tikzpicture}
         \node[anchor=west] at (0,0) {\textbf{Chapitre #1}};
         \node[anchor=west] at (0,-1) {\textbf{#2}};
-    \end{tikzpicture}
+    \end{tikzpicture}%
     }
 }
 
@@ -87,28 +87,28 @@
     \addcontentsline{toc}{chapter}{\textcolor{rouge}{Chapitre \thechapitre~-~#1}}
     \ifdefempty{\NomDuTheme}{}{%
         \addtocontents{toc}{%
-            \protect\noindent\hspace{0.6cm}Thème : \NomDuTheme\protect\par%
+            \protect\noindent\hspace{1.5em}Thème : \NomDuTheme\protect\par%
         }%
-    }
+    }%
 }
 
 \newcommand{\partie}[1]{
     \stepcounter{partie}
     \setcounter{souspartie}{0}
-    \section*{\ul{\mbox{\textcolor{rouge}{\Roman{partie}~-~#1}}}}
+    \section*{\mbox{\textcolor{rouge}{\Roman{partie}~-~#1}}}
     \addcontentsline{toc}{section}{\textcolor{vert}{\Roman{partie}~-~#1}}
 }
 
 \newcommand{\souspartie}[1]{
     \stepcounter{souspartie}
     \setcounter{soussouspartie}{0}
-    \subsection*{\ul{\mbox{\textcolor{vert}{\alph{souspartie})~#1}}}}
+    \subsection*{\mbox{\textcolor{vert}{\alph{souspartie})~#1}}}
     \addcontentsline{toc}{subsection}{\textcolor{bleu}{\alph{souspartie})~#1}}
 }
 
 \newcommand{\soussouspartie}[1]{
     \stepcounter{soussouspartie}
-    \subsubsection*{\ul{\mbox{\textcolor{bleu}{\roman{soussouspartie})~#1}}}}
+    \subsubsection*{\mbox{\textcolor{bleu}{\roman{soussouspartie})~#1}}}
     \addcontentsline{toc}{subsubsection}{\textcolor{noir}{\roman{soussouspartie})~#1}}
 }
 
@@ -143,6 +143,18 @@
 \newcommand{\exemple}[1]{\paragraphe{bleu}{Exemple}{#1}}
 \newcommand{\exemples}[1]{\paragraphe{bleu}{Exemples}{#1}}
 \newcommand{\demonstration}[1]{\paragraphe{bleu}{Démonstration}{#1}}
+\newcommand{\enonce}[1]{\paragraphe{bleu}{Énoncé}{#1}}
+
+\RequirePackage{framed}
+
+\newenvironment{redaction}[1]{
+    \enonce{#1}
+    \begin{framed}
+    \color{bleu}
+}{
+    \end{framed}
+    \color{noir}
+}
 
 \newenvironment{listedexemples}
 {
