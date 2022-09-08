@@ -59,11 +59,12 @@
 % Formatage des questions et des réponses
 \setlength{\parindent}{0pt}
 
-\newenvironment{VMQCM}{\tabularx{\textwidth}{@{}l|X|p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|r @{}} & \centering Question & \centering A & \centering B & \centering C & \centering D & ~ \\\hline}{\endtabularx}
-
-
-% À la fin du document, on affiche la grille de réponse (incluant le niveau [6ème, 5ème, ...], la classe [A, B, C, ...], et le numéro d'élève, ainsi que les réponses aux questions) et le QR code de réponse
-\AtEndDocument{
+\newenvironment{VMQCM}{%
+\setcounter{VMQCMNumeroQuestion}{0}
+\setcounter{VMQCMTotalPoints}{0}
+\setcounter{VMQCMPointsQuestion}{0}
+\directlua{solutions = {}}
+\tabularx{\textwidth}{@{}l|X|p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|r @{}} & \centering Question & \centering A & \centering B & \centering C & \centering D & ~ \\\hline}{\endtabularx%
     \vfill
     \makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
     \begin{tikzpicture}
@@ -139,4 +140,9 @@
         % QR Code
         \node at (-0.35,-2) {\qrcode[height=1.1cm]{\directlua{tex.print("\theVMQCMNumeroQuestion" .. "Q" .. table.concat(solutions))}}};
     \end{tikzpicture}
+    \clearpage
 }
+
+
+% À la fin du document, on affiche la grille de réponse (incluant le niveau [6ème, 5ème, ...], la classe [A, B, C, ...], et le numéro d'élève, ainsi que les réponses aux questions) et le QR code de réponse
+\AtEndDocument{}
