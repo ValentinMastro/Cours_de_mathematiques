@@ -69,8 +69,6 @@
 \vocabulaire{La division permet de séparer en plusieurs parts égales une quantité. On divise le \emph{dividende} par le \emph{diviseur} afin d'obtenir le \emph{quotient} et le \emph{reste}.
 Les symboles utilisés pour la division sont les deux-points << : >>, le \textit{slash} << / >> et l'obélus << $\div$ >>.}
 
-\vfill 
-
 \begin{figure}[h!]
     \centering
     \begin{tikzpicture}[scale=0.7]
@@ -101,5 +99,20 @@ Les symboles utilisés pour la division sont les deux-points << : >>, le \textit
     \caption{Exemple de division posée}
 \end{figure}
 
+\partie{Priorité opératoire}
+
+\propriete{Dans un calcul contenant plusieurs opérations :
+    \begin{itemize}
+        \item la priorité est donnée aux calculs entre parenthèses,
+        \item puis, aux multiplications et aux divisions (de gauche à droite),
+        \item enfin, aux additions et aux soustractions (de gauche à droite).
+    \end{itemize}
+}
+
+\exemple{$$A = (7 + \underline{15 \div 3}) \times 3$$  $$A = \underline{(7+5)} \times 3$$ $$A = \underline{12 \times 3}$$ $$A = 36$$}
+
+\remarque{Dans un calcul contenant un trait de fractions, on calcule d'abord le numérateur et le dénominateur, puis on effectue la division.}
+
+\exemple{$$\dfrac{17+3}{15-5} = \left(17+3\right) \div \left(15-5\right)$$}
 
 \end{document}
