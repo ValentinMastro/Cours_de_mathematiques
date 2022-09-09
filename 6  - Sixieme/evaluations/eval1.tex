@@ -1,0 +1,35 @@
+\documentclass{vmqcm}
+\VMQCMgraine{4201}
+
+\VMQCMTitre{Évaluation n°1 - 6ème}
+
+%%%%%%%%%%%%%%%
+%% QUESTIONS %%
+%%%%%%%%%%%%%%%
+
+\directlua{eval = require("eval1.lua")}
+
+\newcommand{\questionA}[1]{%
+    \directlua{eval.qA(#1)}
+}
+
+\newcommand{\questionB}[1]{
+    \directlua{eval.qB(#1)}
+}
+
+\newcommand{\questionC}{
+    \directlua{eval.qC()}
+}
+
+
+\begin{document}
+
+\foreach \n in {1,...,1}{%
+\begin{VMQCM}
+    \questionC\questionC\questionC\questionC\questionC\questionC\questionC\questionC
+    \questionA{1}\questionA{2}\questionA{2}\questionA{3}\questionA{3}
+    \questionB{1}\questionB{2}\questionB{2}\questionB{3}\questionB{3}
+\end{VMQCM}%
+}
+
+\end{document}

@@ -14,10 +14,13 @@
 \RequirePackage{tabularx}
 \RequirePackage{qrcode}
 \RequirePackage{tikz}
+\RequirePackage{pgf}
+\RequirePackage{fontspec}
 \RequirePackage{luacode}
 \RequirePackage{luatexbase}
 \RequirePackage[locale=FR, group-digits=all, group-separator=\ , group-minimum-digits=4]{siunitx}
 \RequirePackage{amsmath, amssymb}
+\RequirePackage{libertine}
 \usetikzlibrary{calc,math}
 
 
@@ -46,6 +49,10 @@
     \directlua{solutions[\theVMQCMNumeroQuestion] = "\theVMQCMPointsQuestion" .. "#1"}%
 }
 
+% Afficher un nombre blanc sur fond noir entouré
+% https://tex.stackexchange.com/a/91070
+\newcommand{\libcircblk}[1]{\pgfmathparse{Hex(10102)}\libertineGlyph{uni\pgfmathresult}}
+
 % Ajouter une question au QCM
 %           \VMQCMAjouterQuestion{énoncé}{A}{B}{C}{D}{bonne réponse}{point(s)}
 \newcommand{\VMQCMAjouterQuestion}[7]{%
@@ -53,7 +60,7 @@
     \setcounter{VMQCMPointsQuestion}{#7}%
     \VMQCMAjouterSolution{#6}%
     \addtocounter{VMQCMTotalPoints}{#7}%
-    \scriptsize{\theVMQCMNumeroQuestion} & \scriptsize{#1} & \scriptsize{#2} & \scriptsize{#3} & \scriptsize{#4} & \scriptsize{#5} & \scriptsize{#7~pts} \\\hline
+    \scriptsize{\theVMQCMNumeroQuestion} & \scriptsize{#1} & \scriptsize{#2} & \scriptsize{#3} & \scriptsize{#4} & \scriptsize{#5} & \large{\libcircblk{#7}} \\\hline
 }
 
 % Formatage des questions et des réponses
@@ -64,7 +71,7 @@
 \setcounter{VMQCMTotalPoints}{0}
 \setcounter{VMQCMPointsQuestion}{0}
 \directlua{solutions = {}}
-\tabularx{\textwidth}{@{}l|X|p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|p{0.1\textwidth}|r @{}} & \centering Question & \centering A & \centering B & \centering C & \centering D & ~ \\\hline}{\endtabularx%
+\tabularx{\textwidth}{@{}p{0.013\textwidth}|X|p{0.12\textwidth}|p{0.12\textwidth}|p{0.12\textwidth}|p{0.12\textwidth}|p{0.02\textwidth} @{}} & \centering Question & \centering A & \centering B & \centering C & \centering D & ~ \\\hline}{\endtabularx%
     \vfill
     \makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
     \begin{tikzpicture}

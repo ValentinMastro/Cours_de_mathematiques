@@ -102,8 +102,8 @@ local function nombre_entier()
 end
 
 local function entier_relatif()
-    local a = math.random(2, 17)
-    local b = math.random(2, 17) * (-1)
+    local a = math.random(-17,17)
+    local b = math.random(2, 17) - 0.1*math.random(1,9)
     local c = math.random(2, 17) + 0.1*math.random(1,9)
     local d = (math.random(2, 17) + 0.1*math.random(1,9)) * (-1)
 
