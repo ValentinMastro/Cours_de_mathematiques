@@ -1,0 +1,10 @@
+*.aux
+*.log
+*.fdb_latexmk
+*.fls
+*.jpeg
+*.png
+*.csv
+*.pdf
+*.xlsx
+*__pycache__*

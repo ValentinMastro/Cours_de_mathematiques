@@ -17,9 +17,34 @@
 """
 
 
-def main():
-    pass
+from pyzbar.pyzbar import decode
+from PIL import Image
+from sys import argv
+from tqdm import tqdm
 
+from src.traitement_donnees import traitement_fichiers, trouver_eleve, calcul_note
+from src.scan_pdf import scan_qr_code, scan_reponse_eleve
+
+
+"""
+    Utilisation : 
+        python correction.py   FICHIER_PDF   FICHIER_ELEVES
+"""
+def main():
+    images_pdf, donnees_eleves = traitement_fichiers(argv)
+    input()
+
+    evaluation = []
+    for image in tqdm(images_pdf):
+        bonnes_reponses = scan_qr_code(image)
+        niveau, classe, numero, reponses = scan_reponse_eleve(image)
+        eleve = trouver_eleve(donnees_eleves, niveau, classe, numero)
+        note = calcul_note(bonnes_reponses, reponses)
+        evaluation.append((*eleve, note, numero, image))
+
+    evaluation.sort(key=lambda x: x[0])
+    for e in evaluation:
+        print(e)
 
 if __name__ == "__main__":
     main()
