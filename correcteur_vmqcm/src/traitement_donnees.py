@@ -78,11 +78,12 @@ def extraire_images(url_fichier_pdf):
 
 
 def trouver_eleve(donnees_eleves, niveau, classe, numero):
+    print(niveau, classe, numero)
     for donnees in donnees_eleves:
         if niveau == donnees[0] and classe == donnees[1] and numero == int(donnees[4]):
-            return (donnees[2], donnees[3])
+            return (donnees[2], donnees[3], donnees[0], donnees[1])
         
-    return ("INCONNU", "inconnu")
+    return ("INCONNU", "inconnu", niveau, classe)
 
 def calcul_note(bonnes_reponses, reponses):
     print(bonnes_reponses, reponses)
@@ -96,7 +97,6 @@ def calcul_note(bonnes_reponses, reponses):
         else:
             faux += 1
 
-    print(vrai, faux)
     return vrai - faux / 3.0
 
 def f(s):

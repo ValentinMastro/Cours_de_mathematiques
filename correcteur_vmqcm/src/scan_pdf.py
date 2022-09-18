@@ -11,10 +11,14 @@ def scan_qr_code(image):
     image : nom du fichier
     """
     decodeQR = decode(Image.open(image))
-    dataQR = decodeQR[0].data.decode('ascii')
+    try :
+        dataQR = decodeQR[0].data.decode('ascii')
+    except IndexError:
+        print(f"{image} - QRcode non détecté")
+        return [None for i in range(20)]
 
     questions, reponseQR = dataQR.split("Q")
-    bonnes_reponses = [reponseQR[2*i+1] for i in range(int(questions))]
+    bonnes_reponses = [reponseQR[2*i+2] for i in range(int(questions))]
 
     return bonnes_reponses
 
@@ -28,19 +32,19 @@ def scan_reponse_eleve(image):
 
     def recherche_debut_ligne(img):
         # recherche de la ligne de séparation
-        x, y = 50, 5470
+        x, y = 0, 5550
         debut = None
-        for dx in range(150):
-            for dy in range(150):
+        for dx in range(300):
+            for dy in range(300):
                 if img[y-dy][x+dx] < 200:
                     return (x+dx, y-dy)
                     
     def recherche_fin_ligne(img):
         # recherche de la ligne de séparation
-        x, y = 4900, 5470
+        x, y = 4960-1, 5600
         debut = None
-        for dx in range(150):
-            for dy in range(150):
+        for dx in range(300):
+            for dy in range(400):
                 if img[y-dy][x-dx] < 200:
                     return (x-dx, y-dy)
 
@@ -54,32 +58,46 @@ def scan_reponse_eleve(image):
     debut, fin = recherche_debut_ligne(img), recherche_fin_ligne(img)
 
     if debut is None or fin is None:
+        if debut is None:
+            print("debut")
+        if fin is None:
+            print("fin")
         print(image)
         exit(1)
     
     img3 = decalage(img, debut[0], debut[1])
     matrice_rotation = cv2.getRotationMatrix2D((0,0), 50*math.atan2(fin[1]-debut[1], fin[0]-debut[0]), 1)
     img4 = cv2.warpAffine(img3, matrice_rotation, (img3.shape[1], img3.shape[0]))
+    #cv2.imshow('matrice', img4)
+    #cv2.waitKey(0)
 
 
     def detecter_reponse(img, question):
         # on détecte la réponse à une question
-        # 2325, 281
-        x1, y1 = 2325 + 96*(question-1), 281
+        # 2319, 308
+        x1, y1 = int(2319 + 99.5*(question-1)), 308
         x2, y2 = x1+80, y1+80
+
+        def ajouter_valeur(img, y, x, zone):
+            valeur = img[y][x]
+            if valeur < 150:
+                zone[1] += 0
+            else:
+                zone[1] += valeur
+
 
         # moyennes
         zoneA, zoneB, zoneC, zoneD = ['A', 0], ['B', 0], ['C', 0], ['D', 0]
-        decal = 95
+        decal = 100
         for x in range(x1, x2):
             for y in range(y1, y2):
-                zoneA[1] += img[y][x]
+                ajouter_valeur(img, y, x, zoneA)
             for y in range(y1+1*decal, y2+1*decal):
-                zoneB[1] += img[y][x]
+                ajouter_valeur(img, y, x, zoneB)
             for y in range(y1+2*decal, y2+2*decal):
-                zoneC[1] += img[y][x]
+                ajouter_valeur(img, y, x, zoneC)
             for y in range(y1+3*decal, y2+3*decal):
-                zoneD[1] += img[y][x]
+                ajouter_valeur(img, y, x, zoneD)
         
         # minimum
         possibilites = [(l, z/6400) for (l,z) in (zoneA, zoneB, zoneC, zoneD)]
@@ -111,11 +129,11 @@ def scan_reponse_eleve(image):
 
     reponses = []
     for question in range(1, 20+1):
-        reponses.append(detecter_reponse(img3, question))
+        reponses.append(detecter_reponse(img4, question))
 
-    niveau = detecter_donnee_eleve(img3, ['6ème', '5ème', '4ème', '3ème'], 690, 158, 40, 97)
-    classe = detecter_donnee_eleve(img3, ['A', 'B', 'C', 'D', 'E', 'F'], 1108, 158, 40, 97)
-    dizaine = detecter_donnee_eleve(img3, list(range(10)), 1432, 158, 40, 97)
-    unite = detecter_donnee_eleve(img3, list(range(10)), 1692, 158, 40, 97)
+    niveau = detecter_donnee_eleve(img4, ['6ème', '5ème', '4ème', '3ème'], 624, 160, 50, 100)
+    classe = detecter_donnee_eleve(img4, ['A', 'B', 'C', 'D', 'E', 'F'], 1055, 158, 50, 100)
+    dizaine = detecter_donnee_eleve(img4, list(range(10)), 1390, 158, 50, 100)
+    unite = detecter_donnee_eleve(img4, list(range(10)), 1653, 158, 50, 100)
 
     return (niveau, classe, dizaine*10+unite, reponses)

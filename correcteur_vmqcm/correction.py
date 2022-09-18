@@ -32,6 +32,7 @@ from src.scan_pdf import scan_qr_code, scan_reponse_eleve
 """
 def main():
     images_pdf, donnees_eleves = traitement_fichiers(argv)
+    print(donnees_eleves)
     input()
 
     evaluation = []
@@ -42,7 +43,7 @@ def main():
         note = calcul_note(bonnes_reponses, reponses)
         evaluation.append((*eleve, note, numero, image))
 
-    evaluation.sort(key=lambda x: x[0])
+    evaluation.sort(key=lambda x: (str(x[2]), str(x[3]), x[0]))
     for e in evaluation:
         print(e)
 
