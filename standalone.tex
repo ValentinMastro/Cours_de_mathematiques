@@ -1,0 +1,87 @@
+\documentclass[10pt]{article}
+\usepackage[a5paper,margin=1cm]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{calc,math}
+
+\newcounter{VMQCMNumeroQuestion}
+\newcounter{VMQCMTotalPoints}
+\setcounter{VMQCMNumeroQuestion}{20}
+\setcounter{VMQCMTotalPoints}{20}
+
+\pagestyle{empty}
+
+\begin{document}
+    standalone
+    \vfill
+    \begin{tikzpicture}
+        % Données élèves
+        % NIVEAU (6ème, 5ème, etc.)
+        \node[anchor=east] at (0,0) {\footnotesize{\textit{Niveau}}};
+        \tikzmath{
+            coordinate \p;
+            for \y in {1,2,...,4}{
+                \p1 = (0,-0.3*\y+0.1);
+                \p2 = (0.2,-0.3*\y-0.1);
+                \p3 = (\p1)-(0,0.1);
+                {\node[anchor=east] at (\p3) {\tiny{\directlua{tex.print(math.floor(7.5-\y))}ème}};};
+                {\draw (\p1) rectangle (\p2);};
+            };
+        }
+        % CLASSE (A, B, C, etc.)
+        \node[anchor=east] at (1.3,0) {\footnotesize{\textit{Classe}}};
+        \tikzmath{
+            int \lettre;
+            coordinate \p;
+            for \y in {1,2,...,6}{
+                \p1 = (1.3,-0.3*\y+0.1);
+                \p2 = (1.5,-0.3*\y-0.1);
+                \p3 = (\p1)-(0,0.1);
+                \lettre = 65-1+\y;
+                {\node[anchor=east] at (\p3) {\tiny{\char\lettre}};};
+                {\draw (\p1) rectangle (\p2);};
+            };
+        }
+        % NUMÉRO de l'élève
+        \node[anchor=east] at (2.9,0) {\footnotesize{\textit{Numéro}}};
+        \tikzmath{
+            coordinate \p;
+            coordinate \q;
+            int \y;
+            for \y in {0,1,...,9}{
+                \p1 = (2.3,{-0.3*(\y+1)+0.1});
+                \p2 = (\p1)+(0.2,-0.2);
+                \p3 = (\p1)+(0,-0.1);
+                \q1 = (\p1)+(0.8,0);
+                \q2 = (\q1)+(0.2,-0.2);
+                \q3 = (\q1)+(0,-0.1);
+                {\draw (\p1) rectangle (\p2);};
+                {\draw (\q1) rectangle (\q2);};
+                {\node[anchor=east] at (\p3) {\tiny{\y}};};
+                {\node[anchor=east] at (\q3) {\tiny{\y}};};
+            };
+        }
+        % Grille de réponse
+        \tikzmath{
+            int \lettre;
+            coordinate \O;
+            int \n;
+            \O1 = (5.1,-0.6);
+            \O2 = ({5.1+0.3*\theVMQCMNumeroQuestion},-1.801);
+            {\draw (\O1) grid[shift={(0,0)},step=0.3] (\O2);};
+            coordinate \p;
+            coordinate \l;
+            for \n in {1,2,...,\theVMQCMNumeroQuestion}{
+                \p1 = (5+0.3*\n-0.075, {-0.65-1.5*mod(\n+1,2)});
+                {\node[anchor=south] at (\p1) {\tiny{\n}};};
+                if \n<5 then {
+                    \l1 = (5.1,{-0.3*(\n+2)+0.15});
+                    \lettre = 65-1+\n;
+                    {\node[anchor=east] at (\l1) {\tiny{\char\lettre}};};
+                };
+            };
+        }
+        % Encadré pour la note
+        \draw (-1.1,-2.7) rectangle (1.1,-3.2);
+        \node at (0,-3) {Note : ~~~~/\theVMQCMTotalPoints};
+    \end{tikzpicture}
+\end{document}

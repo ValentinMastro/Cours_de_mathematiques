@@ -45,7 +45,7 @@ local function afficher_question(enonce, reponses, points)
 end
 
 local function num(n)
-    -- afficher un nombre avec l'acriture SI
+    -- afficher un nombre avec l'écriture SI
     return "\\num{" .. n .. "}"
 end
 
@@ -116,6 +116,52 @@ local function plus_grand_que_nombres_decimaux()
     afficher_question(enonce, reponses, 1)
 end
 
+local function segment()
+    local alphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'}
+    local p1 = alphabet[math.random(1, 12)]
+    local p2 = alphabet[math.random(14,25)]
+    local enonce = "Le segment d'extrémités $" .. p1 .. "$ et $" .. p2 .. "$ est "
+
+    local reponses = {"$[" .. p1 .. p2 .. "]$", "$[" .. p1 .. p2 .. ")$", "$(" .. p1 .. p2 .. "]$", "$(" .. p1 .. p2 .. ")$"}
+    afficher_question(enonce, reponses, 1)
+end
+
+local function droite()
+    local alphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'}
+    local p1 = alphabet[math.random(1, 12)]
+    local p2 = alphabet[math.random(14,25)]
+    local enonce = "La droite passant par $" .. p1 .. "$ et $" .. p2 .. "$ est "
+
+    local reponses = {"$(" .. p1 .. p2 .. ")$", "$[" .. p1 .. p2 .. ")$", "$(" .. p1 .. p2 .. "]$", "$[" .. p1 .. p2 .. "]$"}
+    afficher_question(enonce, reponses, 1)
+end
+
+local function demi_droite()
+    local alphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'}
+    local p1 = alphabet[math.random(1, 12)]
+    local p2 = alphabet[math.random(14,25)]
+    local enonce = "La demi-droite d'origine $" .. p1 .. "$ et passant par $" .. p2 .. "$ est "
+
+    local reponses = {"$[" .. p1 .. p2 .. ")$", "$[" .. p1 .. p2 .. "]$", "$(" .. p1 .. p2 .. "]$", "$(" .. p1 .. p2 .. ")$"}
+    afficher_question(enonce, reponses, 1)
+end
+
+local function appartient()
+    local alphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'}
+    local p1 = alphabet[math.random(1, 6)]
+    local p2 = alphabet[math.random(7,13)]
+    local p3 = alphabet[math.random(14,20)]
+    local p4 = alphabet[math.random(21,26)]
+
+    local x3 = math.random(3, 17)/10
+    local x4 = math.random(22, 27)/10
+
+    local enonce = "\\begin{tikzpicture}  \\draw (-0.2,0) -- (2.8,0); \\draw (0,-0.1) -- (0,0.1); \\draw (2,-0.1) -- (2,0.1);  \\node[below] at (0,-0.1) {$" .. p1 .. "$}; \\node[below] at (2,-0.1) {$" .. p2 .. "$}; \\node[above] at (" .. x3 .. ",0.1) {$" .. p3 .. "$}; \\node[above] at (" .. x4 .. ", 0.1) {$" .. p4 .. "$}; \\draw (" .. x3 .. ",-0.1) -- (" .. x3 .. ",0.1); \\draw (" .. x4 .. ",-0.1) -- (" .. x4 .. ",0.1); \\end{tikzpicture}"
+
+    local reponses = {objet_aleatoire_dans({"$" .. p3 .. "\\in [" .. p1 .. p2 .. "]$", "$" .. p4 .. "\\in [" .. p1 .. p2 .. ")$"}), "$" .. p1 .. "\\in [" .. p2 .. p3 .. "]$", "$" .. p4 .. "\\in [" .. p3 .. p2 .. "]$", "$" .. p4 .. "\\in [" .. p2 .. p1 .. ")$"}
+    afficher_question(enonce, reponses, 1)
+end
 
 
-return { qA = addition_aleatoire, qB = soustraction_aleatoire, qC = chiffres, qD = plus_petit_que_nombres_decimaux, qE = plus_grand_que_nombres_decimaux }
+
+return { qA = addition_aleatoire, qB = soustraction_aleatoire, qC = chiffres, qD = plus_petit_que_nombres_decimaux, qE = plus_grand_que_nombres_decimaux, qF = segment, qG = droite, qH = demi_droite, qI = appartient }

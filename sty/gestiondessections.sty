@@ -134,21 +134,24 @@
 \newcommand{\formule}[1]{\paragraphe{rouge}{Formule}{#1}}
 \newcommand{\convention}[1]{\paragraphe{rouge}{Convention}{#1}}
 \newcommand{\methode}[1]{\paragraphe{rouge}{Méthode}{#1}}
+\newcommand{\consequence}[1]{\paragraphe{rouge}{Conséquence}{#1}}
 \newcommand{\definition}[1]{\paragraphe{vert}{Définition}{#1}}
 \newcommand{\vocabulaire}[1]{\paragraphe{vert}{Vocabulaire}{#1}}
 \newcommand{\remarque}[1]{\paragraphe{noir}{Remarque}{#1}}
 \newcommand{\rappel}[1]{\paragraphe{noir}{Rappel}{#1}}
 \newcommand{\illustration}[1]{\paragraphe{noir}{Illustration}{#1}}
+\newcommand{\nomenclature}[1]{\paragraphe{noir}{Nomenclature}{#1}}
 \newcommand{\notation}[1]{\paragraphe{noir}{Notation}{#1}}
 \newcommand{\exemple}[1]{\paragraphe{bleu}{Exemple}{#1}}
 \newcommand{\exemples}[1]{\paragraphe{bleu}{Exemples}{#1}}
 \newcommand{\demonstration}[1]{\paragraphe{bleu}{Démonstration}{#1}}
 \newcommand{\enonce}[1]{\paragraphe{bleu}{Énoncé}{#1}}
+\newcommand{\exempleenonce}[1]{\paragraphe{bleu}{Exemple d'énoncé}{#1}}
 
 \RequirePackage{framed}
 
 \newenvironment{redaction}[1]{
-    \enonce{#1}
+    \exempleenonce{#1}
     \begin{framed}
     \color{bleu}
 }{
