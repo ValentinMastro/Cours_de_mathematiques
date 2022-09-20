@@ -1,11 +1,11 @@
 \documentclass{vmqcm}
-\VMQCMgraine{30}
+\VMQCMgraine{60}
 
 %%%%%%%%%%%%%%%
 %% QUESTIONS %%
 %%%%%%%%%%%%%%%
 
-\directlua{eval = require("eval1.lua")}
+\directlua{eval = require("eval2.lua")}
 
 \newcommand{\questionA}{%
     \directlua{eval.qA()}
@@ -15,8 +15,8 @@
     \directlua{eval.qB()}
 }
 
-\newcommand{\questionC}[1]{
-    \directlua{eval.qC(#1)}
+\newcommand{\questionC}{
+    \directlua{eval.qC()}
 }
 
 \newcommand{\questionD}{
@@ -35,17 +35,22 @@
     \directlua{eval.qG()}
 }
 
+\newcommand{\questionH}{
+    \directlua{eval.qH()}
+}
+
 \begin{document}
 
-\foreach \n in {1,...,10}{%
-\begin{VMQCM}{Évaluation n°1 - 4ème}
+\foreach \n in {1,...,1}{%
+\begin{VMQCM}{Évaluation n°2 - 4ème}
+    \questionA\questionA
     \questionD\questionD
     \questionE\questionE
+    \questionC\questionC\questionC\questionC
+    \questionB\questionB\questionB\questionB
     \questionF\questionF
     \questionG\questionG
-    \questionA\questionA
-    \questionB\questionB
-    \questionC{40}\questionC{40}\questionC{40}\questionC{40}\questionC{1000}\questionC{1000}\questionC{10000}\questionC{10000}
+    \questionH\questionH
 \end{VMQCM}%
 }
 

@@ -20,6 +20,7 @@
 \RequirePackage{luatexbase}
 \RequirePackage[locale=FR, group-digits=all, group-separator=\ , group-minimum-digits=4]{siunitx}
 \RequirePackage{amsmath, amssymb}
+\RequirePackage{frenchmath}
 \RequirePackage{libertine}
 \usetikzlibrary{calc,math}
 
@@ -35,9 +36,6 @@
 
 % Gestion des marges
 \pagestyle{empty}
-
-% Titre
-\newcommand{\VMQCMTitre}[1]{\centerline{\large{#1}} \vspace{3ex}}
 
 % Compteurs
 \newcounter{VMQCMNumeroQuestion}
@@ -65,13 +63,16 @@
 
 % Formatage des questions et des réponses
 \setlength{\parindent}{0pt}
+\setlength\tabcolsep{3pt} % marge des cellules du tableau (par défaut : 6pt)
+\newcolumntype{C}{>{\centering\arraybackslash}X}
 
-\newenvironment{VMQCM}{%
-\setcounter{VMQCMNumeroQuestion}{0}
-\setcounter{VMQCMTotalPoints}{0}
-\setcounter{VMQCMPointsQuestion}{0}
-\directlua{solutions = {}}
-\tabularx{\textwidth}{@{}p{0.013\textwidth}|X|p{0.12\textwidth}|p{0.12\textwidth}|p{0.12\textwidth}|p{0.12\textwidth}|p{0.02\textwidth} @{}} & \centering Question & \centering A & \centering B & \centering C & \centering D & ~ \\\hline}{\endtabularx%
+\newenvironment{VMQCM}[1]{%
+\centerline{\large{#1}} \vspace{3ex}%
+\setcounter{VMQCMNumeroQuestion}{0}%
+\setcounter{VMQCMTotalPoints}{0}%
+\setcounter{VMQCMPointsQuestion}{0}%
+\directlua{solutions = {}}%
+\tabularx{\textwidth}{@{}p{0.013\textwidth}|p{0.3\textwidth}|C|C|C|C|p{0.02\textwidth} @{}} & \centering Question & \centering A & \centering B & \centering C & \centering D & ~ \\\hline}{\endtabularx%
     \vfill
     \makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
     \begin{tikzpicture}
@@ -143,9 +144,9 @@
         }
         % Encadré pour la note
         \draw (-1.1,-2.7) rectangle (1.1,-3.2);
-        \node at (0,-3) {Note : ~~~~/\theVMQCMTotalPoints};
+        \node at (0,-3) {Note sur \theVMQCMTotalPoints};
         % QR Code
-        \node at (-0.35,-2) {\qrcode[height=1.1cm]{\directlua{tex.print("\theVMQCMNumeroQuestion" .. "Q" .. table.concat(solutions))}}};
+        \node at (-0.35,-2) {\qrcode[height=1.1cm]{\directlua{tex.print("\theVMQCMNumeroQuestion" .. "Q-" .. table.concat(solutions))}}};
     \end{tikzpicture}
     \clearpage
 }
