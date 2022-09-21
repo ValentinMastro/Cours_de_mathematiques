@@ -32,8 +32,6 @@ from src.scan_pdf import scan_qr_code, scan_reponse_eleve
 """
 def main():
     images_pdf, donnees_eleves = traitement_fichiers(argv)
-    print(donnees_eleves)
-    input()
 
     evaluation = []
     for image in tqdm(images_pdf):
