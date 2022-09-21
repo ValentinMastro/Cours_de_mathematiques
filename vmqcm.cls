@@ -74,46 +74,44 @@
 \directlua{solutions = {}}%
 \tabularx{\textwidth}{@{}p{0.013\textwidth}|p{0.3\textwidth}|C|C|C|C|p{0.02\textwidth} @{}} & \centering Question & \centering A & \centering B & \centering C & \centering D & ~ \\\hline}{\endtabularx%
     \vfill
-    \makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+    % À la fin du document, on affiche la grille de réponse (incluant le niveau [6ème, 5ème, ...], la classe [A, B, C, ...], et le numéro d'élève, ainsi que les réponses aux questions) et le QR code de réponse
+    \makebox[\linewidth]{\rule{\paperwidth}{1pt}}
     \begin{tikzpicture}
         % Données élèves
         % NIVEAU (6ème, 5ème, etc.)
-        \node[anchor=east] at (0,0) {\footnotesize{\textit{Niveau}}};
-        \tikzmath{
-            coordinate \p;
-            for \y in {1,2,...,4}{
-                \p1 = (0,-0.3*\y+0.1);
-                \p2 = (0.2,-0.3*\y-0.1);
-                \p3 = (\p1)-(0,0.1);
-                {\node[anchor=east] at (\p3) {\tiny{\directlua{tex.print(math.floor(7.5-\y))}ème}};};
-                {\draw (\p1) rectangle (\p2);};
-            };
-        }
         % CLASSE (A, B, C, etc.)
-        \node[anchor=east] at (1.3,0) {\footnotesize{\textit{Classe}}};
+        \node[anchor=east] at (3,0) {\footnotesize{\textit{Classe}}};
         \tikzmath{
             int \lettre;
             coordinate \p;
+            coordinate \q;
             for \y in {1,2,...,6}{
-                \p1 = (1.3,-0.3*\y+0.1);
-                \p2 = (1.5,-0.3*\y-0.1);
+                \p1 = (2.3,-0.3*\y+0.1);
+                \p2 = (\p1)+(0.2,-0.2);
                 \p3 = (\p1)-(0,0.1);
+                \q1 = (\p1)+(0.6,0);
+                \q2 = (\q1)+(0.2,-0.2);
+                \q3 = (\q1)-(0,0.1);
                 \lettre = 65-1+\y;
-                {\node[anchor=east] at (\p3) {\tiny{\char\lettre}};};
-                {\draw (\p1) rectangle (\p2);};
+                {\node[anchor=east] at (\q3) {\tiny{\char\lettre}};};
+                {\draw (\q1) rectangle (\q2);};
+                if \y<5 then {
+                    {\node[anchor=east] at (\p3) {\tiny{\directlua{tex.print(math.floor(7.5-\y))}ème}};};
+                    {\draw (\p1) rectangle (\p2);}; 
+                };
             };
         }
         % NUMÉRO de l'élève
-        \node[anchor=east] at (2.9,0) {\footnotesize{\textit{Numéro}}};
+        \node[anchor=east] at (4.75,0) {\footnotesize{\textit{Numéro}}};
         \tikzmath{
             coordinate \p;
             coordinate \q;
             int \y;
             for \y in {0,1,...,9}{
-                \p1 = (2.3,{-0.3*(\y+1)+0.1});
+                \p1 = (3.9,{-0.3*(\y+1)+0.1});
                 \p2 = (\p1)+(0.2,-0.2);
                 \p3 = (\p1)+(0,-0.1);
-                \q1 = (\p1)+(0.8,0);
+                \q1 = (\p1)+(0.6,0);
                 \q2 = (\q1)+(0.2,-0.2);
                 \q3 = (\q1)+(0,-0.1);
                 {\draw (\p1) rectangle (\p2);};
@@ -129,28 +127,30 @@
             int \n;
             \O1 = (5.1,-0.6);
             \O2 = ({5.1+0.3*\theVMQCMNumeroQuestion},-1.801);
-            {\draw (\O1) grid[shift={(0,0)},step=0.3] (\O2);};
+            {\draw (\O1) grid[shift={(0.6,0)},step=0.3] (\O2);};
             coordinate \p;
             coordinate \l;
             for \n in {1,2,...,\theVMQCMNumeroQuestion}{
-                \p1 = (5+0.3*\n-0.075, {-0.65-1.5*mod(\n+1,2)});
+                \p1 = (5.6+0.3*\n-0.075, {-0.65-1.5*mod(\n+1,2)});
                 {\node[anchor=south] at (\p1) {\tiny{\n}};};
                 if \n<5 then {
-                    \l1 = (5.1,{-0.3*(\n+2)+0.15});
+                    \l1 = (5.7,{-0.3*(\n+2)+0.15});
                     \lettre = 65-1+\n;
                     {\node[anchor=east] at (\l1) {\tiny{\char\lettre}};};
                 };
             };
         }
         % Encadré pour la note
-        \draw (-1.1,-2.7) rectangle (1.1,-3.2);
-        \node at (0,-3) {Note sur \theVMQCMTotalPoints};
+        \tikzmath{
+            coordinate \p;
+            \p1 = (7.6,-2.3);
+            \p2 = (\p1)+(2.2,-0.5);
+            \p3 = (\p1)+(1.1,-0.26);
+            {\draw (\p1) rectangle (\p2);};
+            {\node at (\p3) {Note sur \theVMQCMTotalPoints};};
+        }
         % QR Code
-        \node at (-0.35,-2) {\qrcode[height=1.1cm]{\directlua{tex.print("\theVMQCMNumeroQuestion" .. "Q-" .. table.concat(solutions))}}};
+        \node[anchor=south west] at (-1.3,-2.9) {\qrcode[height=2.5cm]{\directlua{tex.print("\theVMQCMNumeroQuestion" .. "Q-" .. table.concat(solutions))}}};
     \end{tikzpicture}
     \clearpage
 }
-
-
-% À la fin du document, on affiche la grille de réponse (incluant le niveau [6ème, 5ème, ...], la classe [A, B, C, ...], et le numéro d'élève, ainsi que les réponses aux questions) et le QR code de réponse
-\AtEndDocument{}
