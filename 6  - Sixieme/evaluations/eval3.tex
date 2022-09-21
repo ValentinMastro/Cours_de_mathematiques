@@ -1,0 +1,62 @@
+\documentclass{vmqcm}
+\VMQCMgraine{45}
+
+%%%%%%%%%%%%%%%
+%% QUESTIONS %%
+%%%%%%%%%%%%%%%
+
+\directlua{eval = require("eval3.lua")}
+
+\newcommand{\questionA}[1]{%
+    \directlua{eval.qA(#1)}
+}
+
+\newcommand{\questionB}[1]{
+    \directlua{eval.qB(#1)}
+}
+
+\newcommand{\questionC}[1]{
+    \directlua{eval.qC(#1)}
+}
+
+\newcommand{\questionD}{
+    \directlua{eval.qD()}
+}
+
+\newcommand{\questionE}{
+    \directlua{eval.qE()}
+}
+
+\newcommand{\questionF}{
+    \directlua{eval.qF()}
+}
+
+\newcommand{\questionG}{
+    \directlua{eval.qG()}
+}
+
+\newcommand{\questionH}{
+    \directlua{eval.qH()}
+}
+
+\newcommand{\questionI}{
+    \directlua{eval.qI()}
+}
+
+
+\begin{document}
+
+\foreach \n in {1,...,1}{%
+\begin{VMQCM}{Évaluation n°3 - 6ème}
+    \questionA{2}\questionB{2}
+    \questionF\questionG\questionH\questionH
+    \questionI\questionI\questionI\questionI
+    \questionC{2}\questionC{2}
+    \questionC{5}\questionC{5}
+    \questionC{10}\questionC{10}
+    \questionA{4}\questionB{4}
+    \questionA{4}\questionB{4}
+\end{VMQCM}%
+}
+
+\end{document}

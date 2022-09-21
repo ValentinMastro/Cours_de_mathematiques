@@ -49,7 +49,7 @@
 
 % Afficher un nombre blanc sur fond noir entouré
 % https://tex.stackexchange.com/a/91070
-\newcommand{\libcircblk}[1]{\pgfmathparse{Hex(10102)}\libertineGlyph{uni\pgfmathresult}}
+\newcommand{\libcircblk}[1]{\pgfmathparse{Hex(10101+#1)}\libertineGlyph{uni\pgfmathresult}}
 
 % Ajouter une question au QCM
 %           \VMQCMAjouterQuestion{énoncé}{A}{B}{C}{D}{bonne réponse}{point(s)}
