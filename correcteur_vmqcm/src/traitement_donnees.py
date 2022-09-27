@@ -78,24 +78,22 @@ def extraire_images(url_fichier_pdf):
 
 
 def trouver_eleve(donnees_eleves, niveau, classe, numero):
-    print(niveau, classe, numero)
     for donnees in donnees_eleves:
         if niveau == donnees[0] and classe == donnees[1] and numero == int(donnees[4]):
             return (donnees[2], donnees[3], donnees[0], donnees[1])
         
     return ("INCONNU", "inconnu", niveau, classe)
 
-def calcul_note(bonnes_reponses, reponses):
-    print(bonnes_reponses, reponses)
+def calcul_note(bonnes_reponses, reponses, points):
     note = 0
     vrai, faux = 0, 0
-    for (reponse, correction) in zip(reponses, bonnes_reponses):
+    for (reponse, correction, p) in zip(reponses, bonnes_reponses, points):
         if reponse is None:
             note += 0
         elif reponse == correction:
-            vrai += 1
+            vrai += p
         else:
-            faux += 1
+            faux += p
 
     return vrai - faux / 3.0
 
@@ -104,5 +102,5 @@ def f(s):
 
 if __name__ == "__main__":
     a, b, c, d = 'A', 'B', 'C', 'D'
-    note = calcul_note(f("CCBBBAABDCCDCCCBAADC"), f("CCB0BA0C0CCBC0AB0000"))
+    note = calcul_note(f("DBBBABDBACBABABDDDDD"), f("ABBBBBBBCCCCDDBBBBBB"), [1 for i in range(20)])
     print(note)

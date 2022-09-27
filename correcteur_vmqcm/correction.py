@@ -16,14 +16,24 @@
     -> Générer un fichier csv avec les informations élèves et leur note
 """
 
-
+import yappi
+from os import cpu_count
 from pyzbar.pyzbar import decode
 from PIL import Image
 from sys import argv
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from tqdm import tqdm
 
 from src.traitement_donnees import traitement_fichiers, trouver_eleve, calcul_note
-from src.scan_pdf import scan_qr_code, scan_reponse_eleve
+from src.scan_pdf import scan
+
+
+def corriger_une_page(page, donnees_eleves):
+    bonnes_reponses, reponses, points, niveau, classe, numero, eleve = scan(page)
+    eleve = trouver_eleve(donnees_eleves, niveau, classe, numero)
+    note = calcul_note(bonnes_reponses, reponses, points)
+
+    return (*eleve, note, numero, page)
 
 
 """
@@ -31,19 +41,23 @@ from src.scan_pdf import scan_qr_code, scan_reponse_eleve
         python correction.py   FICHIER_PDF   FICHIER_ELEVES
 """
 def main():
-    images_pdf, donnees_eleves = traitement_fichiers(argv)
+    pages, donnees_eleves = traitement_fichiers(argv)
 
-    evaluation = []
-    for image in tqdm(images_pdf):
-        bonnes_reponses = scan_qr_code(image)
-        niveau, classe, numero, reponses = scan_reponse_eleve(image)
-        eleve = trouver_eleve(donnees_eleves, niveau, classe, numero)
-        note = calcul_note(bonnes_reponses, reponses)
-        evaluation.append((*eleve, note, numero, image))
+    with ThreadPoolExecutor(max_workers = len(pages)) as pool:
+        corrections = [pool.submit(corriger_une_page, page, donnees_eleves) for page in pages]
+        evaluations = [evaluation.result() for evaluation in as_completed(corrections)]
 
-    evaluation.sort(key=lambda x: (str(x[2]), str(x[3]), x[0]))
-    for e in evaluation:
+    evaluations.sort(key=lambda x: (str(x[2]), str(x[3]), x[0]))
+    for e in evaluations:
         print(e)
 
 if __name__ == "__main__":
+    yappi.start()
     main()
+    yappi.stop()
+    threads = yappi.get_thread_stats()
+    for thread in threads:
+        print(
+            "Function stats for (%s) (%d)" % (thread.name, thread.id)
+        )  # it is the Thread.__class__.__name__
+        yappi.get_func_stats(ctx_id=thread.id).print_all()
