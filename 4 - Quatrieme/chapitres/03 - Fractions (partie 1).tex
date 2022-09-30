@@ -1,8 +1,116 @@
 \documentclass["../Cours.tex"]{subfiles}
 
 \begin{document}
-\chapitre{Fractions}
-% thème : 
+\chapitre{Fractions et proportionnalité}
+
+\partie{Calculs fractionnaires}
+
+\definition{Soient deux nombres $a$ et $b$, avec $b \neq 0$. Le quotient de $a$ par $b$ est le nombre qui, lorsqu'il est multiplié par $b$, donne $a$. $$\dfrac{a}{b} \times b = a$$}
+
+\notation{On le note $\dfrac{a}{b}$. (écriture fractionnaire)}
+
+\begin{listedexemples}
+    \item $\dfrac{3}{4} \times 4 = \dfrac{3}{\cancel{4}} \times \cancel{4} = 3$
+    \item $\dfrac{7,2}{5,8} \times 5,8 = \dfrac{7,2}{\cancel{5,8}} \times \cancel{5,8} = 7,2$
+\end{listedexemples}
+
+
+\propriete{Soit deux nombres $a$ et $b$ avec $b \neq 0$. Soit $k$ avec $k \neq 0$. 
+$$\dfrac{a}{b} = \dfrac{ka}{kb}$$
+}
+
+\begin{listedexemples}
+    \item $\dfrac{16}{20} = \dfrac{16 \times 4}{20 \times 4} = \dfrac{64}{80}$
+    \item $\dfrac{35}{75} = \dfrac{35 \div 5}{75 \div 5} = \dfrac{7}{15}$
+\end{listedexemples}
+
+\definition{Simplifier une fraction, c'est trouver une autre fraction qui lui est égale avec un numérateur et un dénominateur plus petits.}
+
+\propriete{Pour additionner deux fractions, il faut qu'elles aient le même dénominateur.}
+
+\propriete{Soient deux nombres $a$ et $b$, $b \neq 0$ et deux nombres $c$ et $d$, $d \neq 0$. $$ \dfrac{a}{b} + \dfrac{c}{d} = \dfrac{ad+cb}{bd}$$}
+
+\begin{listedexemples}
+    \item $\dfrac{3}{7} + \dfrac{12}{8} = \dfrac{3 \times 8}{7 \times 8} + \dfrac{12 \times 7}{8 \times 7}$ 
+\end{listedexemples}
+
+\propriete{Soient $a$ et $b$ deux nombres, $b \neq 0$.\\ Soient $c$ et $d$ deux nombres, $d \neq 0$. $$\dfrac{a}{b} \times \dfrac{c}{d} = \dfrac{a \times c}{b \times d}$$}
+
+\exemple{$$\dfrac{7}{5} \times \dfrac{3}{4} = \dfrac{7 \times 3}{5 \times 4} = \dfrac{21}{20}$$}
+
+\propriete{Diviser par un nombre revient à multiplier par son inverse.}
+
+\exemple{$$\dfrac{2}{3} \div \dfrac{4}{5} = \dfrac{2}{3} \times \dfrac{5}{4} = \dfrac{10}{12}$$}
+
+
+
+\newcommand{\frandom}{\directlua{
+    local a = math.random(1,20)
+    local b = math.random(1,20)
+    local c = math.random(1,20)
+    local d = math.random(1,20)
+    tex.print("\\dfrac{" .. a .. "}{" .. b .. "} + \\dfrac{" .. c .. "}{" .. d .. "} = ")
+}}
+
+\newcommand{\trandom}{\directlua{
+    local a = math.random(1,20)
+    local b = math.random(1,20)
+    local c = a * math.random(1,9)
+    tex.print("\\dfrac{" .. a .. "}{" .. b .. "} = \\dfrac{" .. c .. "}{" .. "...}")
+}}
+
+\renewcommand{\labelitemi}{$\circ$}
+
+\clearpage
+\setlength{\itemsep}{3em}
+\begin{multicols}{2}
+\begin{itemize}
+    \item $\frandom$
+    \item $\frandom$
+    \item $\frandom$
+    \item $\frandom$
+    \item $\frandom$
+    \item $\frandom$
+    \item $\frandom$
+    \item $\frandom$
+    \item $\frandom$
+    \item $\frandom$
+    \item $\frandom$
+    \item $\frandom$
+    \item $\frandom$
+    \item $\frandom$
+    \item $\frandom$
+    \item $\frandom$
+\end{itemize}
+\end{multicols}
+
+\vspace{0.5cm}
+
+\begin{multicols}{3}
+\begin{itemize}
+    \item $\trandom$
+    \item $\trandom$
+    \item $\trandom$
+    \item $\trandom$
+    \item $\trandom$
+    \item $\trandom$
+    \item $\trandom$
+    \item $\trandom$
+    \item $\trandom$
+    \item $\trandom$
+    \item $\trandom$
+    \item $\trandom$
+    \item $\trandom$
+    \item $\trandom$
+    \item $\trandom$
+    \item $\trandom$
+    \item $\trandom$
+    \item $\trandom$
+    \item $\trandom$
+    \item $\trandom$
+    \item $\trandom$
+\end{itemize}
+\end{multicols}
 
 
 \end{document}
