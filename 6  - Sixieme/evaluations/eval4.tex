@@ -1,11 +1,12 @@
 \documentclass{../../vmqcm}
 \VMQCMgraine{124}
+\setlength{\VMQCMLargeurEnonce}{0.4\textwidth}
 
 %%%%%%%%%%%%%%%
 %% QUESTIONS %%
 %%%%%%%%%%%%%%%
 
-\directlua{eval = require("eval3.lua")}
+\directlua{eval = require("eval4.lua")}
 
 \newcommand{\questionA}[1]{%
     \directlua{eval.qA(#1)}
@@ -46,16 +47,14 @@
 
 \begin{document}
 
-\foreach \n in {1,...,12}{%
-\begin{VMQCM}{Évaluation n°3 - 6ème}
+\foreach \n in {1,...,1}{%
+\begin{VMQCM}{Évaluation n°4 - 6ème}
+    \questionA{4}\questionB{4}
     \questionA{2}\questionB{2}
-    \questionF\questionG\questionH\questionH
-    \questionI\questionI\questionI\questionI
-    \questionC{2}\questionC{2}
-    \questionC{5}\questionC{5}
-    \questionC{10}\questionC{10}
-    \questionA{4}\questionB{4}
-    \questionA{4}\questionB{4}
+    \questionC{2}\questionC{3}\questionC{5}\questionC{9}\questionC{10}
+    \questionD\questionD\questionD
+    \questionE\questionE\questionE\questionE
+    \questionF\questionF\questionF\questionF
 \end{VMQCM}%
 }
 

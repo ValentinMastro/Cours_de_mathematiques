@@ -66,13 +66,17 @@
 \setlength\tabcolsep{3pt} % marge des cellules du tableau (par défaut : 6pt)
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 
+
+\newlength{\VMQCMLargeurEnonce}
+\setlength{\VMQCMLargeurEnonce}{0.3\textwidth}
+
 \newenvironment{VMQCM}[1]{%
 \centerline{\large{#1}} \vspace{3ex}%
 \setcounter{VMQCMNumeroQuestion}{0}%
 \setcounter{VMQCMTotalPoints}{0}%
 \setcounter{VMQCMPointsQuestion}{0}%
 \directlua{solutions = {}}%
-\tabularx{\textwidth}{@{}p{0.013\textwidth}|p{0.3\textwidth}|C|C|C|C|p{0.02\textwidth} @{}} & \centering Question & \centering A & \centering B & \centering C & \centering D & ~ \\\hline}{\endtabularx%
+\tabularx{\textwidth}{@{}p{0.013\textwidth}|p{\VMQCMLargeurEnonce}|C|C|C|C|p{0.02\textwidth} @{}} & \centering Question & \centering A & \centering B & \centering C & \centering D & ~ \\\hline}{\endtabularx%
     \vfill
     % À la fin du document, on affiche la grille de réponse (incluant le niveau [6ème, 5ème, ...], la classe [A, B, C, ...], et le numéro d'élève, ainsi que les réponses aux questions) et le QR code de réponse
     \makebox[\linewidth]{\rule{\paperwidth}{1pt}}
