@@ -134,8 +134,8 @@ local function calcul_cote_angle_droit()
 
     local alphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'}
     local index1 = math.random(0, 25)
-    local index2 = (index1 + 9) % 26 +1 
-    local index3 = (index2 + 9) % 26 +1
+    local index2 = (index1 + 9) % 26
+    local index3 = (index2 + 9) % 26
 
     local p1 = alphabet[index1 + 1]
     local p2 = alphabet[index2 + 1]

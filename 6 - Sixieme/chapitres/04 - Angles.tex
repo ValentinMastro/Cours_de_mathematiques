@@ -1,0 +1,37 @@
+\documentclass[../Cours.tex]{subfiles}
+
+\begin{document}
+\chapitre{Angles}
+
+\partie{Concept}
+
+\definition{Un angle représente l'écartement entre deux demi-droites partageant la même origine.}
+
+\illustration{%
+\begin{center}
+\begin{tikzpicture}
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (2,0.5);
+    \coordinate (B) at (2,-0.5);
+    \draw ($(O)!1.5!(A)$) -- (O) -- ($(O)!1.5!(B)$);
+    \draw[rouge,fill=rouge] ($(O)!0.5cm!(A)$) arc (15:-15:0.5) -- (O) -- cycle;
+    \node at (A) {|};
+    \node[above left] at (A) {$A$};
+    \node at (B) {|};
+    \node[below left] at (B) {$B$};
+    \node[left] at (O) {$O$};
+    \node[anchor=west] at (2.5,0) {\textcolor{rouge}{L'angle $\widehat{AOB}$}};
+\end{tikzpicture}
+\end{center}
+}
+
+\definition{%
+\begin{itemize}
+    \item Le \emph{sommet} de l'angle est l'origine commune.
+    \item Les \emph{côtés} de l'angle sont les demi-droites.
+\end{itemize}
+}
+
+\notation{Trois points avec un << chapeau >> \\ Le point du milieu est le sommet}
+
+\end{document}
