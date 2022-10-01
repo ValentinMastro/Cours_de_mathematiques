@@ -1,5 +1,4 @@
 import csv
-import fitz
 import io
 import os
 import sys
@@ -101,6 +100,31 @@ def f(s):
     return [l if l in ['A', 'B', 'C', 'D'] else None for l in s]
 
 if __name__ == "__main__":
-    a, b, c, d = 'A', 'B', 'C', 'D'
-    note = calcul_note(f("DBBBABDBACBABABDDDDD"), f("ABBBBBBBCCCCDDBBBBBB"), [1 for i in range(20)])
-    print(note)
+    liste = []
+    liste.append((calcul_note(f("BACBAABADCDBBACA"), f("ACBCADADABACDABD"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 53))
+    liste.append((calcul_note(f("CCABBCBDACDCCDBB"), f("BCDBCABCABACBABA"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 39))
+    liste.append((calcul_note(f("CDBABBACBDBCDDDB"), f("CDCDCBBABDBBDDBB"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 68))
+    liste.append((calcul_note(f("BADBCBDABBCACCBC"), f("BABACBCABBCACCBC"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 44))
+    liste.append((calcul_note(f("CABDBDDCBABABBDC"), f("CACBBDDCBABABBCD"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 98))
+    liste.append((calcul_note(f("BADDBCCCDBCBCACB"), f("BCDD0C0D0CBCCDCA"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 63))
+    liste.append((calcul_note(f("DACCDDBCCABBAABC"), f("DDCCDDBCCABBAABC"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 18))
+    liste.append((calcul_note(f("DCBDDCACAACBBDCD"), f("DCBDDCACAACBBDCD"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 19))
+    liste.append((calcul_note(f("CABAADDACACBDBAB"), f("CADDADDABACBDCCD"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 24))
+    liste.append((calcul_note(f("BDBCBCACAACCDDDB"), f("0000BCACC0000000"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 13))
+    liste.append((calcul_note(f("BBCBDCDBCABCCDAD"), f("BACCDCDBDA00AAAA"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 49))
+    liste.append((calcul_note(f("ABBDBDBCDBBCDADB"), f("ABBDBDBC0A0CDACC"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 58))
+    liste.append((calcul_note(f("DCACBDBCDCDCBDDB"), f("ACBACBCDBCBDBADC"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 29))
+    liste.append((calcul_note(f("ABDDBDDCCDCABDCC"), f("ABCCDDDCBDCABDCC"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 23))
+    liste.append((calcul_note(f("CADDBADBDCBBABBB"), f("CADDCBDCACBBBABD"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 83))
+    liste.append((calcul_note(f("CBADADACCCDBDDCD"), f("CBADADACCCDBDDCD"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 28))
+    liste.append((calcul_note(f("BADCBBACADDABCAC"), f("CABCABCBCABDBDCA"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 33))
+    liste.append((calcul_note(f("BCADBCACCDCAADBC"), f("BCADDACCCDBDAABD"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 93))
+    liste.append((calcul_note(f("DDABCCCBCDDDDBCD"), f("DDABCCCBCDDDDBCD"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 48))
+    liste.append((calcul_note(f("AABBBBAADACDCACA"), f("DCCBBCCABCDCAADB"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 63))
+    liste.append((calcul_note(f("BACBDBAACDBAAACA"), f("CACBCBABCBDBDCCB"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 78))
+    liste.append((calcul_note(f("ADDDDBADCABADBAA"), f("ADBCDBADAABADBBA"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 43))
+    liste.append((calcul_note(f("BDDBADBABBDABABC"), f("BDDAADBBBBDABABC"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 43))
+    liste.append((calcul_note(f("DDDCDBAACAABBDAA"), f("ABCDDBCBDACDADBA"), [2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]), 38))
+    liste.sort(key=lambda x:x[1])
+    for l in liste:
+        print(l)

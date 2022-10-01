@@ -27,9 +27,9 @@ def recherche_ligne_separation(img, image):
         if fin is None:
             print("fin")
         print(image)
-        cv2.imshow('matrice', img)
-        cv2.waitKey(0)
-        exit(1)
+        #cv2.imshow('matrice', img)
+        #cv2.waitKey(0)
+        #exit(1)
 
     return debut, fin
 
@@ -40,7 +40,7 @@ def scan_qrcode(img, image):
         dataQR = decodeQR[0].data.decode('ascii')
     except IndexError:
         print(f"{image} - QRcode non détecté")
-        return [None for i in range(20)]
+        return None
 
     rect = decodeQR[0].rect
 
@@ -117,6 +117,8 @@ def scan(image):
 
     # On recherche la ligne de séparation
     debut, fin = recherche_ligne_separation(img, image)
+    if debut is None or fin is None:
+        return (None for i in range(5))
     img3 = decalage(img, debut[0], debut[1])
 
     # On tourne l'image
@@ -125,10 +127,13 @@ def scan(image):
 
     # On découpe l'image et on applique une valeur seuil
     img5 = img4[0:1000, 0:3500]
-    ret, img6 = cv2.threshold(img5, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+    ret, img6 = cv2.threshold(img5, 185, 255, cv2.THRESH_BINARY)
 
     # On scan le QRcode
-    bonnes_reponses, nombre_de_questions, rect, points = scan_qrcode(img6, image)
+    try:
+        bonnes_reponses, nombre_de_questions, rect, points = scan_qrcode(img6, image)
+    except Exception:
+        return (None, None, None, None, None, None, None)
     decalx = rect.left - 297
     decaly = rect.top - 118
 
@@ -142,7 +147,7 @@ def scan(image):
     dizaine = detecter_donnee_eleve(img6, list(range(10)), 1462 + decalx, 113 + decaly, 26, 68)
     unite = detecter_donnee_eleve(img6, list(range(10)), 1599 + decalx, 113 + decaly, 26, 68)
 
-    #cv2.imshow('matrice', img6)
+    #cv2.imshow("matrice", img6)
     #cv2.waitKey(0)
 
     return (bonnes_reponses, reponses, points, niveau, classe, dizaine*10+unite, reponses)

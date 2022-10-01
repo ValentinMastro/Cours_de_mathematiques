@@ -43,8 +43,8 @@ def corriger_une_page(page, donnees_eleves):
 def main():
     pages, donnees_eleves = traitement_fichiers(argv)
 
-    with ThreadPoolExecutor(max_workers = len(pages)) as pool:
-        corrections = [pool.submit(corriger_une_page, page, donnees_eleves) for page in pages]
+    with ThreadPoolExecutor(max_workers = 1) as pool:
+        corrections = [pool.submit(corriger_une_page, page, donnees_eleves) for page in pages[0:1]]
         evaluations = [evaluation.result() for evaluation in as_completed(corrections)]
 
     evaluations.sort(key=lambda x: (str(x[2]), str(x[3]), x[0]))
@@ -52,6 +52,9 @@ def main():
         print(e)
 
 if __name__ == "__main__":
+    main()
+    exit()
+
     yappi.start()
     main()
     yappi.stop()
