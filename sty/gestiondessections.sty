@@ -8,6 +8,8 @@
 \RequirePackage{fancyhdr}
 \RequirePackage{lastpage}
 \RequirePackage[vmargin=2cm, hmargin=1.5cm]{geometry}
+\RequirePackage[french]{isodate}
+\RequirePackage{scrtime}
 
 \makeatletter
 \newcommand{\HUGEE}{\@setfontsize\Huge{60}{60}}
@@ -17,8 +19,7 @@
 \begin{vplace}[0.5]
     \centerline{\HUGEE{Cours de #1}}
     \vspace{7ex}
-    \centerline{\normalsize\textit{À jour avec le programme officiel}}
-    \centerline{\normalsize\textit{Compilé le \today}}
+    \centerline{\normalsize\textit{Compilé le \isodate\today~\thistime}}
     \end{vplace}
     \clearpage
 }
