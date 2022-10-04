@@ -34,4 +34,66 @@
 
 \notation{Trois points avec un << chapeau >> \\ Le point du milieu est le sommet}
 
+\partie{Les types d'angles}
+
+\souspartie{Les angles saillants et rentrants}
+
+\definition{%
+\begin{itemize}
+    \item Un angle saillant est un angle dont la mesure est comprise entre \ang{0} et \ang{180}.
+    \item Un angle rentrant mesure entre \ang{180} et \ang{360}.
+\end{itemize}
+}
+
+\illustration{%
+\begin{center}
+    \begin{tikzpicture}
+        \coordinate (E) at (0,0);
+        \coordinate (D) at (2,0.5);
+        \coordinate (F) at (2,-0.5);
+        \draw ($(E)!1.5!(D)$) -- (E) -- ($(E)!1.5!(F)$);
+        \draw ($(D)+(0,0.1)$) -- ($(D)+(0,-0.1)$);
+        \draw ($(F)+(0,0.1)$) -- ($(F)+(0,-0.1)$);
+        \node[above right] at (D) {$D$};
+        \node[below right] at (F) {$F$};
+        \node[left] at (E) {$E$};
+    \end{tikzpicture}
+\end{center}
+}
+
+\propriete{La somme d'un angle saillant et de l'angle rentrant qui lui est associé vaut \ang{360}.}
+
+\exemple{$\widehat{DEF} + {DEF} = \ang{360}$}
+
+\souspartie{Nomenclature des angles saillants}
+
+\renewcommand*{\arraystretch}{3}
+\begin{tabularx}{\textwidth}{|l|C|X|}\hline
+    aigu & entre \ang{0} et \ang{90} & \makecell{\begin{tikzpicture}
+        \coordinate (E) at (0,0);
+        \coordinate (D) at (2,0.5);
+        \coordinate (F) at (2,-0.5);
+        \draw (D) -- (E) -- (F);
+    \end{tikzpicture}}  \\\hline
+    droit & $= \ang{90}$ & \makecell{\begin{tikzpicture}
+        \coordinate (E) at (0,0);
+        \coordinate (D) at (2,0);
+        \coordinate (F) at (0,1);
+        \draw (D) -- (E) -- (F);
+    \end{tikzpicture}} \\\hline
+    obtus & entre \ang{90} et \ang{180} & \makecell{\begin{tikzpicture}
+        \coordinate (E) at (0,0);
+        \coordinate (D) at (2,0);
+        \coordinate (F) at (-1,1);
+        \draw (D) -- (E) -- (F);
+    \end{tikzpicture}} \\\hline
+    plat & $= \ang{180}$ & \makecell{\begin{tikzpicture}
+        \coordinate (E) at (0,0);
+        \coordinate (D) at (2,0);
+        \coordinate (F) at (-2,0);
+        \draw (D) -- (E) -- (F);
+    \end{tikzpicture}} \\\hline
+\end{tabularx}
+\renewcommand*{\arraystretch}{1}
+
 \end{document}

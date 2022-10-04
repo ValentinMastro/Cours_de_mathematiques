@@ -42,9 +42,11 @@
 \newcounter{VMQCMTotalPoints}
 \newcounter{VMQCMPointsQuestion}
 \directlua{solutions = {}}
+\directlua{points = {}}
 
 \newcommand{\VMQCMAjouterSolution}[1]{%
-    \directlua{solutions[\theVMQCMNumeroQuestion] = "\theVMQCMPointsQuestion" .. "#1"}%
+    \directlua{solutions[\theVMQCMNumeroQuestion] = "#1"}%
+    \directlua{points[\theVMQCMNumeroQuestion] = "\theVMQCMPointsQuestion"}%
 }
 
 % Afficher un nombre blanc sur fond noir entouré
@@ -154,7 +156,7 @@
             {\node at (\p3) {Note sur \theVMQCMTotalPoints};};
         }
         % QR Code
-        \node[anchor=south west] at (-1.3,-2.9) {\qrcode[height=2.5cm]{\directlua{tex.print("\theVMQCMNumeroQuestion" .. "Q-" .. table.concat(solutions))}}};
+        \node[anchor=south west] at (-1.3,-2.9) {\qrcode[height=2.5cm]{\directlua{tex.print("\theVMQCMNumeroQuestion" .. "Q-" .. "REP:" .. table.concat(solutions) .. "-PTS:" .. table.concat(points)) }}};
     \end{tikzpicture}
     \clearpage
 }

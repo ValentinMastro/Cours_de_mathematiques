@@ -1,0 +1,55 @@
+\documentclass{../../vmqcm}
+\VMQCMgraine{800}
+
+%%%%%%%%%%%%%%%
+%% QUESTIONS %%
+%%%%%%%%%%%%%%%
+
+\directlua{eval = require("eval5.lua")}
+
+\newcommand{\questionA}{%
+    \directlua{eval.qA()}
+}
+
+\newcommand{\questionB}{
+    \directlua{eval.qB()}
+}
+
+\newcommand{\questionC}{
+    \directlua{eval.qC()}
+}
+
+\newcommand{\questionD}{
+    \directlua{eval.qD()}
+}
+
+\newcommand{\questionE}{
+    \directlua{eval.qE()}
+}
+
+\newcommand{\questionF}{
+    \directlua{eval.qF()}
+}
+
+\newcommand{\questionG}{
+    \directlua{eval.qG()}
+}
+
+\newcommand{\questionH}{
+    \directlua{eval.qH()}
+}
+
+\begin{document}
+
+\foreach \n in {1,...,1}{%
+\begin{VMQCM}{Évaluation n°5 - 4ème}
+    \questionA\questionB
+    \questionE\questionE\questionE\questionE
+    \questionD\questionD
+    \questionC\questionC\questionC\questionC
+    \questionG\questionG
+    \questionH\questionH\questionH\questionH
+\end{VMQCM}%
+}
+
+\end{document}

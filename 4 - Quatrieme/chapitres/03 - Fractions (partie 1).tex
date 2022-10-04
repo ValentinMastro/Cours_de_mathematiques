@@ -53,6 +53,38 @@ $$\dfrac{a}{b} = \dfrac{ka}{kb}$$
 \end{center}
 }
 
+\clearpage
+\partie{Pourcentages}
+
+\souspartie{Le pourcentage d'un nombre}
+
+\definition{Calculer $p~\%$ d'un nombre $n$, c'est multiplier $\dfrac{p}{100}$ par $n$.}
+
+\renewcommand\CancelColor{\color{rouge}}
+
+\begin{listedexemples}
+    \item $25~\%$ de $12 = \dfrac{25}{100} \times 12 = \dfrac{\cancel{25} \times 1}{\cancel{25} \times \cancel{4}} \times 3 \times \cancel{4} = 3$
+    \item $25~\%$ de $100 = \dfrac{25}{\cancel{100}} \times \cancel{100} = 25$
+    \item $75~\%$ de $32 = \dfrac{75}{100} \times 32 = \dfrac{3 \times \cancel{25}}{\cancel{4} \times \cancel{25}} \times 8 \times \cancel{4} = 3 \times 8 = 24$
+\end{listedexemples}
+
+\regle{Pour calculer une proportion sous forme de pourcentage, il faut que le dénominateur soit égal à 100.}
+
+\exemple{%
+    \begin{center}
+    \begin{tikzpicture}
+        \definecolor{bleuRF}{RGB}{05, 20, 64}
+        \definecolor{blancRF}{RGB}{255, 255, 255}
+        \definecolor{rougeRF}{RGB}{236, 25, 32}
+        \draw[white, fill=bleuRF] (0,0) rectangle (1,2);
+        \draw[white, fill=blancRF] (1,0) rectangle (2,2);
+        \draw[white, fill=rougeRF] (2,0) rectangle (3,2);
+    \end{tikzpicture}
+    \end{center}
+Dans le drapeau français, il y a 1 morceau sur 3 qui est bleu. Donc, la proportion de bleu dans le drapeau est de $\dfrac{1}{3}$. Pour la mettre sous forme de pourcentage, je peux multiplier au numérateur et au dénominateur par 100 :
+$$\dfrac{1}{3} = \dfrac{1 \times 100}{3 \times 100} = \dfrac{1 \times 100}{3}~\% \approx 33,3 ~\% = \dfrac{33{,}3}{100}$$
+}
+
 
 \newcommand{\frandom}{\directlua{
     local a = math.random(1,20)
