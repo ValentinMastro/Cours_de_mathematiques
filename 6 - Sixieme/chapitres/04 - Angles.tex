@@ -96,4 +96,23 @@
 \end{tabularx}
 \renewcommand*{\arraystretch}{1}
 
+\partie{Les angles dans un triangle}
+
+\propriete{Dans un triangle, il y a 3 angles. La somme de leurs mesures est égale à \ang{180}.}
+
+\exemple{\begin{center}\begin{tikzpicture}[scale=0.8]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (6,0);
+    \coordinate (u) at ({cos(40)},{sin(40)});
+    \coordinate (v) at ({-cos(80)},{sin(80)});
+    \draw (O) -- (A);
+    \draw (O) -- ($(O)+8*(u)$);
+    \draw (A) -- ($(A)+5*(v)$);
+    \node[anchor=north] at (3,0) {\qty{6}{\centi\metre}};
+    \draw (0.3,0) arc (0:40:0.3);
+    \node[anchor=west] at (0.5,0.4) {\ang{40}};
+    \draw (5.7,0) arc (180:100:0.3);
+    \node[anchor=east] at (5.5,0.2) {\ang{80}};
+\end{tikzpicture}\end{center}}
+
 \end{document}

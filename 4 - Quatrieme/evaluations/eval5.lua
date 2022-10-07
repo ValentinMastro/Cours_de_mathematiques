@@ -193,7 +193,7 @@ local function multiplication_fractions()
 end
 
 local function division_fractions()
-    local premiers = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53}
+    local premiers = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37}
 
     local a, b, c, d = table.unpack(objets_aleatoires_dans(premiers, 4))
 
@@ -204,7 +204,7 @@ local function division_fractions()
 end
 
 local function pourcentage()
-    local premiers = {2, 3, 7, 11, 13, 17, 19}
+    local premiers = {2, 3, 7, 11, 13}
     local a, b = table.unpack(objets_aleatoires_dans(premiers, 2))
 
     local enonce = "$" .. a*10 .. "~\\%$ de $" .. b*10 .. "$"

@@ -1,0 +1,62 @@
+\documentclass{../../vmqcm}
+\VMQCMgraine{125}
+\setlength{\VMQCMLargeurEnonce}{0.35\textwidth}
+
+%%%%%%%%%%%%%%%
+%% QUESTIONS %%
+%%%%%%%%%%%%%%%
+
+\directlua{eval = require("eval5.lua")}
+
+\newcommand{\questionA}[1]{%
+    \directlua{eval.qA(#1)}
+}
+
+\newcommand{\questionB}[1]{
+    \directlua{eval.qB(#1)}
+}
+
+\newcommand{\questionC}[1]{
+    \directlua{eval.qC(#1)}
+}
+
+\newcommand{\questionD}{
+    \directlua{eval.qD()}
+}
+
+\newcommand{\questionE}{
+    \directlua{eval.qE()}
+}
+
+\newcommand{\questionF}{
+    \directlua{eval.qF()}
+}
+
+\newcommand{\questionG}{
+    \directlua{eval.qG()}
+}
+
+\newcommand{\questionH}{
+    \directlua{eval.qH()}
+}
+
+\newcommand{\questionI}{
+    \directlua{eval.qI()}
+}
+
+
+\begin{document}
+
+\foreach \n in {1,...,1}{%
+\begin{VMQCM}{Évaluation n°5 - 6ème}
+    \questionA{4}\questionB{4}
+    \questionC{3}\questionC{5}\questionC{9}
+    \questionD\questionD
+    \questionE\questionE\questionE
+    \questionF\questionF
+    \questionG\questionG
+    \questionH\questionH\questionH\questionH\questionH\questionH
+\end{VMQCM}%
+}
+
+\end{document}

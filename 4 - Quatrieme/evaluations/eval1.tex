@@ -35,10 +35,11 @@
     \directlua{eval.qG()}
 }
 
+\setcounter{VMQCMNumeroEvaluation}{1}
 \begin{document}
 
 \foreach \n in {1,...,10}{%
-\begin{VMQCM}{Évaluation n°1 - 4ème}
+\begin{VMQCM}{Évaluation n°\theVMQCMNumeroEvaluation~-~4ème}
     \questionD\questionD
     \questionE\questionE
     \questionF\questionF

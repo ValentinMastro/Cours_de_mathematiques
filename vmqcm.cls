@@ -41,8 +41,12 @@
 \newcounter{VMQCMNumeroQuestion}
 \newcounter{VMQCMTotalPoints}
 \newcounter{VMQCMPointsQuestion}
+\newcounter{VMQCMNumeroEvaluation}
+\setcounter{VMQCMNumeroEvaluation}{0}
 \directlua{solutions = {}}
 \directlua{points = {}}
+
+
 
 \newcommand{\VMQCMAjouterSolution}[1]{%
     \directlua{solutions[\theVMQCMNumeroQuestion] = "#1"}%
