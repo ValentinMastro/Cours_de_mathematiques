@@ -1,11 +1,12 @@
 \documentclass{../../vmqcm}
 \VMQCMgraine{800}
+\setlength{\VMQCMLargeurEnonce}{0.35\textwidth}
 
 %%%%%%%%%%%%%%%
 %% QUESTIONS %%
 %%%%%%%%%%%%%%%
 
-\directlua{eval = require("eval5.lua")}
+\directlua{eval = require("eval6.lua")}
 
 \newcommand{\questionA}{%
     \directlua{eval.qA()}
@@ -39,17 +40,18 @@
     \directlua{eval.qH()}
 }
 
-\setcounter{VMQCMNumeroEvaluation}{5}
+\setcounter{VMQCMNumeroEvaluation}{6}
+\renewcommand{\VMQCMCalculatrice}{Calculatrice autorisée}
 \begin{document}
 
-\foreach \n in {1,...,1}{%
+\foreach \n in {1,...,80}{%
 \begin{VMQCM}{Évaluation n°\theVMQCMNumeroEvaluation{}~-~4ème}
     \questionA\questionB
-    \questionE\questionE\questionE\questionE
+    \questionC\questionC
     \questionD\questionD
-    \questionC\questionC\questionC\questionC
+    \questionE\questionE
+    \questionF\questionF
     \questionG\questionG
-    \questionH\questionH\questionH\questionH
 \end{VMQCM}%
 }
 
