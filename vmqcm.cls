@@ -12,13 +12,21 @@
 \LoadClass[10pt]{article}
 \RequirePackage[a5paper,margin=1cm]{geometry}
 \RequirePackage{tabularx}
+\RequirePackage{makecell}
 \RequirePackage{qrcode}
 \RequirePackage{tikz}
 \RequirePackage{pgf}
 \RequirePackage{fontspec}
 \RequirePackage{luacode}
 \RequirePackage{luatexbase}
+
+\RequirePackage{eurosym}
 \RequirePackage[locale=FR, group-digits=all, group-separator=\ , group-minimum-digits=4]{siunitx}
+\DeclareSIUnit{\cube}{\cubed}
+\DeclareSIUnit{\carre}{\squared}
+\DeclareSIUnit{\litre}{\ell}
+\DeclareSIUnit{\EURO}{\text{\euro}}
+
 \RequirePackage{amsmath, amssymb}
 \RequirePackage{frenchmath}
 \RequirePackage{libertine}
@@ -36,6 +44,9 @@
 
 % Gestion des marges
 \pagestyle{empty}
+
+% Affichage calculatrice
+\newcommand{\VMQCMCalculatrice}{Calculatrice interdite}
 
 % Compteurs
 \newcounter{VMQCMNumeroQuestion}
@@ -59,12 +70,12 @@
 
 % Ajouter une question au QCM
 %           \VMQCMAjouterQuestion{énoncé}{A}{B}{C}{D}{bonne réponse}{point(s)}
-\newcommand{\VMQCMAjouterQuestion}[7]{%
+\newcommand{\VMQCMAjouterQuestion}[8]{%
     \stepcounter{VMQCMNumeroQuestion}%  
-    \setcounter{VMQCMPointsQuestion}{#7}%
-    \VMQCMAjouterSolution{#6}%
-    \addtocounter{VMQCMTotalPoints}{#7}%
-    \scriptsize{\theVMQCMNumeroQuestion} & \scriptsize{#1} & \scriptsize{#2} & \scriptsize{#3} & \scriptsize{#4} & \scriptsize{#5} & \large{\libcircblk{#7}} \\\hline
+    \setcounter{VMQCMPointsQuestion}{#8}%
+    \VMQCMAjouterSolution{#7}%
+    \addtocounter{VMQCMTotalPoints}{#8}%
+    \scriptsize{\theVMQCMNumeroQuestion} & #1 & #2 & #3 & #4 & #5 & #6 & \large{\libcircblk{#8}} \\\hline
 }
 
 % Formatage des questions et des réponses
@@ -77,12 +88,15 @@
 \setlength{\VMQCMLargeurEnonce}{0.3\textwidth}
 
 \newenvironment{VMQCM}[1]{%
-\centerline{\large{#1}} \vspace{3ex}%
+\begin{flushright}%
+\scriptsize{\fbox{\VMQCMCalculatrice{}}}%
+\end{flushright}%
+\centerline{\large{#1}} \vspace{2ex}%
 \setcounter{VMQCMNumeroQuestion}{0}%
 \setcounter{VMQCMTotalPoints}{0}%
 \setcounter{VMQCMPointsQuestion}{0}%
 \directlua{solutions = {}}%
-\tabularx{\textwidth}{@{}p{0.013\textwidth}|p{\VMQCMLargeurEnonce}|C|C|C|C|p{0.02\textwidth} @{}} & \centering Question & \centering A & \centering B & \centering C & \centering D & ~ \\\hline}{\endtabularx%
+\tabularx{\textwidth}{@{}p{0.013\textwidth}|p{\VMQCMLargeurEnonce}|C|C|C|C|C|p{0.02\textwidth} @{}} & \centering Question & \centering A & \centering B & \centering C & \centering D & \centering E & ~ \\\hline}{\endtabularx%
     \vfill
     % À la fin du document, on affiche la grille de réponse (incluant le niveau [6ème, 5ème, ...], la classe [A, B, C, ...], et le numéro d'élève, ainsi que les réponses aux questions) et le QR code de réponse
     \makebox[\linewidth]{\rule{\paperwidth}{1pt}}
@@ -135,16 +149,16 @@
             int \lettre;
             coordinate \O;
             int \n;
-            \O1 = (5.1,-0.6);
+            \O1 = (5.1,-0.3);
             \O2 = ({5.1+0.3*\theVMQCMNumeroQuestion},-1.801);
             {\draw (\O1) grid[shift={(0.6,0)},step=0.3] (\O2);};
             coordinate \p;
             coordinate \l;
             for \n in {1,2,...,\theVMQCMNumeroQuestion}{
-                \p1 = (5.6+0.3*\n-0.075, {-0.65-1.5*mod(\n+1,2)});
+                \p1 = (5.6+0.3*\n-0.075, {-0.35-1.75*mod(\n+1,2)});
                 {\node[anchor=south] at (\p1) {\tiny{\n}};};
-                if \n<5 then {
-                    \l1 = (5.7,{-0.3*(\n+2)+0.15});
+                if \n<6 then {
+                    \l1 = (5.7,{-0.3*(\n+1)+0.15});
                     \lettre = 65-1+\n;
                     {\node[anchor=east] at (\l1) {\tiny{\char\lettre}};};
                 };
