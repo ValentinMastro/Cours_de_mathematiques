@@ -44,11 +44,12 @@ def scan_qrcode(img, image):
 
     rect = decodeQR[0].rect
 
-    questions, reponseQR = dataQR.split("Q")
-    bonnes_reponses = [reponseQR[2*i+2] for i in range(int(questions))]
-    points = [int(reponseQR[2*i+1]) for i in range(int(questions))]
+    nbr_questions, rep, pts = dataQR.split("-")
+    questions = int(nbr_questions[:-1])
+    bonnes_reponses = [rep[i+4] for i in range(questions)]
+    points = [int(pts[i+4]) for i in range(questions)]
 
-    return bonnes_reponses, int(questions), rect, points
+    return bonnes_reponses, questions, rect, points
 
 
 def detecter_reponse(img, question, x, y, taille, decal):
