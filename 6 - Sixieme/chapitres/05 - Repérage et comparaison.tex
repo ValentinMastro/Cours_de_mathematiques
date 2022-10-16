@@ -2,4 +2,115 @@
 
 \begin{document}
 \chapitre{Repérage et comparaison}
+
+\partie{Repérage}
+
+\definition{Un axe est une (demi-)droite que l'on va graduer, c'est-à-dire associer un nombre à chaque point : son abscisse.}
+
+\notation{Si l'abscisse du point $A$ est $2{,}7$, on note : $A(2{,}7)$.}
+
+\exemples{%
+\begin{center}
+    \begin{tikzpicture}
+        \draw[-latex] (0,0) -- (7,0);
+        \foreach \n in {0,...,6} {
+            \draw (\n,-0.2) -- (\n,0.2);
+            \node[below] at (\n,-0.1) {$\n$};
+        };
+        \foreach[count=\i] \p/\x in {A/2, B/6, C/4.5, D/0} {
+            \node[above] at (\x, 0.1) {\textcolor{rouge}{$\p$}};
+            \draw[thick,rouge] (\x,-0.1) -- (\x,0.1);
+            \node[anchor=west] at ({9+1.6*mod(\i+1,2)},{1-int((\i+1)/2)*0.65}) {\textcolor{rouge}{$\p(\num{\x})$}};
+        }
+    \end{tikzpicture}
+\end{center}}
+
+\partie{Comparaison et encadrement}
+
+\regle{Sur un axe allant de gauche à droite, les nombres sont rangés dans l'ordre croissant (du plus petit au plus grand).}
+
+\exemple{%
+\begin{center}
+    \begin{tikzpicture}[scale=2]
+        \draw[-latex] (0,0) -- (3.2,0);
+        \foreach \n in {2,4,6,8,12,14} {
+            \draw (\n/5,-0.1) -- (\n/5,0.1);
+            \node[below] at ({\n/5},-0.05) {\textcolor{vert}{$\frac{\n}{5}$}};
+        };
+        \foreach \n in {0,2} {
+            \draw (\n,-0.1) -- (\n,0.1);
+            \node[below] at (\n,-0.05) {$\n$};
+        }
+        % A(6/5) B 12/5 C 1 D 28/10
+        \draw[very thick,rouge] (1.2,-0.08) -- (1.2,0.08) node[above] {$A$};
+        \draw[very thick,rouge] (2.4,-0.08) -- (2.4,0.08) node[above] {$B$};
+        \draw[very thick,rouge] (1,-0.08) -- (1,0.08) node[above] {$C$};
+        \draw[very thick,rouge] (2.8,-0.08) -- (2.8,0.08) node[above] {$D$};
+        \node at (0,-0.8) {\textcolor{rouge}{$A(\frac{6}{5})$}};
+        \node at (1,-0.8) {\textcolor{rouge}{$B(\frac{12}{5})$}};
+        \node at (2,-0.8) {\textcolor{rouge}{$C(1)$}};
+        \node at (3,-0.8) {\textcolor{rouge}{$D(\frac{28}{10})$}};
+    \end{tikzpicture}
+\end{center}
+}
+
+\regle{Pour comparer deux fractions sans axe, on peut comparer leur quotient.}
+
+\exemple{$\dfrac{3}{7} < \dfrac{4}{9}$ car $3 \div 7 \approx 0{,}43$ et $4 \div 9 \approx 0{,}44$}
+
+\partie{Repérage dans un plan}
+
+\definition{Un repère orthogonal est constitué de 3 éléments :
+    \begin{itemize}
+        \item Un point appelé l'origine du repère
+        \item l'axe des abscisses (souvent horizontal)
+        \item l'axe des ordonnées (perpendiculaire à l'axe des ordonnées, souvent vertical)
+    \end{itemize}
+}
+
+\illustration{%
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[fill] (0,0) circle (0.1);
+            \draw[-latex] (0,0) -- (9,0);
+            \draw[-latex] (0,0) -- (0,6);
+            \foreach \n in {1,...,8} {
+                \draw (\n,-0.1) -- (\n,0.1);
+            }
+            \foreach \n in {1,...,5} {
+                \draw (-0.1,\n) -- (0.1,\n);
+            }
+            \node[anchor=east] at (0,0) {origine};
+            \node[anchor=south west] at (6,-0.8) {Axe des abscisses};
+            \node[anchor=south west] at (0, 5) {Axe des ordonnées};
+        \end{tikzpicture}
+    \end{center}
+}
+
+\definition{Dans un repère, on associe deux nombres à chaque point : l'abscisse et l'ordonnée. Les deux ensembles sont appelés les coordonnées du point.}
+
+\notation{Si le point $A$ a pour abscisse $7$, et pour ordonnée $4$, on note : $A(7;4)$}
+
+\exemple{%
+\color{black}%
+\begin{center}
+    \begin{tikzpicture}
+        \draw[fill] (0,0) circle (0.1);
+        \draw[-latex] (0,0) -- (5,0);
+        \draw[-latex] (0,0) -- (0,5);
+        \foreach \n in {1,...,4} {
+            \draw (\n,-0.1) node[below] {$\n$} -- (\n,0.1);
+        }
+        \foreach \n in {1,...,4} {
+            \draw (-0.1,\n) node[left] {$\n$} -- (0.1,\n);
+        }
+        \foreach[count=\i] \p/\x/\y in {A/2/3, B/4/1, C/3/0, D/0/4} {
+            \draw[rouge, dashed] (\x,0) -- (\x,\y) -- (0,\y);
+            \draw[rouge, fill=rouge] (\x,\y) circle (0.08);
+            \node[font=\small,above right,rouge] at (\x,\y) {$\p$};
+            \node[anchor=west,rouge] at (6,{3.5-0.6*\i}) {$\p(\x;\y)$};
+        }
+    \end{tikzpicture}
+\end{center}}
+
 \end{document}

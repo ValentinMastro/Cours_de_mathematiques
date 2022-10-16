@@ -1,0 +1,59 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{siunitx}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{mdframed}
+\usepackage{tikz}
+
+\newcommand{\titre}[1]{%
+    % #1 : numéro du DS
+    \begin{center}%
+        \Huge{DS n°#1}%    
+    \end{center}%
+}
+
+
+\begin{document}
+
+\titre{1 (sujet 0)}
+
+\begin{questions}
+    \question On donne les deux programmes de calcul suivants :
+
+    \begin{mdframed}[leftmargin=0.3\linewidth, rightmargin=0.3\linewidth]
+        \underline{Programme A :}
+        \begin{itemize}
+            \item Choisir un nombre entier
+            \item Le multiplier par 2
+            \item Ajouter au résultat 7
+            \item Multiplier 8 au résultat
+        \end{itemize}
+    \end{mdframed}
+    \begin{mdframed}[leftmargin=0.3\linewidth, rightmargin=0.3\linewidth]
+        \underline{Programme B :}
+        \begin{itemize}
+            \item Choisir une fraction
+            \item L'inverser
+            \item Ajouter au résultat $\frac{1}{2}$
+            \item Multiplier le résultat par $\frac{2}{3}$
+        \end{itemize}
+    \end{mdframed}
+
+    \begin{parts}
+        \part En choisissant $3$ dans le programme de calcul A, vérifier que l'on trouve bien $104$.
+        \part En choisissant $\frac{5}{4}$ dans le programme de calcul B, vérifier que l'on trouve bien $\frac{28}{30}$.
+        \part En choisissant $1$ dans le programme A et $\frac{2}{215}$ dans le programme B, on trouve le même résultat. Montrer que cela est vrai en faisant les deux calculs.
+    \end{parts}
+
+    \question
+    \begin{parts}
+        \part Dans le triangle $ABC$ rectangle en $B$, $AB = \qty{3,1}{\centi\metre}$ et $BC = \qty{6,2}{\centi\metre}$. Déterminer la distance $AC$.
+        \part Une échelle est posée sur un mur. Elle mesure \qty{5,5}{\metre}. Elle est posée au sol à \qty{2}{\metre} du mur.
+        \begin{subparts}
+            \subpart Faire un schéma, et expliquer pourquoi on peut modéliser le problème par un triangle rectangle.
+            \subpart Posée de cette manière, quelle hauteur l'échelle permettra d'atteindre ?
+        \end{subparts}
+    \end{parts}
+\end{questions}
+
+\end{document}
