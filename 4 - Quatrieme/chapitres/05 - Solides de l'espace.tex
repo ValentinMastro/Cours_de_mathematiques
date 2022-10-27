@@ -29,6 +29,18 @@
 
 \convention{Dans le Système International (SI) d'unités, l'unité du volume est le \unit{\metre\cube}.}
 
+\vfill
+
+\begin{tabularx}{\linewidth}{*{21}{|X}|}
+    \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & & \small{\unit{\kilo\litre}} & \small{\unit{\hecto\litre}} & \small{\unit{\deca\litre}} & \small{\unit{\litre}} & \small{\unit{\deci\litre}} & \small{\unit{\centi\litre}} & \small{\unit{\milli\litre}} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\\cline{12-18}
+    \multicolumn{3}{|c|}{\unit{\km\cube}} & \multicolumn{3}{c|}{\unit{\hecto\metre\cube}} & \multicolumn{3}{c|}{\unit{\deca\metre\cube}} & \multicolumn{3}{c|}{\unit{\metre\cube}} & \multicolumn{3}{c|}{\unit{\dm\cube}} & \multicolumn{3}{c|}{\unit{\cm\cube}} & \multicolumn{3}{c|}{\unit{\mm\cube}} \\\hline
+     & & & & & & & & & & & & & & & & & & & & \\[2cm]
+\end{tabularx}
+
+\vfill
+
+\convention{$\qty{1}{\litre} = \qty{1}{\deci\metre\cube}$}
+\clearpage
 
 \partie{Solides de l'espace}
 \souspartie{Polyèdres}
@@ -55,9 +67,9 @@
 
 \soussouspartie{Le pavé droit}
 
-\definition{Un pavé droit (ou parallélépipède rectangle) est un hexaèdre (un polyèdre à 6 facess) dont toutes les faces sont des rectangles. Il possède 8 sommets et 12 arêtes.}
+\definition{Un pavé droit (ou parallélépipède rectangle) est un hexaèdre (un polyèdre à 6 faces) dont toutes les faces sont des rectangles. Il possède 8 sommets et 12 arêtes.}
 
-\formule{Si le pavé droit est le longueur $L$, de largeur $l$ et de hauteur $h$ : }
+\formule{Si le pavé droit est de longueur $L$, de largeur $\ell$ et de hauteur $h$ : $$V_{\mbox{pavé droit}} = L \times \ell \times h$$}
 
 \begin{figure}[h!]
     \centering
@@ -97,6 +109,8 @@
     \label{fig:chapitre4_pyramidebasetriangulaire}
 \end{figure}
 
+\formule{$$V_{\mbox{pyramide}} = $$}
+
 \soussouspartie{Le prisme droit}
 
 \definition{Un prisme droit est un polyèdre dont deux des faces - les bases - sont superposables (de même dimensions) et parallèles, et dont toutes les faces latérales sont des rectangles.}
@@ -133,6 +147,7 @@
     \label{fig:my_label}
 \end{figure}
 
+\clearpage
 
 \souspartie{Solides de révolution}
 
@@ -144,7 +159,7 @@
 
 \begin{figure}[h!]
     \centering
-    \begin{tikzpicture}[scale=0.7]
+    \begin{tikzpicture}[scale=0.6]
         \coordinate (A) at (0,0);
         \coordinate (B) at ($(A)+(1.5,0)$);
         \coordinate (C) at ($(A)+(1.5,3)$);
@@ -269,7 +284,7 @@
 
 \begin{figure}[h!]
     \centering
-    \begin{tikzpicture}[scale=0.6]
+    \begin{tikzpicture}[scale=0.5]
         \coordinate (O) at (0,0);
         \draw (O) circle (2);
         \draw[dashed] ($(O)+(2,0)$) arc [ start angle = 0, end angle = 180, x radius = 2, y radius = 0.5];
