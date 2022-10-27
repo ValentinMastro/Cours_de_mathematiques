@@ -1,0 +1,116 @@
+\documentclass[addpoints,12pt]{exam}
+
+\usepackage[locale=FR, group-digits=all, group-separator=\ , group-minimum-digits=4, per-mode = symbol]{siunitx}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{mdframed}
+\usepackage{tikz}
+\usepackage{frenchmath}
+\DeclareSIUnit{\litre}{\ell}
+\usepackage{amsmath}
+\usepackage{eurosym}
+\DeclareSIUnit{\EURO}{\text{\euro}}
+\usepackage{wrapfig}
+\usepackage{multicol}
+
+\newcommand{\titre}[1]{%
+    % #1 : numéro du DS
+    \begin{center}%
+        \Huge{DS n°#1}%    
+    \end{center}%
+}
+
+\begin{document}
+
+\titre{1}
+
+\qformat{\textbf{\underline{Exercice \thequestion : }} \hfill [\thepoints]}
+\bonusqformat{\textbf{\underline{Exercice \thequestion : }} \hfill [\thepoints]}
+\begin{questions}
+    \question[4]
+    Pierre va acheter 2 baguettes et 3 éclairs aux chocolats à la boulangerie.\\
+    Une baguette coûte \qty{1,20}{\EURO} et un éclair au chocolat coûte \qty{2,20}{\EURO}. 
+
+    \begin{parts}
+        \part Quel calcul faut-il faire pour trouver le prix de l'ensemble de ce qu'il a acheté ?
+        \part Faire le calcul, et conclure.
+    \end{parts}
+
+    \question[4]
+    Donner l'abscisse des points $A$, $B$, $C$, $D$
+
+    \begin{center}
+        \begin{tikzpicture}[scale=0.7]
+            \draw[-latex] (0,0) -- (9,0);
+            \foreach \x in {0,...,8} {
+                \draw (\x,-0.1) -- (\x,0.1);
+            }
+            \node at (0,-0.4) {$0$};
+            \node at (7,-0.4) {$7$};
+            \node at (3,0.4) {$A$};
+            \node at (5,0.4) {$B$};
+        \end{tikzpicture}\hspace{1cm}
+        \begin{tikzpicture}[scale=0.7]
+            \draw[-latex] (0,-1) -- (9,-1);
+            \foreach \x in {0,...,8} {
+                \draw (\x,-1.1) -- (\x,-0.9);
+            }
+            \node at (0,-1.4) {$0$};
+            \node at (7,-1.4) {$4$};
+            \node at (2,-0.6) {$C$};
+            \node at (8,-0.6) {$D$};
+        \end{tikzpicture}
+    \end{center}
+
+    \question[4] Reproduire le repère ci-dessous en y ajoutant les points suivants :
+
+    \begin{center}
+    \begin{tikzpicture}[scale=0.5]
+        \draw[-latex] (0,0) -- (8,0);
+        \draw[-latex] (0,0) -- (0,8);
+        \foreach \x in {1,...,7} {
+            \draw (\x,-0.1) -- (\x,0.1);
+            \draw (-0.1,\x) -- (0.1,\x);
+            \node[below] at (\x,0) {$\x$};
+            \node[left] at (0,\x) {$\x$};
+        };
+        \node[below] at (0,0) {0};
+    \end{tikzpicture}
+    \end{center}
+
+    \begin{parts}
+        \part 
+        \begin{subparts}
+            \subpart $A(5;6)$, $B(5;2)$, $C(3;4)$, $D(7;4)$
+            \subpart Sans justifier, de quelle forme est $ABCD$ ?
+        \end{subparts}
+        \part 
+        \begin{subparts}
+            \subpart $E(1;2)$, $F(1;4)$, $G(2;7)$, $H(3;6)$, $I(2;2)$
+            \subpart De quelle forme est $EFGHI$ ?
+        \end{subparts}
+    \end{parts}
+
+    \question[3]
+    \begin{parts}
+        \part Donner deux nombres, entre 10 et 99, divisibles par 5.
+        \part Donner deux nombres, entre 1000 et 9999, divisibles par 3.
+        \part Donner deux nombres, entre 100 et 999, divisibles par 9.
+    \end{parts}
+
+    \question[5]
+    Dans cet exercice, \textbf{on tracera tout sur la même figure.}
+    \begin{multicols}{2}
+    \begin{parts}
+        \part Tracer $[AB]$ de longueur \qty{6}{\cm} et horizontal.
+        \part Placer $H \in [AB]$ et $C \notin (AB) $
+        \part Tracer $[HC)$ et $(AC]$
+        \part Placer $I \in [HC]$ et $J \in [AB]$
+        \part Tracer $(AB)$
+    \end{parts}
+    \end{multicols}
+
+    \bonusquestion[1]
+    Donner le 67ème chiffre après la virgule de $\dfrac{1234}{9999}$
+\end{questions}
+
+\end{document}

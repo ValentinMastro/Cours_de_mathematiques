@@ -1,0 +1,73 @@
+\documentclass[addpoints,12pt]{exam}
+
+\usepackage[locale=FR, group-digits=all, group-separator=\ , group-minimum-digits=4, per-mode = symbol]{siunitx}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{mdframed}
+\usepackage{tikz}
+\usepackage{frenchmath}
+\DeclareSIUnit{\litre}{\ell}
+\usepackage{amsmath}
+\usepackage{eurosym}
+\DeclareSIUnit{\EURO}{\text{\euro}}
+
+\newcommand{\titre}[1]{%
+    % #1 : numéro du DS
+    \begin{center}%
+        \Huge{DS n°#1}%    
+    \end{center}%
+}
+
+\begin{document}
+
+\titre{1}
+
+\qformat{\textbf{\underline{Exercice \thequestion : }} \hfill [\thepoints]}
+\bonusqformat{\textbf{\underline{Exercice \thequestion : }} \hfill [\thepoints]}
+\begin{questions}
+    \question[3]
+    Pierre a sauvegardé 150 fichiers de musique (*.mp3), 250 images (*.jpeg) et 300 fichiers vidéos (*.mp4) sur un disque dur externe.
+
+    \begin{parts}
+        \part Quelle est la proportion de fichiers vidéos sur son disque dur ?
+        \part Si chaque fichier de musique pèse \qty{2}{Mo}, chaque image pèse \qty{1}{Mo} et chaque vidéo \qty{100}{Mo}, combien de Mo pèse tous les fichiers ensemble ?
+    \end{parts}
+
+    \question[4]
+    \begin{parts}
+        \part Pour chacun des triangles, dire s'ils sont constructibles.
+        \begin{subparts}
+            \subpart $ABC$ : $AB = 2$, $BC = 6$, $AC = 9$
+            \subpart $DEF$ : $DF = 4$, $DE = 8$, $EF = 5$
+        \end{subparts}
+        \part Dans chacun des triangles, trouver l'angle manquant.
+        \begin{subparts}
+            \subpart $IJK$ : $\widehat{IJK} = \ang{50}$, $\widehat{IKJ} = \ang{70}$
+            \subpart $NOP$ : $\widehat{NOP} = \ang{22,5}$, $\widehat{NPO} = \ang{98,1}$
+        \end{subparts}
+    \end{parts}
+
+    \question[4]
+    \begin{parts}
+        \part Tracer un triangle $XYZ$ tel que $XY = \qty{3}{\cm}$, $YZ = \qty{4}{\cm}$, $XZ = \qty{5}{\cm}$
+        \part Tracer les trois médiatrices du triangle $XYZ$
+    \end{parts}
+
+    \question[3]
+    Un groupe d'amis décident de se partager un gâteau au chocolat.\\
+    Alice a mangé $\dfrac{1}{7}$ du gâteau, Bob a mangé $\dfrac{10}{21}$ du gâteau et Céline a mangé $\dfrac{16}{42}$ du gâteau. Que restera-t-il pour Dominique ?
+
+    \question[2]
+        Un pavé droit a les dimensions suivantes : $L = \qty{7}{\centi\metre}$, $\ell = \qty{3}{\centi\metre}$, $h = \qty{2}{\centi\metre}$. \\
+        Calculer son volume.
+
+    \question[4]
+    Soit $IJK$ un triangle isocèle en $I$ avec $IJ = \qty{3}{\cm}$ et $JK = \ang{50}$.
+    \begin{parts}
+        \part Tracer le triangle $IJK$
+        \part Démontrer que la hauteur issue de $I$ et la médiatrice de $[JK]$ sont superposées. \\ (autrement dit : que ce sont les mêmes droites)
+    \end{parts}
+
+    \bonusquestion[1] Donner le 278ème chiffre après la virgule de $\dfrac{16,3}{999}$.
+\end{questions}
+
+\end{document}
