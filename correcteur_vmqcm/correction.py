@@ -16,7 +16,6 @@
     -> Générer un fichier csv avec les informations élèves et leur note
 """
 
-import yappi
 from os import cpu_count
 from pyzbar.pyzbar import decode
 from PIL import Image
@@ -53,14 +52,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    exit()
-
-    yappi.start()
-    main()
-    yappi.stop()
-    threads = yappi.get_thread_stats()
-    for thread in threads:
-        print(
-            "Function stats for (%s) (%d)" % (thread.name, thread.id)
-        )  # it is the Thread.__class__.__name__
-        yappi.get_func_stats(ctx_id=thread.id).print_all()

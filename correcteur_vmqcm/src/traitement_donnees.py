@@ -94,7 +94,7 @@ def calcul_note(bonnes_reponses, reponses, points):
         else:
             faux += p
 
-    return vrai - faux / 3.0
+    return vrai
 
 def f(s):
     return [l if l in ['A', 'B', 'C', 'D'] else None for l in s]
