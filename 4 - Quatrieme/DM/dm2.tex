@@ -1,0 +1,66 @@
+\documentclass{../../vmdm}
+
+\begin{document}
+\boxedpoints
+
+\VMDMTitre{octobre 2022 (4ème)}
+\vspace{0.2cm}
+\VMDMRegles{}
+\vspace{0.2cm}
+
+\qformat{Exercice \thequestion \dotfill (\totalpoints~points)}
+\begin{questions}
+    \question[4]
+    \begin{parts}
+        \part
+        \begin{subparts}
+            \subpart Calculer $1 + 8 \times 1$ \hfill \rep{9}
+            \subpart Calculer $2 + 8 \times 12$ \hfill\rep{98}
+            \subpart Calculer $3 + 8 \times 123$ \hfill\rep{987}
+        \end{subparts}
+        \part Quel calcul permet d'obtenir \num{987654321} ? Vérifier.
+    \end{parts}
+    \question[8]
+    \begin{parts}
+        \part Dessiner en perspective cavalière un prisme droit à base hendécagonale
+        \part Dessiner en perspective cavalière un prisme droit à base heptagonale
+        \part Combien de faces a un prisme droit à base ennéadécagonale ? \hfill\rep{21}
+    \end{parts}
+    \question[8]
+    On considère un cube $ABCDEFGH$ d'arête \qty{1}{\centi\metre} comme suit :
+    \begin{center}
+        \begin{tikzpicture}
+            \tikzmath{ \r=2; }
+            \coordinate (A) at (0,0);
+            \coordinate (B) at (\r,0);
+            \coordinate (C) at (\r,\r);
+            \coordinate (D) at (0,\r);
+            \coordinate (u) at (0.7,0.7);
+            \coordinate (E) at ($(A)+(u)$);
+            \coordinate (F) at ($(B)+(u)$);
+            \coordinate (G) at ($(C)+(u)$);
+            \coordinate (H) at ($(D)+(u)$);
+            \foreach \p in {A,D,E,H} {
+                \node[left] at (\p) {$\p$};
+            }
+            \foreach \p in {B,C,F,G} {
+                \node[right] at (\p) {$\p$};
+            }
+            \draw (A) -- (B) -- (C) -- (D) -- cycle;
+            \draw (D) -- (H) -- (G) -- (F) -- (B) (G) -- (C);
+            \draw[dashed] (A) -- (E) -- (H) (E) -- (F);
+        \end{tikzpicture}
+    \end{center}
+    \begin{parts}
+        \part Montrer que $DG = \sqrt{2}$
+        \part Montrer que $DF = \sqrt{3}$ \hfill (indice : considérer le triangle $DGF$)
+    \end{parts}
+\end{questions}
+
+\vfill
+
+\begin{center}
+\gradetable[h][questions]
+\end{center}
+
+\end{document}

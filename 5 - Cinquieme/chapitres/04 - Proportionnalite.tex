@@ -3,4 +3,245 @@
 
 \chapitre{Proportionnalité}
 
+\partie{Grandeurs proportionnelles}
+\souspartie{Concept}
+
+\definition{Une grandeur est une caractéristique quantifiable (souvent associée à une unité).}
+\exemples{Distance (\unit{\metre}), Prix (\unit{\EURO}), Durée (\unit{\second}), Température (\unit{\degreeCelsius}), Masse (\unit{\kg}), Énergie (\unit{\joule}), Puissance (\unit{\watt}), Tension (\unit{\volt})}
+
+\definition{Deux grandeurs sont proportionnelles si pour obtenir les valeurs de la première grandeur, on peut multiplier les valeurs de la deuxième grandeur \emph{par le même nombre}. Ce nombre est appelé \emph{coefficient de proportionnalité}.}
+
+\begin{listedexemples}
+    \item Le côté et le périmètre d'un carré sont \emph{proportionnels}.
+    \item L'âge et la taille d'une personne \emph{ne sont pas proportionnels}.
+\end{listedexemples}
+
+\souspartie{Tableau de proportionnalité}
+
+\propriete{Avec deux grandeurs proportionnelles, on peut construire un \emph{tableau de proportionnalité}.}
+
+\exemple{
+\begin{center}
+    \begin{tabularx}{0.6\linewidth}{|p{5cm}|C|C|C|}\hline
+        Nombre de pommes & 1 & 2 & 3 \\\hline
+        Prix d'une pomme (\unit{\EURO}) & \num{0,30} & \num{0,60} & \num{0,90} \\\hline
+    \end{tabularx}\\[1cm]
+    \begin{tabularx}{0.6\linewidth}{|p{5cm}|C|C|C|}\hline
+        Durée (\unit{\hour}) & 1 & 5 & 10 \\\hline
+        Distance (\unit{\kilo\metre}) & 50 & 250 & 500 \\\hline
+    \end{tabularx}
+\end{center}
+}
+
+\souspartie{Représentation graphique}
+
+\propriete{Deux grandeurs proportionnelles peuvent être représentées graphiquement par une droite passant par l'origine du repère.}
+
+\exemple{
+\begin{center}
+    \begin{tabularx}{0.6\linewidth}{|p{5cm}|C|C|C|}\hline
+        Nombre de pommes & 1 & 2 & 3 \\\hline
+        Prix d'une pomme (\unit{\EURO}) & \num{0,30} & \num{0,60} & \num{0,90} \\\hline
+    \end{tabularx}\\[1cm]\color{black}
+    \begin{tikzpicture}
+        \draw[-Latex] (0,0) -- (0,4);
+        \draw[-Latex] (0,0) -- (4,0);
+        \foreach \x in {1,...,3} {
+            \draw (\x,-0.1) -- (\x,0.1);
+            \node[below] at (\x,0) {$\x$};
+        }
+        \foreach \y in {0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9} {
+            \draw (-0.1,{4*\y}) -- (0.1,{4*\y});
+            \node[left,anchor=east] at (0,{4*\y}) {\tiny{\num{\y}}};
+        }
+        \draw[rouge,dashed] (1,0) -- (1,1.2) -- (0,1.2);
+        \draw[rouge,dashed] (2,0) -- (2,2.4) -- (0,2.4);
+        \draw[rouge,dashed] (3,0) -- (3,3.6) -- (0,3.6);
+        \draw[bleu] (0,0) -- (3.1,{3.1*1.2});
+    \end{tikzpicture}
+\end{center}
+}
+
+\partie{Quatrième proportionnelle}
+Dans cette partie, on liste plusieurs méthodes pour trouver la quatrième valeur manquante d'un tableau de proportionnalité :
+
+\begin{center}
+    \begin{tabularx}{0.6\linewidth}{|p{5cm}|C|C|C|}\hline
+        Masse de raisins (\unit{\kg}) & 3 & 6 \\\hline
+        Prix (\unit{\EURO}) & \num{7,80} & ? \\\hline
+    \end{tabularx}
+\end{center}
+
+\souspartie{Homogénéité}
+
+\methode{Multiplier (ou diviser) toute une colonne par \emph{la même valeur}.}
+
+\begin{center}
+    \begin{tikzpicture}
+        \node at (0,0) {
+            \begin{tabularx}{0.6\linewidth}{|p{5cm}|C|C|C|}\hline
+                Masse de raisins (\unit{\kg}) & 3 & 6 \\\hline
+                Prix (\unit{\EURO}) & \num{7,80} & ? \\\hline
+            \end{tabularx}
+        };
+        \draw[-Latex] (2,0.8) arc (170:10:1 and 0.5);
+        \draw[-Latex] (2,-0.8) arc (-170:-10:1 and 0.5);
+        \node at (3,1.5) {$\times 2$};
+        \node at (3,-1.5) {$\times 2$};
+    \end{tikzpicture}
+\end{center}
+
+\souspartie{Passage à l'unité}
+
+\methode{Se ramener à une colonne contenant le nombre 1.}
+
+\begin{center}
+    \begin{tikzpicture}
+        \node at (0,0) {
+            \begin{tabularx}{0.6\linewidth}{|p{5cm}|C|C|C|}\hline
+                Masse de raisins (\unit{\kg}) & 3 & 1 & 6 \\\hline
+                Prix (\unit{\EURO}) & \num{7,80} & ? & ? \\\hline
+            \end{tabularx}
+        };
+        \draw[-Latex] (1,0.8) arc (170:10:0.7 and 0.5);
+        \draw[-Latex] (1,-0.8) arc (-170:-10:0.7 and 0.5);
+        \node at (1.7,1.5) {$\div 3$};
+        \node at (1.7,-1.5) {$\div 3$};
+        \draw[-Latex] (3,0.8) arc (170:10:0.7 and 0.5);
+        \draw[-Latex] (3,-0.8) arc (-170:-10:0.7 and 0.5);
+        \node at (3.7,1.5) {$\times 6$};
+        \node at (3.7,-1.5) {$\times 6$};
+    \end{tikzpicture}
+\end{center}
+
+\souspartie{Coefficient de proportionnalité}
+
+\methode{Calculer le coefficient de proportionnalité, pour passer d'une ligne à l'autre.}
+
+$$\dfrac{7,80}{3} = 2,60$$
+
+\begin{center}
+    \begin{tikzpicture}
+        \node at (0,0) {
+            \begin{tabularx}{0.6\linewidth}{|p{5cm}|C|C|}\hline
+                Masse de raisins (\unit{\kg}) & 3 & 6 \\\hline
+                Prix (\unit{\EURO}) & \num{7,80} & ? \\\hline
+            \end{tabularx}
+        };
+        \draw[-Latex] (5.7,0.5) arc (90:-90:0.2 and 0.5);
+        \node at (7.4,0) {$\times \qty{2,60}{\EURO\per\kg}$};
+    \end{tikzpicture}
+\end{center}
+
+\souspartie{Additivité}
+
+\methode{Additionner les contenus de deux colonnes.}
+
+\begin{center}
+    \begin{tikzpicture}
+        \node at (0,0) {
+            \begin{tabularx}{0.6\linewidth}{|p{5cm}|C|C|C|}\hline
+                Masse de raisins (\unit{\kg}) & 3 & 6 & 9 \\\hline
+                Prix (\unit{\EURO}) & \num{7,80} & \num{15,60} & ? \\\hline
+            \end{tabularx}
+        };
+        \draw (1.8,1.1) circle (0.3);
+        \draw (1,0.6) -- (1,1.1) -- (1.5,1.1);
+        \draw (2.6,0.6) -- (2.6,1.1) -- (2.1,1.1);
+        \node at (1.8,1.1) {$+$};
+        \draw (1.8,1.4) -- (1.8,1.5) -- (4.5,1.5) -- (4.5,0.6);
+        \draw (1.8,-1.1) circle (0.3);
+        \draw (1,-0.6) -- (1,-1.1) -- (1.5,-1.1);
+        \draw (2.6,-0.6) -- (2.6,-1.1) -- (2.1,-1.1);
+        \node at (1.8,-1.1) {$+$};
+        \draw (1.8,-1.4) -- (1.8,-1.5) -- (4.5,-1.5) -- (4.5,-0.6);
+    \end{tikzpicture}
+\end{center}
+
+\souspartie{Produit en croix}
+
+\methode{Multiplier deux valeurs en diagonale et diviser par une valeur latérale.}
+
+\begin{center}
+    \begin{tikzpicture}
+        \node at (0,0) {
+            \begin{tabularx}{0.6\linewidth}{|p{5cm}|C|C|C|}\hline
+                Masse de raisins (\unit{\kg}) & 3 & 8 \\\hline
+                Prix (\unit{\EURO}) & \num{7,80} & ? \\\hline
+            \end{tabularx}
+        };
+
+        \node[anchor=west] at (6,0) {$\dfrac{\color{rouge}7,80 \times 8}{\color{vert}3} =~?$};
+        \draw[very thick, red] (2.1,-0.35) -- (3.4,0.35);
+        \draw[very thick, vert] (3.4,0.35) -- (2.1,0.35);
+        \draw[very thick, -Latex] (2.1,0.35) -- (3.4,-0.35);
+    \end{tikzpicture}
+\end{center}
+
+\partie{Applications : échelle, ratio}
+\souspartie{Échelle}
+
+\definition{L'échelle d'un plan est le coefficient de proportionnalité tel que : $$\mbox{échelle} = \dfrac{\mbox{distance sur le plan}}{\mbox{distance réelle}}$$}
+
+\remarque{Il faut la même unité pour les deux distances dans le calcul de l'échelle.}
+
+\exemple{Sur un plan, \qty{1}{\cm} sur le plan correspond à \qty{50}{\km} dans la réalité. 
+\begin{align*}
+    \mbox{échelle} &= \dfrac{\qty{1}{\cm}}{\qty{50}{\km}} = \dfrac{\qty{1}{\cm}}{50 \times \qty{1}{\km}} = \dfrac{\qty{1}{\cm}}{50 \times \qty{100000}{\cm}} \\[0.5cm]
+    &= \dfrac{\qty{1}{\cm}}{\qty{5000000}{\cm}} = \dfrac{\qty{1}{\cancel\cm}}{\qty{5000000}{\cancel\cm}} = \dfrac{1}{\num{5000000}}
+\end{align*}
+On peut représenter cette situation sous la forme d'un tableau de proportionnalité :
+\begin{center}\color{black}
+    \begin{tikzpicture}
+        \node[anchor=north west] at (0,0) {
+            \begin{tabularx}{0.6\linewidth}{|p{6.5cm}|C|}\hline
+                Distance sur le plan (\unit{\cm}) & 1 \\\hline
+                Distance réelle (\unit{\cm}) & \num{5000000} \\\hline
+            \end{tabularx}
+        };
+        \draw[-Latex] (11.2,-0.4) arc(90:-90:0.2 and 0.4);
+        \node[anchor=west] at (11.4,-0.8) {$\times~\mbox{échelle}$};
+        \draw[dashed] (0.183,-1.45) -- (0.183,-2.05) -- ++({0.6*\linewidth}, 0) -- +(0,0.6);
+        \draw[dashed] (7.12,-1.45) -- (7.12,-2.05);
+        \node[anchor=west] at (0.25,-1.75) {Distance réelle (\unit{\km})};
+        \node at (9,-1.75) {\num{50}};
+    \end{tikzpicture}
+\end{center}
+}
+
+\souspartie{Ratio}
+
+\definition{Deux nombres $a$ et $b$ sont dans le ratio $2{:}3$ (se lit << 2 pour 3 >>) si $\dfrac{a}{2} = \dfrac{b}{3}$.}
+
+\exemple{Supposons le problème suivant : << On a mélangé de l'huile et du vinaigre pour faire une vinaigrette. Le mélange total a un volume de \qty{500}{\milli\litre}. Le ratio d'huile et de vinaigre est de $3{:}1$. >>\\
+On peut traduire ce problème en écrivant que : $$\dfrac{V_{\mbox{huile}}}{3} = \dfrac{V_{\mbox{vinaigre}}}{1} ~~~~\mbox{et}~~~~ V_{\mbox{vinaigre}} + V_{\mbox{huile}} = \qty{500}{\milli\litre}$$
+Le but est de trouver combien valent $V_{\mbox{vinaigre}}$ et $V_{\mbox{huile}}$.
+\clearpage
+Faisons un tableau de proportionnalité :
+\begin{center}\color{black}
+    \begin{tikzpicture}
+        \node at (0,0) {
+            \begin{tabularx}{0.8\linewidth}{|p{5cm}|C|C|C|}\hline
+                Volume (\unit{\milli\litre}) & $V_{\mbox{huile}}$ & $V_{\mbox{vinaigre}}$ & \textcolor{rouge}{\qty{500}{\milli\litre}} \\\hline
+                Ratio & 3 & 1 & \textcolor{rouge}{4} \\\hline
+            \end{tabularx}
+        };
+        \coordinate (plus) at (1.2,1.1);
+        \draw (plus) circle (0.3) node {$+$};
+        \draw (plus) ++(0.3,0) -- ++(0.5,0) -- ++(0,-0.5);
+        \draw (plus) ++(-0.3,0) -- ++(-0.5,0) -- ++(0,-0.5);
+        \draw[-Latex] (plus) ++(0,0.3) -- ++(0,0.1) -- ++(4.5,0) -- ++(0,-0.9); 
+        %
+        \coordinate (plus) at (1.2,-1.1);
+        \draw (plus) circle (0.3) node {$+$};
+        \draw (plus) ++(0.3,0) -- ++(0.5,0) -- ++(0,0.5);
+        \draw (plus) ++(-0.3,0) -- ++(-0.5,0) -- ++(0,0.5);
+        \draw[-Latex] (plus) ++(0,-0.3) -- ++(0,-0.1) -- ++(4.5,0) -- ++(0,+0.9);
+    \end{tikzpicture}
+\end{center}
+On utilise les méthodes vues précédemment pour obtenir que $V_{\mbox{vinaigre}} = \qty{125}{\milli\litre}$ et $V_{\mbox{huile}} = \qty{375}{\milli\litre}$.
+}
+
+
+
 \end{document}

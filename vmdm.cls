@@ -20,7 +20,7 @@
 \pagestyle{empty}
 
 \newcommand{\VMDMTitre}[1]{%
-    \centerline{\Huge{DM de #1}}%
+    \centerline{\Huge{DM - #1}}%
 }
 
 \newcommand{\VMDMRegles}{%
