@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{vmdm}[2022/07/06 Valentin Mastro DM class]
 
-\LoadClass[12pt,addpoints]{exam}
+\LoadClass[12pt,addpoints,a4paper]{exam}
 \RequirePackage[a4paper,margin=1.5cm]{geometry}
 \RequirePackage{tabularx}
 \RequirePackage{qrcode}

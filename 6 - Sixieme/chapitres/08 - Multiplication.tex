@@ -2,4 +2,73 @@
 
 \begin{document}
 \chapitre{Multiplication}
+
+\partie{Multiplier et diviser par 1,10,100,etc.}
+
+\regle{Pour multiplier un nombre décimal par 1,10,100,etc., on décale la virgule vers la droite en fonction du nombre de zéros.}
+
+\begin{listedexemples}
+    \item $\num{2,12345} \times 100 = \num{212,345}$
+    \item $\num{32,45678} \times 10000 = \num{324567,8}$
+    \item $\num{7,2} \times 100 = 720$
+\end{listedexemples}
+
+\regle{Pour diviser un nombre par 1, 10, 100, etc., on décale la virgule vers la gauche en fonction du nombre de zéros.}
+
+\begin{listedexemples}
+    \item $\num{3247,2347} \div 100 = \num{32,472347}$
+    \item $\num{1249,7} \div 1000 = \num{1,24497}$
+    \item $\num{12} \div 10000 = \num{0,0012}$
+\end{listedexemples}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{l|*{7}{|C}|}\hline
+    préfixe & kilo & hecto & déca & $\vide$ & déci & centi & milli\\\hline
+    distance (en mètre) & $\unit{\kilo\metre}$ & $\unit{\hecto\metre}$ & $\unit{\deca\metre}$ & $\unit{\metre}$ & $\unit{\deci\metre}$ & $\unit{\centi\metre}$ & $\unit{\milli\metre}$ \\
+    masse (en kilogramme) & $\unit{\kilo\gram}$ & $\unit{\hecto\gram}$ & $\unit{\deca\gram}$ & $\unit{\gram}$ & $\unit{\deci\gram}$ & $\unit{\centi\gram}$ & $\unit{\milli\gram}$ \\
+    durée (en seconde) & $\unit{\kilo\second}$ & $\unit{\hecto\second}$ & $\unit{\deca\second}$ & $\unit{\second}$ & $\unit{\deci\second}$ & $\unit{\centi\second}$ & $\unit{\milli\second}$ \\
+    température (en Kelvin) & $\unit{\kilo\kelvin}$ & $\unit{\hecto\kelvin}$ & $\unit{\deca\kelvin}$ & $\unit{\kelvin}$ & $\unit{\deci\kelvin}$ & $\unit{\centi\kelvin}$ & $\unit{\milli\kelvin}$ \\
+    \makecell[l]{intensité du courant \\ électrique (en Ampère)} & $\unit{\kilo\ampere}$ & $\unit{\hecto\ampere}$ & $\unit{\deca\ampere}$ & $\unit{\ampere}$ & $\unit{\deci\ampere}$ & $\unit{\centi\ampere}$ & $\unit{\milli\ampere}$ \\
+    intensité lumineuse (en candela)& $\unit{\kilo\candela}$ & $\unit{\hecto\candela}$ & $\unit{\deca\candela}$ & $\unit{\candela}$ & $\unit{\deci\candela}$ & $\unit{\centi\candela}$ & $\unit{\milli\candela}$ \\
+    quantité de matière (en mole)& $\unit{\kilo\mole}$ & $\unit{\hecto\mole}$ & $\unit{\deca\mole}$ & $\unit{\mole}$ & $\unit{\deci\mole}$ & $\unit{\centi\mole}$ & $\unit{\milli\mole}$ \\\hline
+\end{tabularx}
+\end{center}
+
+
+\underline{Les préfixes du Système International (SI) :}
+\begin{multicols}{2}
+\begin{itemize}
+    \item kilo : un millier $\Rightarrow \times 1000$ 
+    \item hecto : une centaine $\Rightarrow \times 100$
+    \item déca : une dizaine $\Rightarrow \times 10$
+    \item milli : un millième $\Rightarrow \div 1000$
+    \item centi : un centième $\Rightarrow \div 100$
+    \item déci : un dixième $\Rightarrow \div 10$
+\end{itemize}
+\end{multicols}
+
+\partie{Multiplication décimale}
+
+\regle{Pour multiplier deux nombres décimaux, on effectue la multiplication en ignorant la virgule. À la fin, on place la virgule pour qu'il y ait autant de chiffres après la virgule qu'à l'origine.}
+
+\exemple{Calculer $2,72 \times 3,8$
+\begin{center}
+    \begin{tikzpicture}
+        \node[anchor = south west] at (0,0) {%
+        \begin{tabularx}{0.15\linewidth}{CCCCCC}
+              &   & 2 & , & 7 & 2 \\
+            $\times$  &   &   & 3 & , & 8 \\\hline
+              &   & 2 & 1 & 7 & 6 \\
+            $+$  &   & 8 & 1 & 6 & 0 \\\hline
+            1 & 0 & , & 3 & 3 & 6 \\  
+        \end{tabularx}};
+        \draw[vert,Latex-] (3.5,3) -- (5,3);
+        \draw[vert,Latex-] (3.5,2.4) -- (5,2.4);
+        \draw[vert,Latex-] (3.5,0.5) -- (5,0.5);
+        \node[vert,anchor=west,font={\small}] at (5,3) {2 chiffres après la virgule};
+        \node[vert,anchor=west,font={\small}] at (5,2.4) {1 chiffre~ après la virgule};
+        \node[vert,anchor=west,font={\small}] at (5,0.5) {3 chiffres après la virgule};
+    \end{tikzpicture}
+\end{center}}
+
 \end{document}
