@@ -18,42 +18,51 @@
 %       \question
 %           \subpart
 
-\newcommand{\exercice}[1][Rien]
+\newcommand{\exercice}
 {
-    % #1 (optionel) : nombre de points que vaut l'exercice
     \bigskip
-    \setcounter{question}{0}
-    \setcounter{subpart}{0}
-    \stepcounter{exercice}
-    
-    \par\underline{\textbf{Exercice \theexercice~:~%
-    \ifthenelse{\equal{#1}{Rien}}%
-    {}{#1 points}%
-    }}%
+    \setcounter{question}{0}%
+    \setcounter{subpart}{0}%
+    \stepcounter{exercice}%
+    \par\underline{\textbf{Exercice \theexercice~:}}~%
+}
+
+\newcommand{\EXERCICE}[1]
+{
+    % #1 : nombre de points que vaut l'exercice
+    \bigskip
+    \setcounter{question}{0}%
+    \setcounter{subpart}{0}%
+    \stepcounter{exercice}%
+    \par\underline{\textbf{Exercice \theexercice~:}}~~~\hfill [#1 points]\\
 }
 
 \newcommand{\question}
 {
-    \setcounter{subpart}{0}
-    \stepcounter{question}
-    \par\hspace{2em}\textbf{\arabic{question})}
+    \setcounter{subpart}{0}%
+    \stepcounter{question}%
+    \par\hspace{2em}\textbf{Q\arabic{question})}~%
 }
 
-\newcommand{\subpart}
+\newcommand{\subpart}[1]
 {
-    \stepcounter{subpart}
-    \par\hspace{4em}\textbf{\alph{subpart})}
+    \stepcounter{subpart}%
+    \textbf{\alph{subpart})}~%
+    #1%
+    \par\hspace{3.8em}%
 }
 
 
 \newenvironment{questions}
 {
+    
     \setcounter{question}{0}
     \setcounter{part}{0}
     \setcounter{subpart}{0}
+    \begin{small}
 }
 {
-
+    \end{small}
 }
 
 
@@ -66,5 +75,24 @@
         \begin{tikzpicture}
             \draw (0,0) -- (0, \hauteurRappels) -- (\hauteurRappels, \hauteurRappels) -- (\hauteurRappels, 0) -- cycle;
         \end{tikzpicture}
+    \end{center}
+}
+
+\newcounter{DS}
+\setcounter{DS}{0}
+%%%% DS
+\newcommand{\titreDS}{%
+    \stepcounter{DS}%
+    \addcontentsline{toc}{chapter}{\textcolor{rouge}{DS n°\theDS}}%
+    \addcontentsline{toc}{section}{\textcolor{vert}{Sujet}}%
+    \begin{center}
+        \Huge{DS n°\theDS}
+    \end{center}
+}
+
+\newcommand{\titreDScorrection}{%
+    \addcontentsline{toc}{section}{\textcolor{vert}{Correction}}%
+    \begin{center}
+        \Huge{DS n°\theDS}
     \end{center}
 }

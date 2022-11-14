@@ -1,49 +1,22 @@
-\documentclass[addpoints,12pt]{exam}
-
-\usepackage[locale=FR, group-digits=all, group-separator=\ , group-minimum-digits=4, per-mode = symbol]{siunitx}
-\usepackage[margin=1.5cm]{geometry}
-\usepackage{mdframed}
-\usepackage{tikz}
-\usetikzlibrary{arrows.meta}
-\usetikzlibrary{math,calc}
-\usepackage{frenchmath}
-\DeclareSIUnit{\litre}{\ell}
-\usepackage{amsmath}
-\usepackage{eurosym}
-\DeclareSIUnit{\EURO}{\text{\euro}}
-\usepackage{enumitem}
-\usepackage{tabularx}
-\usepackage{luacode}
-
-\pagestyle{empty}
-
-\newcommand{\titre}[1]{%
-    % #1 : numéro du DS
-    \begin{center}%
-        \Huge{DS n°#1}%    
-    \end{center}%
-}
+\documentclass[../Cours.tex]{subfiles}
 
 \begin{document}
+\clearpage
+\pagestyle{empty}
 
-\titre{1}
+\titreDScorrection
 
-\qformat{\textbf{\underline{Exercice \thequestion : }} \hfill \thepoints}
-\bonusqformat{\textbf{\underline{Exercice \thequestion : }} \hfill \thepoints}
+
 \begin{questions}
-    \question 
-    \begin{parts}
-        \part On va faire le calcul $2 \times \qty{1,20}{\EURO} + 3 \times \qty{2,20}{\EURO}$
-        \part 
-        \begin{subparts}
-            \subpart Pour les baguettes : $2 \times \qty{1,20}{\EURO} = \qty{2,40}{\EURO}$
-            \subpart Pour les éclairs au chocolat : $3 \times \qty{2,20}{\EURO} = \qty{6,60}{\EURO}$
-            \subpart Au total : $\qty{2,40}{\EURO} + \qty{6,60}{\EURO} = \qty{9}{\EURO}$
-        \end{subparts}
+    \EXERCICE{4}
+        \question On va faire le calcul $2 \times \qty{1,20}{\EURO} + 3 \times \qty{2,20}{\EURO}$
+        \question 
+            \subpart{Pour les baguettes : $2 \times \qty{1,20}{\EURO} = \qty{2,40}{\EURO}$}
+            \subpart{Pour les éclairs au chocolat : $3 \times \qty{2,20}{\EURO} = \qty{6,60}{\EURO}$}
+            \subpart{Au total : $\qty{2,40}{\EURO} + \qty{6,60}{\EURO} = \qty{9}{\EURO}$}
         Conclusion : \textbf{Pierre va payer \qty{9}{\EURO} à la boulangerie.}
-    \end{parts}
 
-    \question
+    \EXERCICE{4}
     \begin{center}
         \begin{tikzpicture}[scale=0.7]
             \draw[-latex] (0,0) -- (9,0);
@@ -73,7 +46,7 @@
     \end{center}
     Réponses : $A(3)~~B(5)~~C(\dfrac{8}{7})~~D(\dfrac{32}{7})$
 
-    \question 
+    \EXERCICE{4}
     \begin{center}
     \begin{tikzpicture}[scale=1]
         \draw[-latex] (0,0) -- (8,0);
@@ -105,9 +78,8 @@
     $ABCD$ a la forme d'un sablier, d'un papillon.\\
     $EFGHI$ est un \emph{pentagone} parce qu'il a 5 côtés.
 
-    \question 
-    \begin{parts}
-        \part << Divisible par 5 >> signifie terminer par un 5 ou un 0. Il fallait donner 2 nombres parmi les suivants : 
+    \EXERCICE{3}
+        \question << Divisible par 5 >> signifie terminer par un 5 ou un 0. Il fallait donner 2 nombres parmi les suivants : 
         \begin{luacode}
 for i = 10,99
 do
@@ -117,7 +89,7 @@ do
     end
 end
         \end{luacode}
-        \part << Divisible par 3 >> signifie que la somme des chiffres est dans la table de 3. Il fallait donner 2 nombres parmi les suivants :
+        \question << Divisible par 3 >> signifie que la somme des chiffres est dans la table de 3. Il fallait donner 2 nombres parmi les suivants :
         \begin{luacode}
 for i = 1000,9999
 do
@@ -127,7 +99,7 @@ do
     end
 end
         \end{luacode}
-        \part << Divisible par 9 >> signifie que la somme des chiffres est dans la table de 9. Il fallait donner 2 nombres parmi les suivants :
+        \question << Divisible par 9 >> signifie que la somme des chiffres est dans la table de 9. Il fallait donner 2 nombres parmi les suivants :
         \begin{luacode}
 for i = 100,999
 do
@@ -137,12 +109,10 @@ do
     end
 end
         \end{luacode}
-    \end{parts}
 
-    \question 
+    \EXERCICE{5}
     Note : Dans la question, on demande bien de tout faire sur la même figure. Ici, pour la correction, je sépare les figures étape par étape.
-    \begin{parts}
-    \part 
+    \question 
         \begin{center}
             \begin{tikzpicture}
                 \coordinate (A) at (0,0);
@@ -153,7 +123,7 @@ end
                 }
             \end{tikzpicture}
         \end{center}
-    \part 
+    \question 
         \begin{center}
             \begin{tikzpicture}
                 \coordinate (A) at (0,0);
@@ -168,7 +138,7 @@ end
                 \node[below] at (H) {$H$};
             \end{tikzpicture}
         \end{center}
-    \part 
+    \question 
         \begin{center}
             \begin{tikzpicture}
                 \coordinate (A) at (0,0);
@@ -185,7 +155,7 @@ end
                 \draw (C) -- ($(C)!1.5!(A)$);
             \end{tikzpicture}
         \end{center}
-    \part
+    \question
         \begin{center}
             \begin{tikzpicture}
                 \coordinate (A) at (0,0);
@@ -206,7 +176,7 @@ end
                 \node[below] at (J) {$J$};
             \end{tikzpicture}
         \end{center}
-    \part 
+    \question 
         \begin{center}
             \begin{tikzpicture}
                 \coordinate (A) at (0,0);
@@ -228,9 +198,8 @@ end
                 \draw (-3,0) -- (7,0);
             \end{tikzpicture}
         \end{center}
-    \end{parts}
 
-    \bonusquestion On souhaite déterminer le 67ème chiffre après la virgule de $\dfrac{1234}{9999}$.\\
+    \EXERCICE{(bonus) 1} On souhaite déterminer le 67ème chiffre après la virgule de $\dfrac{1234}{9999}$.\\
 
     En utilisant la calculatrice, ou en posant la division, on remarque que :
     $\dfrac{1234}{9999} = \num{0,1234123412341234}...$
@@ -243,5 +212,7 @@ end
 
     En particulier, 64 est un multiple de 4 ($64 = 4 \times 16$), donc le 64ème chiffre après la virgule est un 4. Donc le 65ème est un 1, le 66ème est un 2 et le 67ème est un 3.
 \end{questions}
+\clearpage
+\pagestyle{plain}
 
 \end{document}

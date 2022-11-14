@@ -1,0 +1,28 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sty/autres}[2022/11/13 codelua]
+
+\RequirePackage{luacode}
+
+
+\begin{luacode}
+function melanger(liste)
+    for i = #liste, 2, -1 do
+        local j = math.random(i)
+        liste[i], liste[j] = liste[j], liste[i]
+    end
+end
+
+function objet_aleatoire_dans(liste)
+    local index = math.random(1,#liste)
+    return liste[index]
+end
+
+function int(nombre) 
+    -- si le nombre est un entier, on enlève le ,0
+    if nombre==math.floor(nombre) 
+    then 
+        nombre = math.floor(nombre) 
+    end
+    return nombre
+end
+\end{luacode}

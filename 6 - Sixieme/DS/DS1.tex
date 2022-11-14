@@ -1,41 +1,19 @@
-\documentclass[addpoints,12pt]{exam}
-
-\usepackage[locale=FR, group-digits=all, group-separator=\ , group-minimum-digits=4, per-mode = symbol]{siunitx}
-\usepackage[margin=1.5cm]{geometry}
-\usepackage{mdframed}
-\usepackage{tikz}
-\usepackage{frenchmath}
-\DeclareSIUnit{\litre}{\ell}
-\usepackage{amsmath}
-\usepackage{eurosym}
-\DeclareSIUnit{\EURO}{\text{\euro}}
-\usepackage{wrapfig}
-\usepackage{multicol}
-
-\newcommand{\titre}[1]{%
-    % #1 : numéro du DS
-    \begin{center}%
-        \Huge{DS n°#1}%    
-    \end{center}%
-}
+\documentclass[../Cours.tex]{subfiles}
 
 \begin{document}
+\clearpage
+\thispagestyle{empty}
 
-\titre{1}
+\titreDS
 
-\qformat{\textbf{\underline{Exercice \thequestion : }} \hfill [\thepoints]}
-\bonusqformat{\textbf{\underline{Exercice \thequestion : }} \hfill [\thepoints]}
 \begin{questions}
-    \question[4]
+    \EXERCICE{4}
     Pierre va acheter 2 baguettes et 3 éclairs aux chocolats à la boulangerie.\\
-    Une baguette coûte \qty{1,20}{\EURO} et un éclair au chocolat coûte \qty{2,20}{\EURO}. 
+    Une baguette coûte \qty{1,20}{\EURO} et un éclair au chocolat coûte \qty{2,20}{\EURO}.
+        \question Quel calcul faut-il faire pour trouver le prix de l'ensemble de ce qu'il a acheté ?
+        \question Faire le calcul, et conclure.
 
-    \begin{parts}
-        \part Quel calcul faut-il faire pour trouver le prix de l'ensemble de ce qu'il a acheté ?
-        \part Faire le calcul, et conclure.
-    \end{parts}
-
-    \question[4]
+    \EXERCICE{4}
     Donner l'abscisse des points $A$, $B$, $C$, $D$
 
     \begin{center}
@@ -61,7 +39,7 @@
         \end{tikzpicture}
     \end{center}
 
-    \question[4] Reproduire le repère ci-dessous en y ajoutant les points suivants :
+    \EXERCICE{4} Reproduire le repère ci-dessous en y ajoutant les points suivants :
 
     \begin{center}
     \begin{tikzpicture}[scale=0.5]
@@ -77,39 +55,29 @@
     \end{tikzpicture}
     \end{center}
 
-    \begin{parts}
-        \part 
-        \begin{subparts}
-            \subpart $A(5;6)$, $B(5;2)$, $C(3;4)$, $D(7;4)$
-            \subpart Sans justifier, de quelle forme est $ABCD$ ?
-        \end{subparts}
-        \part 
-        \begin{subparts}
-            \subpart $E(1;2)$, $F(1;4)$, $G(2;7)$, $H(3;6)$, $I(2;2)$
-            \subpart De quelle forme est $EFGHI$ ?
-        \end{subparts}
-    \end{parts}
+        \question 
+            \subpart{$A(5;6)$, $B(5;2)$, $C(3;4)$, $D(7;4)$}
+            \subpart{Sans justifier, de quelle forme est $ABCD$ ?}
+        \question 
+            \subpart{$E(1;2)$, $F(1;4)$, $G(2;7)$, $H(3;6)$, $I(2;2)$}
+            \subpart{De quelle forme est $EFGHI$ ?}
 
-    \question[3]
-    \begin{parts}
-        \part Donner deux nombres, entre 10 et 99, divisibles par 5.
-        \part Donner deux nombres, entre 1000 et 9999, divisibles par 3.
-        \part Donner deux nombres, entre 100 et 999, divisibles par 9.
-    \end{parts}
+    \EXERCICE{3}
+        \question Donner deux nombres, entre 10 et 99, divisibles par 5.
+        \question Donner deux nombres, entre 1000 et 9999, divisibles par 3.
+        \question Donner deux nombres, entre 100 et 999, divisibles par 9.
 
-    \question[5]
-    Dans cet exercice, \textbf{on tracera tout sur la même figure.}
+    \EXERCICE{5}
+    Dans cet exercice, \emph{on tracera tout sur la même figure.}
     \begin{multicols}{2}
-    \begin{parts}
-        \part Tracer $[AB]$ de longueur \qty{6}{\cm} et horizontal.
-        \part Placer $H \in [AB]$ et $C \notin (AB) $
-        \part Tracer $[HC)$ et $(AC]$
-        \part Placer $I \in [HC]$ et $J \in [AB]$
-        \part Tracer $(AB)$
-    \end{parts}
+        \question Tracer $[AB]$ : \qty{6}{\cm} et horizontal.
+        \question Placer $H \in [AB]$ et $C \notin (AB) $
+        \question Tracer $[HC)$ et $(AC]$
+        \question Placer $I \in [HC]$ et $J \in [AB]$
+        \question Tracer $(AB)$
     \end{multicols}
 
-    \bonusquestion[1]
+    \EXERCICE{(bonus) 1}
     Donner le 67ème chiffre après la virgule de $\dfrac{1234}{9999}$
 \end{questions}
 
