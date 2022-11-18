@@ -19,6 +19,7 @@
 \RequirePackage{fontspec}
 \RequirePackage{luacode}
 \RequirePackage{luatexbase}
+\RequirePackage{colortbl}
 
 \RequirePackage{eurosym}
 \RequirePackage[locale=FR, group-digits=all, group-separator=\ , group-minimum-digits=4]{siunitx}
@@ -88,9 +89,16 @@
 \setlength{\VMQCMLargeurEnonce}{0.3\textwidth}
 
 \newenvironment{VMQCM}[1]{%
-\begin{flushright}%
+\begin{flushright}
+\vspace{-0.1mm}%
 \scriptsize{\fbox{\VMQCMCalculatrice{}}}%
+\vspace{-0.8cm}%
 \end{flushright}%
+\begin{flushleft}
+Nom : \\
+Prénom:
+\vspace{-1cm}%
+\end{flushleft}
 \centerline{\large{#1}} \vspace{2ex}%
 \setcounter{VMQCMNumeroQuestion}{0}%
 \setcounter{VMQCMTotalPoints}{0}%

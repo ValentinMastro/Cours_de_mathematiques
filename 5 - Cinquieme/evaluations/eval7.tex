@@ -1,6 +1,6 @@
 \documentclass{../../vmqcm}
-\VMQCMgraine{800}
-\setlength{\VMQCMLargeurEnonce}{0.3\textwidth}
+\VMQCMgraine{2345}
+\setlength{\VMQCMLargeurEnonce}{0.26\textwidth}
 
 %%%%%%%%%%%%%%%
 %% QUESTIONS %%
@@ -8,7 +8,7 @@
 
 \directlua{eval = require("eval7.lua")}
 
-\newcommand{\questionA}{%
+\newcommand{\questionA}{
     \directlua{eval.qA()}
 }
 
@@ -20,8 +20,8 @@
     \directlua{eval.qC()}
 }
 
-\newcommand{\questionD}{
-    \directlua{eval.qD()}
+\newcommand{\questionD}[1]{
+    \directlua{eval.qD(#1)}
 }
 
 \newcommand{\questionE}{
@@ -40,20 +40,20 @@
     \directlua{eval.qH()}
 }
 
-\setcounter{VMQCMNumeroEvaluation}{7}
-\renewcommand{\VMQCMCalculatrice}{Calculatrice autorisée}
+\newcommand{\questionI}{
+    \directlua{eval.qI()}
+}
+
 \begin{document}
 
+\renewcommand*{\arraystretch}{1.2}
+\renewcommand{\VMQCMCalculatrice}{Calculatrice autorisée}
+
 \foreach \n in {1,...,1}{%
-\begin{VMQCM}{Évaluation n°\theVMQCMNumeroEvaluation{}~-~4ème}
-    \questionA\questionA
-    \questionB\questionB
-    \questionC\questionC
-    \questionG\questionG
-    \questionE\questionE\questionE\questionE
-    \questionD\questionD
+\begin{VMQCM}{Évaluation n°7 - 5ème}
+    \questionA
     \questionF\questionF\questionF\questionF
-    \questionF\questionF
+    \questionB\questionB\questionB\questionB\questionB\questionB\questionB\questionB\questionB\questionB\questionB
 \end{VMQCM}%
 }
 

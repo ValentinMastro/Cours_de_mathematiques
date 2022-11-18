@@ -2,4 +2,66 @@
 
 \begin{document}
 \chapitre{Symétrie axiale}
+
+\partie{Tracer une figure symétrique}
+
+\definition{On dit que deux figures $(F)$ et $(F')$ sont symétriques par rapport à une droite $(d)$ si, en pliant le long de la droite $(d)$, les figures $(F)$ et $(F')$ se superposent. La droite $(d)$ est appelée \emph{axe de symétrie}.}
+
+\exemples{
+    \begin{center}
+        \begin{tikzpicture}[scale=0.4]
+            \draw[gray] (0,0) grid (10,10);
+            \draw[line width=0.5mm,rouge] (5,11) -- (5,-1);
+            \draw[gray] (12,0) grid (22,10);
+            \draw[line width=0.5mm,rouge] (11,5) -- (23,5);
+            \draw[gray] (24,0) grid (34,10);
+            \draw[line width=0.5mm,rouge] (23,-1) -- (35,11);
+        \end{tikzpicture}
+    \end{center}
+}
+
+\souspartie{Sans quadrillage}
+
+\definition{Deux points $A$ et $A'$ sont symétriques par rapport à une droite $(d)$ si $(d)$ est la médiatrice du segment $[AA']$.}
+
+\illustration{%
+\begin{center}
+    \begin{tikzpicture}
+        \draw[fill=noir] (0,0) circle (0.05);
+        \node[below right] at (0,0) {$A$};
+        \draw (-3,-0.2) -- (2,1.5);
+    \end{tikzpicture}
+\end{center}
+}
+
+\partie{Tracer un axe de symétrie}
+
+
+\definition{Pour tracer un axe de symétrie}
+
+
+\clearpage
+\begin{questions}
+    \exercice Tracer le symétrique des points $A$, $B$, $C$ et $D$ par rapport à la droite $(d)$.
+
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[fill=noir] (0,0) circle (0.05) node[below] {$A$} -- (1,2) circle (0.05) node[right] {$B$} -- (-1,2,0) circle (0.05) node[left] {$C$} -- (-1.5,-1) circle (0.05) node[below] {$D$} -- (0,0);
+            \draw (1.3,-2.5) -- (2.9,2.3);
+            \node[right] at (1.3,-2.5) {$(d)$};
+        \end{tikzpicture}
+    \end{center}
+
+    \exercice Tracer le symétrique de $(F)$ par rapport à la droite $(d)$ et le symétrique de $(G)$ par rapport à la droite $(e)$.
+
+    \begin{center}
+        \begin{tikzpicture}
+            \draw (1,2) -- (2,0) -- (3,4) -- (5,2)) -- cycle;
+            \draw (1.3,-2.5) -- (2.9,2.3);
+            \node[right] at (1.3,-2.5) {$(d)$};
+        \end{tikzpicture}
+    \end{center}
+\end{questions}
+
 \end{document}
+
