@@ -1,36 +1,10 @@
 from pyzbar.pyzbar import decode
 from PIL import Image
+from math import atan2, pi
 
 import cv2
 import numpy as np
-import math
 import random
-
-def recherche_ligne_separation(img, image):
-    """
-    Recherche de la ligne qui sépare les questions des réponses
-    """
-
-    def recherche_ligne(img, x, y, dx_max, dy_max):
-        """ Recherche de la ligne de séparation """
-        for dx in range(x, x+dx_max, int(dx_max/abs(dx_max))):
-            for dy in range(y, y+dy_max, -1):
-                if img[dy][dx] < 120:
-                    return (dx, dy)
-        return None
-
-    debut, fin = recherche_ligne(img, 0, 4100, 300, -500), recherche_ligne(img, 3600-1, 4200, -300, -600)
-
-    if debut is None or fin is None:
-        if debut is None:
-            print("debut")
-        if fin is None:
-            print("fin")
-        #cv2.imshow('matrice', img)
-        #cv2.waitKey(0)
-        #exit(1)
-
-    return debut, fin
 
 
 def scan_qrcode(img, image):
@@ -41,15 +15,29 @@ def scan_qrcode(img, image):
         print(f"{image} - QRcode non détecté")
         return None
 
-    rect = decodeQR[0].rect
+    # On récupère l'angle de rotation du QRCODE
+    qrcode = decodeQR[0]
+    poly = qrcode.polygon
+    angle = atan2(poly[1].y - poly[0].y, poly[1].x - poly[0].x)
+    centre = ((poly[2].x + poly[0].x)/2, (poly[2].y + poly[0].y) / 2)
 
     nbr_questions, rep, pts = dataQR.split("-")
     questions = int(nbr_questions[:-1])
     bonnes_reponses = [rep[i+4] for i in range(questions)]
     points = [int(pts[i+4]) for i in range(questions)]
 
-    return bonnes_reponses, questions, rect, points
+    return poly[0].y, angle, centre, bonnes_reponses, questions, points
 
+
+def position_qrcode(img, image):
+    decodeQR = decode(Image.fromarray(img))
+    try :
+        dataQR = decodeQR[0].data.decode('ascii')
+    except IndexError:
+        print(f"{image} - QRcode non détecté")
+        return None
+
+    return decodeQR[0].rect
 
 def detecter_reponse(img, question, x, y, taille, decal, bonne_reponse):
     # on détecte la réponse à une question
@@ -101,13 +89,6 @@ def detecter_donnee_eleve(img, choix, x1, y1, taille, decal):
     else:
         return 0
 
-def decalage(img, xdecal, ydecal):
-    # décale l'image pour qu'elles soient toutes alignées
-    img = np.roll(img, -xdecal, axis=1)
-    img = np.roll(img, -ydecal, axis=0)
-
-    return img
-
 def scan(image):
     """
     On garde uniquement la partie de la feuille qui contient les réponses.
@@ -115,47 +96,41 @@ def scan(image):
     rotation et translation  pour bien détecter les réponses et aligner les feuilles entre elles
     """
 
-    # Lecture de l'image
+    # Lecture de l'image + filtrage
     img = cv2.imread(image, cv2.IMREAD_GRAYSCALE)
+    ret, img = cv2.threshold(img, 185, 255, cv2.THRESH_BINARY)
 
-    # On recherche la ligne de séparation
-    debut, fin = recherche_ligne_separation(img, image)
-    if debut is None or fin is None:
-        return (None for i in range(5))
+    # On recherche le QRCODE
+    position_y, angle, centre, bonnes_reponses, nombre_de_questions, points = scan_qrcode(img, image)
 
-    exit(1)
-    img3 = decalage(img, debut[0], debut[1])
+    # On réduit l'image au QRCODE et aux réponses
+    img = img[position_y-800:position_y+200][:]
+    centre = (centre[0], centre[1] - position_y + 800)
 
     # On tourne l'image
-    matrice_rotation = cv2.getRotationMatrix2D((0,0), 57*math.atan2(fin[1]-debut[1], fin[0]-debut[0]), 1)
-    img4 = cv2.warpAffine(img3, matrice_rotation, (img3.shape[1], img3.shape[0]))
 
-    # On découpe l'image et on applique une valeur seuil
-    img5 = img4[0:1000, 0:3500]
-    ret, img6 = cv2.threshold(img5, 185, 255, cv2.THRESH_BINARY)
+    matrice_rotation = cv2.getRotationMatrix2D(centre, angle*180/pi, 1)
+    img = cv2.warpAffine(img, matrice_rotation, (img.shape[1], img.shape[0]))
 
-    # On scan le QRcode
-    try:
-        bonnes_reponses, nombre_de_questions, rect, points = scan_qrcode(img6, image)
-    except Exception:
-        return (None, None, None, None, None, None, None)
+    rect = position_qrcode(img, image)
     decalx = rect.left - 297
     decaly = rect.top - 118
 
     # On renvoie le résultat
     reponses = []
     for question, bonne_reponse in zip(range(1, nombre_de_questions+1), bonnes_reponses):
-        reponses.append(detecter_reponse(img6, question, 1871 + decalx, 134 + decaly, 47, 68, bonne_reponse))
+        reponses.append(detecter_reponse(img, question, 1871 + decalx, 134 + decaly, 47, 68, bonne_reponse))
 
-    niveau = detecter_donnee_eleve(img6, ['6ème', '5ème', '4ème', '3ème'], 1102 + decalx , 113 + decaly, 26, 68)
-    classe = detecter_donnee_eleve(img6, ['A', 'B', 'C', 'D', 'E', 'F'], 1238 + decalx, 113 + decaly, 26, 68)
-    dizaine = detecter_donnee_eleve(img6, list(range(10)), 1462 + decalx, 113 + decaly, 26, 68)
-    unite = detecter_donnee_eleve(img6, list(range(10)), 1599 + decalx, 113 + decaly, 26, 68)
+    niveau = detecter_donnee_eleve(img, ['6ème', '5ème', '4ème', '3ème'], 1102 + decalx , 113 + decaly, 26, 68)
+    classe = detecter_donnee_eleve(img, ['A', 'B', 'C', 'D', 'E', 'F'], 1238 + decalx, 113 + decaly, 26, 68)
+    dizaine = detecter_donnee_eleve(img, list(range(10)), 1462 + decalx, 113 + decaly, 26, 68)
+    unite = detecter_donnee_eleve(img, list(range(10)), 1599 + decalx, 113 + decaly, 26, 68)
 
-    cv2.imwrite(image + "_matrice.jpeg", img6)
+    cv2.imwrite(image + "_matrice.jpeg", img)
 
-    #cv2.imshow("matrice", img6)
+    #cv2.imshow("matrice", img)
     #cv2.waitKey(0)
+    #exit(0)
 
     return (bonnes_reponses, reponses, points, niveau, classe, dizaine*10+unite, reponses)
 

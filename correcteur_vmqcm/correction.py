@@ -24,7 +24,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from tqdm import tqdm
 
 from src.traitement_donnees import traitement_fichiers, trouver_eleve, calcul_note
-from src.scan_pdf import scan
+from src.scan_pdf_2 import scan
 
 
 def corriger_une_page(page, donnees_eleves):
@@ -48,7 +48,9 @@ def main():
 
     evaluations.sort(key=lambda x: (str(x[2]), str(x[3]), x[0]))
     for e in evaluations:
-        print(e)
-
+        nom, prenom, niveau, classe, note, numero, image = e
+        print(f"{note:2d} {nom} {prenom} {niveau}{classe} num:{numero} image:{image} matrice:{image}_matrice.jpeg")
+        
+        
 if __name__ == "__main__":
     main()
