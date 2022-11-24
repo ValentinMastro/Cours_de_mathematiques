@@ -5,17 +5,32 @@
 
 \partie{Tracer une figure symétrique}
 
-\definition{On dit que deux figures $(F)$ et $(F')$ sont symétriques par rapport à une droite $(d)$ si, en pliant le long de la droite $(d)$, les figures $(F)$ et $(F')$ se superposent. La droite $(d)$ est appelée \emph{axe de symétrie}.}
+\definition{On dit que deux figures $(\curs{F})$ et $(\curs{F}')$ sont symétriques par rapport à une droite $(d)$ si, en pliant le long de la droite $(d)$, les figures $(\curs{F})$ et $(\curs{F}')$ se superposent. La droite $(d)$ est appelée \emph{axe de symétrie}.}
 
 \exemples{
     \begin{center}
         \begin{tikzpicture}[scale=0.4]
             \draw[gray] (0,0) grid (10,10);
             \draw[line width=0.5mm,rouge] (5,11) -- (5,-1);
+            \draw[bleu, line width=0.5mm] (5,8) -- (3,8) -- (3,7) -- (2,7) -- (2,6) -- (3,4) -- cycle; 
+            \draw[vert, line width=0.5mm] (5,8) -- (7,8) -- (7,7) -- (8,7) -- (8,6) -- (7,4) -- cycle; 
             \draw[gray] (12,0) grid (22,10);
             \draw[line width=0.5mm,rouge] (11,5) -- (23,5);
+            \draw[bleu, line width=0.5mm] (15,6) -- ++(3,0) -- ++(0,3) -- ++(-1,0) -- ++(0,-1) -- ++(-1,0) -- ++(0,-1)-- ++(-1,0) -- ++(0,-1);
+            \draw[vert, line width=0.5mm] (15,4) -- ++(3,0) -- ++(0,-3) -- ++(-1,0) -- ++(0,1) -- ++(-1,0) -- ++(0,1)-- ++(-1,0) -- ++(0,1);
             \draw[gray] (24,0) grid (34,10);
             \draw[line width=0.5mm,rouge] (23,-1) -- (35,11);
+            \draw[bleu, line width=0.5mm] (24,7) -- ++(4,0) -- ++(-2,-2) -- ++(0,4) -- ++(-2,-2) (27,6) -- ++(1,-1);
+            \draw[vert, line width=0.5mm] (29,2) -- ++(4,0) -- ++(-2,-2) -- ++(0,4) -- ++(-2,-2) (30,3) -- ++(-1,1);
+            \node[bleu] at (0,7) {$(\curs{F})$};
+            \node[vert] at (10,7) {$(\curs{F}')$};
+            \node[bleu] at (16,10) {$(\curs{F})$};
+            \node[vert] at (16,0) {$(\curs{F}')$};
+            \node[bleu] at (29,8) {$(\curs{F})$};
+            \node[vert] at (29,1) {$(\curs{F}')$};
+            \node[rouge] at (4,-1) {$(d)$};
+            \node[rouge] at (11,4) {$(d)$};
+            \node[rouge] at (24.5,-1) {$(d)$};
         \end{tikzpicture}
     \end{center}
 }
@@ -27,18 +42,23 @@
 \illustration{%
 \begin{center}
     \begin{tikzpicture}
-        \draw[fill=noir] (0,0) circle (0.05);
-        \node[below right] at (0,0) {$A$};
-        \draw (-3,-0.2) -- (2,1.5);
+        \draw[fill=noir] (0,0) coordinate (A) circle (0.05);
+        \node[below right] at (A) {$A$};
+        \draw (-3,0.3) coordinate (B) -- (2,2) coordinate (C);
+        \coordinate (u) at ($(B)!(A)!(C)$);
+        \draw (A) -- ++(u) -- ++(u);
+        \node[right] at (C) {$(d)$};
+        \draw[fill=noir] ($(A)+2*(u)$) coordinate (A') circle (0.05);
+        \node[above right] at (A') {$A'$};
+        \node[rouge,rotate=-70] at ($(A)!0.25!(A')$) {||};
+        \node[rouge,rotate=-70] at ($(A)!0.75!(A')$) {||};
+        \draw[fill=noir,rotate=20] (u) rectangle +(0.2,0.2);
     \end{tikzpicture}
 \end{center}
 }
 
 \partie{Tracer un axe de symétrie}
-
-
 \definition{Pour tracer un axe de symétrie}
-
 
 \clearpage
 \begin{questions}
@@ -56,7 +76,7 @@
 
     \begin{center}
         \begin{tikzpicture}
-            \draw (1,2) -- (2,0) -- (3,4) -- (5,2)) -- cycle;
+            \draw (1,2) -- (2,0) -- (3,4) -- (5,2) -- cycle;
             \draw (1.3,-2.5) -- (2.9,2.3);
             \node[right] at (1.3,-2.5) {$(d)$};
         \end{tikzpicture}

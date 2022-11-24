@@ -1,0 +1,58 @@
+\documentclass{../../vmqcm}
+\VMQCMgraine{800}
+\setlength{\VMQCMLargeurEnonce}{0.3\textwidth}
+
+%%%%%%%%%%%%%%%
+%% QUESTIONS %%
+%%%%%%%%%%%%%%%
+
+\directlua{eval = require("eval8.lua")}
+
+\newcommand{\questionA}{%
+    \directlua{eval.qA()}
+}
+
+\newcommand{\questionB}{
+    \directlua{eval.qB()}
+}
+
+\newcommand{\questionC}{
+    \directlua{eval.qC()}
+}
+
+\newcommand{\questionD}{
+    \directlua{eval.qD()}
+}
+
+\newcommand{\questionE}{
+    \directlua{eval.qE()}
+}
+
+\newcommand{\questionF}{
+    \directlua{eval.qF()}
+}
+
+\newcommand{\questionG}{
+    \directlua{eval.qG()}
+}
+
+\newcommand{\questionH}{
+    \directlua{eval.qH()}
+}
+
+\setcounter{VMQCMNumeroEvaluation}{8}
+\renewcommand{\VMQCMCalculatrice}{Calculatrice autorisée}
+\begin{document}
+
+\foreach \n in {1,...,1}{%
+\begin{VMQCM}{Évaluation n°\theVMQCMNumeroEvaluation{}~-~4ème}
+    \questionA\questionB
+    \questionF\questionF
+    \questionE\questionE
+    \questionD\questionD
+    \questionG\questionG\questionG
+    \questionH\questionH\questionH
+\end{VMQCM}%
+}
+
+\end{document}
