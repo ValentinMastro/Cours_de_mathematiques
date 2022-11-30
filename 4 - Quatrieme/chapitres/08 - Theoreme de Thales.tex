@@ -2,7 +2,125 @@
 
 \begin{document}
 \chapitre{Théorème de Thalès}
-% thème : 
+
+\partie{Énoncé}
+
+\theoreme{de Thalès}{
+Si : 
+\begin{itemize}
+    \item les points $A$, $B$ et $D$ sont alignés
+    \item les points $A$, $C$ et $E$ sont alignés
+    \item $(BC)\paral (DE)$
+\end{itemize}
+alors : 
+$$\frac{AD}{AB} = \frac{AE}{AC} = \frac{DE}{BC}$$
+}
+
+\illustration{
+\begin{center}
+\begin{tikzpicture}
+    \coordinate (A) at (0,0);
+    \coordinate (D) at (3,1);
+    \coordinate (E) at (3,-1);
+    \coordinate (B) at ($(A)!0.65!(D)$);
+    \coordinate (C) at ($(A)!0.65!(E)$);
+    \draw (A) -- (D) -- (E) -- cycle (B) -- (C);
+    \node[left] at (A) {$A$};
+    \node[above left] at (B) {$B$};
+    \node[below left] at (C) {$C$};
+    \node[above right] at (D) {$D$};
+    \node[below right] at (E) {$E$};
+    \node at (1.5,-2.5) {Configuration n°1};
+\end{tikzpicture}\hspace{2cm}
+\begin{tikzpicture}
+    \coordinate (A) at (0,0);
+    \coordinate (D) at (3,1);
+    \coordinate (E) at (3,-1);
+    \coordinate (B) at ($(A)!-0.65!(D)$);
+    \coordinate (C) at ($(A)!-0.65!(E)$);
+    \draw (A) -- (D) -- (E) -- cycle (A) -- (B) -- (C) -- cycle;
+    \node[above] at (A) {$A$};
+    \node[left] at (B) {$B$};
+    \node[left] at (C) {$C$};
+    \node[right] at (D) {$D$};
+    \node[right] at (E) {$E$};
+    \node at (0.5,-2.5) {Configuration n°2 dite du << papillon >>};
+\end{tikzpicture}
+\end{center}
+}
+
+\begin{redaction}{
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    \draw (0,0) node[left] {$U$} -- (9,3) node[above left] {$X$};
+    \draw (0,0) -- (9,-3) node[below left] {$Y$};
+    \draw (4.5,1.5) node[above]{$V$} -- (4.5,-1.5) node[below]{$W$};
+    \draw (8.4,2.8) -- (8.4,-2.8);
+    \node[anchor=west] at (13,3) {$UV=4$};
+    \node[anchor=west] at (13,2) {$VW=6$};
+    \node[anchor=west] at (13,1) {$XY=24$};
+    \node[anchor=west] at (13,0) {$UW=4,5$};
+    \node[anchor=west] at (13,-1) {$(WV) \paral (XY)$};
+    \node[anchor=west] at (13,-3) {$\Rightarrow$ Calculer $UX$};
+\end{tikzpicture}
+\end{center}
+}
+
+\underline{On sait que :}
+\begin{itemize}
+    \item Les points $U$, $V$ et $X$ sont alignés.
+    \item Les points $U$, $W$ et $Y$ sont alignés.
+    \item $(VW) \paral (XY)$
+\end{itemize}
+
+D'après le théorème de Thalès :
+$$\dfrac{UX}{UV} = \dfrac{UY}{UW} = \dfrac{XY}{VW}$$
+
+On remplace par les valeurs de l'énoncé :
+$$\dfrac{UX}{4} = \dfrac{UY}{4,5} = \dfrac{24}{6}$$
+
+On effectue un produit en croix :
+\begin{center}
+    \begin{tikzpicture}
+        \node[anchor=west] at (0,0) {$\dfrac{UX}{4} = \dfrac{24}{6} \Rightarrow UX = \dfrac{4 \times 24}{6} = 16$};
+        \draw[rouge,-latex] (0.92,-0.25) -- (1.6,0.3) -- (1.6,-0.25) -- (0.92,0.3);
+    \end{tikzpicture}
+\end{center}
+\end{redaction}
+
+\partie{Réciproque}
+
+\paragraphe{rouge}{\textsc{Réciproque du théorème de Thalès}}{
+Si : 
+\begin{itemize}
+    \item les points A, B et D sont alignés
+    \item les points A, C et E sont alignés
+    \item $\dfrac{AD}{AB} = \dfrac{AE}{AC} = \dfrac{DE}{BC}$ \hfill \textcolor{noir}{(NB : 2 fractions égales suffisent)}
+\end{itemize}
+alors :
+$$(BC) \paral (DE)$$
+}
+
+\clearpage
+
+\begin{redaction}{
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    \draw (0,0) node[left] {$O$} -- (9,3) node[above left] {$M$};
+    \draw (0,0) -- (9,-3) node[below left] {$N$};
+    \draw (4.5,1.5) node[above]{$L$} -- (4.5,-1.5) node[below]{$K$};
+    \draw (8.4,2.8) -- (8.4,-2.8);
+    \node[anchor=west] at (13,3) {$OM=12$};
+    \node[anchor=west] at (13,2) {$OL=3$};
+    \node[anchor=west] at (13,1) {$MN=24$};
+    \node[anchor=west] at (13,0) {$LK=6$};
+    \node[anchor=west] at (13,-3) {$\Rightarrow$ Montrer que $(LK) \paral (MN)$};
+\end{tikzpicture}
+\end{center}
+}
+    
+\end{redaction}
+
 
 
 \end{document}

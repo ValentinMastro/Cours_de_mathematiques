@@ -1,14 +1,14 @@
 \documentclass{../../vmqcm}
-\VMQCMgraine{900}
-\setlength{\VMQCMLargeurEnonce}{0.35\textwidth}
+\VMQCMgraine{2345}
+\setlength{\VMQCMLargeurEnonce}{0.26\textwidth}
 
 %%%%%%%%%%%%%%%
 %% QUESTIONS %%
 %%%%%%%%%%%%%%%
 
-\directlua{eval = require("eval6.lua")}
+\directlua{eval = require("eval9.lua")}
 
-\newcommand{\questionA}{%
+\newcommand{\questionA}{
     \directlua{eval.qA()}
 }
 
@@ -40,18 +40,21 @@
     \directlua{eval.qH()}
 }
 
-\setcounter{VMQCMNumeroEvaluation}{6}
-\renewcommand{\VMQCMCalculatrice}{Calculatrice autorisée}
+\newcommand{\questionI}{
+    \directlua{eval.qI()}
+}
+
 \begin{document}
 
+\renewcommand{\VMQCMCalculatrice}{Calculatrice interdite}
+
 \foreach \n in {1,...,1}{%
-\begin{VMQCM}{Évaluation n°\theVMQCMNumeroEvaluation{}~-~4ème}
-    \questionA\questionB
-    \questionC\questionC
-    \questionD\questionD
-    \questionE\questionE
-    \questionF\questionF
-    \questionG\questionG
+\begin{VMQCM}{Évaluation n°9 - 5ème}
+    \questionH\questionH\questionH\questionH
+    \questionA\questionA
+    \questionB\questionB\questionB
+    \questionC\questionC\questionC\questionC
+    \questionD\questionD\questionD
 \end{VMQCM}%
 }
 
