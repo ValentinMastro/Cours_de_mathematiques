@@ -90,8 +90,24 @@
 \end{itemize}
 \end{listedexemples}
 
-\clearpage
+\souspartie{Primalité}
 
+\theoreme{d'Euclide sur les nombres premiers}{
+    Il existe une infinité de nombres premiers.
+}
+
+\paragraphe{noir}{Test de primalité \emph{simple} (Comment vérifier qu'un nombre est premier ?)}{
+Pour vérifier qu'un nombre est premier, il faut vérifier qu'aucun nombre entier plus petit que lui (à part 1) n'est pas un de ses diviseurs.
+}
+
+\exemple{Vérifions que 7 est un nombre premier :
+\begin{itemize}
+    \foreach \n in {2,...,6}{
+        \item 7 n'est pas divisible par \n{} car $7 \div \n$ n'est pas un entier
+    }
+\end{itemize}}
+
+\clearpage
 \begin{questions}
     \exercice\\ Compléter le tableau suivant
     
