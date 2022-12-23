@@ -9,6 +9,28 @@
 \RequirePackage{multicol}
 \RequirePackage{tabularx}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{R}{>{\raggedright\arraybackslash}X}
 \RequirePackage{booktabs}
 
 \RequirePackage{mdframed}
+
+\RequirePackage{xstring}
+\RequirePackage{xfp}
+
+\newcommand{\bionic}[2][0.5]{%
+% split on first space
+\StrCut{#2}{ }{\nextword}{\otherwords}%
+% count length of first word
+\exploregroups%
+\StrLen{\nextword}[\currlen]%
+% calculate nr. of characters for left part
+\edef\halflen{\fpeval{ceil(\currlen*#1)}}%
+% print left part in bold
+\bfseries\StrLeft{\nextword}{\halflen}%
+% print right part and add space back
+\normalfont\StrGobbleLeft{\nextword}{\halflen}\space%
+\noexploregroups%
+% call function recursively if there are other words
+\IfStrEq{\otherwords}{}{}{%
+\bionic[#1]{\otherwords}%
+}}

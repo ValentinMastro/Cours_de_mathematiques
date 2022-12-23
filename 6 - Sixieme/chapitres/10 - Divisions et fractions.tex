@@ -1,5 +1,53 @@
 \documentclass[../Cours.tex]{subfiles}
 
 \begin{document}
-\chapitre{Divisions et fractions}
+\chapitre{Divisions}
+
+\partie{Division euclidienne}
+
+\propriete{Soient deux nombres entiers que l'on appelle dividende et diviseur. Alors il existe deux nombres entiers uniques appelés quotient et reste tels que :
+$$\mbox{dividende} = \mbox{diviseur} \times \mbox{quotient} + \mbox{reste}$$
+\centerline{avec la condition : $0 \infeg \mbox{reste} < \mbox{quotient}$}}
+
+\exemple{
+\begin{center}
+    \begin{tikzpicture}[scale=0.7]
+        \node[anchor=south west] at (0,0) {
+            \begin{tabularx}{0.17\textwidth}{CCC|CC}
+                  & 6 & 5 & 4 &   \\
+                - & 4 &   & 1 & 6 \\
+                  & 2 & 5 &   &   \\
+                - & 2 & 4 &   &   \\
+                  &   & 1 &   &   \\
+            \end{tabularx}
+        };
+        \draw (0.5,3) -- (2,3);
+        \draw (0.5,1.1) -- (2.89,1.1);
+        \draw (2.89,3.8) -- (4,3.8);
+        \draw[noir,-Latex] (-2,4.2) -- (1,4.2); 
+        \draw[noir,-Latex] (7,4.2) -- (4,4.2);
+        \draw[noir,-Latex] (-2,0.7) -- (2,0.7);
+        \draw[noir,-Latex] (7,3.4) -- (4.8,3.4);
+        \node[anchor=east] at (-2,0.7) {\color{noir} Reste};
+        \node[anchor=east] at (-2,4.2) {\color{noir} Dividende};
+        \node[anchor=west] at (7,4.2) {\color{noir} Diviseur};
+        \node[anchor=west] at (7,3.4) {\color{noir} Quotient};
+        \node at (2.8,-2) {\Large{\color{rouge} \fbox{$65 = 4 \times 16 + 1$}}};
+    \end{tikzpicture}
+\end{center}
+}
+
+\partie{Division décimale}
+
+\methode{On commence comme la division euclidienne.\\Dès qu'il n'y a plus de chiffres du dividende à faire descendre, on ajoute une virgule et des zéros.\\On s'arrête lorsque le reste vaut 0.}
+
+\exemples{
+\begin{center}
+\opdiv[displayintermediary=all,voperation=top,dividendbridge]{65}{4}
+\end{center}
+}
+
+
+
+
 \end{document}
