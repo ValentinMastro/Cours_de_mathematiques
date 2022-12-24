@@ -182,7 +182,7 @@ Prénom:
             {\node at (\p3) {Note sur \theVMQCMTotalPoints};};
         }
         % QR Code
-        \node[anchor=south west] at (-1.3,-2.9) {\qrcode[height=2.5cm]{\directlua{tex.print("\theVMQCMNumeroQuestion" .. "Q-" .. "REP:" .. table.concat(solutions) .. "-PTS:" .. table.concat(points)) }}};
+        \node[anchor=south west] at (-1.3,-2.9) {\phantom{\qrcode[height=2.5cm]{\directlua{tex.print("\theVMQCMNumeroQuestion" .. "Q-" .. "REP:" .. table.concat(solutions) .. "-PTS:" .. table.concat(points)) }}}};
     \end{tikzpicture}
     \clearpage
 }

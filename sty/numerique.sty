@@ -9,6 +9,7 @@
 \DeclareSIUnit{\carre}{\squared}
 \DeclareSIUnit{\litre}{\ell}
 \DeclareSIUnit{\EURO}{\text{\euro}}
+\DeclareSIUnit{\octet}{o}
 \RequirePackage{cancel}
 
 
@@ -36,3 +37,7 @@
 \DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
 \DeclareMathAccent{\widehat}{0}{mathx}{"70}
 \DeclareMathAccent{\widecheck}{0}{mathx}{"71}
+
+% Divisions posées
+\RequirePackage{xlop}
+\opset{decimalsepsymbol={,}}

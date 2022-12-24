@@ -2,7 +2,40 @@
 
 \begin{document}
 \chapitre{Réciproque du théorème de Thalès}
-% thème : 
+
+\partie{Réciproque}
+
+\paragraphe{rouge}{\textsc{Réciproque du théorème de Thalès}}{
+Si : 
+\begin{itemize}
+    \item les points A, B et D sont alignés
+    \item les points A, C et E sont alignés
+    \item $\dfrac{AD}{AB} = \dfrac{AE}{AC} = \dfrac{DE}{BC}$ \hfill \textcolor{noir}{(NB : 2 fractions égales suffisent)}
+\end{itemize}
+alors :
+$$(BC) \paral (DE)$$
+}
+
+\clearpage
+
+\begin{redaction}{
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    \draw (0,0) node[left] {$O$} -- (9,3) node[above left] {$M$};
+    \draw (0,0) -- (9,-3) node[below left] {$N$};
+    \draw (4.5,1.5) node[above]{$L$} -- (4.5,-1.5) node[below]{$K$};
+    \draw (8.4,2.8) -- (8.4,-2.8);
+    \node[anchor=west] at (13,3) {$OM=12$};
+    \node[anchor=west] at (13,2) {$OL=3$};
+    \node[anchor=west] at (13,1) {$MN=24$};
+    \node[anchor=west] at (13,0) {$LK=6$};
+    \node[anchor=west] at (13,-3) {$\Rightarrow$ Montrer que $(LK) \paral (MN)$};
+\end{tikzpicture}
+\end{center}
+}
+    
+\end{redaction}
+
 
 
 \end{document}

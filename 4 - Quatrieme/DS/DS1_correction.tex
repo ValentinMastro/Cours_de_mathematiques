@@ -1,50 +1,29 @@
-\documentclass[addpoints,12pt]{exam}
-
-\usepackage[locale=FR, group-digits=all, group-separator=\ , group-minimum-digits=4, per-mode = symbol]{siunitx}
-\usepackage[margin=1.5cm]{geometry}
-\usepackage{mdframed}
-\usepackage{tikz}
-\usetikzlibrary{arrows.meta}
-\usepackage{frenchmath}
-\DeclareSIUnit{\litre}{\ell}
-\usepackage{amsmath}
-\usepackage{eurosym}
-\DeclareSIUnit{\EURO}{\text{\euro}}
-\usepackage{enumitem}
-\usepackage{tabularx}
-
-\pagestyle{empty}
-
-\newcommand{\titre}[1]{%
-    % #1 : numéro du DS
-    \begin{center}%
-        \Huge{DS n°#1}%    
-    \end{center}%
-}
+\documentclass[../Cours.tex]{subfiles}
 
 \begin{document}
+\clearpage
+\thispagestyle{empty}
+\color{black}
 
-\titre{1}
+\titreDScorrection
 
-\qformat{\textbf{\underline{Exercice \thequestion : }} \hfill \thepoints}
 \begin{questions}
-    \question 
-    \begin{parts}
-        \part 
+    \EXERCICE{4}
+        \question
         \begin{itemize}
             \item On choisit 3
             \item On multiplie par 2 $\Rightarrow 3 \times 2 = 6$
             \item On ajoute au résultat 7 $\Rightarrow 6 + 7 = 13 $
             \item On multiplie le résultat par 8 $\Rightarrow 13 \times 8 = 104$
         \end{itemize}
-        \part 
+        \question
         \begin{itemize}
             \item On choisit $\dfrac{5}{4}$
             \item On l'inverse : $\dfrac{4}{5}$
             \item On ajoute $\dfrac{1}{2} \Rightarrow \dfrac{4}{5} + \dfrac{1}{2} = \dfrac{8}{10} + \dfrac{5}{10} = \dfrac{13}{10}$
             \item On multiplie par $\dfrac{2}{3} \Rightarrow \dfrac{13}{10} \times \dfrac{2}{3} = \dfrac{26}{30}$
         \end{itemize}
-        \part 
+        \question\\
         \underline{Dans le programme A :} 
         \begin{itemize}
             \item On choisit 1
@@ -61,11 +40,9 @@
         \end{itemize}
 
         On trouve bien le même résultat dans les deux programmes : 72.
-    \end{parts}
 
-    \question
-    \begin{parts}
-        \part Le triangle $ABC$ est rectangle en $B$, l'hypoténuse est $[AC]$.\\
+    \EXERCICE{6}
+        \question Le triangle $ABC$ est rectangle en $B$, l'hypoténuse est $[AC]$.\\
         D'après le théorème de Pythagore :
         $$AC^2 = AB^2 + BC^2$$
         $$AC^2 = (3,1)^2 + (6,2)^2$$
@@ -74,7 +51,7 @@
         $$AC = \sqrt{48,05} \approx \qty{6,93}{\centi\metre}$$
 
         \clearpage
-        \part 
+        \question 
         Dans un premier temps, faisons un schéma du problème :\\
         \begin{center}
             \begin{tikzpicture}
@@ -99,16 +76,13 @@
         \end{enumerate}
 
         Donc l'échelle pourra atteindre une hauteur de \qty{5,12}{\metre}.
-    \end{parts}
 
-    \question 
-    \begin{parts}
-        \part Il faut faire le calcul : $2 \times 1,20 + 3 \times 2,20$
-        \part Cela donne : $2,40 + 6,60 = \qty{9}{\EURO}$
-    \end{parts}
+    \EXERCICE{4}
+        \question Il faut faire le calcul : $2 \times 1,20 + 3 \times 2,20$
+        \question Cela donne : $2,40 + 6,60 = \qty{9}{\EURO}$
     Pierre va donc payer \qty{9}{\EURO} à la boulangerie.
 
-    \question 
+    \EXERCICE{4}
     On calcule le volume du pavé droit : 
     $$V_{\mbox{pavé droit}} = L \times \ell \times h$$
     Cela donne 
@@ -151,7 +125,7 @@
 
     Donc la masse du pavé droit en argent est de $10,50 \times 42 = \qty{441}{\g}$.
 
-    \question On souhaite déterminer le 278ème chiffre après la virgule de $\dfrac{16,3}{999}$.\\
+    \EXERCICE{2} On souhaite déterminer le 278ème chiffre après la virgule de $\dfrac{16,3}{999}$.\\
 
     En utilisant la calculatrice, ou en posant la division, on remarque que :
     $\dfrac{16,3}{999} = \num{0,016 316 316 316 316}...$

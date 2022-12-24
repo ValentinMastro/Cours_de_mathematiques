@@ -3,4 +3,75 @@
 
 \chapitre{Calcul littéral}
 
+
+\partie{Expression littérale}
+
+\souspartie{Écriture}
+\definition{Une \emph{expression littérale} est un ensemble d'opérations contenant des nombres et des lettres.}
+\definition{Dans une expression littérale, une lettre représente un nombre, cette lettre est appelée une \emph{variable}.}
+
+\exemple{$3\times a + 2 \times b$ est une expression littérale contenant 2 variables : $a$ et $b$. Elle est composée de 3 opérations : 2 multiplications et 1 addition.}
+
+\definition{Évaluer une expression signifie remplacer chacune des variables par une valeur numérique donnée.}
+
+\exemple{Évaluer l'expression $3 \times a + 8$ en $a = 2$ signifie remplacer $a$ par 2, ce qui donne :  $3 \times 2 + 8 = 14$.}
+
+\convention{%
+Le symbole de multiplication est facultatif entre :
+\begin{itemize}
+    \item deux variables : $a\times b = ab$
+    \item un nombre et une variable : $5 \times x = 5x$
+    \item avec une parenthèses : $2 \times (x+3) = 2(x+3)$
+\end{itemize}
+}
+
+\notation{\vspace{-1.5em}\begin{itemize}
+        \item $a \times a = a^2$ (se lit << $a$ au carré >>)
+        \item $a \times a \times a = a^2 \times a = a^3$ (se lit << $a$ au cube >>)
+    \end{itemize}
+}
+
+\begin{listedexemples}
+    \item $5^2 = 5 \times 5 = 25$
+    \item $2^3 = 2 \times 2 \times 2 = 8$
+    \item $h^3 = h \times h \times h$
+    \item $(a+b)^2 = (a+b)(a+b)$
+\end{listedexemples}
+
+\souspartie{Réduction}
+
+\definition{Réduire une expression, c'est regrouper les termes de même nature/classe/famille.}
+
+\exemple{$2x+3x = 5x$}
+
+\partie{Développement et factorisation}
+
+\souspartie{Somme et produit}
+
+\definition{Une expression littérale est une \emph{somme} lorsque la dernière opération est une addition ou une soustraction.}
+
+\exemple{$3a+b$ / $7(2+x)+y$}
+
+\definition{De même, si la dernière opération est une multiplication, on dit que c'est un \emph{produit}.}
+
+\exemple{$3x$ $7(x+y)$ $(a+b)(2a+3b)$}
+
+\souspartie{Distributivité simple}
+
+\definition{Développer, c'est transformer un produit en une somme.}
+\definition{Factoriser, c'est transformer une somme en un produit}
+
+\propriete{\textsc{DISTRIBUTIVITÉ}\\ 
+\begin{center}
+    \begin{tikzpicture}
+        \node[anchor=west] at (0,0) {$k(a+b) = ka + kb$};
+        \node[anchor=west] at (0,-1.5) {$ka + kb = k(a+b)$};
+        \draw[vert,-latex] (0.25,0.3) arc (175:5:0.25);
+        \draw[vert,-latex] (0.25,0.3) arc (175:5:0.65 and 0.45);
+        \draw[vert] (0.27,-1.5) circle (0.2 and 0.4);
+        \draw[vert] (1.45,-1.5) circle (0.2 and 0.4);
+    \end{tikzpicture}
+\end{center}
+}
+
 \end{document}
