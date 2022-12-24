@@ -1,10 +1,12 @@
 from pyzbar.pyzbar import decode
 from PIL import Image
 from math import atan2, pi
+from sys import argv
 
 import cv2
 import numpy as np
 import random
+import csv
 
 
 def scan_qrcode(img, image):
@@ -18,7 +20,10 @@ def scan_qrcode(img, image):
     # On récupère l'angle de rotation du QRCODE
     qrcode = decodeQR[0]
     poly = qrcode.polygon
-    angle = atan2(poly[1].y - poly[0].y, poly[1].x - poly[0].x)
+    rect = qrcode.rect
+
+    angle = atan2(poly[1].y - poly[0].y, poly[1].x - poly[0].x)*180/pi
+
     centre = ((poly[2].x + poly[0].x)/2, (poly[2].y + poly[0].y) / 2)
 
     nbr_questions, rep, pts = dataQR.split("-")
@@ -26,7 +31,7 @@ def scan_qrcode(img, image):
     bonnes_reponses = [rep[i+4] for i in range(questions)]
     points = [int(pts[i+4]) for i in range(questions)]
 
-    return poly[0].y, angle, centre, bonnes_reponses, questions, points
+    return rect.left, rect.top, angle, centre, bonnes_reponses, questions, points
 
 
 def position_qrcode(img, image):
@@ -100,31 +105,32 @@ def scan(image):
     img = cv2.imread(image, cv2.IMREAD_GRAYSCALE)
     ret, img = cv2.threshold(img, 185, 255, cv2.THRESH_BINARY)
 
+    #cv2.imwrite("tmp_qr.png", img)
+
     # On recherche le QRCODE
-    position_y, angle, centre, bonnes_reponses, nombre_de_questions, points = scan_qrcode(img, image)
+    position_x, position_y, angle, centre, bonnes_reponses, nombre_de_questions, points = scan_qrcode(img, image)
+    print(angle)
 
     # On réduit l'image au QRCODE et aux réponses
-    img = img[position_y-800:position_y+200][:]
-    centre = (centre[0], centre[1] - position_y + 800)
+    #img = img[position_y-500:position_y+200][:]
 
     # On tourne l'image
+    #matrice_rotation = cv2.getRotationMatrix2D(centre, angle, 1)
+    #img = cv2.warpAffine(img, matrice_rotation, (img.shape[1], img.shape[0]))
+    #cv2.imwrite("tmp2.png", img)
 
-    matrice_rotation = cv2.getRotationMatrix2D(centre, angle*180/pi, 1)
-    img = cv2.warpAffine(img, matrice_rotation, (img.shape[1], img.shape[0]))
-
-    rect = position_qrcode(img, image)
-    decalx = rect.left - 297
-    decaly = rect.top - 118
+    decalx = position_x
+    decaly = position_y
 
     # On renvoie le résultat
     reponses = []
     for question, bonne_reponse in zip(range(1, nombre_de_questions+1), bonnes_reponses):
-        reponses.append(detecter_reponse(img, question, 1871 + decalx, 134 + decaly, 47, 68, bonne_reponse))
+        reponses.append(detecter_reponse(img, question, 1047 + decalx, decaly + 5, 30, 45, bonne_reponse))
 
-    niveau = detecter_donnee_eleve(img, ['6ème', '5ème', '4ème', '3ème'], 1102 + decalx , 113 + decaly, 26, 68)
-    classe = detecter_donnee_eleve(img, ['A', 'B', 'C', 'D', 'E', 'F'], 1238 + decalx, 113 + decaly, 26, 68)
-    dizaine = detecter_donnee_eleve(img, list(range(10)), 1462 + decalx, 113 + decaly, 26, 68)
-    unite = detecter_donnee_eleve(img, list(range(10)), 1599 + decalx, 113 + decaly, 26, 68)
+    niveau = detecter_donnee_eleve(img, ['6ème', '5ème', '4ème', '3ème'], 530 + decalx , decaly - 8, 18, 45)
+    classe = detecter_donnee_eleve(img, ['A', 'B', 'C', 'D', 'E', 'F'], 621 + decalx, decaly - 8, 18, 45)
+    dizaine = detecter_donnee_eleve(img, list(range(10)), 773 + decalx, decaly - 8, 18, 45)
+    unite = detecter_donnee_eleve(img, list(range(10)), 864 + decalx, decaly - 8, 18, 45)
 
     cv2.imwrite(image + "_matrice.jpeg", img)
 
@@ -132,5 +138,23 @@ def scan(image):
     #cv2.waitKey(0)
     #exit(0)
 
-    return (bonnes_reponses, reponses, points, niveau, classe, dizaine*10+unite, reponses)
+    return (bonnes_reponses, reponses, points, niveau, classe, dizaine*10+unite)
+
+def _csv(url):
+    with open(url, 'r') as fichier_eleves:
+        donnees_eleves = csv.reader(fichier_eleves)
+        liste = []
+        for eleve in donnees_eleves:
+            liste.append(eleve)
+
+    return liste
+
+
+if __name__ == "__main__":
+    url_image, url_csv = argv[1], argv[2]
+    bonnes_reponses, reponses, points, niveau, classe, numero = scan(url_image)
+    from traitement_donnees import trouver_eleve, calcul_note
+    nom, prenom, niveau, classe = trouver_eleve(_csv(url_csv), niveau, classe, numero)
+    note = calcul_note(bonnes_reponses, reponses, points)
+    print(f'{note} -> {nom} {prenom} ---- {niveau}{classe} ---- file:{url_image}')
 
