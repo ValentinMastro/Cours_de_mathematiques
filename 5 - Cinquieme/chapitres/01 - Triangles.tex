@@ -76,6 +76,9 @@
     \centering
     \begin{tikzpicture}
         \draw (0,0) -- ($({3*cos(60)},{3*sin(60)})$) -- (3,0) -- cycle;
+        \draw[rouge,fill=rouge] (0.3,0) arc (0:60:0.3) -- (0,0) -- cycle;
+        \draw[rouge,fill=rouge] (2.7,0) arc (180:120:0.3) -- (3,0) -- cycle;
+        \draw[rouge,fill=rouge] ($({2.7*cos(60)},{2.7*sin(60)})$) arc (-120:-60:0.3) -- ($({3*cos(60)},{3*sin(60)})$) -- cycle;
     \end{tikzpicture}
 \end{figure}
 
@@ -85,19 +88,109 @@
 
 \definition{La médiatrice d'un segment est la droite qui coupe le segment en son milieu perpendiculairement.}
 
+\illustration{\vspace{-1cm}
+\begin{center}
+\begin{tikzpicture}
+    \draw (0,0) -- (4,0);
+    \draw[fill=noir] (0,0) node[below] {$A$} circle (0.05);
+    \draw[fill=noir] (4,0) node[below] {$B$} circle (0.05);
+    \draw[red] (2,-1.5) -- (2,2);
+    \draw[fill=noir] (2,0) rectangle (2.15,0.15);
+    \node[rouge] at (1,0) {||};
+    \node[rouge] at (3,0) {||};
+\end{tikzpicture}
+\end{center}
+}
+
 \remarque{Dans un triangle, il y a 3 médiatrices.}
+
+\illustration{\vspace{-1cm}
+\begin{center}
+\begin{tikzpicture}
+    \draw[red] (0,0) -- (4,0);
+    \draw[dashed,red] (2,-1) -- (2,2);
+    \draw[blue] (4,0) -- (3,2);
+    \draw[dashed,blue] (3.5,1) -- ++(27:1);
+    \draw[dashed,blue] (3.5,1) -- ++(-153:2.5);
+    \draw[vert] (3,2) -- (0,0);
+    \draw[dashed,vert] (1.5,1) -- ++(123:1);
+    \draw[dashed,vert] (1.5,1) -- ++(-57:1.5);
+\end{tikzpicture}
+\end{center}
+}
 
 \propriete{Les trois médiatrices d'un triangle concourent en un point appelé le centre du cercle circonscrit.}
 
 \consequence{Dans un triangle $ABC$, si $M$ est le centre du cercle circonscrit : $$MA = MB = MC$$}
 
+\vspace{-1cm}
+\illustration{\vspace{-1cm}
+\begin{center}
+\begin{tikzpicture}
+    \draw[red] (0,0) node[left]{\textcolor{noir}{$A$}} -- (4,0);
+    \draw[dashed,red] (2,-1) -- (2,2);
+    \draw[blue] (4,0) node[right]{\textcolor{noir}{$B$}} -- (3,2);
+    \draw[dashed,blue] (3.5,1) -- ++(27:1);
+    \draw[dashed,blue] (3.5,1) -- ++(-153:2.5);
+    \draw[vert] (3,2) node[above]{\textcolor{noir}{$C$}} -- (0,0);
+    \draw[dashed,vert] (1.5,1) -- ++(123:1);
+    \draw[dashed,vert] (1.5,1) -- ++(-57:1.5);
+    \draw[fill=black] (2,0.25) circle (0.05);
+    \draw (2,0.25) circle (2);
+    \node[above right] at (2,0.25) {$M$};
+\end{tikzpicture}
+\end{center}
+}
+
 \souspartie{Hauteurs}
 
-\definition{Dans un triangle, la hauteur d'un côté est la droite perpendiculaire à ce côté et qui passe par le segment opposé.}
+\definition{Dans un triangle, la hauteur d'un côté est la droite perpendiculaire à ce côté et qui passe par le sommet opposé.}
+
+\illustration{\vspace{-1cm}
+\begin{center}
+\begin{tikzpicture}
+    \draw (0,0) node[left]{$A$} -- (4,0) node[right]{$B$} -- (3,2) node[above right]{$C$} -- cycle;
+    \draw[red,dashed] (3,-0.5) -- (3,2.5);
+    \node[left,red] at (3,1) {$(d)$};
+    \node[anchor=west] at (6,1.2) {$(d)$ est la hauteur issue de C.};
+    \node[anchor=west] at (6,0.5) {$(d)$ est aussi la hauteur de $[AB]$.};
+    \draw[fill=noir] (3,0) rectangle (3.2,0.2);
+\end{tikzpicture}
+\end{center}
+\begin{center}
+\begin{tikzpicture}
+    \draw (0,0) node[left]{$M$} -- (4,0) node[right]{$N$} -- (1,3) node[above right]{$P$} -- cycle;
+    \coordinate (A) at (0,0);
+    \coordinate (H) at ($(4,0)!(0,0)!(1,3)$);
+    \draw[red,dashed] ($(A)!-0.2!(H)$) -- ($(A)!1.2!(H)$);
+    \node[below right,red] at (1,1) {$(d)$};
+    \node[anchor=west] at (6,1.2) {$(d)$ est la hauteur issue de $M$.};
+    \node[anchor=west] at (6,0.5) {$(d)$ est aussi la hauteur de $[NP]$.};
+    \draw[rotate=135,fill=noir] (H) rectangle ($(H)+(0.2,0.2)$);
+\end{tikzpicture}
+\end{center}
+}
 
 \notation{Dans un triangle $ABC$, la hauteur du côté $[AB]$ se nomme aussi la hauteur issue de $C$.}
 
 \propriete{Les trois hauteurs d'un triangle concourent en un point : l'orthocentre.}
+
+\illustration{
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+    \draw (0,0) node[left]{$A$} coordinate (A) -- (5,0) node[right]{$B$} coordinate (B) -- (1.5,3) node[above left]{$C$} coordinate (C) -- cycle;
+    \coordinate (H) at ($(A)!(C)!(B)$);
+    \coordinate (I) at ($(A)!(B)!(C)$);
+    \coordinate (J) at ($(C)!(A)!(B)$);
+    \draw[red, dashed] ($(C)!-0.2!(H)$) -- ($(C)!1.2!(H)$); 
+    \draw[red, dashed] ($(B)!-0.2!(I)$) -- ($(B)!1.2!(I)$); 
+    \draw[red, dashed] ($(A)!-0.2!(J)$) -- ($(A)!1.2!(J)$);
+    \draw[fill=noir] (H) rectangle ($(H)+(0.15,0.15)$);
+    \draw[fill=noir,rotate=-25] (I) rectangle ($(I)+(0.15,0.15)$);
+    \draw[fill=noir,rotate=-132] (J) rectangle ($(J)+(0.15,0.15)$);
+\end{tikzpicture}
+\end{center}
+}
 
 \clearpage
 

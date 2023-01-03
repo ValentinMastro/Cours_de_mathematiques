@@ -122,11 +122,7 @@ $$ \mbox{valeur d'arrivée} - \mbox{valeur de départ} $$
     tex.print("\\dfrac{" .. a .. "}{" .. b .. "} = \\dfrac{" .. c .. "}{" .. "...}")
 }}
 
-\begin{luacode}
-    function decalage_vertical()
-        return "\\vphantom{\\normalsize{$\\dfrac{2^{2^{2}}}{2^{2^2}}$}}"
-    end
-    
+\begin{luacode}    
     function dfrac(x, y)
         if x==math.floor(x) then x = math.floor(x) end
         if y==math.floor(y) then y = math.floor(y) end
