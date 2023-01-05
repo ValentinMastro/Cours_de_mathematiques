@@ -1,0 +1,42 @@
+\documentclass{../../vmqcm}
+\VMQCMgraine{124}
+\setlength{\VMQCMLargeurEnonce}{0.23\textwidth}
+
+%%%%%%%%%%%%%%%
+%% QUESTIONS %%
+%%%%%%%%%%%%%%%
+
+\directlua{eval = require("eval10.lua")}
+
+\newcommand{\questionA}{%
+    \directlua{eval.qA()}
+}
+
+\newcommand{\questionB}{
+    \directlua{eval.qB()}
+}
+
+\newcommand{\questionC}{
+    \directlua{eval.qC()}
+}
+
+\newcommand{\questionD}{
+    \directlua{eval.qD()}
+}
+
+\newcommand{\questionE}{
+    \directlua{eval.qE()}
+}
+
+\begin{document}
+
+\foreach \n in {1,...,1}{%
+\begin{VMQCM}{Évaluation n°10 - 6ème}
+    \questionA\questionA\questionA\questionA
+    \questionC\questionC\questionC\questionC
+    \questionE\questionE\questionE\questionE
+    \questionB\questionB\questionB\questionB
+\end{VMQCM}%
+}
+
+\end{document}
