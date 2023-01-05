@@ -7,39 +7,7 @@
 \clearpage
 \thispagestyle{empty}
 
-
-
-\newcommand{\bionic}[2][0.5]{%
-% split on first space
-\StrCut{#2}{ }{\nextword}{\otherwords}%
-% count length of first word
-\exploregroups%
-\StrLen{\nextword}[\currlen]%
-% calculate nr. of characters for left part
-\edef\halflen{\fpeval{ceil(\currlen*#1)}}%
-% print left part in bold
-\bfseries\StrLeft{\nextword}{\halflen}%
-% print right part and add space back
-\normalfont\StrGobbleLeft{\nextword}{\halflen}\space%
-\noexploregroups%
-% call function recursively if there are other words
-\IfStrEq{\otherwords}{}{}{%
-\bionic[#1]{\otherwords}%
-}}
-
 \setcounter{DS}{1}
-
-\newcommand{\nomPrenom}{%
-    Nom : \rule{2cm}{1pt}  \hfill Prénom : \rule{2cm}{1pt} \hfill Classe : \rule{2cm}{1pt}
-}
-
-\newcommand{\caseReponse}[1]{%
-    \begin{center}
-    \begin{tikzpicture}
-        \draw (0,0) rectangle (\textwidth,#1);
-    \end{tikzpicture}
-    \end{center}
-}
 
 \color{black}
 \nomPrenom
