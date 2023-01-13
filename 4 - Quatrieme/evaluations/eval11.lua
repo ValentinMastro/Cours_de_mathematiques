@@ -404,55 +404,6 @@ local function rapport_thales_classique()
     afficher_question(enonce, reponses, 1)
 end
 
-local function puissances_10_addition()
-    local a = math.random(1,10)*objet_aleatoire_dans({1,-1})
-    local b = math.random(1,10)*objet_aleatoire_dans({1,-1})
-    local enonce = scriptsize("$10^{" .. a .. "} \\times 10^{" .. b .. "} = $" .. decalage_vertical())
-
-    local reponses = {"$10^{" .. a+b .. "}$",
-                      "$10^{" .. a-b .. "}$",
-                      "$10^{" .. a+b+1 .. "}$",
-                      "$10^{" .. -a-b-2 .. "}$",
-                      "$10^{" .. -a-b .. "}$"}
-
-    afficher_question(enonce, reponses, 1)
-end
-
-local function puissances_10_soustraction()
-    local a = math.random(1,10)*objet_aleatoire_dans({1,-1})
-    local b = math.random(1,10)*objet_aleatoire_dans({1,-1})
-    local enonce = scriptsize("$\\dfrac{10^{" .. a .. "}}{10^{" .. b .. "}} = $" .. decalage_vertical())
-
-    local reponses = {"$10^{" .. a-b .. "}$",
-                      "$10^{" .. a+b .. "}$",
-                      "$10^{" .. a+b+1 .. "}$",
-                      "$10^{" .. -a-b-1 .. "}$",
-                      "$10^{" .. -a-b .. "}$"}
-
-    afficher_question(enonce, reponses, 1)
-end
-
-local function puissances_10_multiplication()
-    local a = math.random(1,10)*objet_aleatoire_dans({1,-1})
-    local b = math.random(1,10)*objet_aleatoire_dans({1,-1})
-    local enonce = scriptsize("$(10^{" .. a .. "})^{" .. b .. "} = $" .. decalage_vertical())
-
-    local reponses = {"$10^{" .. a*b .. "}$",
-                      "$10^{" .. a-b .. "}$",
-                      "$10^{" .. a+b .. "}$",
-                      "$10^{" .. -a-b-1 .. "}$",
-                      "$10^{" .. -a-b .. "}$"}
-
-    afficher_question(enonce, reponses, 1)
-end
-
-local function puissances_10()
-    local i = objet_aleatoire_dans({1,2,3})
-    if i == 1 then puissances_10_addition() end
-    if i == 2 then puissances_10_soustraction() end
-    if i == 3 then puissances_10_multiplication() end
-end
-
 local function si(radical, exposant)
     return "$" .. num(radical) .. "\\times 10^{" .. exposant .. "}$"
 end
@@ -519,4 +470,69 @@ local function calcul_thales()
     afficher_question(enonce, reponses, 2)
 end
 
-return { qA = puissances_10, qB = ecriture_scientifique, qC = calcul_thales, qD = rapport_thales_classique }
+local function puissances_addition(n)
+    local a = math.random(1,10)*objet_aleatoire_dans({1,-1})
+    local b = math.random(1,10)*objet_aleatoire_dans({1,-1})
+    local enonce = scriptsize("$" .. n .. "^{" .. a .. "} \\times " .. n .. "^{" .. b .. "} = $")
+
+    local reponses = map(scriptsize, {"$" .. n .. "^{" .. a+b .. "}$",
+                      "$" .. n .. "^{" .. a+b+1 .. "}$",
+                      "$" .. n .. "^{" .. a+b+2 .. "}$",
+                      "$" .. n .. "^{" .. a+b-1 .. "}$",
+                      "$" .. n .. "^{" .. a+b-2 .. "}$"})
+
+    afficher_question(enonce, reponses, 1)
+end
+
+local function puissances_soustraction(n)
+    local a = math.random(1,10)*objet_aleatoire_dans({1,-1})
+    local b = math.random(1,10)*objet_aleatoire_dans({1,-1})
+    local enonce = scriptsize("$\\dfrac{" .. n .. "^{" .. a .. "}}{" .. n .. "^{" .. b .. "}} = $" .. decalage_vertical())
+
+    local reponses = map(scriptsize, {"$" .. n .. "^{" .. a-b .. "}$",
+                      "$" .. n .. "^{" .. a-b+1 .. "}$",
+                      "$" .. n .. "^{" .. a-b+2 .. "}$",
+                      "$" .. n .. "^{" .. a-b-1 .. "}$",
+                      "$" .. n .. "^{" .. a-b-2 .. "}$"})
+
+    afficher_question(enonce, reponses, 1)
+end
+
+local function puissances_multiplication(n)
+    local a = math.random(1,10)*objet_aleatoire_dans({1,-1})
+    local b = math.random(1,10)*objet_aleatoire_dans({1,-1})
+    local enonce = scriptsize("$(" .. n .. "^{" .. a .. "})^{" .. b .. "} = $")
+
+    local reponses = map(scriptsize, {"$" .. n .. "^{" .. a*b .. "}$",
+                      "$" .. n .. "^{" .. a*b+1 .. "}$",
+                      "$" .. n .. "^{" .. a*b+2 .. "}$",
+                      "$" .. n .. "^{" .. a*b-1 .. "}$",
+                      "$" .. n .. "^{" .. a*b-2 .. "}$"})
+
+    afficher_question(enonce, reponses, 1)
+end
+
+local function puissances(n)
+    local n = objet_aleatoire_dans({10, 2, 3, 4, 5, 6, 7, 8, 9})
+    local i = objet_aleatoire_dans({1,2,3})
+    if i == 1 then puissances_addition(n) end
+    if i == 2 then puissances_soustraction(n) end
+    if i == 3 then puissances_multiplication(n) end
+end
+
+local function signe_puissances()
+    local a = -1*math.random(2,9)
+    local b = math.random(3,99)
+
+    local enonce = small("Signe de $(" .. a .. ")^{" .. b .. "}$" .. decalage_vertical())
+    if math.mod(b,2) == 0 then
+        local reponses = map(small,{"positif", "négatif", "\\cellcolor{black}", "\\cellcolor{black}", "\\cellcolor{black}"})
+        afficher_question(enonce, reponses, 1)
+    end
+    if math.mod(b,2) == 1 then
+        local reponses = map(small,{"négatif", "positif", "\\cellcolor{black}", "\\cellcolor{black}", "\\cellcolor{black}"})
+        afficher_question(enonce, reponses, 1)
+    end
+end
+
+return { qA = puissances, qB = ecriture_scientifique, qC = calcul_thales, qD = rapport_thales_classique, qE = double_developpement, qF = factoriser2, qG = signe_puissances }

@@ -257,12 +257,38 @@
 \clearpage
 \partie{Puissances à base quelconque}
 
-\remarque{$a$ est un nombre entier non nul
-\begin{itemize}
-    \item Par convention, $a^0=1$
-    \item $a^2$ se lit << $a$ au carré >>
-    \item $a^3$ se lit << $a$ au cube >>
+\definition{Soit $a$ un nombre réel, \\
+soit $n$ un entier naturel, 
+$$a^n = \underbrace{a \times a \times ... \times a}_{\mbox{$n$ facteurs}}$$
+$a$ est appelé la base\\
+$n$ est appelé l'exposant}
+
+\convention{Pour n'importe quelle base $a$ : $$a^0 = 1$$}
+
+\formule{$$a^{-n} = \dfrac{1}{a^n} ~~~~~~ a^n \times a^p = a^{n+p} ~~~~~~ \dfrac{a^n}{a^p} = a^{n-p} ~~~~~~ \left(a^n\right)^p = a^{n\times p} $$}
+
+\begin{listedexemples}
+    \item $2^{-4} = \dfrac{1}{2^4}$
+    \item $3^2 \times 3^7 = 3^9$
+    \item $\dfrac{4^2}{4^8} = 4^{2-8} = 4^{-6}$
+    \item $\left(5^2\right)^4 = 5^{2 \times 4} $
+    \item $\dfrac{6^2 \times 6^3}{6^6} = \dfrac{6^{2+3}}{6^6} = \dfrac{6^5}{6^6} = 6^{5-6} = 6^{-1}$
+    \item $\left( 7^2 \times 7^4 \right)^7 = \left(7^{2+4}\right)^7 = \left(7^6\right)^7 = 7^{6 \times 7} = 7^{42}$
+\end{listedexemples}
+
+\propriete{Pour tout nombre réel $x$, $x^2$ est positif}
+
+\propriete{\begin{itemize}
+    \item Un nombre négatif élevé à une puissance paire est positif.
+    \item Un nombre négatif élevé à une puissance impaire est négatif.
 \end{itemize}}
+
+\begin{listedexemples}
+    \item[*] $(-2)^5 < 0$
+    \item[*] $(-6)^6 > 0$
+    \item[*] $0^3 = 0$ (positif et négatif)
+    \item[*] $7^3 > 0$ (la base est positive)
+\end{listedexemples}
 
 
 %%%%%%%%%%%% EXERCICES %%%%%%%%%%%%%%%%
@@ -373,6 +399,18 @@
         \question L'article L234-1 du code de la route dispose que : << Même en l'absence de tout signe d'ivresse manifeste, le fait de conduire un véhicule sous l'empire d'un état alcoolique caractérisé par une concentration d'alcool dans le sang égale ou supérieure à 0,80 gramme par litre [...] est puni de deux ans d'emprisonnement et de 4 500 euros d'amende. >>
             \subquestion Un policier procède à un contrôle sanguin. Dans l'échantillon de \qty{235}{\milli\litre} de sang prélevé, il y a \qty{190}{\milli\gram} d'alcool détecté. La personne contrôlée enfreint-elle l'article L234-1 ?
             \subquestion À partir de quelle concentration d'alcool dans le sang est-il interdit de conduire ? À quelle consommation cela correspond-il concrètement ?
+
+    \exercicetitre{Accords pythagoriciens}
+        \begin{center}
+            \begin{tabularx}{0.5\linewidth}{|l|C|}
+                Note & fréquence (\unit{\hertz}) \\
+                ré & \num{293.33} \\
+                
+            \end{tabularx}
+        \end{center}
+
+
+        
 \end{questions}
 
 %%%%%%%%%%%%%% CORRECTIONS %%%%%%%%%%%%%%%%%
