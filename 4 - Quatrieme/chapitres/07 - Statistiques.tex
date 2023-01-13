@@ -2,7 +2,47 @@
 
 \begin{document}
 \chapitre{Statistiques}
-% thème : 
 
+\partie{Indicateurs de position}
+
+\definition{Une série statistique est un ensemble de valeurs non ordonnée.}
+\exemple{La taille des élèves d'une classe : \{ \qtylist{1.69;1.67;1.57;1.60;1.49}{\metre} \}}
+
+\souspartie{Moyenne}
+
+\vocabulaire{L'effectif total d'une série est le nombre de valeurs dans la série.}
+\definition{La moyenne d'une série est la somme de toutes les valeurs divisée par l'effectif total.}
+
+\exemple{$N=5$ 
+\begin{align*} 
+    \bar{x} &= \frac{\num{1.69} + \num{1.67} + \num{1.57} + \num{1.60} + \num{1.49}}{5} \\
+    &\approx \qty{1.603}{\metre} \\
+\end{align*}}
+\vspace{-6ex}
+
+\souspartie{Médiane}
+
+\definition{La médiane d'une série statistique est une valeur telle que la moitié des valeurs de la série soit plus petite qu'elle, et que l'autre moitié des valeurs de la série soit plus grande qu'elle.}
+
+\methode{
+\begin{enumerate}
+    \item Ranger dans l'ordre croissant la série
+    \item 
+        \begin{enumerate}
+            \item Si l'effectif est impair, alors la médiane est la $\frac{N+1}{2}$ème valeur.
+            \item Si l'effectif est pair, alors la médiane est entre la $\frac{N}{2}$ème valeur et la $\frac{N}{2}+1$ème valeur.
+        \end{enumerate}
+\end{enumerate}
+}
+
+\exemples{
+Si la série est : \{ \qtylist{1.69;1.67;1.57;1.60;1.49}{\metre} \}\\
+Dans l'ordre croissant : \{ \qtylist{1.49;1.57;1.60;1.67;1.69}{\metre} \}.\\
+\textcolor{rouge}{L'effectif est $N=5$, c'est impair, donc la valeur de la médiane est la $\frac{N+1}{2}$ème, c'est-à-dire la 3ème valeur, donc \qty{1.60}{\metre}.}\\[2ex]
+Si la série est : \{ 42 37 39 41 45 40 \} \\
+Dans l'ordre croissant : \{ 37 39 40 41 42 45 \} \\
+\textcolor{rouge}{L'effectif est $N=6$, c'est pair, donc la valeur de la médiane est entre la $\frac{N}{2}$ème et la $\frac{N}{2}+1$ème valeur, c'est-à-dire entre la 3ème et la 4ème valeur, donc entre 40 et 41.\\
+On choisit une médiane de \num{40.5}.}
+}
 
 \end{document}
