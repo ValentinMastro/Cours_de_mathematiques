@@ -102,7 +102,10 @@ local function frac(x, y)
     return "$\\frac{" .. num(x) .. "}{" .. num(y) .. "}$"
 end
 
-
+local function dessiner_angle(angle, texte)
+    local dessin = "\\begin{tikzpicture}[baseline=(current bounding box.center),scale=1.5] \\coordinate (A) at ({cos(" .. angle .. ")}, {sin(" .. angle .. ")}); \\draw (1,0) -- (0,0) -- (A); \\draw[fill=black] (0.2,0) arc (0:" .. angle .. ":0.2) -- (0,0) -- cycle; \\node[anchor=south west] at (0.4,-0.05) {" .. texte .. "}; \\end{tikzpicture}"
+    return dessin
+end
 
 local function mesurer_angle()
     local angle = math.random(2,16)*10
@@ -150,7 +153,8 @@ local function poser_multiplication()
 end
 
 local function gerer_index(i)
-(sex toy:1.2)end
+    return ((i + 6) % 13) - 6
+end
 
 local function convertion()
     local unites = {"\\metre", "\\gram", "\\second", "\\candela", "\\kelvin", "\\ampere", "\\mole"}
@@ -192,4 +196,111 @@ local function plus_grand_que_nombres_decimaux()
     afficher_question(enonce, reponses, 1)
 end
 
-return { qA = multiplier_diviser_puiss_10, qB = poser_multiplication, qC = convertion, qD = plus_petit_que_nombres_decimaux, qE = plus_grand_que_nombres_decimaux }
+local function probleme_division_euclidienne()
+    local a = math.random(101,999)
+    local b = math.random(4,9)
+
+    local choix = math.random(1,2)
+
+    if choix == 1 then 
+        local enonce = scriptsize(objet_aleatoire_dans(
+            {a .. " élèves mangnent à la cantine à des tables de " .. b .. ". Combien faut-il de tables ?",
+            "Une étagère peut contenir " .. b .. " livres. Combien en faut-il pour ranger " .. a .. " livres ?"}))
+        local reponses = map(small, {math.floor(a/b) + 1, math.floor(a/b), math.floor(a/b)+2, math.floor(a/b) - 1, math.floor(a/b) - 2})
+        afficher_question(enonce, reponses, 1)
+    end
+    if choix == 2 then
+        local enonce = scriptsize(objet_aleatoire_dans(
+            {"Il faut " .. b .. " ampoules pour faire une guirlande électrique. Combien de guirlandes peut-on faire avec " .. a .. " ampoules ?",
+            "Une fermière vend des boites de " .. b .. " oeufs. Combien vendra-t-elle de boites si elle ramasse " .. a .. " oeufs aujourd'hui ?"}))
+        local reponses = map(small, {math.floor(a/b), math.floor(a/b) + 1, math.floor(a/b)+2, math.floor(a/b) - 1, math.floor(a/b) - 2})
+        afficher_question(enonce, reponses, 1)
+    end
+end
+
+local function somme_diff_prod_quotient()
+    local a = math.random(2, 7)
+    local b = math.random(2, 4)*a
+
+    local choix = math.random(1,4)
+    local enonce = ""
+    local reponses = {}
+
+    if choix == 1 then
+      enonce = "Somme de " .. a .. " et de " .. b
+      reponses = {a+b, b-a, a*b, b/a, 1}
+    end
+    if choix == 2 then
+      enonce = "Différence entre " .. b .. " et " .. a
+      reponses = {b-a, a+b, a*b, b/a, 1}
+    end
+    if choix == 3 then
+      enonce = "Produit de " .. a .. " par " .. b
+      reponses = {a*b, b-a, a+b, b/a, 1}
+    end
+    if choix == 4 then
+      enonce = "Quotient de " .. b .. " par " .. a
+      reponses = {b/a, b-a, a*b, a+b, 1}
+    end
+
+    afficher_question(scriptsize(enonce), map(scriptsize, map(num, reponses)), 1)
+end
+
+local function decalage_vertical()
+    return "\\vphantom{$\\frac{2^{2^{2}}}{2^{2^2}}$}"
+end
+
+local function addition_fraction()
+    local a = math.random(1, 20)
+    local b = math.random(1, 20)
+    local c = math.random(1, 20)
+
+    local enonce = frac(a, c) .. " + " .. frac(b, c) .. " $=$" .. decalage_vertical()
+    local reponses = {frac(a+b, c), frac(a+b, c+c), frac(a+b+1, c), frac(a+b+1, c+c), frac(a+b-1, c)}
+
+    afficher_question(enonce, reponses, 1)
+end
+
+local function fractions_egales()
+    local nombres = {2, 3, 4, 5, 6, 7, 8, 9, 10}
+    local a, b, c = table.unpack(objets_aleatoires_dans(nombres, 3))
+
+    local enonce = frac(a, b) .. " = $\\frac{" .. a*c .. "}{?}$" .. decalage_vertical()
+    local reponses = {num(b*c), num(a*b), num(c*a), num(a*b*c), num(b*b)}
+
+    afficher_question(enonce, reponses, 1)
+end
+
+local function convertion_hh_mm_ss()
+    local ss = math.random(0,59)
+    local mm = math.random(30,59)
+    local hh = math.random(0,23)
+    local secondes = hh*3600+mm*60+ss
+
+    local enonce = scriptsize(secondes .. " secondes en hh:mm:ss")
+    local reponses = map(scriptsize, {hh .. ":" .. mm .. ":" .. ss, 
+                                      (hh+1) .. ":" .. mm .. ":" .. ss,
+                                      hh .. ":" .. (mm+1) .. ":" .. ss,
+                                      hh .. ":" .. mm .. ":" .. (ss+1),
+                                      (hh+1) .. ":" .. (mm+1) .. ":" .. ss})
+
+    afficher_question(enonce, reponses, 1)
+end
+
+local function convertion_secondes()
+    local ss = math.random(0,59)
+    local mm = math.random(30,59)
+    local hh = math.random(0,23)
+
+    local enonce = scriptsize(hh .. ":" .. mm .. ":" .. ss .. " en secondes")
+    local reponses = map(scriptsize, {hh*3600+mm*60+ss,
+                                      hh*100+mm*10+ss,
+                                      (hh-1)*3600+(mm-1)*60+ss,
+                                      hh+mm+ss,
+                                      mm*3600+hh*60+ss})
+
+    afficher_question(enonce, reponses, 1)
+end
+
+
+return { qA = convertion_hh_mm_ss, qB = convertion_secondes, qC = convertion, qD = mesurer_angle }

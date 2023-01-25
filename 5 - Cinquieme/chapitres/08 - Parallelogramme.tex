@@ -3,14 +3,42 @@
 
 \chapitre{Parallélogramme}
 
+
+
 \partie{Nomenclature des parallélogrammes}
 
 \begin{center}
     \begin{tikzpicture}
-        \draw (-2,10) rectangle (2,12);
-        \node at (0,11) {quadrilatères};
-        \draw (-2,6) rectangle (2,8);
-        \node at (0,7) {parallélogrammes};
+        \draw (-2,11) rectangle (2,13);
+        \node at (0,12) {quadrilatères};
+        \draw (-2,7) rectangle (2,9);
+        \node at (0,8) {parallélogrammes};
+        \draw (-8,3) rectangle (-4,5);
+        \node at (-6,4) {losange};
+        \draw (4,3) rectangle (8,5);
+        \node at (6,4) {rectangle};
+        \draw (-2,-1) rectangle (2,1);
+        \node at (0,0) {carré};
+        \draw[vert,-Latex] (0.25,11) -- (0.25,9);
+        \draw[rouge,-Latex] (-0.25,11) -- (-0.25,9);
+        \draw[vert,-Latex] (-2,8) -- (-6,5);
+        \draw[vert,-Latex] (2,8) -- (6,5);
+        \draw[vert,-Latex] (-6,3) -- (-2,0);
+        \draw[vert,-Latex] (6,3) -- (2,0);
+        \draw[rouge,-Latex] (-2,8.25) -- (-6.5,5);
+        \draw[rouge,-Latex] (2,8.25) -- (6.5,5);
+        \draw[rouge,-Latex] (-6.5,3) -- (-2,-0.25);
+        \draw[rouge,-Latex] (6.5,3) -- (2,-0.25);
+        \node[anchor=west,vert] at (0.25,10) {\small \makecell{les côtés opposés\\ sont parallèles}};
+        \node[anchor=east,rouge] at (-0.25,10) {\small \makecell{les diagonales se coupent\\ en leur milieu}};
+        \node[vert,rotate=35] at (-3.6,6) {\small \makecell{les 4 côtés sont\\ égaux}};
+        \node[rouge,rotate=35] at (-4.8,7) {\small \makecell{les diagonales sont\\ perpendiculaires}};
+        \node[vert,rotate=-35] at (3.3,6.2) {\small \makecell{les 4 angles sont \\égaux (=\ang{90})}};
+        \node[rouge,rotate=-35] at (4,7.5) {\small \makecell{les diagonales sont\\ de même longueur}};
+        \node[vert,rotate=35] at (3.5,2) {\small \makecell{les 4 côtés sont\\ égaux}};
+        \node[rouge,rotate=35] at (4.8,1) {\small \makecell{les diagonales sont\\ perpendiculaires}};
+        \node[vert,rotate=-35] at (-3,1.8) {\small \makecell{les 4 angles sont \\égaux (=\ang{90})}};
+        \node[rouge,rotate=-35] at (-5,1) {\small \makecell{les diagonales sont\\ de même longueur}};
     \end{tikzpicture}
 \end{center}
 
@@ -32,7 +60,65 @@
 \clearpage
 \EXERCICES
 \begin{questions}
-    \exercicetitre{}
+    \exercicetitre{Constructions}
+        \question Construire en vraie grandeur le rectangle $IJKL$ tel que $IJ=\qty{5}{\centi\metre}$ et $JL=\qty{8}{\centi\metre}$.
+        \question Construire en vraie grandeur le losange $EFGH$ tel que $EG=\qty{3}{\centi\metre}$ et $\widehat{EHG}=\ang{30}$.
+    \exercicetitre{Programme de construction}
+        \question Écrire un programme de construction pour $GHFE$ sachant que $OG=\qty{2}{\centi\metre}$ et $OH=\qty{3}{\centi\metre}$.
+        \begin{center}
+        \begin{tikzpicture}
+            \coordinate (u) at (3,0.3);
+            \coordinate (v) at (0.5,2);
+            \draw (0,0) node[left]{$F$} -- ++(u) node[midway]{||} node[right]{$E$} -- ++(v) node[midway,rotate=90]{||} node[right]{$H$} -- ++($-1*(u)$) node[midway]{||} node[left]{$G$} -- cycle node[midway,rotate=90]{||};
+            \draw[dashed] (0,0) -- ++($(u)+(v)$) node[midway,above]{$O$};
+            \draw[dashed] (0,0) ++(v) -- ++($(u)-(v)$);
+        \end{tikzpicture}
+        \end{center}
+        \question Écrire un programme de construction pour $KLMN$ sachant que $LM=\qty{3.5}{\centi\metre}$ et $\widehat{KVN}=\ang{30}$.
+        \begin{center}
+        \begin{tikzpicture}
+            \coordinate (u) at (6,0);
+            \coordinate (v) at (0,1.5);
+            \draw (0,0) node[left]{$N$} -- ++(u) node[right]{$M$} -- ++(v)  node[right]{$L$} -- ++($-1*(u)$)  node[left]{$K$} -- cycle;
+            \draw[fill=black] (0,0) rectangle ++(0.2,0.2);
+            \draw[fill=black] (u) rectangle ++(-0.2,0.2);
+            \draw[fill=black] (v) rectangle ++(0.2,-0.2);
+            \draw[fill=black] ($(u)+(v)$) rectangle ++(-0.2,-0.2);
+            \draw[dashed] (0,0) -- ++($(u)+(v)$) node[midway,above]{$V$};
+            \draw[dashed] (0,0) ++(v) -- ++($(u)-(v)$);
+        \end{tikzpicture}
+        \end{center}
+\end{questions}
+
+\begin{questions}
+    \exercicetitre{Constructions}
+        \question Construire en vraie grandeur le rectangle $IJKL$ tel que $IJ=\qty{5}{\centi\metre}$ et $JL=\qty{8}{\centi\metre}$.
+        \question Construire en vraie grandeur le losange $EFGH$ tel que $EG=\qty{3}{\centi\metre}$ et $\widehat{EHG}=\ang{30}$.
+    \exercicetitre{Programme de construction}
+        \question Écrire un programme de construction pour $GHFE$ sachant que $OG=\qty{2}{\centi\metre}$ et $OH=\qty{3}{\centi\metre}$.
+        \begin{center}
+        \begin{tikzpicture}
+            \coordinate (u) at (3,0.3);
+            \coordinate (v) at (0.5,2);
+            \draw (0,0) node[left]{$F$} -- ++(u) node[midway]{||} node[right]{$E$} -- ++(v) node[midway,rotate=90]{||} node[right]{$H$} -- ++($-1*(u)$) node[midway]{||} node[left]{$G$} -- cycle node[midway,rotate=90]{||};
+            \draw[dashed] (0,0) -- ++($(u)+(v)$) node[midway,above]{$O$};
+            \draw[dashed] (0,0) ++(v) -- ++($(u)-(v)$);
+        \end{tikzpicture}
+        \end{center}
+        \question Écrire un programme de construction pour $KLMN$ sachant que $LM=\qty{3.5}{\centi\metre}$ et $\widehat{KVN}=\ang{30}$.
+        \begin{center}
+        \begin{tikzpicture}
+            \coordinate (u) at (6,0);
+            \coordinate (v) at (0,1.5);
+            \draw (0,0) node[left]{$N$} -- ++(u) node[right]{$M$} -- ++(v)  node[right]{$L$} -- ++($-1*(u)$)  node[left]{$K$} -- cycle;
+            \draw[fill=black] (0,0) rectangle ++(0.2,0.2);
+            \draw[fill=black] (u) rectangle ++(-0.2,0.2);
+            \draw[fill=black] (v) rectangle ++(0.2,-0.2);
+            \draw[fill=black] ($(u)+(v)$) rectangle ++(-0.2,-0.2);
+            \draw[dashed] (0,0) -- ++($(u)+(v)$) node[midway,above]{$V$};
+            \draw[dashed] (0,0) ++(v) -- ++($(u)-(v)$);
+        \end{tikzpicture}
+        \end{center}
 \end{questions}
 
 \end{document}
