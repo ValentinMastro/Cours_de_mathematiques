@@ -627,4 +627,93 @@ $n$ est appelé l'exposant}
             \subquestion 
 \end{questions}
 
+\clearpage
+\small
+
+On donne la formule suivante : 
+$$F_{A/B} = G \times \dfrac{M_A \times M_B}{{d_{A/B}}^2}$$
+où : 
+\begin{itemize}
+    \item $F_{A/B}$ est la force d'attraction gravitationnelle entre l'objet A et l'objet B
+    \item $G$ est la constante de gravitation universelle : $G = \qty{6.67e-11}{\metre\cubed\per\kilo\gram\per\second\squared}$
+    \item $M_A$ est la masse de l'objet A
+    \item $M_B$ est la masse de l'objet B
+    \item $d_{A/B}$ est la distance entre A et B
+\end{itemize}
+
+Par exemple, si je veux calculer la force entre la Terre et la Lune, je vais considérer l'objet A comme la Terre, et l'objet B comme la Lune, ce qui donnera : 
+
+$$F_{\mbox{Terre/Lune}} = G \times \dfrac{M_{\mbox{Terre}} \times M_{\mbox{Lune}}}{{d_{\mbox{Terre/Lune}}}^2}$$
+
+où : 
+\begin{itemize}
+    \item $F_{\mbox{Terre/Lune}}$ est la force de gravité entre la Terre et la Lune
+    \item $G$ est la constante de gravitation universelle : $G = \qty{6.67e-11}{\metre\cubed\per\kilo\gram\per\second\squared}$
+    \item $M_{\mbox{Terre}}$ est la masse de la Terre : $M_{\mbox{Terre}} = \qty{6.0e24}{\kilo\gram}$
+    \item $M_{\mbox{Lune}}$ est la masse de la Lune : $M_{\mbox{Lune}} = \qty{7.3e22}{\kilo\gram}$
+    \item $d_{\mbox{Terre/Lune}}$ est la distance entre la Terre et la Lune : $d_{\mbox{Terre/Lune}} = \qty{3.84e5}{\kilo\metre}$ 
+\end{itemize}
+
+Maintenant, dans la formule, on remplace toutes les données par leur valeur : 
+
+\begin{align*}
+    F_{\mbox{Terre/Lune}} &= G \times \dfrac{M_{\mbox{Terre}} \times M_{\mbox{Lune}}}{{d_{\mbox{Terre/Lune}}}^2} \\
+    &= \num{6.67e-11} \times \dfrac{\num{6.0e24} \times \num{7.3e22}}{\left(\num{3.84e8}\right)^2} \\
+    &= \left( \dfrac{ \num{6.61} \times \num{6.0} \times \num{7.3} }{ \num{3.84}^2 } \right) \times \left( \dfrac{ 10^{-11} \times 10^{24} \times 10^{22} }{ {10^8}^2 } \right) \\
+    &\approx \num{19.8} \times 10^{-11+24+22-2 \times 8} \\
+    &\approx \qty{19.8e19}{N}\\
+    &\approx \qty{1.98e20}{N} ~~~~\mbox{(en écriture scientifique)}
+\end{align*}
+
+\clearpage
+Revenons à l'exercice, le but est de comparer la gravité sur Terre et sur la Lune. Pour cela, on va calculer la force de gravité de la Terre qui s'exerce sur Tintin.
+
+On va donc dire que A est la Terre, et B est Tintin. On a : 
+$$F_{\mbox{Terre/Tintin}} = G \times \dfrac{M_{\mbox{Terre}} \times M_{\mbox{Tintin}}}{{d_{\mbox{Terre/Tintin}}}^2}$$
+
+où : 
+\begin{itemize}
+    \item $F_{\mbox{Terre/Tintin}}$ est la force de gravité entre la Terre et Tintin
+    \item $G$ est la constante de gravitation universelle : $G = \qty{6.67e-11}{\metre\cubed\per\kilo\gram\per\second\squared}$
+    \item $M_{\mbox{Terre}}$ est la masse de la Terre : $M_{\mbox{Terre}} = \qty{6.0e24}{\kilo\gram}$
+    \item $M_{\mbox{Tintin}}$ est la masse de Tintin. Ici, on prend : $M_{\mbox{Tintin}} = \qty{70}{\kilo\gram} = \qty{7.0e1}{\kilo\gram}$
+    \item $d_{\mbox{Terre/Tintin}}$ est la distance entre la Terre et Tintin. Or, Tintin se trouve à la surface de la Terre, donc la distance entre le centre de la Terre et Tintin est la même chose que le rayon de la Terre : $d_{\mbox{Terre/Tintin}} = \qty{6.38e3}{\kilo\metre} = \qty{6.38e6}{\metre}$ 
+\end{itemize}
+
+\begin{center}
+    \begin{tikzpicture}[scale=4]
+        \draw[fill=gray!50!white, shading=ball] (0,0) circle (1);
+        \draw[red,fill=red] (0.5,0.3) circle (0.05);
+        \draw[white,fill=white] (0,0) circle (0.03);
+        \draw[white, dashed] (0,0) -- (0.5,0.3);
+        \node[rotate=30, white] at (0.25,0.05) {rayon};
+        \node[red,right,anchor=west] at (0.55,0.3) {Tintin};
+        \node[white,left,anchor=east] at (0,0) {centre de la Terre};
+    \end{tikzpicture}
+\end{center}
+
+On calcule : 
+\begin{align*}
+    F_{\mbox{Terre/Tintin}} &= G \times \dfrac{M_{\mbox{Terre}} \times M_{\mbox{Tintin}}}{{d_{\mbox{Terre/Tintin}}}^2} \\
+    &= \num{6.67e-11} \times \dfrac{\num{6.0e24} \times \num{7.0e1}}{\left(\num{6.38e6}\right)^2} \\
+    &= \left( \dfrac{\num{6.67} \times \num{6.0} \times \num{7.0}}{\num{6.38}^2} \right) \times \left( \dfrac{10^{-11} \times 10^{24} \times 10^1}{{10^6}^2} \right) \\
+    &\approx \num{6.88} \times 10^{-11+24+1-2\times 6} \\
+    &\approx \qty{6.88e2}{\newton}
+\end{align*}
+
+\clearpage
+Quand on calcule $F_{\mbox{Terre/Tintin}}$, en fait on calcule le \emph{poids} de Tintin sur Terre. Pour cela, on peut utiliser une formule plus simple : 
+
+\begin{align*}
+    P_{\mbox{Tintin}} &= M_{\mbox{Tintin}} \times g \\
+    &= \num{7.0e1} \times \num{9.8} \\ 
+    &= \qty{686}{\newton} \\
+    &= \qty{6.86e2}{\newton} ~~~~\mbox{(en écriture scientifique)}
+\end{align*}
+
+Qu'on utilise la première ou la deuxième formule, on obtiendra le même résultat.
+
+Ensuite, il faut faire la même chose pour la Lune.
+
+
 \end{document}
