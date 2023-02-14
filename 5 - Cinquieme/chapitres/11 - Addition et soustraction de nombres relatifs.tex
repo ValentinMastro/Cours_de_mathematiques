@@ -90,6 +90,37 @@
     \item[$\longrightarrow$] $(+5)-(-2)=(+5)+(+2)=(+7)$
 \end{listedexemples}
 
+\paragraphe{rouge}{Règle de calcul}{Lorsque l'on additionne plusieurs nombres, on peut regrouper les termes positifs entre eux et les termes positifs entre eux.}
+
+\exemple{
+    \begin{align*}
+        A &= (+2) + (-4) + (+6) + (-8) + (+10)\\
+        A &= (+18) + (-12) \\
+        A &= +6
+    \end{align*}
+}
+
+\partie{Repérage}
+
+\vocabulaire{
+    Une droite graduée horizontale (\emph{axe des abscisses}), une droite graduée verticale (\emph{axe des ordonnées}), et un point de coordonnées $(0;0)$ (\emph{l'origine}), forment un repère orthogonal.
+}
+
+\begin{center}
+    \footnotesize
+    \begin{tikzpicture}[scale=0.9]
+        \draw[gray!50!white] (-6,-6) grid (6,6);
+        \draw[latex-latex] (-7,0) -- (7,0);
+        \draw[latex-latex] (0,-7) -- (0,7);
+        \foreach \i in {-6,-5,-4,-3,-2,-1,1,2,3,4,5,6} {
+            \draw (-0.1,\i) node[left,anchor=east]{\bfseries\i} -- (0.1,\i);
+            \draw (\i,-0.1) node[below,anchor=north]{\bfseries\i} -- (\i,0.1);
+        };
+        \node[below left] at (0,0) {\bfseries 0};
+        \node at (0,-8) {\normalsize$A(1;2) ~~~~ B(3;-4) ~~~~ C(-6;2) ~~~~ D(-5;-4) ~~~~ E(5;-3)$};
+    \end{tikzpicture}
+\end{center}
+
 \clearpage
 \EXERCICES
 
@@ -172,6 +203,46 @@
     Cléopâtre reine d'Égypte & & \\\hline
     \end{tabular}
     \end{center}
+
+    \exercicetitre{Culture générale} Associer un nombre relatif à chaque situation
+    \question L'invention de l'écriture remonte à environ 3400 avant J.-C.
+    \question La révolution française a eu lieu en 1789.
+    \question Le mont blanc mesure \qty{4810}{\metre}.
+    \question Jules César a franchi le Rubicon en 49 avant J.-C.
+    \question La profondeur de la fosse abyssale des Mariannes est de \qty{11034}{\metre}.
+    \question L'azote liquide a une température d'ébullition inférieure de 195,79 °C à la température de fusion de l'eau.
+\end{questions}
+
+\clearpage
+\CORRECTIONS
+
+\begin{questions}
+    \exercice
+    \exercice
+    \exercice 
+    \exercicetitre{Histoire antique}
+    
+    \question Compléter le tableau en remettant dans l'ordre croissant les dates suivantes : \\-356 ; -51 ; -1300 ; -330 ; -218 ; -776
+    \question Compléter ensuite la colonne << durée >> en calculant la durée séparant chacun des évènements de l'Histoire antique.
+    \begin{center}
+    \begin{tabular}{|c|c|c|}\hline
+    Évènements & année & durée \\\hline
+    Naissance de Ramsès II  & -1300 & \\\hline
+    $1^{er}$ jeux olympiques antiques & -776 & $(-776)-(-1300)=534$ \\\hline
+    Naissance d'Alexandre le grand & -356 & $(-356)-(-776)=420$\\\hline
+    Naissance d'Euclide d'Alexandrie & -330 & $(-330)-(-356)=26$ \\\hline
+    Hannibal traverse les Alpes & -218 & $(-218)-(-330)=112$\\\hline
+    Cléopâtre reine d'Égypte & -51 & $(-51)-(-218)=167$ \\\hline
+    \end{tabular}
+    \end{center}
+
+    \exercicetitre{Culture générale}
+    \question -3400 : date qui sépare la préhistoire de l'antiquité
+    \question 1789 : date de la révolution française (14 juillet 1789 : prise de la Bastille)
+    \question \qty{4810}{\metre} : le mont blanc est le sommet le plus haut de France
+    \question -49 : le Rubicon est une rivière en Italie qui servait de frontière entre la Gaule et la République Romaine
+    \question \qty{-11034}{\metre} : l'endroit le plus profond sous la mer
+    \question \qty{-195.79}{\degreeCelsius} : la température à laquelle l'azote passe de l'état solide à l'état liquide
 \end{questions}
 
 \end{document}

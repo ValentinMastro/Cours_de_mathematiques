@@ -3,4 +3,113 @@
 
 \chapitre{Probabilités}
 
+\partie{Concept}
+
+\definition{Une expérience est aléatoire si je ne peux pas déterminer à l'avance l'issue de l'évènement.}
+
+\exemple{ << Lancer un dé à 6 faces >> est un évènement aléatoire, car je ne peux pas savoir à l'avance sur quoi va tomber le dé avant de le lancer.\\
+Les issues de cette expérience sont $\Omega = {1;2;3;4;5;6}$.}
+
+\definition{La probabilité d'un évènement est un nombre entre 0 et 1 qui permet de quantifier la possibilité que l'évènement se réalise.}
+
+\partie{Approche qualitative}
+
+\begin{center}
+    \begin{tikzpicture}
+        \node[rouge,text width=3.5cm] at (-6,0) {évènement impossible};
+        \node[rouge,text width=3.5cm] at (-2,0) {évènement peu probable};
+        \node[rouge,text width=3.5cm] at (2,0) {évènement probable};
+        \node[rouge,text width=3.5cm] at (6,0) {évènement certain};
+        \draw[dashed] (-4,1) -- (-4,-3);
+        \draw[dashed] (0,1) -- (0,-3);
+        \draw[dashed] (4,1) -- (4,-3);
+        \draw[-latex] (-8,-1) -- (8,-1);
+        \node[noir, text width=3.5cm] at (-6,-2) {lancer un dé et obtenir un 0};
+        \node[noir, text width=3.5cm] at (-2,-1.5) {gagner au loto};
+        \node[noir, text width=3.5cm] at (-2,-2.5) {avoir un 1 en lançant un dé};
+        \node[noir, text width=3.5cm] at (2,-1.5) {perdre au loto};
+        \node[noir, text width=3.5cm] at (2,-3) {avoir entre 2 et 6 en lançant un dé};
+        \node[noir, text width=3.5cm] at (6,-2.5) {lancer un dé et avoir un nombre entre 1 et 6};
+    \end{tikzpicture}
+\end{center}    
+
+\partie{Approche quantitative}
+
+\propriete{La probabilité d'une issue est égale à $\dfrac{1}{\card({\Omega})}$,\\ $\card({\Omega})$ est le nombre d'issues au total.}
+
+\begin{listedexemples}
+    \item Pile ou face : $\Omega = \left\{ \mbox{"pile"} ; \mbox{"face"} \right\}$, $\card{(\Omega)} = 2$\\
+    $p\left( \mbox{pile} \right) = \dfrac{1}{2}$
+    \item Lancer de dé : $\Omega = \left\{ 1;2;3;4;5;6 \right\}, \card{(\Omega)} = 6 $\\
+    $p\left( \mbox{avoir un 3} \right) = \dfrac{1}{6}$
+    \item On choisit une lettre au hasard dans l'alphabet :\\
+    $\Omega = \left\{ A; B; C; D; E; F; G; H; I; J; K; L; M; N; O; P; Q; R; S; T; U; V; W; X; Y; Z \right\}$\\
+    $\card{(\Omega)} = 26$\\
+    $p\left( \mbox{avoir un H} \right) = \dfrac{1}{26}$
+\end{listedexemples}
+
+\definition{Un évènement est un ensemble d'issues.}
+
+\exemple{Pour l'expérience aléatoire << lancer un dé >> :\\
+A = << obtenir un nombre pair >> $= \left\{ 2;4;6 \right\}$\\
+B = << obtenir un nombre premier >> $= \left\{ 2;3;5 \right\} $}
+
+\propriete{La probabilité d'un évènement A est égale à $\dfrac{\card{(A)}}{\card{(\Omega)}}$}
+
+\exemple{Dans l'expérience aléatoire de lancer un dé, $\Omega = \left\{ 1;2;3;4;5;6 \right\}$.\\ 
+L'évènement A = << obtenir un nombre pair >> $= \left\{ 2;4;6 \right\} \longrightarrow \card{(A)} = 3$\\
+$p(A) = \dfrac{3}{6}$}
+
+\clearpage
+\EXERCICES
+\begin{questions}
+\exercice Dans un jeu de cartes de 32 cartes classiques, Victor choisit au hasard une carte dans le paquet.
+\question Donner la liste de toutes les issues possibles ?
+\question Quel est le nombre d'issues possibles ?
+\question Quelle est la probabilité de tirer un valet de carreau ?
+\question Quelle est la probabilité de tirer une carte trèfle ?
+
+\exercice Une urne opaque contient trois boules rouges et deux boules bleues, indiscernables au toucher. Laure tire au hasard une boule dans l'urne.
+\question Quelle est la probabilité de tirer une boule rouge ?
+\question Quelle est la probabilité de tirer une boule bleue ?
+\question Donner les deux résultats précédents sous forme de pourcentage.
+
+\exercice Une roue est divisée en trois secteurs de couleurs différentes. Jérôme fait tourner la roue.
+
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+
+\question Pourquoi peut-on dire que les trois couleurs ont autant de chances d'être obtenues ?
+\question Quelle est la probabilité d'obtenir une des trois couleurs ? Donner le résultat sous forme de fraction, de nombre décimal et de pourcentage.
+
+
+\begin{center}
+    \begin{tikzpicture}[scale=1.4]
+        \draw[fill=noir] (0,1) -- (0.1,1.2) -- (-0.1,1.2) -- cycle;
+        \draw[rouge,fill=rouge] (0,0) -- (1,0) arc(0:120:1) -- cycle;
+        \draw[bleu, fill=bleu] (0,0) -- (1,0) arc(0:-120:1) -- cycle;
+        \draw[vert, fill=vert] (0,0) -- ({cos(120)},{sin(120)}) arc(120:240:1) -- cycle;
+    \end{tikzpicture}
+\end{center}
+
+\exercice Sur les 6 faces d'un dé standard, on inscrit les lettres du mot TOUPIE.
+\question Quelles sont les issues de l'expérience ?
+\question Donner la probabilité de chacune des lettres possibles sous forme de fraction.
+
+\exercice Deux urnes contiennent des boules indiscernables au toucher. on choisit une des deux urnes et on tire une boule au hasard. On gagne si la boule obtenue est rouge.
+
+\begin{center}
+\begin{tikzpicture}
+    \draw (0,0) rectangle (3,2);
+    \draw[rouge,fill=rouge] (0.5,1.4) circle (0.2) node[right of=0.5,anchor=west] {35 boules rouges};
+    \draw[jaune,fill=jaune] (0.5,0.6) circle (0.2) node[right of=0.5,anchor=west] {65 boules jaunes};
+    \draw (5,0) rectangle +(3,2);
+    \draw[rouge,fill=rouge] (5.5,1.4) circle (0.2);
+    \draw[jaune,fill=jaune] (5.5,0.6) circle (0.2);
+\end{tikzpicture}
+\end{center}
+
+\end{questions}
+
 \end{document}
