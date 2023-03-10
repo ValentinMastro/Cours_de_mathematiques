@@ -2,7 +2,190 @@
 
 \begin{document}
 \chapitre{Cosinus}
-% thème : 
+
+\partie{Les côtés dans un triangle rectangle}
+
+\definition{Le côté opposé à l'angle droit est appelé l'hypoténuse.}
+
+\begin{center}
+    \begin{tikzpicture}[scale=2]
+        \draw (0,0) -- (0,1) -- (1.5,0) -- cycle;
+        \draw (0,0) rectangle ++(0.2,0.2);
+        \draw[-Latex] (1,1) node[right]{hypoténuse} arc(90:180:0.3);
+    \end{tikzpicture}
+\end{center}
+
+\definition{Le côté adjacent à un angle aigüe est le côté qui forme l'angle qui n'est pas l'hypoténuse.}
+
+\illustration{
+    \begin{center}
+        \begin{tikzpicture}
+            \draw (0,0) -- (0,1.2) node[midway,left,vert]{adjacent} -- (2,0) -- cycle;
+            \filldraw[green] (0,1.2) -- (0,1) arc(-90:-40:0.2) -- cycle;
+            \filldraw[red] (0,0) rectangle (0.1,0.1);
+            \draw[green,thick] (0,0) -- (0,1.2);
+        \end{tikzpicture}
+        \begin{tikzpicture}[xscale=-1,rotate=45]
+            \draw (0,0) -- (0,1.2) node[midway,below right,vert]{adjacent} -- (2,0) -- cycle;
+            \filldraw[green] (0,1.2) -- (0,1) arc(-90:-40:0.2) -- cycle;
+            \filldraw[red] (0,0) rectangle (0.1,0.1);
+            \draw[green,thick] (0,0) -- (0,1.2);
+        \end{tikzpicture}
+        \begin{tikzpicture}[rotate=78,xscale=-1,yshift=-1]
+            \draw (0,0) -- (0,1.2) node[midway,above,vert]{adjacent} -- (2,0) -- cycle;
+            \filldraw[green] (0,1.2) -- (0,1) arc(-90:-40:0.2) -- cycle;
+            \filldraw[red] (0,0) rectangle (0.1,0.1);
+            \draw[green,thick] (0,0) -- (0,1.2);
+        \end{tikzpicture}
+        \begin{tikzpicture}[rotate=194,xscale=1.5,yshift=-1]
+            \draw (0,0) -- (0,1.2) -- (2,0) -- cycle node[midway,above,vert]{adjacent};
+            \filldraw[green] (2,0) -- (1.8,0) arc(180:145:0.2) -- cycle;
+            \filldraw[red] (0,0) rectangle (0.1,0.1);
+            \draw[green,thick] (0,0) -- (2,0);
+        \end{tikzpicture}
+\end{center}
+}
+
+\definition{Le côté qui << ne touche pas >> l'angle aigüe choisi est le côté opposé à cet angle.}
+
+\partie{Cosinus d'un angle}
+
+\definition{Le cosinus d'un angle aigüe dans un triangle rectangle :
+\begin{center}
+    \begin{tikzpicture}
+        \node[noir,below left] at (0,0) {$B$};
+        \node[noir,left] at (0,3) {$A$};
+        \node[noir,below] at (4,0) {$C$};
+        \draw[noir] (0,0) -- (0,3) node[midway,left]{opp.} -- (4,0) node[midway,right]{hyp.} -- cycle node[midway,below]{adj.};
+        \filldraw[green] (4,0) -- +(-0.3,0) arc(180:155:0.3) -- cycle;
+        \node[noir] at (9,1.5) {\fbox{$\cos{(\widehat{ACB})} = \dfrac{\mbox{adjacent}}{\mbox{hypoténuse}} = \dfrac{BC}{AC} $}};
+    \end{tikzpicture}
+\end{center}
+}
+
+\exemple{
+\begin{center}
+    \begin{tikzpicture}
+        \node[noir,below left] at (0,0) {$B$};
+        \node[noir,left] at (0,3) {$A$};
+        \node[noir,below] at (4,0) {$C$};
+        \draw[noir] (0,0) -- (0,3) node[midway,left]{4} -- (4,0) node[midway,right]{5} -- cycle node[midway,below]{3};
+        \filldraw[green] (4,0) -- +(-0.3,0) arc(180:155:0.3) -- cycle;
+        \draw[Latex-,rouge] (-0.1,0.8) -- +(-0.8,0) node[left]{opp.};
+        \draw[Latex-,rouge] (1,-0.1) -- +(0,-0.8) node[below]{adj.};
+        \draw[Latex-,rouge] (1.7,2) -- +(0.5,0.5) node[above right]{hyp.};
+    \end{tikzpicture}
+\end{center}
+\begin{align*}
+    \cos{(\widehat{ACB})} &= \dfrac{\mbox{adjacent}}{\mbox{hypoténuse}} = \dfrac{BC}{AC} = \dfrac{4}{5} \\
+    \widehat{ACB} &= \arccos{\left(\dfrac{4}{5}\right)} \approx \ang{36.86}
+\end{align*}
+}
+
+\exemple{
+    \begin{center}
+        \begin{tikzpicture}
+            \node[noir,below left] at (0,0) {$B$};
+            \node[noir,left] at (0,3) {$A$};
+            \node[noir,below] at (4,0) {$C$};
+            \draw[noir] (0,0) -- (0,3) node[midway,left]{4} -- (4,0) node[midway,right]{5} -- cycle node[midway,below]{3};
+            \filldraw[green] (4,0) -- +(-0.7,0) arc(180:145:0.7) -- cycle;
+            \draw[Latex-,rouge] (-0.1,0.8) -- +(-0.8,0) node[left]{opp.};
+            \draw[Latex-,rouge] (1,-0.1) -- +(0,-0.8) node[below]{adj.};
+            \draw[Latex-,rouge] (1.7,2) -- +(0.5,0.5) node[above right]{hyp.};
+        \end{tikzpicture}
+    \end{center}
+}
+
+\clearpage
+\EXERCICES
+\begin{questions}
+    \exercice Calculer la mesure de l'angle en vert dans chacun des angles ci-dessous.
+    \begin{centre}
+        \begin{tikzpicture}[scale=0.4]
+            \draw (0,0) -- (0,6) node[rouge,midway,left]{6} -- (8,0) node[rouge,midway,above right]{10} -- cycle node[rouge,midway,below]{8};
+            \filldraw[noir] (0,0) rectangle +(0.7,0.7);
+            \filldraw[green] (0,6) -- +(0,-0.6) arc(-90:-45:0.6);
+        \end{tikzpicture}
+        \begin{tikzpicture}[scale=0.4]
+            \draw (0,0) -- (0,5) node[rouge,midway,left]{5} -- (12,0) node[rouge,midway,above right]{13} -- cycle node[rouge,midway,below]{12};
+            \filldraw[noir] (0,0) rectangle +(0.7,0.7);
+            \filldraw[green] (0,5) -- +(0,-0.6) arc(-90:-35:0.6);
+        \end{tikzpicture}
+        \begin{tikzpicture}[scale=0.15]
+            \draw (0,0) -- (0,12) node[rouge,midway,left]{12} -- (35,0) node[rouge,midway,above right]{37} -- cycle node[rouge,midway,below]{35};
+            \filldraw[noir] (0,0) rectangle +(2,2);
+            \filldraw[green] (35,0) -- +(-4,0) arc(180:160:4);
+        \end{tikzpicture}
+    \end{centre}
+    \exercice Calculer la mesure de l'angle en rouge ci-dessous.
+    \begin{centre}
+        \begin{tikzpicture}[scale=0.4]
+            \draw (0,0) -- (0,7) node[rouge,midway,left]{7} -- (13.1,0) node[rouge,midway,above right]{15} -- cycle;
+            \filldraw[noir] (0,0) rectangle +(0.7,0.7);
+            \filldraw[red] (13.1,0) -- +(-1.5,0) arc(180:150:1.5);
+        \end{tikzpicture}
+    \end{centre}
+
+    \exercice Exprimer $\cos(\widehat{XYZ})$ et $\cos(\widehat{XZY})$ en fonction de $XY$, $YZ$, $XZ$.
+    \begin{center}
+        \begin{tikzpicture}
+            \draw (0,0) node[left]{$X$} -- (3,0) node[right]{$Y$} -- (0,2) node[left]{$Z$} -- cycle;
+            \filldraw[noir] (0,0) rectangle +(0.2,0.2);
+        \end{tikzpicture}
+    \end{center}
+
+    \exercice Exprimer les cosinus des angles $\widehat{UWV}$, $\widehat{UVW}$, $\widehat{WSU}$, $\widehat{UWS}$
+    \begin{center}
+        \begin{tikzpicture}[rotate=30]
+            \draw (0,0) node[left]{$U$} -- (3,0) node[below]{$V$} -- (0,2) node[left]{$W$} -- cycle;
+            \draw (3,0) -- (4.5,0) node[below]{$S$} -- (0,2);
+            \filldraw[noir] (0,0) rectangle +(0.2,0.2);
+        \end{tikzpicture}
+    \end{center}
+
+    \exercice Compléter le tableau en arrondissant les valeurs au dixième.
+
+    \begin{center}
+    \begin{tabularx}{0.5\linewidth}{|l|X|X|X|X|}\hline 
+    Angle & \ang{35} & & \ang{80} & \\\hline
+    Cosinus &  & \num{0.3} &  & \num{0.98} \\\hline
+    \end{tabularx}
+    \end{center}
+
+    \exercice $ABC$ est un triangle rectangle en $A$ tel que $AB=\qty{4}{\centi\metre}$ et $BC=\qty{8}{\centi\metre}$.
+    \question Calculer la mesure de l'angle $\widehat{ABC}$ arrondie au degré.
+    \question En déduire la mesure de l'angle $\widehat{ACB}$.
+
+    \exercice $MNO$ est un triangle rectangle dont l'hypoténuse est $NO$. On donne $MO=\qty{4.3}{\centi\metre}$ et $\widehat{MON} = \ang{55}$.
+    \question Faire une figure en vraie grandeur.
+    \question Calculer la longueur $NO$ arrondie au millimètre.
+
+    \exercice 
+    \question Construire le triangle $ABC$ tel que $AC=\qty{5}{\centi\metre}$, $AB=\qty{6}{\centi\metre}$ et $\widehat{CAB} = \ang{40}$.
+    \question Tracer la hauteur issue de $C$. On appelle $H$ le pied de la hauteur.
+    \question Calculer la longueur $CH$ arrondie au millimètre.
+    \question Calculer l'aire du triangle $ABC$.
+
+    \exercice 
+    \begin{center}
+        \begin{tikzpicture}
+            \draw (0,0) node[below]{$A$} -- ({3.3/tan(35)},0) node[right]{$D$} -- ({3.3/tan(35)},3.3) node[right]{$C$} node[midway,below,rotate=90]{\qty{3.3}{\centi\metre}} -- cycle;
+            \draw (0,0) -- ({1.5*cos(125)},{1.5*sin(125)}) node[left]{$B$} -- ({3.3/tan(35)},3.3);
+            \filldraw[noir,rotate=35] (0,0) rectangle (0.3,0.3);
+            \filldraw[red] (0,0) -- (0.5,0) arc(0:35:0.5) node[midway,right]{\ang{35}} -- cycle;
+            \filldraw[green] ({3.3/tan(35)},3.3) -- ($({3.3/tan(35)},3.3)!0.1!(0,0)$) arc(220:200:0.4) node[midway,above left]{\color{noir}\ang{17}} -- cycle; 
+        \end{tikzpicture}
+    \end{center}
+    \question Calculer la mesure de l'angle $\widehat{ACD}$.
+    \question Calculer la longueur $AC$ arrondie au millimètre.
+    \question Calculer la longueur $BC$ arrondie au millimètre.
+
+    \exercice $ABCD$ est un parallélogramme, tel que $AB=\qty{5}{\centi\metre}$, $BC=\qty{3}{\centi\metre}$ et $\widehat{DBC}=\ang{90}$.
+    \question Faire un schéma de la figure.
+    \question Calculer la mesure de l'angle $\widehat{BCD}$ arrondie au degré.
+    \question Calculer la mesure de l'angle $\widehat{CDA}$ arrondie au degré.
+\end{questions}
 
 
 \end{document}

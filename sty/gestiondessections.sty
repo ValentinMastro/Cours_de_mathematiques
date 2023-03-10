@@ -15,6 +15,10 @@
 \newcommand{\HUGEE}{\@setfontsize\Huge{60}{60}}
 \makeatother
 
+\newenvironment{centre}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
 \newcommand{\titre}[2]{
 \begin{vplace}[0.5]
     \centerline{\HUGEE{Cours de #1}}
