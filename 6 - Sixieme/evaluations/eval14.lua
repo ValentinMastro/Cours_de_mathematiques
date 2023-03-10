@@ -352,7 +352,7 @@ local function perimetre_rectangle()
     local l = math.random(2,7)
 
     local enonce = scriptsize("Calculer le périmètre d'un rectangle de longueur $L = \\qty{" .. L .. "}{\\centi\\metre}$ et de largeur $\\ell = \\qty{" .. l .. "}{\\centi\\metre}$")
-    local reponses = map(scriptsize, map(qty_cm, {2*L+2*l, 3*L+l, l+3*L, 4*L, 4*l}))
+    local reponses = map(scriptsize, map(qty_cm, {2*L+2*l, 3*L+l, L+3*l, 4*L, 4*l}))
 
     afficher_question(enonce, reponses, 1)
 end
