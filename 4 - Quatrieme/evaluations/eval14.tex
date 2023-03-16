@@ -1,0 +1,92 @@
+\documentclass{../../vmqcm}
+\VMQCMgraine{123456789}
+\setlength{\VMQCMLargeurEnonce}{0.23\textwidth}
+
+%%%%%%%%%%%%%%%
+%% QUESTIONS %%
+%%%%%%%%%%%%%%%
+
+\directlua{eval = require("eval14.lua")}
+
+\newcommand{\questionA}{%
+    \directlua{eval.qA()}
+}
+
+\newcommand{\questionB}{
+    \directlua{eval.qB()}
+}
+
+\newcommand{\questionC}{
+    \directlua{eval.qC()}
+}
+
+\newcommand{\questionD}{
+    \directlua{eval.qD()}
+}
+
+\newcommand{\questionE}{
+    \directlua{eval.qE()}
+}
+
+\newcommand{\questionF}{
+    \directlua{eval.qF()}
+}
+
+\newcommand{\questionG}{
+    \directlua{eval.qG()}
+}
+
+\newcommand{\questionH}{
+    \directlua{eval.qH()}
+}
+
+\newcommand{\questionI}{
+    \directlua{eval.qI()}
+}
+
+\newcommand{\questionJ}{
+    \directlua{eval.qJ()}
+}
+
+\newcommand{\questionK}{
+    \directlua{eval.qK()}
+}
+
+\newcommand{\questionL}{
+    \directlua{eval.qL()}
+}
+
+\newcommand{\questionM}{
+    \directlua{eval.qM()}
+}
+
+\setcounter{VMQCMNumeroEvaluation}{14}
+\renewcommand{\VMQCMCalculatrice}{Calculatrice autorisée}
+\begin{document}
+
+\foreach \n in {1,...,1}{%
+\begin{VMQCM}{Évaluation n°\theVMQCMNumeroEvaluation{}~-~4ème}
+    \questionA
+    \questionA
+    \questionA
+    \questionA
+    \questionF
+    \questionF
+    \questionF
+    \questionF
+    \questionL
+    \questionL
+    \questionM
+    \questionM
+    \questionJ
+    \questionJ
+    \questionJ
+    \questionJ
+    \questionK
+    \questionK
+    \questionK
+    \questionK
+\end{VMQCM}%
+}
+
+\end{document}

@@ -103,17 +103,17 @@
     \exercice Calculer la mesure de l'angle en vert dans chacun des angles ci-dessous.
     \begin{centre}
         \begin{tikzpicture}[scale=0.4]
-            \draw (0,0) -- (0,6) node[rouge,midway,left]{6} -- (8,0) node[rouge,midway,above right]{10} -- cycle node[rouge,midway,below]{8};
+            \draw (0,0) node[left]{$B$} -- (0,6) node[left]{$A$} node[rouge,midway,left]{6} -- (8,0) node[right]{$C$} node[rouge,midway,above right]{10} -- cycle node[rouge,midway,below]{8};
             \filldraw[noir] (0,0) rectangle +(0.7,0.7);
             \filldraw[green] (0,6) -- +(0,-0.6) arc(-90:-45:0.6);
         \end{tikzpicture}
         \begin{tikzpicture}[scale=0.4]
-            \draw (0,0) -- (0,5) node[rouge,midway,left]{5} -- (12,0) node[rouge,midway,above right]{13} -- cycle node[rouge,midway,below]{12};
+            \draw (0,0) node[left]{$E$} -- (0,5) node[left]{$D$} node[rouge,midway,left]{5} -- (12,0) node[right]{$F$} node[rouge,midway,above right]{13} -- cycle node[rouge,midway,below]{12};
             \filldraw[noir] (0,0) rectangle +(0.7,0.7);
             \filldraw[green] (0,5) -- +(0,-0.6) arc(-90:-35:0.6);
         \end{tikzpicture}
         \begin{tikzpicture}[scale=0.15]
-            \draw (0,0) -- (0,12) node[rouge,midway,left]{12} -- (35,0) node[rouge,midway,above right]{37} -- cycle node[rouge,midway,below]{35};
+            \draw (0,0) node[left]{$H$} -- (0,12) node[left]{$G$} node[rouge,midway,left]{12} -- (35,0) node[right]{$I$} node[rouge,midway,above right]{37} -- cycle node[rouge,midway,below]{35};
             \filldraw[noir] (0,0) rectangle +(2,2);
             \filldraw[green] (35,0) -- +(-4,0) arc(180:160:4);
         \end{tikzpicture}
@@ -121,7 +121,7 @@
     \exercice Calculer la mesure de l'angle en rouge ci-dessous.
     \begin{centre}
         \begin{tikzpicture}[scale=0.4]
-            \draw (0,0) -- (0,7) node[rouge,midway,left]{7} -- (13.1,0) node[rouge,midway,above right]{15} -- cycle;
+            \draw (0,0) node[left]{$K$} -- (0,7) node[left]{$J$} node[rouge,midway,left]{7} -- (13.1,0) node[right]{$L$} node[rouge,midway,above right]{15} -- cycle;
             \filldraw[noir] (0,0) rectangle +(0.7,0.7);
             \filldraw[red] (13.1,0) -- +(-1.5,0) arc(180:150:1.5);
         \end{tikzpicture}
@@ -187,5 +187,83 @@
     \question Calculer la mesure de l'angle $\widehat{CDA}$ arrondie au degré.
 \end{questions}
 
+\clearpage
+\CORRECTIONS
+\begin{questions}
+    \exercice 
+    \question 
+    \begin{align*}
+        \cos{(\widehat{BAC})} &= \dfrac{\mbox{adj}}{\mbox{hyp}} = \dfrac{BA}{AC} = \dfrac{6}{10}\\
+        \widehat{BAC} &= \arccos{\left(\dfrac{6}{10}\right)} \approx \ang{53.13}
+    \end{align*}
+    \question 
+    \begin{align*}
+        \cos{(\widehat{EDF})} &= \dfrac{\mbox{adj}}{\mbox{hyp}} = \dfrac{DE}{DF} = \dfrac{5}{13}\\
+        \widehat{EDF} &= \arccos{\left(\dfrac{5}{13}\right)} \approx \ang{67.38}
+    \end{align*}
+    \question 
+    \begin{align*}
+        \cos{(\widehat{HIG})} &= \dfrac{\mbox{adj}}{\mbox{hyp}} = \dfrac{HI}{GI} = \dfrac{35}{37}\\
+        \widehat{HIG} &= \arccos{\left(\dfrac{35}{37}\right)} \approx \ang{18.92}
+    \end{align*}
+
+    \exercice 
+    Dans un premier temps, on va utiliser le théorème de Pythagore pour déterminer la longueur $KL$.
+    \begin{enumerate}
+        \item Le triangle $JKL$ est rectangle en $K$. Son hypoténuse est $[JL]$.
+        \item D'après le théorème de Pythagore :
+        \item 
+        \begin{align*}
+            JK^2+KL^2 &= JL^2 \\
+            KL^2 &= JL^2 - JK^2 \\
+            KL^2 &= 15^2-7^2 \\
+            KL^2 &= 225-49 \\ 
+            KL^2 &= 176 \\ 
+            KL &= \sqrt{176} \approx \num{13.27} 
+        \end{align*}
+    \end{enumerate}
+
+    Maintenant nous pouvons utiliser la formule du cosinus pour trouver l'angle.
+    \begin{align*}
+        \cos{(\widehat{JLK})} &= \dfrac{\mbox{adj}}{\mbox{hyp}} = \dfrac{KL}{JL} = \dfrac{\sqrt{176}}{15}\\
+        \widehat{JLK} &= \arccos{\left(\dfrac{\sqrt{176}}{15}\right)} \approx \ang{27.82}
+    \end{align*}
+
+
+    \exercice 
+    \begin{align*}
+        \cos{\widehat{XYZ}} &= \dfrac{\mbox{adj}}{\mbox{hyp}} = \dfrac{XY}{YZ} \\
+        \cos{\widehat{XZY}} &= \dfrac{\mbox{adj}}{\mbox{hyp}} = \dfrac{XZ}{YZ} \\
+    \end{align*}
+
+    \exercice 
+    \begin{align*}
+        \cos{\widehat{UWV}} &= \dfrac{\mbox{adj}}{\mbox{hyp}} = \dfrac{UW}{VW} \\
+        \cos{\widehat{UVW}} &= \dfrac{\mbox{adj}}{\mbox{hyp}} = \dfrac{UV}{VW} \\
+        \cos{\widehat{WSU}} &= \dfrac{\mbox{adj}}{\mbox{hyp}} = \dfrac{US}{WS} \\
+        \cos{\widehat{UWS}} &= \dfrac{\mbox{adj}}{\mbox{hyp}} = \dfrac{WU}{WS} \\
+    \end{align*}
+
+    \exercice 
+    \begin{center}
+    \begin{tabularx}{0.9\linewidth}{|l|X|X|X|X|}\hline 
+    Angle & \ang{35} & {\color{rouge}$\arccos(\num{0.3})$} \approx \ang{72.5} & \ang{80} & {\color{rouge}$\arccos(\num{0.98})$} \approx \ang{11.5} \\\hline
+    Cosinus & {\color{rouge}$\cos(\ang{35})$} \approx \num{0.8}  & \num{0.3} & {\color{rouge}$\cos(\ang{80})$} \approx \num{0.2} & \num{0.98} \\\hline
+    \end{tabularx}
+    \end{center}
+
+    \exercice 
+    \question
+    \begin{align*}
+    \cos{(\widehat{ABC})} &= \dfrac{\mbox{adj}}{\mbox{hyp}} = \dfrac{AB}{BC} = \dfrac{4}{8}\\
+    \widehat{ABC} &= \arccos{\left(\dfrac{4}{8}\right)} = \ang{60}
+    \end{align*}
+    \question 
+    Dans un triangle, la somme des mesures des angles d'un triangle vaut \ang{180}. On sait que $\widehat{BAC}=\ang{90}$ et $\widehat{ABC}=\ang{60}$. Donc :
+    \[ \widehat{ACB} = 180 - (90 + 60) = 180 - 150 = \ang{30} \]
+
+    \exercice 
+    
+\end{questions}
 
 \end{document}
