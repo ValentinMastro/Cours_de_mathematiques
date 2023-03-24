@@ -33,6 +33,8 @@
 \RequirePackage{libertine}
 \usetikzlibrary{calc,math}
 
+\RequirePackage[tracking=true]{microtype}
+
 
 % Graine (nombre qui rend l'aléatoire déterministe)
 \newcommand{\VMQCMgraine}[1]{
@@ -59,6 +61,9 @@
 \directlua{points = {}}
 
 
+% Gérer l'espacement du texte
+\newcommand\spacedstyle[1]{\SetTracking{encoding=*}{#1}\lsstyle}
+\newcommand\normalstyle{\SetTracking{encoding=*}{0}\lsstyle}
 
 \newcommand{\VMQCMAjouterSolution}[1]{%
     \directlua{solutions[\theVMQCMNumeroQuestion] = "#1"}%

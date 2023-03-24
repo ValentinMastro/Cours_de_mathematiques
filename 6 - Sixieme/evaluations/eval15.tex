@@ -1,12 +1,13 @@
 \documentclass{../../vmqcm}
-\VMQCMgraine{125}
-\setlength{\VMQCMLargeurEnonce}{0.23\textwidth}
+\usepackage[tracking=true]{microtype}
+\VMQCMgraine{124}
+\setlength{\VMQCMLargeurEnonce}{0.29\textwidth}
 
 %%%%%%%%%%%%%%%
 %% QUESTIONS %%
 %%%%%%%%%%%%%%%
 
-\directlua{eval = require("eval13.lua")}
+\directlua{eval = require("eval15.lua")}
 
 \newcommand{\questionA}{%
     \directlua{eval.qA()}
@@ -40,12 +41,11 @@
 \renewcommand{\VMQCMCalculatrice}{Calculatrice autorisée}
 
 \foreach \n in {1,...,1}{%
-\begin{VMQCM}{Évaluation n°13 - 6ème}
-    \questionA\questionA\questionA
-    \questionB\questionB\questionB
-    \questionC\questionC\questionC
-    \questionE\questionE\questionE\questionE\questionE\questionE\questionE\questionE
-    \questionD\questionD\questionD
+\begin{VMQCM}{Évaluation n°15 - 6ème}
+    \questionF\questionF\questionF\questionF\questionF
+    \questionA\questionA\questionA\questionA\questionA
+    \questionA\questionA\questionA\questionA\questionA
+    \questionA\questionA\questionA\questionA\questionA
 \end{VMQCM}%
 }
 

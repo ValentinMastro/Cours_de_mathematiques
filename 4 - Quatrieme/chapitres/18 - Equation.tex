@@ -3,9 +3,106 @@
 \begin{document}
 \chapitre{Équation}
 
+\partie{Concept}
+
+\definition{Une équation est une égalité contenant une variable \emph{inconnue} désignée par une lettre.\\ Les nombres pour lesquels l'égalité est vraie sont les solutions de l'équation.}
+
+\begin{listedexemples}
+    \item $2x+5=3$\\ 
+    Est-ce que 4 est solution de l'équation ?\\$2 \times 4 + 5 = 13 \neq 3$
+    \item $7x+5 = 6x+6$\\ 
+    Est-ce que 0 est solution de l'équation ?\\
+    \begin{align*}
+        7 \times 0 + 5 = 5 & ~~\mbox{(membre de gauche)}\\
+        6 \times 0 + 6 = 6 & ~~\mbox{(membre de droite)}
+    \end{align*}
+    Est-ce que 1 est solution de l'équation ?\\
+    \begin{align*}
+        7 \times 1 + 5 = 12 & ~~\mbox{(membre de gauche)}\\
+        6 \times 1 + 6 = 12 & ~~\mbox{(membre de droite)}
+    \end{align*}
+    Donc 1 est solution de l'équation. On va noter $S = \left\{ 1 \right\}$.
+\end{listedexemples}
+
+\partie{Résolution d'équations du premier degré}
+
+\paragraphe{rouge}{Règle 1}{Dans une équation, on peut ajouter ou retirer la même quantité dans chaque membre de l'équation.}
+
+\exemple{
+\begin{align*}
+    7x + 5 &= 12 \\
+    7x + 5 \textcolor{rouge}{+10} &= 12 \textcolor{rouge}{+10} & \mbox{(on ajoute 10 de chaque côté)}\\ 
+    7x + 5 \textcolor{rouge}{-2x} &= 12 \textcolor{rouge}{-2x} & \mbox{(on enlève 2x de chaque côté)}\\ 
+\end{align*}
+}
+
+\paragraphe{rouge}{Règle 2}{Dans une équation, on peut multiplier ou diviser chaque côté de l'équation par la même quantité.}
+
+\exemple{
+\begin{align*}
+    7x+5 &= 12 \\
+    \textcolor{rouge}{2 \times (} 7x+5 \textcolor{rouge}{)} &= \textcolor{rouge}{2 \times} 12 & \mbox{(on multiplie par 2 de chaque côté)} \\
+    \dfrac{7x+5}{\textcolor{rouge}{3x}} &= \dfrac{12}{\textcolor{rouge}{3x}} & \mbox{(on divise par $3x$ de chaque côté)} 
+\end{align*}
+}
+
+\methode{\color{bleu}
+\begin{align*}
+    7x+8 &= 12 &\\
+    7x+8 \textcolor{rouge}{-8} &= 12 \textcolor{rouge}{-8} & \mbox{(on enlève 8 de chaque côté)}\\
+    7x &= 4 & \mbox{(réduction)}\\
+    \dfrac{7x}{\textcolor{rouge}{7}} &= \dfrac{4}{7} & \mbox{(on divise par 7 de chaque côté)} \\ 
+    x &= \boxed{\dfrac{4}{7}} \\ 
+    S &= \left\{ \dfrac{4}{7} \right\}
+\end{align*}
+\hrule
+\begin{align*}
+    3x+7 &= 2x-2 \\ 
+    3x+7 \textcolor{rouge}{-7} &= 2x -2 \textcolor{rouge}{-7} \\
+    3x &= 2x-9 \\
+    3x \textcolor{rouge}{-2x} &= 2x - 9 \textcolor{rouge}{-2x} \\
+    x &= \boxed{-9} \\
+    S &= \left\{ -9 \right\}
+\end{align*}
+}
+
 \clearpage
 \EXERCICES
 \begin{questions}
+    \exercice 
+    \question Relier les équations avec leur unique solution.
+    \begin{center}
+    \begin{tabularx}{0.5\linewidth}{lXr}
+        $7-x=4$ && $x=10$ \\
+        $x+5=9$ && $x=8$ \\ 
+        $2+x=12$ && $x=3$ \\
+        $3x+2=2$ && $x=6$ \\
+        $13=5+x$ && $x=9$ \\
+        $2=11-x$ && $x=4$ \\
+        $7x=42$ && $x=0$
+    \end{tabularx}
+    \end{center}
+
+    \exercice Quelle est la quantité qui augmentée de son septième donne 19 ?
+    \exercice Quelle est la quantité qui augmentée de sa moitié donne 16 ? 
+    \exercice Quelle est la quantité qui augmentée de son cinquième donne 21 ?
+    \exercice Une lance a la moitié et le tiers dans l'eau et 9 paumes à l'extérieur. Je te demande combien elle a de long.
+    \exercice Une entreprise emploie 320 personnes. Sachant qu'il y a trois fois plus d'hommes que de femmes, calculer le nombre d'hommes et le nombre de femmes employés dans cette entreprise.
+    \exercice Je dépense le quart de mon salaire pour mon logement et les deux cinquièmes pour la nourriture. Il me reste \qty{378}{\EURO} pour les autres dépenses. Calculer mon salaire mensuel.
+    \exercice Il y a autant de moutons dans le tiers de mon troupeau que lorsque 20 d'entre eux le quittent pour aller boire. Combien ai-je de moutons dans mon troupeau ?
+    \exercice Trois personnes se partagent une somme de \qty{1900}{\EURO}. La seconde reçoit \qty{70}{\EURO} de plus que la première. La part de la troisième est égal au double de la part de la première moins \qty{150}{\EURO}. Calculer la part de chaque personne.
+    \exercice Trouver trois nombres entiers consécutifs dont la somme est 2006.
+    \exercice La somme de quatre nombres pairs consécutifs est 196. Quels sont ces quatre nombres ?
+    \exercice En ajoutant les $\frac{3}{4}$ d'un nombre à la moitié de ce même nombre, on a 1 pour total. Quel est ce nombre ?
+    \exercice Un général romain veut ranger son régiment en carré avant de passer à l'attaque, il essaie de deux manières. D'après la première, il lui reste 39 hommes et, la 2eme manière, en mettant un homme de plus par coté, il lui en manque 50 pour réaliser un carré. Combien d'hommes compose ce régiment ?
+    \exercice Un triangle a un périmètre de \qty{231}{\centi\metre}. Sachant que les mesures de ses côtés sont trois entiers consécutifs (en \unit{\centi\metre}), calculer ces mesures.
+    \exercice Alexis et Béatrice ont trois ans de différence, la somme de leurs âges est égale à 31. Sachant que Béatrice est l’aînée, déterminer l’âge de chacun.
+    \exercice Un terrain rectangulaire est trois fois plus long que large. Son périmètre est de 176 mètres. Calculer sa longueur et sa largeur.
+    \exercice Trouve le nombre tel que son triple augmenté de 7 soit égal à son quadruple diminué de 3.
+    \exercice Voici trois tas de cailloux. Le premier tas contient 30 cailloux de plus que le troisième et le deuxième contient 6 cailloux de moins que le troisième. Il y a 150 cailloux en tout. Quel est le nombre de cailloux dans chaque tas ?
+    \exercice Une bouteille et son bouchon pèsent \qty{110}{\gram}. La bouteille pèse \qty{100}{\gram} de plus que le bouchon. Quel est le poids de la bouteille ? Quel est le poids du bouchon ?
+    \exercice En Chimie, l'équation-bilan $CH_4 + x O_2 \longrightarrow CO_2 + 2 H_2O$ traduit la réaction de combustion du méthane dans le dioxygène. En tenant compte de la conservation des atomes d'oxygène, trouver la valeur de $x$.
+
     \exercice 
     \question L'équation $8x-2=5x-6$ admet pour solution :
         \textbf{a)} $x=-\dfrac{4}{3}$~
