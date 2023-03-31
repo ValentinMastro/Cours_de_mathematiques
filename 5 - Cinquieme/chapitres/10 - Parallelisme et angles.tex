@@ -3,4 +3,90 @@
 
 \chapitre{Angles et parallélisme}
 
+\partie{Les paires d'angles}
+
+\illustration{Deux droites $(d)$ et $(d')$ sont coupées par une troisième droite $(\Delta)$.
+\begin{center}
+    \begin{tikzpicture}[scale=1.8]
+        \tikzmath{ \r=0.3; }
+        \draw[name path=d1] (0,0) node[left]{$(d)$} -- (7,0.8);
+        \draw[name path=d2] (-0.5,-1) node[left]{$(d')$} -- (8,-1.2);
+        \draw[name path=d3] (4,1.2) node[above]{$(\Delta)$} -- (1.5,-2);
+        \path[name intersections={of=d1 and d3, by=A}];
+        \path[name intersections={of=d2 and d3, by=B}];
+        %\foreach \i/\j/\c in {-2/52/rouge, 52/178/vert, 178/232/jaune, 232/358/blue} { \fill[\c] (B) -- ($(B)+({\r*cos(\i)},{\r*sin(\i)})$) arc(\i:\j:\r) -- cycle;}
+        %\foreach \i/\j/\c in {-174/-128/noir, -128/6/orange, 6/52/pink, 52/186/red} { \fill[\c] (A) -- ($(A)+({\r*cos(\i)},{\r*sin(\i)})$) arc(\i:\j:\r) -- cycle; }
+        \node [above left] at (A) {\pgfmathparse{Hex(10101+1)}\LARGE \libertineGlyph{uni\pgfmathresult}};
+        \node [above right] at (A) {\pgfmathparse{Hex(10101+2)}\LARGE \libertineGlyph{uni\pgfmathresult}};
+        \node [below left] at (A) {\pgfmathparse{Hex(10101+3)}\LARGE \libertineGlyph{uni\pgfmathresult}};
+        \node [below right] at (A) {\pgfmathparse{Hex(10101+4)}\LARGE \libertineGlyph{uni\pgfmathresult}};
+        \node [above left] at (B) {\pgfmathparse{Hex(10101+5)}\LARGE \libertineGlyph{uni\pgfmathresult}};
+        \node [above right] at (B) {\pgfmathparse{Hex(10101+6)}\LARGE \libertineGlyph{uni\pgfmathresult}};
+        \node [below left] at (B) {\pgfmathparse{Hex(10101+7)}\LARGE \libertineGlyph{uni\pgfmathresult}};
+        \node [below right] at (B) {\pgfmathparse{Hex(10101+8)}\LARGE \libertineGlyph{uni\pgfmathresult}};
+    \end{tikzpicture}
+\end{center}
+}
+
+\souspartie{Opposés par le sommet}
+
+\vocabulaire{
+Deux angles sont \emph{opposés par le sommet} s'ils ont le même sommet, et que leurs côtés sont dans le prolongement l'un de l'autre.
+}
+
+\exemple{Dans le schéma précédent, sont opposés par le sommet :
+\begin{itemize}
+    \item les angles 1 et 4
+    \item les angles 2 et 3
+    \item les angles 5 et 8
+    \item les angles 6 et 7
+\end{itemize}
+}
+
+\propriete{Deux angles opposés par le sommet ont la même mesure.}
+
+\souspartie{Correspondants}
+
+\vocabulaire{
+On considère deux droites coupées par une sécante. Deux angles sont \emph{correspondants} si :
+\begin{itemize}
+    \item ils sont du même côté de la sécante
+    \item ils ont des sommets différents
+    \item l'un est à l'intérieur de la zone formée par les deux droites, l'autre est à l'extérieur
+\end{itemize}
+}
+
+\remarque{Deux angles correspondants << regardent dans la même direction >>.}
+
+\exemple{Dans le schéma précédent, sont correspondants :
+\begin{itemize}
+    \item les angles 1 et 5
+    \item les angles 3 et 7
+    \item les angles 6 et 2
+    \item les angles 4 et 8
+\end{itemize}
+}
+
+\souspartie{Alternes-internes}
+
+\vocabulaire{On considère deux droites coupées par une sécante. Deux angles sont \emph{alternes-internes} si :
+\begin{itemize}
+    \item ils ne sont pas du même côté de la sécante
+    \item ils ont des sommets différents
+    \item ils sont tous les deux à l'intérieur de la zone délimitée par les deux droites
+\end{itemize}
+}
+
+\exemple{Dans le schéma précédent, sont alternes-internes :
+\begin{itemize}
+    \item les angles 3 et 6
+    \item les angles 5 et 4
+\end{itemize}
+}
+
+\partie{Lien avec le parallélisme}
+
+\propriete{Les angles correspondants sont égaux $\Longleftrightarrow$ les droites sont parallèles.}
+\propriete{Les angles alternes-internes sont égaux $\Longleftrightarrow$ les droites sont parallèles.}
+
 \end{document}

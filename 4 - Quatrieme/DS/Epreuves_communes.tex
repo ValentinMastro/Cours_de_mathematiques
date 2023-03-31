@@ -1,0 +1,54 @@
+\documentclass[../Cours.tex]{subfiles}
+
+\begin{document}
+\clearpage
+\thispagestyle{empty}
+
+\color{black}
+
+\begin{center}
+    \Huge{Épreuves communes de $4^{\mbox{ème}}$}
+\end{center}
+
+% Pythagore/Thalès
+% Statistiques
+% Programme de calcul (calcul littéral)
+% QCM programme de cinquième
+
+\begin{questions}
+
+\EXERCICE{20}
+Chaque question ne contient \textbf{qu'une seule bonne réponse}, et ne nécessite \textbf{aucune justification}.
+
+\begin{center}
+\begin{tabularx}{0.8\linewidth}{|l|C|C|C|C|} \hline
+    Question & A & B & C & D \\\hline \hline 
+    \makecell{Quelle est la mesure de l'angle $\widehat{ABC}$, \\sachant que les deux droites $(d)$ et $(d')$ sont parallèles ?} & \ang{70} & \ang{110} & \ang{20} & \ang{50}\\ \hline
+\end{tabularx}
+\end{center}
+
+\EXERCICE{15}
+Albert fait du vélo au col de la Croix de Fer.\\
+Elle est partie d'une altitude de \qty{589}{\metre} et arrivera au sommet a une altitude de \qty{2064}{\metre}.
+Sur le schéma ci-dessous, qui n'est pas en vraie grandeur, le point de départ sera représenté par le point $D$ et le sommet par le point $S$.
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw (0,0) node[below left]{$D$} -- (4,0) node[right]{$H$} node[midway,below] {distance horizontale} -- (4,3) node[above right]{S} node[midway,right]{dénivelé} -- cycle;
+        \node[rotate=37] at (1.7,1.9) {route de \qty{28.28}{\kilo\metre}};
+        \draw[dashed] (0,0) -- (-6,0);
+        \node[anchor=east] at (-3,1) {\scriptsize{Saint Jean de Maurienne}};
+        \node[anchor=east] at (-3,0.5) {\scriptsize{(altitude : \qty{589}{\metre})}};
+        \draw[dashed] (4,3) -- (10,3);
+        \node[anchor=west] at (7,4) {\scriptsize{Col de la Croix de Fer}};
+        \node[anchor=west] at (7,3.5) {\scriptsize{(altitude \qty{2064}{\metre})}};
+        \draw[fill=black] (4,0) rectangle +(-0.25,0.25);
+    \end{tikzpicture}
+\end{center}
+
+\question Déterminer le dénivelé $SH$.
+\question Montrer que la distance horizontale.
+
+
+\end{questions}
+\end{document}

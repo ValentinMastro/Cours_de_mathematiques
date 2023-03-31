@@ -119,6 +119,98 @@
 \clearpage
 \CORRECTIONS
 \begin{questions}
+    \exercice
+    \begin{center}
+    \begin{tikzpicture}
+        \node at (0,0) {\begin{tabularx}{0.5\linewidth}{lXr}
+            $7-x=4$ && $x=10$ \\
+            $x+5=9$ && $x=8$ \\ 
+            $2+x=12$ && $x=3$ \\
+            $3x+2=2$ && $x=6$ \\
+            $13=5+x$ && $x=9$ \\
+            $2=11-x$ && $x=4$ \\
+            $7x=42$ && $x=0$
+        \end{tabularx}};
+        \draw (-2.2,1.5) -- (2.8,0.6);
+        \draw (-2.2,1.15) -- (2.8,-1);
+        \draw (-2.2,0.7) -- (2.8,1.6);
+        \draw (-2.2,0) -- (2.8,-1.4);
+        \draw (-2.2,-1.5) -- (2.8,0);
+        \draw (-2.2,-0.55) -- (2.8,1);
+        \draw (-2.2,-0.8) -- (2.8,-0.4);
+    \end{tikzpicture}
+    \end{center}
+
+    \newcommand{\red}[1]{\textcolor{rouge}{#1}}
+    \exercice Soit $x$ la quantité recherchée.
+    \begin{align*}
+        x+\frac{x}{7} &= 19 \\
+        \red{7} \left( x + \frac{x}{7} \right) &= \red{7} \times 19 \\
+        7x + x &= 133 \\
+        8x &= 133 \\
+        \frac{8x}{8} &= \frac{133}{8} \\
+        x = \frac{133}{8}
+    \end{align*}
+
+    \exercice Soit $x$ la quantité recherchée.
+    \begin{align*}
+        x + \frac{x}{2} &= 16 \\
+        \red{2} \left( x + \frac{x}{2} \right) &= \red{2} \times 16 \\
+        2x + x &= 32 \\
+        3x &= 32 \\
+        x &= \frac{32}{3}
+    \end{align*}
+
+    \exercice Soit $x$ la quantité recherchée.
+    \begin{align*}
+        x + \frac{x}{5} &= 21 \\
+        \red{5} \left( x + \frac{x}{5} \right) &= 21 \\
+        5x + x &= 21 \\ 
+        6x &= 21 \\ 
+        x &= \frac{21}{6}
+    \end{align*}
+
+    \exercice Soit la $x$ la longueur de la lance.
+    \begin{center}
+        \begin{tikzpicture}[scale=1.5]
+            \fill[blue!10!white] (-1.5,-0.3) rectangle (2,-3.4);
+            \draw (0,0) -- (0,-3);
+            \draw (0.5,0) -- (0.5,-3);
+            \draw (0,0) arc(180:0:0.25);
+            \draw (0,-3) arc(-180:0:0.25);
+            \node[opacity=0.0] (tmp) at (0.25,-1.5) {\textsc{Lance}};
+            \node[rotate around={90:(tmp.center)}] at (0.25,-1.5) {\textsc{Lance}};
+            \draw[Latex-Latex] (-0.2,0.25) -- +(0,-3.5) node[midway,left]{$x$};
+            \draw[Latex-Latex] (0.7,-3.25) -- +(0,1.75) node[midway,right]{$\dfrac{x}{2}$};
+            \draw[Latex-Latex] (0.7,-1.5) -- +(0,1.2) node[midway,right]{$\dfrac{x}{3}$};
+            \draw[Latex-Latex] (0.7,-0.3) -- +(0,0.55) node[midway,right]{9};
+        \end{tikzpicture}
+    \end{center}
+
+    Résolvons l'équation : 
+    \begin{align*}
+        x &= \frac{x}{2} + \frac{x}{3} + 9 \\
+        \red{6}x &= \red{6} \left( \frac{x}{2} + \frac{x}{3} + 9 \right) \\
+        6x &= 6\frac{x}{2} + 6\frac{x}{3} + 6 \times 9 \\
+        6x &= 3x + 2x + 54 \\
+        6x \red{-3x-2x} &= 3x + 2x + 54 \red{-3x-2x} \\ 
+        x &= 54
+    \end{align*}
+
+    Donc la lance mesure 54 paumes.
+
+    \exercice Dans une entreprise de 320 personnes, il y a 3 fois plus d'hommes que de femmes. Soit $x$ le nombre de femmes, alors il y a 3 fois plus d'hommes, donc $3x$ hommes.
+
+    \begin{align*}
+        \mbox{hommes} + \mbox{femmes} &= 320 \\
+        3x + x &= 320 \\
+        4x &= 320 \\ 
+        x &= \frac{320}{4} \\
+        x &= 80
+    \end{align*}
+
+    Donc il y a 80 femmes et $80 \times 3 = 240$ hommes dans cette entreprise. On pourrait dire qu'il y a un quart de femmes, autrement dit \qty{25}{\%} de femmes dans cette entreprise.
+
     \exercice 
     \question 
     \begin{align*}

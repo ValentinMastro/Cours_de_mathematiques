@@ -2,7 +2,50 @@
 
 \begin{document}
 \chapitre{Transformations du plan}
-% thème : 
 
+\partie{Symétrie axiale}
+
+\definition{Deux figures sont symétriques par rapport à une droite si, en <<repliant>> par rapport à la droite, les deux figures se superposent.}
+
+\newcommand{\bleu}[1]{\textcolor{bleu}{#1}}
+
+\propriete{La symétrie axiale est une isométrie :
+\begin{itemize}
+    \item conservation de la nature : \bleu{(le symétrique d'un cercle est un cercle)}
+    \item conservation des longueurs : \bleu{(le symétrique d'un segment de longueur \qty{2}{\centi\metre} fait \qty{2}{\centi\metre})}
+    \item conservation des angles : \bleu{(le symétrique d'un angle de \ang{30} fait \ang{30})}
+\end{itemize}
+}
+
+\exemple{$AB=\qty{6}{\centi\metre}$, $AC=\qty{5}{\centi\metre}$, $BC=\qty{4}{\centi\metre}$\\
+Tracer le symétrique du point C par rapport à la droite $(AB)$.
+}
+
+\propriete{$C'$ est le symétrique de $C$ par rapport à $(AB) \Longleftrightarrow (AB)$ est la médiatrice de $[CC']$.}
+
+\partie{Symétrie centrale}
+
+\definition{Deux figures sont symétriques par rapport à un point (centre de symétrie) lorsqu'en faisant tourner la première figure autour du centre, on obtient la deuxième figure au bout d'un demi-tour.}
+
+\propriete{$A'$ est le symétrique du point $A$ par rapport à $O \Longleftrightarrow OA=OA'$ et O, A, $A'$ sont alignés.}
+
+\clearpage
+\EXERCICES
+\begin{questions}
+    \exercice $ABCD$ est un parallélogramme.\\
+    $O$ est l'intersection des diagonales de $ABCD$.
+        \question Tracer la figure avec $AB=\qty{5}{\centi\metre}$, $BC=\qty{3}{\centi\metre}$ et $\widehat{ABC}=\ang{60}$.
+        \question Démontrer que $A$ est le symétrique de $C$ par rapport à $O$.
+        \question Sans justifier, donner le symétrique de $ABC$ par rapport à $O$.
+    \exercice $[AB]$ est un segment de longueur \qty{1}{\centi\metre}.
+    \begin{itemize}
+        \item $A_1$ est le symétrique de $A$ par rapport à $B$.
+        \item $A_2$ est le symétrique de $A$ par rapport à $A_1$.
+        \item $A_3$ est le symétrique de $A$ par rapport à $A_2$.
+        \item $A_4$ est le symétrique de $A$ par rapport à $A_3$.
+    \end{itemize}
+        \question Quelle est la longueur de $[AA_4]$ ?
+        \question On réitère la construction avec $A_5$, $A_6$, $A_7$, etc. Trouver le plus petit $n$ tel que $AA_n > \qty{100}{\metre}$.
+\end{questions}
 
 \end{document}
