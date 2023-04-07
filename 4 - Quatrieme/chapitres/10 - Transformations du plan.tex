@@ -7,6 +7,16 @@
 
 \definition{Deux figures sont symétriques par rapport à une droite si, en <<repliant>> par rapport à la droite, les deux figures se superposent.}
 
+\illustration{
+    \begin{center}
+        \begin{tikzpicture}
+            \draw (2,0) -- +(3,0) -- +(0,2) -- cycle;
+            \draw[xscale=-1] (2,0) -- +(3,0) -- +(0,2) -- cycle;
+            \draw (0,3) -- (0,-1);
+        \end{tikzpicture}
+    \end{center}    
+}
+
 \newcommand{\bleu}[1]{\textcolor{bleu}{#1}}
 
 \propriete{La symétrie axiale est une isométrie :

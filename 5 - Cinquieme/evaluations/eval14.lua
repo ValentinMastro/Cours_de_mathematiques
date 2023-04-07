@@ -101,6 +101,10 @@ local function dollar(texte)
     return "$" .. texte .. "$"
 end
 
+local function ang(texte)
+    return "\\ang{" .. texte .. "}"
+end
+
 local function addition_aleatoire(n)
     local a = math.random(math.pow(10,n),math.pow(10,n+1)-1)
     local b = math.random(math.pow(10,n),math.pow(10,n+1)-1)
@@ -589,11 +593,35 @@ local function moyenne()
 end
 
 local function angles_complementaires()
-    local a = math.random(10,80)
+    local a = 45
+    while a == 45
+    do
+        a = math.random(10,80)
+    end
+
     local enonce = scriptsize("Les angles $\\widehat{ABC}$ et $\\widehat{DEF}$ sont complémentaires. Si $\\widehat{ABC} = \\ang{" .. a .."}$, $\\widehat{DEF} = ?$")
 
-    local reponses = map(scriptsize, )
+    local reponses = map(scriptsize, map(ang, {
+        90 - a, 180 - a, a, 0, 90
+    }))
+
+    afficher_question(enonce, reponses, 1)
 end
 
+local function angles_supplementaires()
+    local a = 90
+    while a == 90 
+    do
+        a = math.random(10,170)
+    end
 
-return { qA = addition_relatifs_4op, qB = proba_boules, qC = proportion_32_cartes, qE = lettres_mots }
+    local enonce = scriptsize("Les angles $\\widehat{ABC}$ et $\\widehat{DEF}$ sont supplémentaires. Si $\\widehat{ABC} = \\ang{" .. a .."}$, $\\widehat{DEF} = ?$")
+
+    local reponses = map(scriptsize, map(ang, {
+        180 - a, math.abs(90 - a), 90, 0, 180
+    }))
+
+    afficher_question(enonce, reponses, 1)
+end
+
+return { qA = addition_relatifs_4op, qB = proba_boules, qC = proportion_32_cartes, qD = angles_complementaires, qE = angles_supplementaires, qF = lettres_mots }

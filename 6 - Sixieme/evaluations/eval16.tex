@@ -1,0 +1,52 @@
+\documentclass{../../vmqcm}
+\usepackage[tracking=true]{microtype}
+\VMQCMgraine{125}
+\setlength{\VMQCMLargeurEnonce}{0.35\textwidth}
+
+%%%%%%%%%%%%%%%
+%% QUESTIONS %%
+%%%%%%%%%%%%%%%
+
+\directlua{eval = require("eval16.lua")}
+
+\newcommand{\questionA}{%
+    \directlua{eval.qA()}
+}
+
+\newcommand{\questionB}{
+    \directlua{eval.qB()}
+}
+
+\newcommand{\questionC}{
+    \directlua{eval.qC()}
+}
+
+\newcommand{\questionD}{
+    \directlua{eval.qD()}
+}
+
+\newcommand{\questionE}{
+    \directlua{eval.qE()}
+}
+
+\newcommand{\questionF}{
+    \directlua{eval.qF()}
+}
+
+\newcommand{\questionG}{
+    \directlua{eval.qG()}
+}
+
+\begin{document}
+\renewcommand{\VMQCMCalculatrice}{Calculatrice autorisée}
+
+\foreach \n in {1,...,1}{%
+\begin{VMQCM}{Évaluation n°16 - 6ème}
+    \questionF\questionF\questionF\questionF\questionF
+    \questionA\questionA\questionA\questionA\questionA
+    \questionA\questionA\questionA\questionA\questionA
+    \questionB\questionB\questionB\questionB\questionB
+\end{VMQCM}%
+}
+
+\end{document}

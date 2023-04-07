@@ -212,6 +212,76 @@
     Donc il y a 80 femmes et $80 \times 3 = 240$ hommes dans cette entreprise. On pourrait dire qu'il y a un quart de femmes, autrement dit \qty{25}{\%} de femmes dans cette entreprise.
 
     \exercice 
+    \begin{center}
+        \begin{tikzpicture}
+            \draw (0,0) rectangle +(8,1);
+            \draw[Latex-Latex] (0,1.2) -- +(8,0) node[midway,above]{$x$};
+            \draw[Latex-Latex] (0,-0.2) -- +(2,0) node[midway,below]{$\frac{x}{4}$};
+            \draw[Latex-Latex] (2,-0.2) -- +(3.2,0) node[midway,below]{$\frac{2x}{5}$};
+            \fill[red] (0,0) rectangle +(2,1);
+            \fill[green] (2,0) rectangle +(3.2,1);
+            \draw[Latex-Latex] (5.2,-0.2) -- +(2.8,0) node[midway,below]{\qty{378}{\EURO}};
+        \end{tikzpicture}
+    \end{center}
+
+    \begin{align*}
+        x &= \frac{x}{4} + \frac{2x}{5} + 378 \\
+        \red{20}x &= \red{20 \times} \left(\frac{x}{4} + \frac{2x}{5} + 378\right) \\
+        20x &= 20\frac{x}{4} + 20 \times \frac{2x}{5} + 20 \times 378 \\
+        20x &= 5x + 8x + 7560 \\
+        20x \red{-5x-8x} &= 5x + 8x + 7560 \red{-5x-8x} \\
+        7x &= 7560 \\
+        x &= \frac{7560}{7} \\ 
+        x &= \boxed{1080}
+    \end{align*}
+
+    Donc le salaire mensuel de cet individu est de \qty{1080}{\EURO}.
+
+    \exercice Soit $x$ le nombre de moutons dans le troupeau.
+    \begin{align*}
+        \frac{x}{3} &= x - 20 \\
+        \red{3 \times} \frac{x}{3} &= \red{3} \ŧimes \left(x-20\right) \\ 
+        x &= 3x - 60 \\
+        x \red{-3x} &= 3x - 60 \red{-3x} \\
+        -2x &= -60 \\
+        x &= \frac{-60}{-2} \\ 
+        x &= \boxed{3O}
+    \end{align*}
+
+    Donc il y a 30 moutons dans le troupeau.
+
+    \exercice Soit $x$ la somme reçue par la première personne.
+    \begin{itemize}
+        \item Si la deuxième personne reçoit \qty{70}{\EURO} de plus que la première, alors elle reçoit $x+70$.
+        \item Si la troisième personne reçoit \emph{le double} de ce que perçoit la première moins \qty{150}{\EURO}, alors elle reçoit $2x-150$.
+    \end{itemize}
+
+    \begin{align*}
+        \mbox{première personne} + \mbox{deuxième personne} + \mbox{troisième personne} &= 1900\\ 
+        x + (x+70) + (2x-150) &= 1900 \\
+        4x -80 &= 1900\\
+        4x-80 \red{+80} &= 1900 \red{+80} \\
+        4x &= 1980\\
+        x &= \frac{1980}{4} \\ 
+        x&= 495
+    \end{align*}
+
+    Donc la première personne a reçu \qty{495}{\EURO}, la deuxième \qty{565}{\EURO} et la troisième \qty{840}{\EURO}.
+
+    \exercice Il faut trouver \emph{3 entiers consécutifs} qui, lorsqu'on les additionne, donne 2006. Soit $x$ le premier (le plus petit) des 3 nombres que l'on recherche.\\ 
+    Le nombre qui est après $x$ est $x+1$, et celui encore après est $x+2$.
+
+    \begin{align*}
+        x + (x+1) + (x+2) &= 2006 \\
+        3x + 3 &= 2006 \\
+        3x + 3 \red{-3} &= 2006 \red{-3} \\
+        3x &= 2003 \\
+        x &= \frac{2003}{3}
+    \end{align*}
+
+    Or $\frac{2003}{3}$ n'est pas un nombre entier, donc ce que l'énoncé nous demande << trouver 3 entiers consécutifs dont la somme est 2006>> est impossible.
+
+    \exercice 
     \question 
     \begin{align*}
         8x-2 &= 5x-6  & \mbox{il y a un $5x$ à droite, je veux l'enlever}\\

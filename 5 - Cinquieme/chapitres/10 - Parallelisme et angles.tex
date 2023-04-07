@@ -14,16 +14,14 @@
         \draw[name path=d3] (4,1.2) node[above]{$(\Delta)$} -- (1.5,-2);
         \path[name intersections={of=d1 and d3, by=A}];
         \path[name intersections={of=d2 and d3, by=B}];
-        %\foreach \i/\j/\c in {-2/52/rouge, 52/178/vert, 178/232/jaune, 232/358/blue} { \fill[\c] (B) -- ($(B)+({\r*cos(\i)},{\r*sin(\i)})$) arc(\i:\j:\r) -- cycle;}
-        %\foreach \i/\j/\c in {-174/-128/noir, -128/6/orange, 6/52/pink, 52/186/red} { \fill[\c] (A) -- ($(A)+({\r*cos(\i)},{\r*sin(\i)})$) arc(\i:\j:\r) -- cycle; }
-        \node [above left] at (A) {\pgfmathparse{Hex(10101+1)}\LARGE \libertineGlyph{uni\pgfmathresult}};
-        \node [above right] at (A) {\pgfmathparse{Hex(10101+2)}\LARGE \libertineGlyph{uni\pgfmathresult}};
-        \node [below left] at (A) {\pgfmathparse{Hex(10101+3)}\LARGE \libertineGlyph{uni\pgfmathresult}};
-        \node [below right] at (A) {\pgfmathparse{Hex(10101+4)}\LARGE \libertineGlyph{uni\pgfmathresult}};
-        \node [above left] at (B) {\pgfmathparse{Hex(10101+5)}\LARGE \libertineGlyph{uni\pgfmathresult}};
-        \node [above right] at (B) {\pgfmathparse{Hex(10101+6)}\LARGE \libertineGlyph{uni\pgfmathresult}};
-        \node [below left] at (B) {\pgfmathparse{Hex(10101+7)}\LARGE \libertineGlyph{uni\pgfmathresult}};
-        \node [below right] at (B) {\pgfmathparse{Hex(10101+8)}\LARGE \libertineGlyph{uni\pgfmathresult}};
+        \node [above left] at ($(A)+(0.1,0)$) {\pgfmathparse{Hex(10101+1)}\LARGE \libertineGlyph{uni\pgfmathresult}};
+        \node [above right] at ($(A)+(0.3,0.1)$) {\pgfmathparse{Hex(10101+2)}\LARGE \libertineGlyph{uni\pgfmathresult}};
+        \node [below left] at ($(A)+(-0.3,-0.1)$) {\pgfmathparse{Hex(10101+3)}\LARGE \libertineGlyph{uni\pgfmathresult}};
+        \node [below right] at ($(A)+(-0.1,0)$) {\pgfmathparse{Hex(10101+4)}\LARGE \libertineGlyph{uni\pgfmathresult}};
+        \node [above left] at ($(B)+(0.1,0)$) {\pgfmathparse{Hex(10101+5)}\LARGE \libertineGlyph{uni\pgfmathresult}};
+        \node [above right] at ($(B)+(0.3,0)$) {\pgfmathparse{Hex(10101+6)}\LARGE \libertineGlyph{uni\pgfmathresult}};
+        \node [below left] at ($(B)+(-0.3,0)$) {\pgfmathparse{Hex(10101+7)}\LARGE \libertineGlyph{uni\pgfmathresult}};
+        \node [below right] at ($(B)+(-0.1,0)$) {\pgfmathparse{Hex(10101+8)}\LARGE \libertineGlyph{uni\pgfmathresult}};
     \end{tikzpicture}
 \end{center}
 }
