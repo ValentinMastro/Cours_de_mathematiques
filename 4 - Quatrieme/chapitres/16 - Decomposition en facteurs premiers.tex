@@ -11,30 +11,23 @@
 
 \definition{Un nombre premier est un entier $\neq 1$ ayant pour seuls diviseurs 1 et lui-même.}
 
-\exemples{2;3;5;7;11;13;17;19;23;29;...}
+\exemples{Les nombres premiers plus petits que 30 $\longrightarrow$ 2 ; 3 ; 5 ; 7 ; 11 ; 13 ; 17 ; 19 ; 23 ; 29}
 
 \partie{Théorème fondamental de l'arithmétique}
 
-\theoreme{}{Pour n'importe quel nombre entier $\supeg 2$, il existe une \underline{unique} façon de la décomposer en produits de facteurs premiers.}
+\theoreme{}{Pour n'importe quel nombre entier $\supeg 2$, il existe une \underline{unique} façon de le décomposer en produits de facteurs premiers.}
 
-\begin{listedexemples}
-    \item 
+\exemples{
     \begin{align*}
-        219 &= 3 \times 73
-    \end{align*}
-    \item 
-    \begin{align*}
+        219 &= 3 \times 73 \\[2ex]
         110 &= 10 \times 11 \\
-        &= 2 \times 5 \times 11 \\
-    \end{align*}
-    \item 
-    \begin{align*}
+        &= 2 \times 5 \times 11 \\[2ex]
         625 &= 5 \times 125 \\
         &= 5 \times 5 \times 25 \\
         &= 5 \times 5 \times 5 \times 5 \\
         &= 5^4
     \end{align*}
-\end{listedexemples}
+}
 
 
 \clearpage
@@ -52,6 +45,50 @@
         \questionX 3590
         \questionX 144
     \end{multicols}
+
+    \exercice On veut offrir des biscuits au chocolat à des amis. Au magasin, on achète un paquet contenant 105 biscuits au chocolat blanc et 165 biscuits au chocolat au lait. On veut répartir de manière à ce que chaque ami reçoit le même nombre de biscuits au chocolat blanc et le même nombre de biscuits au chocolat au lait.
+    \question À combien d'amis au maximum peut-on offrir de biscuits sans les casser ?
+
+    \exercicetitre{Brevet - Métropole juin 2022}
+    Une collectionneuse compte ses cartes Pokémon afin de les revendre. Elle possède 252 cartes de type \og feu \fg{} et 156 cartes de type \og terre \fg.
+
+    \question 
+        \subquestion Parmi les trois propositions suivantes, laquelle correspond à la décomposition en produit de facteurs premiers du nombre 252 :
+        \begin{center}
+        \begin{tabularx}{9cm}{|*{3}{>{\centering \arraybackslash}X|}}\hline
+        Proposition 1 &Proposition 2& Proposition 3\\
+         $2^2\times 9\times 7$ &$2\times 2\times 3\times 21$ &$2^2 \times 3^2\times  7$\\\hline
+        \end{tabularx}
+        \end{center}
+        
+        \subquestion Donner la décomposition en produit de facteurs premiers du nombre 156.
+
+    \question Elle veut réaliser des paquets identiques, c'est-à-dire contenant chacun le même nombre de cartes << terre >> et le même nombre de cartes << feu >> en utilisant toutes ses cartes.
+        \subquestion  Peut-elle faire 36 paquets ?
+        \subquestion  Quel est le nombre maximum de paquets qu'elle peut réaliser ?
+        \subquestion  Combien de cartes de chaque type contient alors chaque paquet ?
+    
+    \question  Elle choisit une carte au hasard parmi toutes ses cartes. On suppose les cartes  indiscernables au toucher. Calculer la probabilité que ce soit une carte de type << terre >>.
+
+    \exercicetitre{Brevet - Centres étrangers 2022}
+    Pour fêter les 25 ans de sa boutique, un chocolatier souhaite offrir aux premiers clients de la journée une boîte contenant des truffes au chocolat. Il a confectionné $300$ truffes: $125$ truffes parfumées au café et $175$ truffes enrobées de noix de coco. Il souhaite fabriquer ces boîtes de sorte que:
+
+    \begin{itemize}
+    \item[$\bullet~~$] Le nombre de truffes parfumées au café soit le même dans chaque boîte;
+    \item[$\bullet~~$] Le nombre de truffes enrobées de noix de coco soit le même dans chaque boîte;
+    \item[$\bullet~~$] Toutes les truffes soient utilisées.
+    \end{itemize}
+
+	\question Décomposer $125$ et $175$ en produit de facteurs premiers.
+	\question En déduire la liste des diviseurs communs à $125$ et $175$.
+	\question Quel nombre maximal de boîtes pourra-t-il réaliser ?
+	\question Dans ce cas, combien y aura-t-il de truffes de chaque sorte dans chaque boîte ?
+
+    \exercice Écrire un programme Scratch qui teste la primalité d'un nombre donné en entrée.
+
+    \exercice Trouver 3 nombres premiers dont la somme vaut 2024.
+
+    
 \end{questions}
 
 \end{document}

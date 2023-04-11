@@ -90,7 +90,7 @@
     \exercice Une entreprise emploie 320 personnes. Sachant qu'il y a trois fois plus d'hommes que de femmes, calculer le nombre d'hommes et le nombre de femmes employés dans cette entreprise.
     \exercice Je dépense le quart de mon salaire pour mon logement et les deux cinquièmes pour la nourriture. Il me reste \qty{378}{\EURO} pour les autres dépenses. Calculer mon salaire mensuel.
     \exercice Il y a autant de moutons dans le tiers de mon troupeau que lorsque 20 d'entre eux le quittent pour aller boire. Combien ai-je de moutons dans mon troupeau ?
-    \exercice Trois personnes se partagent une somme de \qty{1900}{\EURO}. La seconde reçoit \qty{70}{\EURO} de plus que la première. La part de la troisième est égal au double de la part de la première moins \qty{150}{\EURO}. Calculer la part de chaque personne.
+    \exercice Trois personnes se partagent une somme de \qty{1900}{\EURO}. La deuxième reçoit \qty{70}{\EURO} de plus que la première. La part de la troisième est égal au double de la part de la première moins \qty{150}{\EURO}. Calculer la part de chaque personne.
     \exercice Trouver trois nombres entiers consécutifs dont la somme est 2006.
     \exercice La somme de quatre nombres pairs consécutifs est 196. Quels sont ces quatre nombres ?
     \exercice En ajoutant les $\frac{3}{4}$ d'un nombre à la moitié de ce même nombre, on a 1 pour total. Quel est ce nombre ?
@@ -280,6 +280,85 @@
     \end{align*}
 
     Or $\frac{2003}{3}$ n'est pas un nombre entier, donc ce que l'énoncé nous demande << trouver 3 entiers consécutifs dont la somme est 2006>> est impossible.
+
+    \exercice Il faut trouver \emph{4 nombres pairs consécutifs} dont la somme vaut 196. Par exemple, \{ 18, 20, 22, 24\} sont des entiers pairs consécutifs, mais leur somme vaut $18+20+22+24=82$. Soit $x$ le premier des 4 nombres que l'on recherche (autrement dit, le plus petit), alors le deuxième sera $x+2$, le troisième $x+4$ et le quatrième $x+6$.
+
+    \begin{align*}
+        x + (x+2) + (x+4) + (x+6) &= 196 \\ 
+        4x + 12 &= 196 \\
+        4x + 12 \red{-12} &= 196 \red{-12} \\
+        4x &= 184 \\
+        x &= \frac{184}{4}\\ 
+        x &= 46
+    \end{align*}
+
+    Donc les nombres attendus sont \{ 46, 48, 50, 52 \}.
+
+    \exercice Soit $c$ le côté du carré.
+    \begin{itemize}
+        \item "D’après la première, il lui reste 39 hommes" $\longrightarrow c^2 + 39$
+        \item "la 2eme manière, en mettant un homme de plus par coté, il lui en manque 50" $\longrightarrow (c+1)^2 - 50$
+    \end{itemize}
+
+    D'où l'équation : 
+    \begin{align*}
+        c^2 + 39 &= (c+1)^2 - 50 \\ 
+        c^2 + 39 &= c^2 + 2c + 1 - 50 \\
+        c^2 + 39 \red{- c^2} &= c^2 + 2c + 1 - 50  \red{- c^2} \\ 
+        39 &= 2c + 1 - 50 \\ 
+        2c + 1 - 50 &= 39 \\ 
+        2c - 49 &= 39 \\ 
+        2c - 49  \red{+49} &= 39  \red{+49} \\ 
+        2c &= 88 \\ 
+        c &= 44
+    \end{align*}
+    
+    \exercice On cherche trois entiers consécutifs tels que leur somme vaut 231. Soit $x$ le plus petit des trois nombres, alors les deux autres sont $x+1$ et $x+2$.
+
+    D'où l'équation : 
+    \begin{align*}
+        x + x+1 + x+2 &= 231 \\
+        3x + 3 &= 231 \\
+        3x + 3 \red{-3} &= 231 \red{-3} \\
+        3x &= 228 \\ 
+        X &= \frac{228}{3} \\
+        x &= 76
+    \end{align*}
+
+    Donc les mesures du triangle sont \qty{76}{\centi\metre}, \qty{77}{\centi\metre} et \qty{78}{\centi\metre}.
+
+    \exercice Soit $x$ l'âge d'Alexis. Béatrice est de 3 ans son aîné, donc l'âge de Béatrice est $x+3$. On sait qu'à eux deux, ils ont 31 ans. D'où l'équation : 
+
+    \begin{align*}
+        \mbox{âge d'Alexis} + \mbox{âge de Béatrice} &= 31 \\ 
+        x + (x+3) &= 31 \\ 
+        2x + 3 &= 31 \\ 
+        2x + 3 \red{-3} &= 31 \red{-3} \\ 
+        2x &= 28 \\ 
+        x &= 14
+    \end{align*}
+
+    Donc Alexis a 14 ans et Béatrice a 17 ans.
+
+    \exercice Le périmètre d'un rectangle vaut : $2 \times \mbox{longueur} + 2 \times \mbox{largeur}$. Posons $x$ la largeur du terrain. Comme le terrain est \emph{3 fois plus long que large}, la longueur vaut $3x$.
+
+    \begin{align*}
+        2 \times \mbox{longueur} + 2 \times \mbox{largeur} &= 176 \\
+        2 \time x + 2 \times (3x) &= 176 \\ 
+        2x + 6x &= 176 \\ 
+        8x &= 176 \\ 
+        x &= \frac{176}{8} \\ 
+        x &= 22 
+    \end{align*}
+
+    Donc la largeur du terrain est de \qty{22}{\metre}, et sa longueur $22 \times 3 = \qty{66}{\metre}$.
+
+    \exercice Soit $x$ le nombre recherché.
+
+    \begin{align*}
+        
+    \end{align*}
+    
 
     \exercice 
     \question 
