@@ -23,13 +23,21 @@
     \setcounter{question}{0}%
     \setcounter{subpart}{0}%
     \stepcounter{exercice}%
-    \par\underline{\textbf{Exercice \theexercice~:}}#1%
+    \par\underline{\textbf{Exercice \theexercice~:}}#1\medskip\par%
+}
+
+\newcommand{\enigme}{%
+    \bigskip%
+    \setcounter{question}{0}%
+    \setcounter{subpart}{0}%
+    \stepcounter{exercice}%
+    \par\underline{\textbf{Énigme \theexercice~:}}~\medskip\par%
 }
 
 \newcommand{\exercice}{\exe{~}}
-\newcommand{\exercicetitre}[1]{\exe{~\textsc{#1}\\}}
-\newcommand{\EXERCICE}[1]{\exe{~~~\hfill [#1 points]\\}}
-\newcommand{\EXERCICETITRE}[2]{\exe{~~\textsc{#2}~\hfill [#1 points]\\}}
+\newcommand{\exercicetitre}[1]{\exe{~\textsc{#1}}}
+\newcommand{\EXERCICE}[1]{\exe{~~~\hfill [#1 points]}}
+\newcommand{\EXERCICETITRE}[2]{\exe{~~\textsc{#2}~\hfill [#1 points]}}
 
 \newcommand{\question}
 {

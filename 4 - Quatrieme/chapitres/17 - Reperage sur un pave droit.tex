@@ -2,7 +2,545 @@
 
 \begin{document}
 \chapitre{Repérage sur un pavé droit}
-% thème : 
+
+\partie{Sur une droite (1 dimension)}
+
+\definition{Une droite graduée est une droite munie de 3 éléments : 
+\begin{itemize}
+    \item un point, appelé l'origine
+    \item une unité de longueur
+    \item un sens
+\end{itemize}
+}
+
+\exemple{
+\begin{center}
+\begin{tikzpicture}
+    \draw[-Latex] (-5,0) -- (5,0);
+    \foreach \x in {-4,...,4} {
+        \draw (\x,0.2) -- +(0,-0.4);
+    }
+    \node[below] at (0,-0.1) {O};
+    \draw[Latex-Latex] (0,0.4) -- +(1,0) node[midway,above]{unité};
+\end{tikzpicture}
+\end{center}
+}
+
+\definition{L'abscisse d'un point est le nombre permettant de le repérer sur la droite graduée.}
+
+\exemple{
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[-Latex] (-5,0) -- (5,0);
+            \foreach \x in {-4,...,4} {
+                \draw (\x,0.2) -- +(0,-0.4);
+            }
+            \node[below] at (0,-0.1) {O};
+            \node[above] at (-3,0.1) {A};
+            \node[above] at (-1,0.1) {B};
+            \node[above] at (2,0.1) {C};
+            \node[above] at (4,0.1) {D};
+        \end{tikzpicture}
+    \end{center}
+}
+
+\notation{$A(-3)~~~B(-1)~~~C(2)~~~D(4)$}
+
+\clearpage
+\partie{Sur le plan (2 dimensions)}
+
+\definition{Un repère orthogonal est constitué de 3 éléments : 
+    \begin{itemize}
+        \item un point appelé l'origine du repère
+        \item l'axe des abscisses
+        \item l'axe des ordonnées
+    \end{itemize}
+    Les axes des abscisses et des ordonnées sont perpendiculaires.
+}
+
+\illustration{
+    \begin{center}
+        \begin{tikzpicture}[scale=0.6]
+            \draw[-Latex] (-6,0) -- (6,0);
+            \draw[-Latex] (0,-6) -- (0,6);
+            \foreach \i in {1,...,5} {
+                \draw (\i,0.1) -- +(0,-0.2);
+                \draw (-\i,0.1) -- +(0,-0.2);
+                \draw (0.1,\i) -- +(-0.2,0);
+                \draw (0.1,-\i) -- +(-0.2,0);
+            }
+        \end{tikzpicture}
+    \end{center}
+}
+
+\definition{À chaque point du plan, on associe deux nombres que l'on appellent ses coordonnées : son \emph{abscisse} (horizontale) et son \emph{ordonnée} (verticale). }
+
+\notation{$T(-2;-1), U(3;4), V(0;2), W(4;0)$}
+
+\clearpage
+\partie{Dans l'espace, sur un pavé droit (3 dimensions)}
+
+\definition{Dans l'espace, un repère orthogonal $(O,I,J,K)$ est constitué de plusieurs éléments : 
+\begin{itemize}
+    \item un point appelé l'origine du repère
+    \item l'axe des abscisses 
+    \item l'axe des ordonnées
+    \item l'axe des altitudes (ou des cotes)
+\end{itemize}
+}
+
+\notation{Le repère $(O,I,J,K)$ signifie : 
+\begin{itemize}
+    \item $(OI)$ est l'axe des abscisses, $I(1,0,0)$
+    \item $(OJ)$ est l'axe des ordonnées, $J(0,1,0)$
+    \item $(OK)$ est l'axe des altitudes (ou des cotes), $K(0,0,1)$
+\end{itemize}
+}
+
+\exemple{\color{noir}
+    \begin{center}
+        \begin{tikzpicture}[scale=2]
+            \draw[thin,gray!60!blanc] (-3,-3,0) grid[step=1] +(9,6,0);
+            \draw[-Latex] (0,0,0) -- +(6,0,0);
+            \draw[-Latex] (0,0,0) -- +(0,3,0);
+            \draw[-Latex] (0,0,-1) -- +(0,0,8);
+            \fill (0,0,0) circle (0.05) node[above left] {$O$};
+            \fill (1,0,0) circle (0.05) node[below] {$I$};
+            \fill (0,1,0) circle (0.05) node[left] {$J$};
+            \fill (0,0,1.5) circle (0.05) node[below] {$K$};
+            \foreach \z in {1,...,4} {
+                \draw (0,0.1,{\z*1.5}) -- +(0,-0.2,0);
+            }
+            \draw[thick] (1,2,4.5) -- (1,2,0) -- (1,0,0) -- (1,0,4.5) --cycle;
+            \draw[thick] (4,2,4.5) -- (4,2,0) -- (4,0,0) -- (4,0,4.5) --cycle;
+            \draw[thick] (1,2,4.5) -- +(3,0,0); 
+            \draw[thick] (1,2,0) -- +(3,0,0); 
+            \draw[thick] (1,0,0) -- +(3,0,0); 
+            \draw[thick] (1,0,4.5) -- +(3,0,0);
+        \end{tikzpicture}
+    \end{center}
+}
 
 
+\clearpage
+\EXERCICES
+\begin{questions}
+    \exercice
+    Sur les droites graduées ci-dessous, placer les points $A(\frac{1}{2}), B(4), C(\frac{7}{3}), D(-2)$.
+    \begin{center}
+        \begin{tikzpicture}[scale=1.75]
+            \draw[-Latex] (-5,0) -- +(10,0);
+            \foreach \x in {-4.5,-4,...,4.5} {
+                \draw (\x,0.1) -- +(0,-0.2);
+            }
+            \node[below] at (0,-0.1) {0};
+            \node[below] at (0.5,-0.1) {$\frac{1}{2}$};
+        \end{tikzpicture}
+        \begin{tikzpicture}[scale=1.75]
+            \draw[-Latex] (-5,0) -- +(10,0);
+            \foreach \x in {-13,...,13} {
+                \draw ({\x/3},0.1) -- +(0,-0.2);
+            }
+            \node[below] at (0,-0.1) {0};
+            \node[below] at ({1/3},-0.1) {$\frac{1}{3}$};
+        \end{tikzpicture}
+        \begin{tikzpicture}[scale=1.75]
+            \draw[-Latex] (-5,0) -- +(10,0);
+            \foreach \x in {-27,...,27} {
+                \draw ({\x/6},0.1) -- +(0,-0.2);
+            }
+            \node[below] at (0,-0.1) {0};
+            \node[below] at ({1/6},-0.1) {$\frac{1}{6}$};
+        \end{tikzpicture}
+    \end{center}
+
+    \exercice Donner les abscisses des points suivants : 
+        \begin{centre}
+        \begin{tikzpicture}[scale=1.1]
+            \draw[-Latex] (-8,0) -- +(16.5,0);
+            \foreach \x in {-8,...,7} {
+                \draw (\x,0.2) -- +(0,-0.4);
+                \foreach \xx in {1,...,9} {
+                    \draw ({\x+0.1*\xx},0.1) -- +(0,-0.2);
+                }
+            }
+            \node[below] at (0,-0.1) {0};
+            \node[below] at (1,-0.1) {1};
+            \foreach \p/\x in {A/3, B/-3, C/-6, D/4.8, E/-4.7, F/-0.8} {
+                \node[above] at (\x,0.1) {$\p$};
+                \fill[noir] (\x,0) circle (0.05);
+            }
+        \end{tikzpicture}
+        \end{centre}
+
+    \exercice 
+    \question Dans le repère orthogonal $(O,I,J)$ ci-dessous, placer les points suivants : 
+    \[A(2;3), B(5;-2), C(-3;1), D(0;4), E(-3,0), F(-0.5,-0.5)\]
+    \question Donner les coordonnées des points G à L : 
+
+    \begin{center}
+        \begin{tikzpicture}
+            \tikzmath{ \d=0.15; }
+            \draw[thin,gray!80!blanc] (-6,-6) grid (6,6);
+            \draw[thin,gray!30!blanc] (-6,-6) grid[step=0.1] (6,6);
+            \draw[-Latex] (-6,0) -- +(12,0);
+            \draw[-Latex] (0,-6) -- +(0,12);
+            \foreach \i in {1,...,5} {
+                \draw (-\i,-\d) -- +(0,2*\d);
+                \draw (\i,-\d) -- +(0,2*\d);
+                \draw (-\d,-\i) -- +(2*\d,0);
+                \draw (-\d,\i) -- +(2*\d,0);
+            }
+            \node[below left] at (0,0) {$O$};
+            \node[below] at (1,-\d) {$I$};
+            \node[left] at (-\d,1) {$J$};
+            \foreach \p in {G,H,K,L,M,N,P,Q,R,S,T,U,V,W,X,Y,Z} {
+                \coordinate (ex3_\p) at (rand*6,rand*6);
+                \fill (ex3_\p) circle (0.05) node[below left]{$\p$};
+            }
+        \end{tikzpicture}
+    \end{center}
+
+    \exercice 
+    \question Dans le repère $(O,I,J,K)$, placer les points suivants : 
+    \[A(2;3;1), B(4;5;2), C(1;4;1), D(0;1;4), E(2;1,0), F(1,0;1)\]
+    \question Donner les coordonnées des points O à V.
+
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[thin,gray!60!blanc] (-3,-3,0) grid[step=1] +(9,9,0);
+            \draw[-Latex] (-1,0,0) -- +(7,0,0);
+            \draw[-Latex] (0,-1,0) -- +(0,7,0);
+            \draw[-Latex] (0,0,-1) -- +(0,0,7);
+            \fill (0,0,0) circle (0.05) node[above left] {$O$};
+            \fill (1,0,0) circle (0.05) node[below] {$I$};
+            \fill (0,1,0) circle (0.05) node[left] {$J$};
+            \fill (0,0,1) circle (0.05) node[below] {$K$};
+            \foreach \z in {1,...,5} {
+                \draw (0,0.1,\z) -- +(0,-0.2,0);
+            }
+            \draw (0,0,0) -- ++(4,0,0) circle (0.05) node[above left] {$P$} -- ++(0,3,0) circle (0.05) node[above left] {$Q$} -- ++(-4,0,0) circle (0.05) node[above left] {$R$} --cycle;
+            \draw (0,0,0) -- ++(0,0,5);
+            \draw (4,0,0) -- ++(0,0,5);
+            \draw (0,3,0) -- ++(0,0,5);
+            \draw (4,3,0) -- ++(0,0,5);
+            \draw (0,0,5) circle (0.05) node[above left]{$S$} -- ++(4,0,0) circle (0.05) node[above left]{$T$} -- ++(0,3,0) circle (0.05) node[above left]{$U$} -- ++(-4,0,0) circle (0.05) node[above left]{$V$} -- (0,0,5) ;
+        \end{tikzpicture}
+    \end{center}
+
+    \clearpage
+    \exercicetitre{Pondichéry 2018} Dans tout l'exercice l'unité de longueur est le \unit{\milli\metre}.
+    
+    On lance une fléchette sur une plaque carrée sur laquelle figure une cible circulaire (en gris sur la figure), Si la pointe de la fléchette est sur le bord de la cible, on considère que la cible n'est pas atteinte.
+    
+    On considère que cette expérience est aléatoire et l'on
+    s'intéresse à la probabilité que la fléchette atteigne la cible.
+    
+    \begin{itemize}
+        \item La longueur du côté de la plaque carrée est 200.
+        \item Le rayon de la cible est 100.
+        \item La fléchette est représentée par le point F de coordonnées
+        $(x;y)$ où $x$ et $y$ sont des nombres aléatoires compris entre $-100$ et $100$.
+    \end{itemize}
+
+    \begin{center}
+        \begin{tikzpicture}[scale=3]
+            \draw[fill=gray!40!white] (0,0) circle (1);
+            \draw[gray!60!white] (-1,-1) grid[step=0.5] (1,1);
+            \draw[-Latex] (-1,0) -- (1,0) node[above]{$x$};
+            \draw[-Latex] (0,-1) -- (0,1) node[right]{$y$};
+            \node[below left] at (0,0) {$O$};
+            \foreach \n in {-100,-50,50,100} {
+                \node[below] at ({\n/100},0) {\n};
+                \node[left] at (0,{\n/100}) {\n};
+            }
+            \draw (0,0) -- (0.72,0) -- (0.72,0.54) --cycle;
+            \node[left] at (0.72,0.56) {$F$};
+            \fill (0.72,0) rectangle +(-0.05,0.05);
+            \node[below] at (0.72,0) {$H$};
+        \end{tikzpicture}
+    \end{center}
+    
+    \question Dans l'exemple ci-dessus, la fléchette $F$ est située au point de coordonnées $(72;54)$.
+    
+    Montrer que la distance $OF$, entre la fléchette et l'origine du repère est $90$.
+    \question D'une façon générale, quel nombre ne doit pas dépasser la distance OF pour que la fléchette atteigne la cible ?
+    \question On réalise un programme qui simule plusieurs fois le lancer de cette fléchette sur la plaque carrée et qui compte le nombre de lancers atteignant la cible. Le programmeur a créé trois variables nommées : 
+
+    \ovalvariable{carré de OF} \ovalvariable{distance} \ovalvariable{score}
+
+    \begin{scratch}[scale=0.7]
+        \blockinit{Quand \greenflag est cliqué}
+        \blockvariable{mettre \selectmenu{score} à \ovalnum{0}}
+        \blockrepeat{répéter \ovalnum{120} fois}
+        	{
+        	\blockmove{aller à x: \ovaloperator{nombre aléatoire entre \ovalnum{-100} et \ovalnum{100}} y: \ovaloperator{nombre aléatoire entre \ovalnum{-100} et \ovalnum{100}}}
+        	\blockvariable{mettre \selectmenu{\textbf{Carré de OF}} à 
+        		\ovaloperator{\ovaloperator{\ovalmove{abscisse x} * \ovalmove{abscisse x}} + \ovaloperator{\txtbox{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}}}}
+        	\blockvariable{mettre \selectmenu{distance} à \ovaloperator{\selectmenu{racine} de \ovalvariable{\txtbox{~~~~~~~~~~~~~~~~~~~~~~~~~~}}}}
+        	\blockif{si \booloperator{\ovalvariable{distance} < \ovalnum{...}} alors}
+        		{
+        		\blockvariable{ajouter à \selectmenu{score} \ovalnum{1}}
+        		}
+        	}
+    \end{scratch}
+
+        \subquestion Lorsqu'on exécute ce programme, combien de lancers sont simulés ?
+        \subquestion Quel est le rôle de la variable \textbf{score} ?
+        \subquestion Compléter et recopier sur la copie uniquement les lignes 5, 6 et 7 du programme afin qu'il fonctionne correctement.
+        \subquestion Après une exécution du programme, la variable \textbf{score} est égale à $102$. À quelle fréquence la cible a-t-elle été atteinte dans cette simulation ? Exprimer le résultat sous la forme d'une fraction irréductible.
+ 
+    \question On admet que la probabilité d'atteindre la cible est égale au quotient : aire de la cible divisée par aire de la plaque carrée. Donner une valeur approchée de cette probabilité au centième près.
+
+    \exercice Un escalier à marches régulières a été représenté ci-dessous. Donner les coordonnées des points $A$ à $N$.
+
+    \begin{center}
+        \begin{tikzpicture}[rotate around x=-90,rotate around z=-55,rotate around y=10]
+            \draw[-Latex] (0,0,0) -- (0,0,10) node[above]{$z$};
+            \draw[-Latex] (0,0,0) -- (11,0,0) node[below]{$x$};
+            \draw[-Latex,dashed] (0,0,0) -- (0,11,0) node[right]{$y$};
+            \coordinate (A) at (0,0,9);
+            \coordinate (B) at (3,0,9);
+            \coordinate (C) at (3,0,6);
+            \coordinate (D) at (6,0,6);
+            \coordinate (E) at (6,0,3);
+            \coordinate (F) at (9,0,3);
+            \coordinate (G) at (9,0,0);
+            \coordinate (I) at (0,8,9);
+            \coordinate (J) at (3,8,9);
+            \coordinate (K) at (3,8,6);
+            \coordinate (L) at (6,8,6);
+            \coordinate (M) at (6,8,3);
+            \coordinate (N) at (9,8,3);
+            \coordinate (H) at (9,8,0);
+            \draw (A) -- (B) -- (C) -- (D) -- (E) -- (F) -- (G);
+            \draw (I) -- (J) -- (K) -- (L) -- (M) -- (N) -- (H);
+            \foreach \a/\b in {A/I, B/J, C/K, D/L, E/M, F/N, G/H} {
+                \draw (\a) -- (\b);
+            }
+            \foreach \i in {1,...,9} {
+                \draw (\i,0.1,0) -- +(0,-0.2,0) node[left]{\i};
+                \draw (0.3,\i,0) -- +(-0.6,0,0) node[above]{\i};
+                \draw (0.2,0,\i) -- +(-0.4,0,0) node[left]{\i};
+            }
+            \foreach \p in {A,B,...,N} {
+                \fill (\p) circle (0.1) node[above right]{\p};
+            }
+        \end{tikzpicture}
+    \end{center}
+\end{questions}
+
+    \clearpage
+    \CORRECTIONS
+    \begin{questions}
+        \exercice 
+        \begin{center}
+            \begin{tikzpicture}[scale=1.75]
+                \draw[-Latex] (-5,0) -- +(10,0);
+                \foreach \x in {-4.5,-4,...,4.5} {
+                    \draw (\x,0.1) -- +(0,-0.2);
+                }
+                \node[below] at (0,-0.1) {0};
+                \draw[rouge,thick] (0.5,-0.1) node[below]{$\frac{1}{2}$} -- (0.5,0.1) node[above]{$A$};
+                \draw[rouge,thick] (4,-0.1) node[below]{$\frac{8}{2}$} -- +(0,0.2) node[above]{$B$};
+                \draw[rouge,thick] ({7/3},-0.1) node[below]{$\frac{7}{3}$} -- +(0,0.2) node[above]{$C$};
+                \draw[rouge,thick] (-2,-0.1) node[below]{$-\frac{4}{2}$} -- +(0,0.2) node[above]{$D$};
+            \end{tikzpicture}
+            \begin{tikzpicture}[scale=1.75]
+                \draw[-Latex] (-5,0) -- +(10,0);
+                \foreach \x in {-13,...,13} {
+                    \draw ({\x/3},0.1) -- +(0,-0.2);
+                }
+                \node[below] at (0,-0.1) {0};
+                \node[below] at ({1/3},-0.1) {$\frac{1}{3}$};
+                \draw[rouge,thick] (0.5,-0.1) node[below]{$\frac{1}{2}$} -- (0.5,0.1) node[above]{$A$};
+                \draw[rouge,thick] (4,-0.1) node[below]{$\frac{12}{3}$} -- +(0,0.2) node[above]{$B$};
+                \draw[rouge,thick] ({7/3},-0.1) node[below]{$\frac{7}{3}$} -- +(0,0.2) node[above]{$C$};
+                \draw[rouge,thick] (-2,-0.1) node[below]{$-\frac{6}{3}$} -- +(0,0.2) node[above]{$D$};
+            \end{tikzpicture}
+            \begin{tikzpicture}[scale=1.75]
+                \draw[-Latex] (-5,0) -- +(10,0);
+                \foreach \x in {-27,...,27} {
+                    \draw ({\x/6},0.1) -- +(0,-0.2);
+                }
+                \node[below] at (0,-0.1) {0};
+                \node[below] at ({1/6},-0.1) {$\frac{1}{6}$};
+                \draw[rouge,thick] (0.5,-0.1) node[below]{$\frac{3}{6}$} -- (0.5,0.1) node[above]{$A$};
+                \draw[rouge,thick] (4,-0.1) node[below]{$\frac{24}{6}$} -- +(0,0.2) node[above]{$B$};
+                \draw[rouge,thick] ({7/3},-0.1) node[below]{$\frac{14}{6}$} -- +(0,0.2) node[above]{$C$};
+                \draw[rouge,thick] (-2,-0.1) node[below]{$-\frac{12}{6}$} -- +(0,0.2) node[above]{$D$};
+            \end{tikzpicture}
+        \end{center}
+
+        \exercice 
+        \begin{centre}
+            \begin{tikzpicture}[scale=1.1]
+                \draw[-Latex] (-8,0) -- +(16.5,0);
+                \foreach \x in {-8,...,7} {
+                    \draw (\x,0.2) -- +(0,-0.4);
+                    \foreach \xx in {1,...,9} {
+                        \draw ({\x+0.1*\xx},0.1) -- +(0,-0.2);
+                    }
+                }
+                \node[below] at (0,-0.1) {0};
+                \node[below] at (1,-0.1) {1};
+                \foreach \p/\x in {A/3, B/-3, C/-6, D/4.8, E/-4.7, F/-0.8} {
+                    \node[above,rouge] at (\x,0.1) {$\p$};
+                    \fill[rouge] (\x,0) circle (0.05);
+                    \node[below,rouge] at (\x,-0.1) {\num{\x}};
+                }
+            \end{tikzpicture}
+        \end{centre}
+
+    \exercice
+    \begin{center}
+        \begin{tikzpicture}
+            \tikzmath{ \d=0.15; }
+            \draw[thin,gray!80!blanc] (-6,-6) grid (6,6);
+            \draw[thin,gray!30!blanc] (-6,-6) grid[step=0.1] (6,6);
+            \draw[-Latex] (-6,0) -- +(12,0);
+            \draw[-Latex] (0,-6) -- +(0,12);
+            \foreach \i in {1,...,5} {
+                \draw (-\i,-\d) -- +(0,2*\d);
+                \draw (\i,-\d) -- +(0,2*\d);
+                \draw (-\d,-\i) -- +(2*\d,0);
+                \draw (-\d,\i) -- +(2*\d,0);
+            }
+            \node[below left] at (0,0) {$O$};
+            \node[below] at (1,-\d) {$I$};
+            \node[left] at (-\d,1) {$J$};
+            \coordinate (ex3_A) at (2,3);
+            \coordinate (ex3_B) at (5,-2);
+            \coordinate (ex3_C) at (-3,1);
+            \coordinate (ex3_D) at (0,4);
+            \coordinate (ex3_E) at (-3,0);
+            \coordinate (ex3_F) at (-0.5,-0.5);
+            \foreach[count=\i] \q in {A,B,C,D,E,F,G,H,K,L,M,N,P,Q,R,S,T,U,V,W,X,Y,Z} {
+                \fill[rouge] (ex3_\q) circle (0.05) node[below left]{$\q$};
+                \path let \p1 = (ex3_\q) in node[right,rouge] at (7,{6 - 0.5*\i}) {$\q(\Convert[use-siunitx,cm,number-only,precision=1]{\x1};\Convert[use-siunitx,cm,number-only,precision=1]{\y1})$};
+            };
+        \end{tikzpicture}
+    \end{center}
+
+    \exercice 
+    \begin{center}
+        \begin{tikzpicture}[scale=1.1]
+            \draw[thin,gray!60!blanc] (-3,-3,0) grid[step=1] +(9,9,0);
+            \draw[-Latex] (-1,0,0) -- +(7,0,0);
+            \draw[-Latex] (0,-1,0) -- +(0,7,0);
+            \draw[-Latex] (0,0,-1) -- +(0,0,7);
+            \fill (0,0,0) circle (0.05) node[above left] {$O$};
+            \fill (1,0,0) circle (0.05) node[below] {$I$};
+            \fill (0,1,0) circle (0.05) node[left] {$J$};
+            \fill (0,0,1) circle (0.05) node[below] {$K$};
+            \foreach \z in {1,...,5} {
+                \draw (0,0.1,\z) -- +(0,-0.2,0);
+            }
+            \draw (0,0,0) -- ++(4,0,0) circle (0.05) node[above left] {$P$} -- ++(0,3,0) circle (0.05) node[above left] {$Q$} -- ++(-4,0,0) circle (0.05) node[above left] {$R$} --cycle;
+            \draw (0,0,0) -- ++(0,0,5);
+            \draw (4,0,0) -- ++(0,0,5);
+            \draw (0,3,0) -- ++(0,0,5);
+            \draw (4,3,0) -- ++(0,0,5);
+            \draw (0,0,5) circle (0.05) node[above left]{$S$} -- ++(4,0,0) circle (0.05) node[above left]{$T$} -- ++(0,3,0) circle (0.05) node[above left]{$U$} -- ++(-4,0,0) circle (0.05) node[above left]{$V$} -- (0,0,5);
+            \draw[fill,rouge] (2,3,1) circle (0.05) node[below left]{$A$};
+            \draw[fill,rouge] (4,5,2) circle (0.05) node[below left]{$B$};
+            \draw[fill,rouge] (1,4,1) circle (0.05) node[below left]{$C$};
+            \draw[fill,rouge] (0,1,4) circle (0.05) node[below left]{$D$};
+            \draw[fill,rouge] (2,1,0) circle (0.05) node[below left]{$E$};
+            \draw[fill,rouge] (1,0,1) circle (0.05) node[below left]{$F$};
+        \end{tikzpicture}
+    \end{center}
+
+    \exercice 
+    \question Le triangle OFH est rectangle en H, l'hypoténuse est $[OF]$.
+
+    D'après le théorème de Pythagore :
+
+    \begin{align*}
+        OF^2 &= OH^2 + HF^2\\
+        OF^2 &= 72^2+54^2\\
+        OF^2 &= 8100\\
+        OF &= \sqrt{8100}\\
+        OF &= 90
+    \end{align*}
+
+    \question Puisque la cible a un rayon de 100, et que l'on ne compte pas la bordure, il faut que $OF < 100$.
+    \question 
+        \subquestion \begin{scratch}\blockrepeat{répéter \ovalnum{120} fois}{}\end{scratch} nous indique que l'on fera 120 simulations.
+        \subquestion La variable \ovalvariable{score} sert à comptabiliser le nombre de fléchette ayant atteint la cible.
+        \subquestion 
+        \begin{scratch}
+            \blockvariable{mettre \selectmenu{\textbf{Carré de OF}} à \ovaloperator{\ovaloperator{\ovalmove{abscisse x} * \ovalmove{abscisse x}} + \ovaloperator{\ovalmove{ordonnée y}*\ovalmove{ordonnée y}}}}
+        	\blockvariable{mettre \selectmenu{distance} à \ovaloperator{\selectmenu{racine} de \ovalvariable{Carré de OF}}}
+        	\blockif{si \booloperator{\ovalvariable{distance} < \ovalnum{1}} alors}
+        		{
+        		\blockvariable{ajouter à \selectmenu{score} \ovalnum{1}}
+                }
+         \end{scratch}
+        \subquestion Sur les 120 lancers, 102 fléchettes ont atteint la cible. Cela correspond à une fréquence de $\frac{102}{120}$.
+
+    \question 
+    \begin{align*}
+    p &= \frac{\curs{A}_{\mbox{cible}}}{\curs{A}_{\mbox{plaque}}}
+    = \frac{\pi \times \mbox{rayon}^2}{\mbox{côté}^2}
+    = \frac{\pi \times 100^2}{200^2} 
+    = \frac{\pi \times 100^2}{(2 \times 100)^2} 
+    = \frac{\pi \times 100^2}{2^2 \times 100^2} \\ 
+    &= \frac{\pi \times \cancel{100^2}}{2^2 \times \cancel{100^2}}
+    = \frac{\pi}{2^2} \\ 
+    \Aboxed{p &= \frac{\pi}{4} \approx \num{0.79}}
+    \end{align*}
+
+    \exercice 
+    En lisant les coordonnées, il faut bien respecter l'ordre $(x,y,z)$.
+    \begin{center}
+        \begin{tikzpicture}[rotate around x=-90,rotate around z=-55,rotate around y=10]
+            \draw[-Latex] (0,0,0) -- (0,0,10) node[above]{$z$};
+            \draw[-Latex] (0,0,0) -- (11,0,0) node[below]{$x$};
+            \draw[-Latex,dashed] (0,0,0) -- (0,11,0) node[right]{$y$};
+            \coordinate (A) at (0,0,9);
+            \coordinate (B) at (3,0,9);
+            \coordinate (C) at (3,0,6);
+            \coordinate (D) at (6,0,6);
+            \coordinate (E) at (6,0,3);
+            \coordinate (F) at (9,0,3);
+            \coordinate (G) at (9,0,0);
+            \coordinate (I) at (0,8,9);
+            \coordinate (J) at (3,8,9);
+            \coordinate (K) at (3,8,6);
+            \coordinate (L) at (6,8,6);
+            \coordinate (M) at (6,8,3);
+            \coordinate (N) at (9,8,3);
+            \coordinate (H) at (9,8,0);
+            \draw (A) -- (B) -- (C) -- (D) -- (E) -- (F) -- (G);
+            \draw (I) -- (J) -- (K) -- (L) -- (M) -- (N) -- (H);
+            \foreach \a/\b in {A/I, B/J, C/K, D/L, E/M, F/N, G/H} {
+                \draw (\a) -- (\b);
+            }
+            \foreach \i in {1,...,9} {
+                \draw (\i,0.1,0) -- +(0,-0.2,0) node[left]{\i};
+                \draw (0.3,\i,0) -- +(-0.6,0,0) node[above]{\i};
+                \draw (0.2,0,\i) -- +(-0.4,0,0) node[left]{\i};
+            }
+            \foreach[count=\i] \p in {A,B,...,N} {
+                \fill (\p) circle (0.1);
+            }
+            \node[rouge,above right] at (A) {$A(0,0,9)$};
+            \node[rouge,above right] at (B) {$B(3,0,9)$};
+            \node[rouge,above right] at (C) {$C(3,0,6)$};
+            \node[rouge,above right] at (D) {$D(6,0,6)$};
+            \node[rouge,below right] at (E) {$E(6,0,3)$};
+            \node[rouge,above right] at (F) {$F(9,0,3)$};
+            \node[rouge,above right] at (G) {$G(9,0,0)$};
+            \node[rouge,above right] at (I) {$I(0,8,9)$};
+            \node[rouge,above right] at (J) {$J(3,8,9)$};
+            \node[rouge,above right] at (K) {$K(3,8,6)$};
+            \node[rouge,above right] at (L) {$L(6,8,6)$};
+            \node[rouge,      right] at (M) {$M(6,8,3)$};
+            \node[rouge,above right] at (N) {$N(9,8,3)$};
+            \node[rouge,above right] at (H) {$H(9,8,0)$};
+        \end{tikzpicture}
+    \end{center}
+    
+    \end{questions}
 \end{document}

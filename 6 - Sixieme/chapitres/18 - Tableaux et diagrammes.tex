@@ -1,13 +1,83 @@
 \documentclass[../Cours.tex]{subfiles}
 
 \begin{document}
-\chapitre{Diagrammes}
+\chapitre{Tableaux et diagrammes}
 
-\partie{Diagrammes en bâtons}
+\partie{Tableaux}
 
-\definition{Un diagramme en bâtons ou en barres permet de représenter les données d'un tableau par des barres proportionnelles aux données.}
+\definition{Un tableau est un outil qui permet de classifier des données et d'en faciliter la lecture.}
 
-\exemple{}
+\souspartie{Tableau en lignes}
+
+\exemple{
+    \begin{center}
+        \begin{tabularx}{0.5\linewidth}{|X|X|} \hline
+            Température (\unit{\degreeCelsius}) & mois \\\hline
+            10 & janvier \\\hline
+            15 & février \\\hline 
+            17 & mars \\\hline
+        \end{tabularx}
+    \end{center}
+    Au mois de janvier, la température moyenne s'élève à \qty{10}{\degreeCelsius}.
+}
+
+\souspartie{Tableau en colonnes}
+
+\exemple{
+    \begin{center}
+        \begin{tabularx}{0.7\linewidth}{|l|X|X|X|} \hline
+            salle & 24 & 15 & 17bis \\\hline 
+            nombre de chaises & 30 & 31 & 12 \\\hline
+        \end{tabularx}
+    \end{center}
+    En salle 17bis, il y a 12 chaises.
+}
+
+\souspartie{Tableau à double entrée}
+
+\exemple{
+    \begin{center}
+        \begin{tabularx}{0.7\linewidth}{|X|X|X|X|}\hline
+             & En ville & Autoroute \\\hline 
+             France & \qty{50}{\kilo\metre\per\hour} & \qty{130}{\kilo\metre\per\hour} \\\hline 
+             Suisse & \qty{50}{\kilo\metre\per\hour} & \qty{120}{\kilo\metre\per\hour} \\\hline 
+             Royaume-Uni & \qty{48}{\kilo\metre\per\hour} & \qty{113}{\kilo\metre\per\hour} \\\hline
+        \end{tabularx}
+    \end{center}
+    En ville, au Royaume-Uni, la vitesse limite est de \qty{48}{\kilo\metre\per\hour}.
+}
+
+\partie{Graphiques et diagrammes}
+
+\souspartie{Graphique cartésien}
+\definition{Un graphique cartésien est constitué d'un repère orthogonal sur lequel on place plusieurs points que l'on va relier pour former une courbe.}
+
+\illustration{
+    \begin{center}
+        \begin{tabularx}{0.9\linewidth}{|l|X|X|X|X|X|}\hline
+            Jour & vendredi 11 avril & samedi 15 avril & dimanche 16 avril & lundi 17 avril & mardi 18 avril \\\hline
+            Température (en \unit{\degreeCelsius}) & 11 & 15 & 16 & 17 & 17 \\\hline
+        \end{tabularx}
+        %
+        \begin{tikzpicture}
+            \draw[-Latex] (-1,0) -- (12,0);
+            \draw[-Latex] (0,-1) -- (0,6.5);
+            \foreach \y in {1,...,18} {
+                \draw (0.1,{\y/3}) -- +(-0.2,0);
+            }
+            \foreach \x in {1,...,5} {
+                \draw ({2*\x},-0.1) -- +(0,0.2);
+            }
+        \end{tikzpicture}
+    \end{center}
+}
+
+\clearpage
+\souspartie{Diagrammes en bâtons}
+
+\definition{Un diagramme en bâtons (ou en barres) permet de représenter les données d'un tableau par des barres de hauteurs proportionnelles aux données.}
+
+\exemple{\color{noir}
 \begin{center}%
 Nombre d'habitants dans 3 pays en 2020\\
 \begin{tabular}{|c|c|}\hline
@@ -17,12 +87,9 @@ Nombre d'habitants dans 3 pays en 2020\\
     Corée du sud & 51 \\\hline
 \end{tabular}%
 \end{center}%
-
 \begin{flushright}
     \tiny{Sources : Instituts nationaux officiels de statistiques}
 \end{flushright}
-
-
 \begin{center}
     \begin{tikzpicture}
         \draw[->] (-1,0) -- (11,0);
@@ -45,9 +112,10 @@ Nombre d'habitants dans 3 pays en 2020\\
         \node[thin, below left] at (0,3.8) {\small{38}};
     \end{tikzpicture}
 \end{center}
+}
 
 \clearpage
-\partie{Diagrammes circulaires}
+\souspartie{Diagrammes circulaires}
 
 \definition{Un diagramme circulaire permet de représenter les données d'un tableau par des secteurs de disque d'angles proportionnels aux données du tableau.}
 
@@ -122,6 +190,61 @@ Nombre d'habitants dans 3 pays en 2020\\
     \clearpage
     \exercice 
 \end{questions}
+
+\clearpage
+\begin{center}
+    \begin{tikzpicture}[scale=0.85]
+        \draw (0,0) circle (2);
+        \draw (5,0) circle (2);
+        \draw (10,0) circle (2);
+        \draw (16,0) -- ++(1,0) arc(0:180:2) -- cycle;
+    \end{tikzpicture}
+\end{center}
+
+\begin{center}
+    \begin{tikzpicture}[scale=0.85]
+        \draw (0,0) circle (2);
+        \draw (5,0) circle (2);
+        \draw (10,0) circle (2);
+        \draw (16,0) -- ++(1,0) arc(0:180:2) -- cycle;
+    \end{tikzpicture}
+\end{center}
+
+\begin{center}
+    \begin{tikzpicture}[scale=0.85]
+        \draw (0,0) circle (2);
+        \draw (5,0) circle (2);
+        \draw (10,0) circle (2);
+        \draw (16,0) -- ++(1,0) arc(0:180:2) -- cycle;
+    \end{tikzpicture}
+\end{center}
+
+\begin{center}
+    \begin{tikzpicture}[scale=0.85]
+        \draw (0,0) circle (2);
+        \draw (5,0) circle (2);
+        \draw (10,0) circle (2);
+        \draw (16,0) -- ++(1,0) arc(0:180:2) -- cycle;
+    \end{tikzpicture}
+\end{center}
+
+\begin{center}
+    \begin{tikzpicture}[scale=0.85]
+        \draw (0,0) circle (2);
+        \draw (5,0) circle (2);
+        \draw (10,0) circle (2);
+        \draw (16,0) -- ++(1,0) arc(0:180:2) -- cycle;
+    \end{tikzpicture}
+\end{center}
+
+\begin{center}
+    \begin{tikzpicture}[scale=0.85]
+        \draw (0,0) circle (2);
+        \draw (5,0) circle (2);
+        \draw (10,0) circle (2);
+        \draw (16,0) -- ++(1,0) arc(0:180:2) -- cycle;
+    \end{tikzpicture}
+\end{center}
 
 
 

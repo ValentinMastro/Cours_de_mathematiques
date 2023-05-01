@@ -120,46 +120,41 @@
 \CORRECTIONS
 \begin{questions}
     \exercice
+
     \begin{center}
-    \begin{tikzpicture}
-        \node at (0,0) {\begin{tabularx}{0.5\linewidth}{lXr}
-            $7-x=4$ && $x=10$ \\
-            $x+5=9$ && $x=8$ \\ 
-            $2+x=12$ && $x=3$ \\
-            $3x+2=2$ && $x=6$ \\
-            $13=5+x$ && $x=9$ \\
-            $2=11-x$ && $x=4$ \\
-            $7x=42$ && $x=0$
-        \end{tabularx}};
-        \draw (-2.2,1.5) -- (2.8,0.6);
-        \draw (-2.2,1.15) -- (2.8,-1);
-        \draw (-2.2,0.7) -- (2.8,1.6);
-        \draw (-2.2,0) -- (2.8,-1.4);
-        \draw (-2.2,-1.5) -- (2.8,0);
-        \draw (-2.2,-0.55) -- (2.8,1);
-        \draw (-2.2,-0.8) -- (2.8,-0.4);
-    \end{tikzpicture}
+        \begin{tikzpicture}
+            \draw (0,3) rectangle ++(2.5,0.6) node[midway]{$7-x=4$} ++(0,-0.3) -- (7,1.7) ++(0,-0.3) rectangle ++(1.5,0.6) node[midway]{$x=3$};
+            \draw (0,2.2) rectangle ++(2.5,0.6) node[midway]{$x+5=9$} ++(0,-0.3) -- (7,-0.7) ++(0,-0.3) rectangle ++(1.5,0.6) node[midway]{$x=4$};
+            \draw (0,1.4) rectangle ++(2.5,0.6) node[midway]{$2+x=12$} ++(0,-0.3) -- (7,3.3) ++(0,-0.3) rectangle ++(1.5,0.6) node[midway]{$x=10$};
+            \draw (0,0.6) rectangle ++(2.5,0.6) node[midway]{$3x+2=2$} ++(0,-0.3) -- (7,-1.5) ++(0,-0.3) rectangle ++(1.5,0.6) node[midway]{$x=0$};
+            \draw (0,-0.2) rectangle ++(2.5,0.6) node[midway]{$13=5+x$} ++(0,-0.3) -- (7,2.5) ++(0,-0.3) rectangle ++(1.5,0.6) node[midway]{$x=8$};
+            \draw (0,-1) rectangle ++(2.5,0.6) node[midway]{$2=11-x$} ++(0,-0.3) -- (7,0.1) ++(0,-0.3) rectangle ++(1.5,0.6) node[midway]{$x=9$};
+            \draw (0,-1.8) rectangle ++(2.5,0.6) node[midway]{$7x=42$} ++(0,-0.3) -- (7,0.9) ++(0,-0.3) rectangle ++(1.5,0.6) node[midway]{$x=6$};
+        \end{tikzpicture}
     \end{center}
 
     \newcommand{\red}[1]{\textcolor{rouge}{#1}}
-    \exercice Soit $x$ la quantité recherchée.
-    \begin{align*}
-        x+\frac{x}{7} &= 19 \\
-        \red{7} \left( x + \frac{x}{7} \right) &= \red{7} \times 19 \\
-        7x + x &= 133 \\
-        8x &= 133 \\
-        \frac{8x}{8} &= \frac{133}{8} \\
-        x = \frac{133}{8}
-    \end{align*}
-
-    \exercice Soit $x$ la quantité recherchée.
-    \begin{align*}
-        x + \frac{x}{2} &= 16 \\
-        \red{2} \left( x + \frac{x}{2} \right) &= \red{2} \times 16 \\
-        2x + x &= 32 \\
-        3x &= 32 \\
-        x &= \frac{32}{3}
-    \end{align*}
+    \begin{minipage}[t]{0.5\linewidth}
+        \exercice Soit $x$ la quantité recherchée.
+        \begin{align*}
+            x+\frac{x}{7} &= 19 \\
+            \red{7} \left( x + \frac{x}{7} \right) &= \red{7} \times 19 \\
+            7x + x &= 133 \\
+            8x &= 133 \\
+            \frac{8x}{8} &= \frac{133}{8} \\
+            \Aboxed{x &= \frac{133}{8}}
+        \end{align*}
+    \end{minipage}
+    \begin{minipage}[t]{0.45\linewidth}
+        \exercice Soit $x$ la quantité recherchée.
+        \begin{align*}
+            x + \frac{x}{2} &= 16 \\
+            \red{2} \left( x + \frac{x}{2} \right) &= \red{2} \times 16 \\
+            2x + x &= 32 \\
+            3x &= 32 \\
+            \Aboxed{x &= \frac{32}{3}}
+        \end{align*}
+    \end{minipage}
 
     \exercice Soit $x$ la quantité recherchée.
     \begin{align*}
@@ -167,38 +162,43 @@
         \red{5} \left( x + \frac{x}{5} \right) &= 21 \\
         5x + x &= 21 \\ 
         6x &= 21 \\ 
-        x &= \frac{21}{6}
+        \Aboxed{x &= \frac{21}{6}}
     \end{align*}
 
-    \exercice Soit la $x$ la longueur de la lance.
-    \begin{center}
-        \begin{tikzpicture}[scale=1.5]
-            \fill[blue!10!white] (-1.5,-0.3) rectangle (2,-3.4);
-            \draw (0,0) -- (0,-3);
-            \draw (0.5,0) -- (0.5,-3);
-            \draw (0,0) arc(180:0:0.25);
-            \draw (0,-3) arc(-180:0:0.25);
-            \node[opacity=0.0] (tmp) at (0.25,-1.5) {\textsc{Lance}};
-            \node[rotate around={90:(tmp.center)}] at (0.25,-1.5) {\textsc{Lance}};
-            \draw[Latex-Latex] (-0.2,0.25) -- +(0,-3.5) node[midway,left]{$x$};
-            \draw[Latex-Latex] (0.7,-3.25) -- +(0,1.75) node[midway,right]{$\dfrac{x}{2}$};
-            \draw[Latex-Latex] (0.7,-1.5) -- +(0,1.2) node[midway,right]{$\dfrac{x}{3}$};
-            \draw[Latex-Latex] (0.7,-0.3) -- +(0,0.55) node[midway,right]{9};
-        \end{tikzpicture}
-    \end{center}
-
+    \clearpage
+    \exercice 
+    \begin{minipage}{0.45\linewidth}
+    Soit la $x$ la longueur de la lance.
+        \begin{center}
+            \begin{tikzpicture}[scale=1.5]
+                \fill[blue!10!white] (-1.5,-0.3) rectangle (2,-3.4);
+                \draw (0,0) -- (0,-3);
+                \draw (0.5,0) -- (0.5,-3);
+                \draw (0,0) arc(180:0:0.25);
+                \draw (0,-3) arc(-180:0:0.25);
+                \node[opacity=0.0] (tmp) at (0.25,-1.5) {\textsc{Lance}};
+                \node[rotate around={90:(tmp.center)}] at (0.25,-1.5) {\textsc{Lance}};
+                \draw[Latex-Latex] (-0.2,0.25) -- +(0,-3.5) node[midway,left]{$x$};
+                \draw[Latex-Latex] (0.7,-3.25) -- +(0,1.75) node[midway,right]{$\dfrac{x}{2}$};
+                \draw[Latex-Latex] (0.7,-1.5) -- +(0,1.2) node[midway,right]{$\dfrac{x}{3}$};
+                \draw[Latex-Latex] (0.7,-0.3) -- +(0,0.55) node[midway,right]{9};
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \begin{minipage}{0.45\linewidth}
     Résolvons l'équation : 
-    \begin{align*}
-        x &= \frac{x}{2} + \frac{x}{3} + 9 \\
-        \red{6}x &= \red{6} \left( \frac{x}{2} + \frac{x}{3} + 9 \right) \\
-        6x &= 6\frac{x}{2} + 6\frac{x}{3} + 6 \times 9 \\
-        6x &= 3x + 2x + 54 \\
-        6x \red{-3x-2x} &= 3x + 2x + 54 \red{-3x-2x} \\ 
-        x &= 54
-    \end{align*}
+        \begin{align*}
+            x &= \frac{x}{2} + \frac{x}{3} + 9 \\
+            \red{6}x &= \red{6} \left( \frac{x}{2} + \frac{x}{3} + 9 \right) \\
+            6x &= 6\frac{x}{2} + 6\frac{x}{3} + 6 \times 9 \\
+            6x &= 3x + 2x + 54 \\
+            6x \red{-3x-2x} &= 3x + 2x + 54 \red{-3x-2x} \\ 
+            \Aboxed{x &= 54}
+        \end{align*}
 
     Donc la lance mesure 54 paumes.
-
+    \end{minipage}
+    
     \exercice Dans une entreprise de 320 personnes, il y a 3 fois plus d'hommes que de femmes. Soit $x$ le nombre de femmes, alors il y a 3 fois plus d'hommes, donc $3x$ hommes.
 
     \begin{align*}
@@ -206,37 +206,41 @@
         3x + x &= 320 \\
         4x &= 320 \\ 
         x &= \frac{320}{4} \\
-        x &= 80
+        \Aboxed{x &= 80}
     \end{align*}
 
     Donc il y a 80 femmes et $80 \times 3 = 240$ hommes dans cette entreprise. On pourrait dire qu'il y a un quart de femmes, autrement dit \qty{25}{\%} de femmes dans cette entreprise.
 
-    \exercice 
-    \begin{center}
-        \begin{tikzpicture}
-            \draw (0,0) rectangle +(8,1);
-            \draw[Latex-Latex] (0,1.2) -- +(8,0) node[midway,above]{$x$};
-            \draw[Latex-Latex] (0,-0.2) -- +(2,0) node[midway,below]{$\frac{x}{4}$};
-            \draw[Latex-Latex] (2,-0.2) -- +(3.2,0) node[midway,below]{$\frac{2x}{5}$};
-            \fill[red] (0,0) rectangle +(2,1);
-            \fill[green] (2,0) rectangle +(3.2,1);
-            \draw[Latex-Latex] (5.2,-0.2) -- +(2.8,0) node[midway,below]{\qty{378}{\EURO}};
-        \end{tikzpicture}
-    \end{center}
-
-    \begin{align*}
-        x &= \frac{x}{4} + \frac{2x}{5} + 378 \\
-        \red{20}x &= \red{20 \times} \left(\frac{x}{4} + \frac{2x}{5} + 378\right) \\
-        20x &= 20\frac{x}{4} + 20 \times \frac{2x}{5} + 20 \times 378 \\
-        20x &= 5x + 8x + 7560 \\
-        20x \red{-5x-8x} &= 5x + 8x + 7560 \red{-5x-8x} \\
-        7x &= 7560 \\
-        x &= \frac{7560}{7} \\ 
-        x &= \boxed{1080}
-    \end{align*}
+    \exercice
+    \begin{minipage}{0.4\linewidth}
+        \begin{center}
+            \begin{tikzpicture}
+                \draw (0,0) rectangle +(1,8);
+                \draw[Latex-Latex] (1.2,0) -- +(0,8) node[midway,right]{$x$};
+                \draw[Latex-Latex] (-0.2,0) -- +(0,2) node[midway,left]{$\dfrac{x}{4}$};
+                \draw[Latex-Latex] (-0.2,2) -- +(0,3.2) node[midway,left]{$\dfrac{2x}{5}$};
+                \fill[red] (0,0) rectangle +(1,2);
+                \fill[green] (0,2) rectangle +(1,3.2);
+                \draw[Latex-Latex] (-0.2,5.2) -- +(0,2.8) node[midway,left]{\qty{378}{\EURO}};
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \begin{minipage}{0.5\linewidth}
+        \begin{align*}
+            x &= \frac{x}{4} + \frac{2x}{5} + 378 \\
+            \red{20}x &= \red{20 \times} \left(\frac{x}{4} + \frac{2x}{5} + 378\right) \\
+            20x &= 20\frac{x}{4} + 20 \times \frac{2x}{5} + 20 \times 378 \\
+            20x &= 5x + 8x + 7560 \\
+            20x \red{-5x-8x} &= 5x + 8x + 7560 \red{-5x-8x} \\
+            7x &= 7560 \\
+            x &= \frac{7560}{7} \\ 
+            x &= \boxed{1080}
+        \end{align*}
 
     Donc le salaire mensuel de cet individu est de \qty{1080}{\EURO}.
+    \end{minipage}
 
+    \clearpage
     \exercice Soit $x$ le nombre de moutons dans le troupeau.
     \begin{align*}
         \frac{x}{3} &= x - 20 \\
@@ -245,7 +249,7 @@
         x \red{-3x} &= 3x - 60 \red{-3x} \\
         -2x &= -60 \\
         x &= \frac{-60}{-2} \\ 
-        x &= \boxed{3O}
+        \Aboxed{x &= 30}
     \end{align*}
 
     Donc il y a 30 moutons dans le troupeau.
@@ -256,6 +260,7 @@
         \item Si la troisième personne reçoit \emph{le double} de ce que perçoit la première moins \qty{150}{\EURO}, alors elle reçoit $2x-150$.
     \end{itemize}
 
+    \vspace{-1.5em}
     \begin{align*}
         \mbox{première personne} + \mbox{deuxième personne} + \mbox{troisième personne} &= 1900\\ 
         x + (x+70) + (2x-150) &= 1900 \\
@@ -263,7 +268,7 @@
         4x-80 \red{+80} &= 1900 \red{+80} \\
         4x &= 1980\\
         x &= \frac{1980}{4} \\ 
-        x&= 495
+        \Aboxed{x &= 495}
     \end{align*}
 
     Donc la première personne a reçu \qty{495}{\EURO}, la deuxième \qty{565}{\EURO} et la troisième \qty{840}{\EURO}.
@@ -276,7 +281,7 @@
         3x + 3 &= 2006 \\
         3x + 3 \red{-3} &= 2006 \red{-3} \\
         3x &= 2003 \\
-        x &= \frac{2003}{3}
+        \Aboxed{x &= \frac{2003}{3}}
     \end{align*}
 
     Or $\frac{2003}{3}$ n'est pas un nombre entier, donc ce que l'énoncé nous demande << trouver 3 entiers consécutifs dont la somme est 2006>> est impossible.
@@ -289,10 +294,21 @@
         4x + 12 \red{-12} &= 196 \red{-12} \\
         4x &= 184 \\
         x &= \frac{184}{4}\\ 
-        x &= 46
+        \Aboxed{x &= 46}
     \end{align*}
 
     Donc les nombres attendus sont \{ 46, 48, 50, 52 \}.
+
+    \exercice Soit $x$ le nombre recherché.
+
+    \begin{align*}
+        \frac{3}{4}x + \frac{1}{2} &= 1 \\ 
+        \red{4 \times} \left( \frac{3}{4}x + \frac{1}{2} \right) &= \red{4 \times} 1 \\ 
+        3x + 2 &= 4 \\ 
+        3x + 2 \red{-2} &= 4 \red{-2} \\ 
+        3x &= 2 \\ 
+        \Aboxed{x &= \frac{2}{3}}
+    \end{align*}
 
     \exercice Soit $c$ le côté du carré.
     \begin{itemize}
@@ -310,7 +326,7 @@
         2c - 49 &= 39 \\ 
         2c - 49  \red{+49} &= 39  \red{+49} \\ 
         2c &= 88 \\ 
-        c &= 44
+        \Aboxed{c &= 44}
     \end{align*}
     
     \exercice On cherche trois entiers consécutifs tels que leur somme vaut 231. Soit $x$ le plus petit des trois nombres, alors les deux autres sont $x+1$ et $x+2$.
@@ -321,8 +337,8 @@
         3x + 3 &= 231 \\
         3x + 3 \red{-3} &= 231 \red{-3} \\
         3x &= 228 \\ 
-        X &= \frac{228}{3} \\
-        x &= 76
+        x &= \frac{228}{3} \\
+        \Aboxed{x &= 76}
     \end{align*}
 
     Donc les mesures du triangle sont \qty{76}{\centi\metre}, \qty{77}{\centi\metre} et \qty{78}{\centi\metre}.
@@ -335,7 +351,7 @@
         2x + 3 &= 31 \\ 
         2x + 3 \red{-3} &= 31 \red{-3} \\ 
         2x &= 28 \\ 
-        x &= 14
+        \Aboxed{x &= 14}
     \end{align*}
 
     Donc Alexis a 14 ans et Béatrice a 17 ans.
@@ -348,11 +364,12 @@
         2x + 6x &= 176 \\ 
         8x &= 176 \\ 
         x &= \frac{176}{8} \\ 
-        x &= 22 
+        \Aboxed{x &= 22} 
     \end{align*}
 
     Donc la largeur du terrain est de \qty{22}{\metre}, et sa longueur $22 \times 3 = \qty{66}{\metre}$.
 
+    \clearpage
     \exercice Soit $x$ le nombre recherché.
 
     \begin{align*}
@@ -361,7 +378,7 @@
         -x + 7 &= -3 \\ 
         -x + 7 \red{-7} &= -3\red{-7} \\ 
         -x &= -10 \\ 
-        x &= 10
+        \Aboxed{x &= 10}
     \end{align*}
 
     Le nombre recherché était 10.
@@ -379,7 +396,7 @@
         3x +24 \red{-24} &= 150 \red{-24} \\ 
         3x &= 126 \\ 
         x &= \frac{126}{3} \\ 
-        x &= 42
+        \Aboxed{x &= 42}
     \end{align*}
 
     Il y a donc 42 cailloux dans le 3ème tas, 72 dans le 1er tas et 36 dans le 2ème.
@@ -391,10 +408,27 @@
         2x + 100 &= 110 \\ 
         2x + 100 \red{-100} &= 110 \red{-100} \\ 
         2x &= 10 \\ 
-        x &= 5
+        \Aboxed{x &= 5}
     \end{align*}
 
     Donc le bouchon pèse \qty{5}{\gram} et la bouteille \qty{105}{\gram}.
+
+    \clearpage
+    \exercice Pour équilibrer l'équation-bilan, on va compter le nombre d'atomes de chaque élément chimique dans les réactifs et dans les produits, et vérifier qu'on en a bien le même nombre.
+
+    \begin{center}
+        \begin{tabularx}{0.9\linewidth}{l|CcCcCcC|}
+            &\multicolumn{3}{|c}{Réactifs} && \multicolumn{3}{c|}{Produits}\\\hline
+            & $CH_4$ &+& $x0_2$ & $\longrightarrow$ & $CO_2$ &+& $2H_2 O$ \\\hline\hline
+            Carbone & 1 &+& 0 & $\longrightarrow$ & 1 &+& 0 \\\hline
+            Hydrogène & 4 &+& 0 & $\longrightarrow$ & 0 &+& 4 \\\hline
+            Oxygène & 0 &+& $2x$ & $\longrightarrow$ & 2 &+& 2 \\\hline
+        \end{tabularx}
+    \end{center}
+
+    On en déduit l'équation $2x=4$, d'où $x=2$.
+    
+    L'équation-bilan est donc $CH_4 + 2O_2 \longrightarrow CO_2 + 2H_2 O$
     
     \exercice 
     \question 
@@ -418,6 +452,7 @@
         x &= \fbox{$\dfrac{5}{3}$}
     \end{align*}
 
+    \clearpage
     \exercice Dans l'énoncé, on a l'équation $3y-6=9y-9$. Résolvons-la.
     \begin{align*}
         3y-6 &= 9y-9  & \mbox{il y a un $9y$ à droite, je veux l'enlever}\\
@@ -428,8 +463,6 @@
         \dfrac{-6y}{6} &= \dfrac{-3}{-6} & \mbox{j'ai $-6y$, mais je veux juste $y$, je vais donc diviser par -6} \\
         y &= \dfrac{-3}{-6} = \dfrac{3}{6} = \fbox{$\dfrac{1}{2}$} & \mbox{je simplifie la fraction}
     \end{align*}
-
-    \clearpage
 
     On dit dans l'énoncé qu'une des trois équations a la même solution. On va donc tester les trois équations avec la solution qu'on a trouvé, c'est-à-dire $\frac{1}{2}$ :\\
 
@@ -442,6 +475,4 @@
     (*) Pour la troisième, $3t-4=2$, on va calculer $3t-4$ avec notre solution et voir si cela donne 2.\\
     En l'occurrence, $3t-4 = 3 \times \frac{1}{2} - 4 = \frac{3}{2} - 4 = -2{,}5$. Ca ne fait donc pas 2.
 \end{questions}
-
-
 \end{document}

@@ -39,5 +39,42 @@
     \item $0,02 \supeg 0,01$
 \end{listedexemples}
 
+\clearpage \thispagestyle{empty}
+\begin{questions}
+    \enigme Ramsès a acheté des chameaux et dromadaires, tous normaux. Au total, il compte 21 bosses et 52 pattes. Il poste un soldat par chameau. De combien de soldats a-t-il besoin ?
+    \enigme Par quelles opérations est-il possible d’obtenir 100 en utilisant 5 fois le nombre 5 ? 
+\[ 5 ~?~ 5 ~?~ 5 ~?~ 5 ~?~ 5 = 100 \]
+    \enigme Construis un carré et coupe-le en 7 carrés plus petits.
+    \enigme Pierre dit à Marie : « J’ai découpé des petits rectangles de carton de 3 cm sur 5 cm » dans un grand rectangle de 15 cm sur 22 cm, sans qu’il n’y ait de chute ! " Marie réfléchit et lui répond : " Tu as raison, et je sais même combien tu en as découpé et comment tu les as découpés ! " Retrouver leur solution.
+    \enigme Combien de secondes se sont écoulées depuis ta naissance ?
+    \enigme Je viens de fêter ma milliardième seconde, quel est mon âge ?
+    \enigme J’ai fait 10 km à vélo. Combien de tours a fait chacune des roues du vélo ?
+\end{questions}
+
+\clearpage \thispagestyle{empty}
+\begin{questions}
+    \enigme Ramsès a acheté des chameaux et dromadaires, tous normaux. Au total, il compte 21 bosses et 52 pattes. Il poste un soldat par chameau. De combien de soldats a-t-il besoin ?
+    \enigme Par quelles opérations est-il possible d’obtenir 100 en utilisant 5 fois le nombre 5 ? 
+\[ 5 ~?~ 5 ~?~ 5 ~?~ 5 ~?~ 5 = 100 \]
+    \enigme Construis un carré et coupe-le en 7 carrés plus petits.
+    \enigme Pierre dit à Marie : « J’ai découpé des petits rectangles de carton de 3 cm sur 5 cm » dans un grand rectangle de 15 cm sur 22 cm, sans qu’il n’y ait de chute ! " Marie réfléchit et lui répond : " Tu as raison, et je sais même combien tu en as découpé et comment tu les as découpés ! " Retrouver leur solution.
+    \enigme Combien de secondes se sont écoulées depuis ta naissance ?
+    \enigme Je viens de fêter ma milliardième seconde, quel est mon âge ?
+    \enigme J’ai fait 10 km à vélo. Combien de tours a fait chacune des roues du vélo ?
+\end{questions}
+
+\clearpage
+\begin{center}
+    \begin{tikzpicture}
+        \draw[-Latex] (0,0) -- (18,0);
+        \foreach \x in {1,...,17} {
+            \node at (\x,{0.3+0.4*mod(\x,2)}){\pgfmathparse{int((\x+4)*100)}\pgfmathresult};
+            \draw (\x,-0.1) -- (\x,0.1);
+        }
+        \draw ({16.43-4},-0.5) -- ({16.43-4},-1.5);
+        \draw ({17.15-4},-0.5) -- ({17.15-4},-1.5);
+        \node[below] at (12.8,-1) {\rotatebox{90}{Louis XIV}};
+    \end{tikzpicture}
+\end{center}    
 
 \end{document}

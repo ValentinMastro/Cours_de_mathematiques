@@ -3,4 +3,465 @@
 
 \chapitre{Périmètres et aires}
 
+\partie{Périmètres}
+
+\souspartie{Unités de longueur}
+
+\convention{L'unité légale de la longueur est le mètre.}
+
+\begin{center}
+    \begin{tabularx}{\linewidth}{*{7}{|C}|}\hline
+        \unit{\km} & \unit{\hecto\metre} & \unit{\deca\metre} & \unit{\m} & \unit{\dm} & \unit{\cm} & \unit{\mm} \\\hline 
+         &&&&&& \\[3cm]
+    \end{tabularx}
+\end{center}
+
+\souspartie{Cas général}
+
+\definition{Le périmètre d'une figure est la longueur de son contour.}
+
+\exemple{
+    \begin{center}
+    \begin{tikzpicture}[scale=0.6]
+        \draw[noir,gray!80!white] (0,0) grid (6,5);
+        \draw[rouge, line width={0.5mm}] (1,1) -- (1,4) -- (3,4) -- (3,2) -- (4,2) -- (4,3) -- (5,3) -- (5,1) -- cycle;
+        \draw[rouge, line width={0.2mm},latex-latex] (5.3,2) -- (5.3,1);
+        \node[rouge, anchor=west] at (5.3,1.5) {\scriptsize{unité de longueur}};
+        \node at (3,-1) {Le périmètre de cette figure est de 16 unités de longueur.};
+    \end{tikzpicture}
+    \end{center}
+}
+
+\propriete{Le périmètre d'un polygone est égal à la somme des longueurs de ses côtés.}
+
+\remarque{Toutes les longueurs doivent être exprimées dans la même unité.}
+
+\exemple{
+    \begin{centre}
+    \begin{tikzpicture}
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (4,-0.8);
+        \coordinate (C) at (3,2);
+        \coordinate (D) at (0.5,2.5);
+        \draw (0,0) node[left]{$A$} -- (4,-0.8) node[right]{$B$} -- (3,2) node[right]{$C$} -- (0.5,2.5) node[left]{$D$} -- cycle;
+        \node[anchor=west] at (-5,-2) {$\curs{P}_{ABCD} = AB+BC+CD+DA=\qty{3}{\centi\metre}+\qty{2}{\centi\metre}+\qty{2.4}{\centi\metre}+\qty{1.6}{\centi\metre}$};
+        \node[anchor=west] at (-5,-3) {$\curs{P}_{ABCD} = AB+BC+CD+DA=\qty{9}{\centi\metre}$};
+        \node[below] at ($(A)!0.5!(B)$) {\qty{3}{\centi\metre}};
+        \node[right] at ($(B)!0.5!(C)$) {\qty{2}{\centi\metre}};
+        \node[above] at ($(C)!0.5!(D)$) {\qty{2.4}{\centi\metre}};
+        \node[left] at ($(D)!0.5!(A)$) {\qty{1.6}{\centi\metre}};
+    \end{tikzpicture}
+    \end{centre}
+}
+
+\vspace{-1cm}
+\souspartie{Formules}
+\soussouspartie{Polygones}
+
+\begin{center}
+    \begin{tabularx}{\linewidth}{|l|C|C|C|}\hline
+         & Rectangle & Losange & Carré \\\hline
+        Figure & \makecell{
+        \begin{tikzpicture}[scale=1.2]
+            \draw (0,0) rectangle (2,1);
+            \node at (1,0) {||};
+            \node at (1,1) {||};
+            \node at (0,0.5) {*};
+            \node at (2,0.5) {*};
+            \draw[latex-latex] (2.3,0) -- (2.3,1) node[midway,right]{$\ell$};
+            \draw[latex-latex] (0,-0.4) -- (2,-0.4) node[midway,below]{$L$};
+        \end{tikzpicture}
+        } & \makecell{
+        \begin{tikzpicture}
+            \draw (0,0) -- (1.5,1) node[midway,rotate=45]{||} -- (3,0) node[midway,rotate=-25]{||} -- (1.5,-1) node[midway,rotate=25]{||} -- cycle node[midway,rotate=-25]{||};
+            \draw[latex-latex] (1.7,1.2) -- (3.2,0.2) node[midway,above right]{$c$};
+        \end{tikzpicture}
+        } & \makecell{
+        \begin{tikzpicture}
+            \draw (-0.75,-0.75) rectangle (0.75,0.75);
+            \node at (0,-0.75) {+};
+            \node at (0,0.75) {+};
+            \node at (-0.75,0) {+};
+            \node at (0.75,0) {+};
+            \draw[latex-latex] (1,-0.75) -- (1,0.75) node[midway,right]{$c$};
+        \end{tikzpicture}
+        } \\\hline
+        Formule & $2 \times L + 2 \times \ell$ & $4 \times c$ & $4 \times c$ \\\hline
+    \end{tabularx}
+    \vspace{2ex}
+    
+    \begin{tabularx}{\linewidth}{|l|c|C|C|}\hline
+         & Triangle & Parallélogramme & Polygone régulier ($n$ côtés) \\\hline
+        Figure & \makecell{
+        \begin{tikzpicture}[scale=1.2]
+            \draw (0,0) -- (0.2,1) node[midway,left]{$a$} -- (2,0.7) node[midway,above]{$b$} -- cycle node[midway,below]{$c$};
+        \end{tikzpicture}
+        } & \makecell{
+        \begin{tikzpicture}
+            \draw (0,0) -- (2,0) node[midway]{||} node[midway,below right]{$a$} -- (2.5,1) node[midway]{\textbackslash} node[midway,right]{$b$} -- (0.5,1) node[midway]{||} -- cycle node[midway]{\textbackslash};
+        \end{tikzpicture}
+        } & \makecell{
+        \begin{tikzpicture}[scale=0.9]
+            \foreach \n in {1,...,5} {
+                \coordinate (A\n) at ({cos(\n*72)},{sin(\n*72)});
+            }
+            \foreach \n in {1,...,8} {
+                \coordinate (B\n) at ({2.2 + cos(\n*360/8)},{sin(\n*360/8)});
+            }
+            \draw (A1) -- (A2) -- (A3) -- (A4) -- (A5) -- cycle;
+            \draw (B1) -- (B2) -- (B3) -- (B4) -- (B5) -- (B6) -- (B7) -- (B8) -- cycle;
+            \draw[latex-latex] ($(A2)+(-0.2,0)$) -- ($(A3)+(-0.2,0)$) node[midway,left]{$c$};
+            \draw[latex-latex] ($(B1)+(0.15,0.15)$) -- ($(B2)+(0.15,0.15)$) node[midway,above]{$c$};
+        \end{tikzpicture}
+        } \\\hline
+        Formule & $a+b+c$ & $2 \times a + 2 \times b$ & $n \times c$ \\\hline
+    \end{tabularx}
+\end{center}
+
+\soussouspartie{Cercle}
+
+\propriete{Le périmètre d'un cercle de rayon $r$ se calcule grâce à la formule : $2 \times \pi \times r$.}
+
+\exemple{Calculer le périmètre d'un cercle de rayon \qty{5}{\centi\metre}.
+$$ \curs{P}_{\mbox{cercle}} = 2 \times \pi \times \qty{5}{\centi\metre} \approx \qty{31.4}{\centi\metre}$$
+Calculer le périmètre d'un quart de cercle de rayon \qty{3}{\centi\metre}.
+\[ \curs{P}_{\mbox{quart de cercle}} = \dfrac{1}{4} \times \curs{P}_{\mbox{cercle}} = \dfrac{1}{4} \times 2 \times \pi \times \qty{3}{\centi\metre} \approx \qty{4.71}{\centi\metre} \]
+}
+
+\partie{Aires}
+
+\souspartie{Unités d'aires}
+
+\convention{L'unité légale de l'aire est le mètre carré (\unit{\metre\squared}).}
+
+\begin{center}
+\begin{tabular}{|*{14}{p{0.8cm}|}}\hline
+    \multicolumn{2}{|c|}{\phantom{$a^{2^2}$}\unit{km\squared}\phantom{$a^{2^2}$}} & \multicolumn{2}{|c|}{\unit{hm\squared}} & \multicolumn{2}{|c|}{\unit{dam\squared}} & \multicolumn{2}{|c|}{\unit{m\squared}} & \multicolumn{2}{|c|}{\unit{dm\squared}} & \multicolumn{2}{|c|}{\unit{cm\squared}} & \multicolumn{2}{|c|}{\unit{mm\squared}} \\\hline
+     & & & & & & & & & & & & & \\[2cm]
+\end{tabular}
+\end{center}
+
+\begin{listedexemples}
+    \item \qty{13}{hm\squared} = \qty{130000}{m\squared}
+    \item \qty{2,5}{km\squared} = \qty{250000000}{dm\squared}
+    \item \qty{0,02}{dm\squared} = \qty{0,000002}{dam\squared}
+\end{listedexemples}
+
+\remarque{Un hectare (noté \unit{ha}) est égal à \qty{1}{hm\squared}.\\ Un are (noté \unit{a}) est égal à \qty{1}{dam\squared}.}
+
+\souspartie{Concept}
+
+\definition{La surface d'une figure est la partie située à l'intérieur de la figure.}
+\definition{L'aire est la mesure d'une surface.}
+
+\illustration{%
+    \begin{center}
+    \begin{tikzpicture}[scale=0.5]
+        \draw[fill=black!35!white] (2,0) -- (4,0) -- (4,3) -- (6,3) -- (6,6) -- (2,6) -- cycle;
+        \draw[dashed] (0,0) grid (6,6);
+        \node[right] at (7,4) {En considérant un carreau comme unité d'aire,};
+        \node[right] at (7,3) {l'aire de la figure ci-contre est égale à 18 carreaux.};
+    \end{tikzpicture}
+    \end{center}%
+}
+
+\souspartie{Formules}
+\soussouspartie{Polygones}
+
+\begin{tabularx}{\linewidth}{|c|c|C|C|}\hline
+    \makecell{Forme\\ géométrique} & Formule & Formule abrégée & Schéma  \\\hline
+    Carré & $\mbox{côté} \times \mbox{côté}$ & $c \times c$ & 
+    \makecell{\begin{tikzpicture}
+        \draw (0,0) -- (0,1) -- (1,1) -- (1,0) -- cycle;
+        \node[above] at (0.5,1) {$c$};
+        \draw (0.5,0.9) -- (0.5,1.1);
+        \draw (0.5,0.1) -- (0.5,-0.1);
+        \draw (0.1,0.5) -- (-0.1,0.5);
+        \draw (1.1,0.5) -- (0.9,0.5);
+    \end{tikzpicture}} \\\hline
+    Rectangle & $\mbox{Longueur} \times \mbox{largeur}$ & $L \times \ell$ & 
+    \makecell{\begin{tikzpicture}
+        \draw (0,0) -- (2,0) -- (2,1) -- (0,1) -- cycle;
+        \node[above] at (1,1) {\small{$L$}};
+        \node[right] at (2,0.5) {$\ell$};
+        \draw (1,0.9) -- (1,1.1) (1,0.1) -- (1,-0.1);
+        \draw (-0.1,0.45) -- (0.1,0.45) (-0.1,0.55) -- (0.1,0.55);
+        \draw (1.9,0.45) -- (2.1,0.45) (1.9,0.55) -- (2.1,0.55);
+    \end{tikzpicture}} \\\hline
+    Losange & $\dfrac{\mbox{grande diagonale} \times \mbox{petite diagonale}}{2}$ & $\dfrac{D \times d}{2}$ & 
+    \makecell{\begin{tikzpicture}
+        \draw (-1,0) -- (0,0.5) -- (1,0) -- (0,-0.5) -- cycle;
+        \node[above] at (0,0.5) {\small{D}};
+        \node[right] at (1.2,0) {d};
+        \draw (-0.5, -0.3) -- (-0.5,-0.2);
+        \draw (-0.5, 0.3) -- (-0.5,0.2);
+        \draw (0.5, -0.3) -- (0.5,-0.2);
+        \draw (0.5, 0.3) -- (0.5,0.2);
+        \draw[very thick] (-1,0) -- (1,0) (0,0.5) -- (0,-0.5);
+        \draw[latex-latex] (1.2,0.5) -- (1.2,-0.5);
+        \draw[latex-latex] (-1,0.6) -- (1,0.6);
+    \end{tikzpicture}} \\\hline
+    Triangle & $\dfrac{\mbox{base} \times \mbox{hauteur}}{2}$ & $\dfrac{b\times h}{2}$ & 
+    \makecell{\begin{tikzpicture}
+        \node[above] at (0,0.8) {\phantom{e}};
+        \coordinate (A) at (-1.2,0);
+        \coordinate (B) at (1.5,0);
+        \coordinate (C) at (0.2,1);
+        \coordinate (H) at ($(A)!(C)!(B)$);
+        \draw (A) -- (B) -- (C) -- cycle;
+        \draw[thick] (C) -- (H);
+        \node[right] at ($(C)!0.5!(H)$) {\small{$h$}};
+        \node[below] at ($(A)!0.5!(B)$) {\small{$b$}};
+    \end{tikzpicture}} \\\hline
+    \makecell{Parallélo-\\gramme} & $\mbox{base} \times \mbox{hauteur}$ & $b\times h$ & 
+    \makecell{\begin{tikzpicture}
+        \draw (0,0) -- (1.5,0) -- (2,1) -- (0.5,1) node[midway,above]{$b$} -- cycle;
+        \draw (0.5,1) -- (0.5,0) node[midway,right]{$h$};
+    \end{tikzpicture}} \\\hline
+\end{tabularx}
+
+\soussouspartie{Disque}
+
+\definition{Soit un point $O$. Le disque de centre $O$ et de rayon $r$ est l'ensemble des points situés à une distance inférieur à $r$ du point $O$.}
+
+\begin{tabularx}{\linewidth}{|c|c|C|C|}\hline
+    \makecell{Forme\\ géométrique} & Formule & Formule abrégée & Schéma  \\\hline
+    Disque & $\pi \times $ rayon $\times$ rayon & $\pi \times r \times r$ & 
+    \makecell{\begin{tikzpicture}
+        \draw[fill=lightgray] (0,0) circle (1);
+        \node at (0,0) {$\times$};
+        \draw (0,0) -- (1,0);
+        \node[below] at (0.5,0) {$r$};
+    \end{tikzpicture}}\\\hline
+\end{tabularx}
+
+\clearpage
+\EXERCICES
+\begin{questions}
+    \exercice Calculer le périmètre de la figure ci-dessous.
+    \begin{center}
+        \begin{tikzpicture}
+            \tikzmath{ \c=0.2; }
+            \draw[fill=green!10!white] (0,0) -- ++(0,4.2) -- ++(4.6,0) -- ++(0,-2.1) node[midway,rouge]{\bfseries\textbackslash} -- ++(1.4,0) -- ++(0,-2.1) node[midway,rouge]{\bfseries\textbackslash} -- cycle; 
+            \filldraw[rouge] (0,0) rectangle +(\c,\c);
+            \filldraw[rouge] (0,4.2) rectangle +(\c,-\c);
+            \filldraw[rouge] (4.6,4.2) rectangle +(-\c,-\c);
+            \filldraw[rouge] (6,2.1) rectangle +(-\c,-\c);
+            \filldraw[rouge] (6,0) rectangle +(-\c,\c);
+            \draw[Latex-Latex] (-0.3,0) -- +(0,4.2) node[midway,left,anchor=east]{\qty{4.2}{\centi\metre}};
+            \draw[Latex-Latex] (0,4.5) -- +(4.6,0) node[midway,above]{\qty{4.6}{\centi\metre}};
+            \draw[Latex-Latex] (4.8,2.3) -- +(1.2,0) node[midway,above]{\qty{1.4}{\centi\metre}};
+        \end{tikzpicture}
+    \end{center}
+    \exercice Comparer le périmètre d'un carré de côté \qty{42}{\milli\metre} et d'un triangle équilatéral de côté \qty{5.6}{\centi\metre}.
+    \exercice Une électricienne veut fabriquer un cadre rectangulaire en métal pour installer sur un toit un nouveau panneau solaire de dimension \qty{81}{\centi\metre} sur \qty{60}{\centi\metre}. Quelle longueur de baguettes en métal doit-elle prévoir ?
+    \exercice Calculer la longueur d'un côté des figures suivantes.
+        \question Un carré de périmètre \qty{38}{\centi\metre}.
+        \question Un triangle équilatéral de périmètre \qty{54}{\centi\metre}.
+        \question Un losange de périmètre \qty{32}{\centi\metre}.
+        \question Un pentagone de périmètre \qty{55}{\centi\metre}.
+        \question Un heptagone de périmètre \qty{43}{\centi\metre}.
+
+    \exercice Calculer le périmètre des figures suivantes.
+
+    \begin{center}
+        \begin{tikzpicture}[scale=0.7]
+            \draw[fill=green!10!white] (0,0) -- ++(0,-5)  node[midway,rouge]{\bfseries/} -- ++(5,0)  node[midway,rouge]{\bfseries/} -- ++(0,5)  node[midway,rouge]{\bfseries/} arc (0:180:2.5);
+            \draw[dashed] (0,0) -- +(5,0) node[midway,rouge]{\bfseries/};
+            \draw[Latex-Latex] (-0.4,0) -- +(0,-5) node[midway,left,anchor=east]{\qty{5}{\metre}};
+        \end{tikzpicture}
+        \begin{tikzpicture}[scale=0.4]
+            \draw[fill=orange!10!white] (0,0) arc (120:300:5) coordinate (P) arc (240:420:5) -- +(-10,0) node[midway,rouge]{\bfseries //};
+            \draw[dashed] (10,0) -- (P) node[midway,rouge]{\bfseries \textbackslash\textbackslash} -- (0,0) node[midway,rouge]{\bfseries //};
+            \draw[Latex-Latex] (0,0.7) -- +(10,0) node[midway,above]{\qty{10}{\metre}};
+        \end{tikzpicture}
+    \end{center}
+
+    \clearpage
+    \exercice Calculer le périmètre de la figure suivante.
+
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[fill=green!10!white] (1.1,2) -- (0,2) node[midway,rouge]{/} -- (0,0) node[midway,rouge]{//} -- (4.2,0) -- (4.2,2) node[midway,rouge]{//} -- (3.1,2) node[midway,rouge]{/} arc (0:180:1);
+            \draw[dashed] (1.1,2) -- (3.1,2) node[midway,rouge]{//};
+            \draw[Latex-Latex] (0,-0.2)  -- (4.2,-0.2) node[midway,below]{\qty{42}{\centi\metre}};
+            \draw[Latex-Latex] (4.5,0) -- (4.5,2) node[midway,right]{\qty{25}{\centi\metre}};
+        \end{tikzpicture}  
+    \end{center}
+
+    \exercice Calculer le périmètre de la figure suivante.
+
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[fill=orange!10!white] (0,0) -- (0,3) node[midway,rouge]{/} node[midway,left,anchor=east]{\qty{3}{\centi\metre}} -- (8,3) -- (8,0) node[midway,rouge]{/} arc (0:-180:1) arc (0:180:3);
+            \draw[dashed, Latex-Latex] (0,0) -- (6,0) node[midway,below]{\qty{6}{\centi\metre}};
+            \draw[dashed, Latex-Latex] (6,0) -- (8,0) node[midway,below]{\qty{2}{\centi\metre}};
+            \filldraw[rouge] (0,3) rectangle +(0.2,-0.2);
+            \filldraw[rouge] (8,3) rectangle +(-0.2,-0.2);
+        \end{tikzpicture}
+    \end{center}
+
+    \exercice Calculer le périmètre de la figure suivante.
+
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[fill=bleu!10!white] (0,0) arc(180:0:1) arc(180:0:2) arc(180:0:1) arc(0:180:4);
+            \draw[dashed] (0,0) -- (8,0);
+            \draw[Latex-Latex] (0,-0.4) -- (8,-0.4) node[midway,below]{\qty{8}{\centi\metre}};
+            \foreach \i in {1,3,5,7} {
+                \node[rouge] at (\i,0) {/};
+            };
+        \end{tikzpicture}
+    \end{center}
+
+    \exercice Calculer le périmètre de la figure suivante.
+
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[fill=rouge!10!white] (0,0) -- ++({2*cos(25},{2*sin(25)}) coordinate (a) node[midway,rouge]{//} arc(180:0:1) coordinate (c) -- ++({2*cos(25},{-2*sin(25)}) node[midway,rouge]{//} -- ++({-2*cos(25},{-2*sin(25)}) node[midway,rouge]{//} arc(0:-180:1) coordinate (b) -- ++({-2*cos(25},{2*sin(25)}) node[midway,rouge]{//};
+            \draw[dashed] (a) -- ++(2,0) node[midway,rouge]{//};
+            \draw[dashed] (b) -- ++(2,0) node[midway,rouge]{//};
+            \draw[Latex-Latex] ($(c)+(0.3,0.2)$) -- ++({2*cos(25)},{-2*sin(25)}) node[midway,anchor=south west]{\qty{2}{\centi\metre}};
+        \end{tikzpicture}
+    \end{center}
+
+    \exercice 
+    \question Quel est le périmètre d'un losange de côté \qty{9}{\centi\metre} ?
+    \question Quel est le périmètre d'un rectangle de longueur \qty{10}{\centi\metre} et de largeur \qty{6}{\centi\metre} ?
+    \question Quel est le périmètre d'un triangle $EFG$ isocèle en $F$ tel que $EF=\qty{6}{\centi\metre}$ et $EG=\qty{4.5}{\centi\metre}$ ?
+    \question Quel est le périmètre d'un parallélogramme $IJKL$ tel que $IJ=\qty{4}{\centi\metre}$ et $JK=\qty{12}{\centi\metre}$ ?
+
+    \exercice Expliquer comment calculer le périmètre de la figure ci-dessous.
+    \begin{center}
+        \begin{tikzpicture}[scale=0.5]
+            \draw[fill=orange!10!white] (0,0) -- ++(0,1) -- ++(1.5,0) -- ++(0,1) -- ++(1.5,0) -- ++(0,1) -- ++(3,0) -- ++(0,-1) -- ++(1.5,0) -- ++(0,-1) -- ++(1.5,0) -- ++(0,-1);
+            \draw[yscale=-1,fill=orange!10!white] (0,0) -- ++(0,1) -- ++(1.5,0) -- ++(0,1) -- ++(1.5,0) -- ++(0,1) -- ++(3,0) -- ++(0,-1) -- ++(1.5,0) -- ++(0,-1) -- ++(1.5,0) -- ++(0,-1);
+            \draw[Latex-Latex,rouge] (0,0) -- (9,0) node[midway,below right, rouge]{\qty{9}{\centi\metre}};
+            \draw[Latex-Latex,bleu] (4.5,3) -- (4.5,-3) node[midway, above left, bleu]{\qty{6}{\centi\metre}};
+        \end{tikzpicture}
+    \end{center}
+
+    \exercice 
+    \question Quel est le périmètre d'un cercle de rayon \qty{4}{\centi\metre} ?
+    \question Quel est le périmètre d'un cercle de diamètre \qty{12}{\centi\metre} ?
+
+    \exercice 
+    \question Quel est le diamètre d'un cercle de périmètre \qty{27}{\centi\metre} ?
+    \question Quel est le rayon d'un cercle de périmètre \qty{36}{\centi\metre} ?
+
+    \exercice Comparer les périmètres des deux figures suivantes.
+
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[bleu!20!white] (0,0) grid (14,6);
+            \draw (1,1) rectangle +(5,4);
+            \draw (8,3) -- ++(0,1) -- ++(1,0) -- ++(0,1) -- ++(1,0) -- ++(3,0) -- ++(0,-1) -- ++(1,0) -- ++(0,-1);
+            \draw[yscale=-1,shift={(0,-6)}] (8,3) -- ++(0,1) -- ++(1,0) -- ++(0,1) -- ++(1,0) -- ++(3,0) -- ++(0,-1) -- ++(1,0) -- ++(0,-1);
+        \end{tikzpicture}
+    \end{center}
+
+    \exercice Écrire un énoncé demandant de calculer le périmètre d'une figure dont l'expression est : $\qty{5.6}{\centi\metre} + 2 \times \qty{6.5}{\centi\metre}$.
+
+    \exercice Tracer une figure dont l'expression ci-après permet de calculer le périmètre : $3 \times \qty{3.5}{\centi\metre} + \pi \times \qty{3.5}{\centi\metre} \div 2$    
+
+    \clearpage
+    \exercicetitre{Calculer le périmètre des figures suivantes}
+    \question Un triangle isocèle tel que deux longueurs mesurent \qty{5.4}{\centi\metre} et que la troisième mesure \qty{6.1}{\centi\metre}.
+    \question Un triangle ABC isocèle en A tel que $BC=\qty{3.1}{\centi\metre}$ et $AB = \qty{5.2}{\centi\metre}$.
+    \question 
+    \begin{center}
+        \begin{tikzpicture}[scale=0.6]
+            \draw (0,0) arc (180:0:3.5) -- (3.5,-3) node[midway,rouge]{//} node[midway,below right]{\qty{4}{\centi\metre}} -- cycle node[midway,rouge]{//};
+            \draw[Latex-Latex] (0,0) -- (7,0) node[midway,above]{\qty{7}{\centi\metre}};
+        \end{tikzpicture}
+    \end{center}
+    \question 
+    \begin{center}
+        \begin{tikzpicture}[scale=0.4]
+            \draw (0,0) arc(180:0:8) arc(0:-180:1.6) arc(0:-180:1.6) arc(0:-180:1.6) arc(0:-180:1.6) arc(0:-180:1.6);
+            \draw (0,0) -- (3.2,0) node[midway,rouge]{/} -- (6.4,0) node[midway,rouge]{/} -- (9.6,0) node[midway,rouge]{/} -- (12.8,0) node[midway,rouge]{/} -- (16,0) node[midway,rouge]{/};
+            \draw[Latex-Latex] (0.5,0.4) -- (15.5,0.4) node[midway,above]{\qty{16}{\centi\metre}};
+        \end{tikzpicture}
+    \end{center}
+
+    \exercicetitre{Calculer l'aire des figures suivantes}
+        \question Un carré de côté \qty{3}{cm}
+        \question Un rectangle de largeur \qty{7}{dm} et de longueur \qty{9}{cm}
+        \question Un disque de rayon \qty{3}{cm}
+        \question Un disque de diamètre \qty{4}{m}
+        \question Un losange de petite diagonale \qty{3}{km} et de grande diagonale \qty{40}{hm}
+        \question Un triangle de base \qty{4}{cm} et de hauteur \qty{8}{cm}
+        \question Un parallélogramme de base \qty{5}{\centi\metre} et de hauteur \qty{3}{\centi\metre}
+        
+    \exercicetitre{Convertir}
+        \question \qty{3,2}{km\squared} en \unit{dm\squared}
+        \question \qty{80}{dm\squared} en \unit{dam\squared}
+        \question \qty{3,9876}{ha} en \unit {cm\squared}
+        \question \qty{5,2764}{dam\squared} en \unit{mm\squared}
+        \question \qty{7,2846}{m\squared} en \unit {cm\squared}
+        \question \qty{1,0023}{km\squared} en \unit{m\squared}
+        \question \qty{549.2}{mm\squared} en \unit{m\squared}
+        
+    \exercice Ranger ces départements d'outre-mer dans l'ordre croissant de leur superficie
+        \question La Martinique : \qty{1128000000}{m\squared}
+        \question La Guyane : \qty{83846}{km\squared}
+        \question La Guadeloupe : \qty{16280000}{dam\squared}
+        \question La Réunion : \qty{251200}{hm\squared}
+        
+    \exercice
+        Le rectangle ci-dessous a pour dimension \qty{17}{dm} par \qty{24}{dm}.
+        \question Compléter les dimensions manquantes sur le schéma ci-dessous
+        \question Calculer l'aire de la surface grisée
+        
+        \begin{center}
+        \begin{tikzpicture}[scale=0.2]
+            \draw (0,0) rectangle (24,17);
+            \coordinate (A) at (0,7);
+            \coordinate (B) at (9,17);
+            \coordinate (C) at (24,11.5);
+            \coordinate (D) at (12.5,0);
+            \draw[fill=lightgray] (A) -- (B) -- (C) -- (D) -- cycle;
+            \node[below] at (5,-0.8) {............};
+            \node[below] at (19,-0.8) {\qty{11.5}{dm}};
+            \node[above] at (4.5,17.8) {\qty{9}{dm}};
+            \node[above] at (16,17.8) {.......};
+            \node[left] at (-1,3) {\qty{7}{dm}};
+            \node[left] at (-1,13) {........};
+            \node[right] at (24.5,5) {........};
+            \node[right] at (24.5,13) {\qty{5.5}{cm}};
+            
+            \draw[latex-latex] (-0.8,0) -- (-0.8,6.5);
+            \draw[latex-latex] (-0.8,7.5) -- (-0.8,17);
+            \draw[latex-latex] (0.5,17.5) -- (8.5,17.5);
+            \draw[latex-latex] (9.5,17.5) -- (24,17.5);
+            \draw[latex-latex] (24.8,0) -- (24.8,10.5);
+            \draw[latex-latex] (24.8,11.5) -- (24.8,17);
+            \draw[latex-latex] (0.5,-0.5) -- (11.5,-0.5);
+            \draw[latex-latex] (13.5,-0.5) -- (24,-0.5);
+        \end{tikzpicture}
+        \end{center}
+        
+    \exercice 
+        \question \qty{54}{dm\squared} = 
+        \question \qty{75}{cm\squared} = 
+        \question \qty{250}{dam\squared} = 
+        \question \qty{0,25}{km\squared} = 
+        \question \qty{7}{hm\squared} = 
+        \question \qty{2750}{mm\squared} = 
+
+    \exercice On souhaite étudier un carrelage rectangulaire :
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[xscale=2] (0,0) grid (3,3);
+        \end{tikzpicture}
+    \end{center}
+
+    Au magasin, il est écrit : << Dimensions : \qty{15}{\centi\metre} $\times$ \qty{8}{\centi\metre} >>.
+    \question Si on achète 30 plaques, quelle surface pourra-t-on recouvrir ?
+    \question Si on veux carreler une pièce de \qty{40}{\metre\squared}, combien devra-t-on acheter de plaques ?
+    \question Si le carrelage coûte \qty{11.95}{\EURO\per\metre\squared} :
+        \subquestion Combien coûte une plaque ?
+        \subquestion Combien coûte les \qty{40}{\metre\squared} ?
+\end{questions}
+
 \end{document}
