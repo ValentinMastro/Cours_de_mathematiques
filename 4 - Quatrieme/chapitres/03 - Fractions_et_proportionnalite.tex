@@ -1,4 +1,5 @@
 \documentclass["../Cours.tex"]{subfiles}
+\usepackage{etoolbox}
 
 \begin{document}
 \chapitre{Fractions et proportionnalité}
@@ -114,270 +115,244 @@ $$ \mbox{valeur d'arrivée} - \mbox{valeur de départ} $$
 
 \exemple{Si les longueurs sont multipliées par 5, alors les aires sont multipliées par $5^2 = 5 \times 5 = 25$, et les volumes sont multipliés par $5^3 = 5 \times 5 \times 5 = 125$.}
 
-
-\newcommand{\trandom}{\directlua{
-    local a = math.random(1,20)
-    local b = math.random(1,20)
-    local c = a * math.random(1,9)
-    tex.print("\\dfrac{" .. a .. "}{" .. b .. "} = \\dfrac{" .. c .. "}{" .. "...}")
-}}
-
-\begin{luacode}    
-    function dfrac(x, y)
-        if x==math.floor(x) then x = math.floor(x) end
-        if y==math.floor(y) then y = math.floor(y) end
-        return "\\dfrac{" .. x .. "}{" .. y .. "}"
-    end
-    
-    function addition_fraction(a, b, c, d)
-        tex.print(decalage_vertical())
-        tex.print("$" .. dfrac(a, b) .. "+" .. dfrac(c, d) .. "=$")
-    end
-
-    function addition_fraction_corrige(a, b, c, d)
-        addition_fraction(a, b, c, d)
-        local reponse = "$"
-        if b == d then
-            reponse = reponse .. dfrac(a+c,b)
-        else
-            if b > d and math.fmod(b, d) == 0 then 
-                local k = b / d
-                reponse = reponse .. dfrac(a, b) .. "+" .. dfrac(k*c, b) .. "=" .. dfrac(a+k*c, b)
-            end
-            if d > b and math.fmod(d, b) == 0 then 
-                local k = d / b
-                reponse = reponse .. dfrac(k*a, d) .. "+" .. dfrac(c, d) .. "=" .. dfrac(k*a+c, d)
-            end
-            if math.fmod(b,d) ~= 0 and math.fmod(d,b) ~= 0 then
-                reponse = reponse .. dfrac(a*d,b*d) .. "+" .. dfrac(c*b,d*b) .. "=" ..  dfrac(a*d+c*b, b*d)
-            end
-        end
-        reponse = reponse .. "$"
-        tex.print(reponse)
-    end
-
-    function fraction_egale(a, b, c)
-        tex.print(decalage_vertical())
-        tex.print("$" .. dfrac(a,b) .. "=\\dfrac{" .. c .. "}{?}$")
-    end
-
-    function fraction_egale_corrige(a, b, c)
-        tex.print(decalage_vertical())
-        tex.print("$" .. dfrac(a,b) .. "=\\dfrac{" .. c .. "}{\\textcolor{rouge}{" .. math.floor(b*c/a) .. "}}$")
-    end
-
-    function multiplication_fractions(a, b, c, d)
-        tex.print(decalage_vertical())
-        tex.print("$" .. dfrac(a,b) .. "\\times" .. dfrac(c,d) .. "=$")
-    end
-
-    function multiplication_fractions_corrige(a, b, c, d)
-        tex.print(decalage_vertical())
-        tex.print("$" .. dfrac(a,b) .. "\\times" .. dfrac(c,d) .. "=\\dfrac{" .. a .. "\\times" .. c .. "}{" .. b .. "\\times" .. d .. "} = " .. dfrac(a*c, b*d) .. "$")
-    end
-
-    function division_fractions(a, b, c, d)
-        tex.print(decalage_vertical())
-        tex.print("$" .. dfrac(a,b) .. "\\div" .. dfrac(c,d) .. "=$")
-    end
-
-    function division_fractions_corrige(a, b, c, d)
-        tex.print(decalage_vertical())
-        tex.print("$" .. dfrac(a,b) .. "\\div" .. dfrac(c,d) .. "=$")
-        multiplication_fractions_corrige(a,b,d,c)
-    end
-\end{luacode}
-
 \clearpage
 \EXERCICES
 
-\begin{questions}
+\begin{questions}   
 
-    \exercicetitre{Additionner des fractions}\vspace{-1.5em}
-        \begin{multicols}{3}\small
-        \begin{luacode}
-            question() addition_fraction(20,4,2,4)
-            question() addition_fraction(19,12,10,8)
-            question() addition_fraction(17,3,5,5)
-            question() addition_fraction(20,5,6,14)
-            question() addition_fraction(9,16,6,16)
-            question() addition_fraction(20,18,17,14)
-            question() addition_fraction(15,7,7,8)
-            question() addition_fraction(5,4,3,5)
-            question() addition_fraction(7,4,9,6)
-            question() addition_fraction(16,19,14,12)
-            question() addition_fraction(1,19,17,20)
-            question() addition_fraction(3,2,14,11)
-            question() addition_fraction(18,19,7,18)
-            question() addition_fraction(17,3,12,12)
-            question() addition_fraction(9,19,19,14)
-        \end{luacode}
+    \exercicetitre{Additionner des fractions}
+        \newcommand{\exAdditionFraction}[4]{
+            $\dfrac{\mathstrut#1}{\mathstrut#2} + \dfrac{\mathstrut#3}{\mathstrut#4} = $
+        }
+        \begin{multicols}{3}
+            \question \exAdditionFraction{20}{4}{2}{4}
+            \question \exAdditionFraction{19}{12}{10}{8}
+            \question \exAdditionFraction{17}{3}{5}{5}
+            \question \exAdditionFraction{20}{5}{6}{14}
+            \question \exAdditionFraction{9}{16}{6}{16}
+            \question \exAdditionFraction{20}{18}{17}{14}
+            \question \exAdditionFraction{15}{7}{7}{8}
+            \question \exAdditionFraction{5}{4}{3}{5}
+            \question \exAdditionFraction{7}{4}{9}{6}
+            \question \exAdditionFraction{16}{19}{14}{12}
+            \question \exAdditionFraction{1}{19}{17}{20}
+            \question \exAdditionFraction{3}{2}{14}{11}
+            \question \exAdditionFraction{18}{19}{7}{18}
+            \question \exAdditionFraction{17}{3}{12}{12}
+            \question \exAdditionFraction{9}{19}{19}{14}
         \end{multicols}
     
-    \exercicetitre{Trouver une fraction égale à une autre}\vspace{-1.5em}
-        \begin{multicols}{3}\small
-        \begin{luacode}
-            question() fraction_egale(3,5,9)
-            question() fraction_egale(9,17,63)
-            question() fraction_egale(5,13,45)
-            question() fraction_egale(17,6,136)
-            question() fraction_egale(7,18,28)
-            question() fraction_egale(16,8,64)
-            question() fraction_egale(9,20,72)
-            question() fraction_egale(20,11,80)
-            question() fraction_egale(10,12,90)
-            question() fraction_egale(2,20,12)
-            question() fraction_egale(6,2,48)
-            question() fraction_egale(12,11,72)
-            question() fraction_egale(6,15,18)
-            question() fraction_egale(6,12,30)
-            question() fraction_egale(3,18,12)
-            question() fraction_egale(10,14,70)
-            question() fraction_egale(18,3,126)
-            question() fraction_egale(16,2,48)
-            question() fraction_egale(2,12,16)
-            question() fraction_egale(20,13,160)
-            question() fraction_egale(12,19,108)
-        \end{luacode}
+    \exercicetitre{Trouver une fraction égale à une autre}
+        \newcommand{\exFractionEgale}[3]{
+            $\dfrac{\mathstrut#1}{\mathstrut#2} = \dfrac{\mathstrut#3}{\mathstrut ?}$
+        }
+        \begin{multicols}{3}
+            \question \exFractionEgale{3}{5}{9}
+            \question \exFractionEgale{9}{17}{63}
+            \question \exFractionEgale{5}{13}{45}
+            \question \exFractionEgale{17}{6}{136}
+            \question \exFractionEgale{7}{18}{28}
+            \question \exFractionEgale{16}{8}{64}
+            \question \exFractionEgale{9}{20}{72}
+            \question \exFractionEgale{20}{11}{80}
+            \question \exFractionEgale{10}{12}{90}
+            \question \exFractionEgale{2}{20}{12}
+            \question \exFractionEgale{6}{2}{48}
+            \question \exFractionEgale{12}{11}{72}
+            \question \exFractionEgale{6}{15}{18}
+            \question \exFractionEgale{6}{12}{30}
+            \question \exFractionEgale{3}{18}{12}
+            \question \exFractionEgale{10}{14}{70}
+            \question \exFractionEgale{18}{3}{126}
+            \question \exFractionEgale{16}{2}{48}
+            \question \exFractionEgale{2}{12}{16}
+            \question \exFractionEgale{20}{13}{160}
+            \question \exFractionEgale{12}{19}{108}
         \end{multicols}
 
-    \exercicetitre{Multiplications de fractions}\vspace{-1.5em}
-        \begin{multicols}{3}\small
-        \begin{luacode}
-            question() multiplication_fractions(4, 5, 2, 8)
-            question() multiplication_fractions(12, 5, 3, 11)
-            question() multiplication_fractions(9, 8, 7, 9)
-            question() multiplication_fractions(8, 15, 1, 3)
-            question() multiplication_fractions(3, 6, 4, 11)
-            question() multiplication_fractions(13, 12, 1, 11)
-            question() multiplication_fractions(6, 12, 1, 2)
-            question() multiplication_fractions(12, 5, 6, 4)
-            question() multiplication_fractions(15, 12, 2, 10)
-            question() multiplication_fractions(14, 10, 15, 3)
-            question() multiplication_fractions(1, 5, 1, 1)
-            question() multiplication_fractions(15, 7, 4, 15)
-            question() multiplication_fractions(12, 11, 11, 5)
-            question() multiplication_fractions(11, 15, 15, 1)
-            question() multiplication_fractions(8, 6, 2, 4)
-        \end{luacode}
+    \exercicetitre{Multiplications de fractions}
+        \newcommand{\exMultiplicationFractions}[4]{
+            $\dfrac{\mathstrut#1}{\mathstrut#2} \times \dfrac{\mathstrut#3}{\mathstrut#4} = $
+        }
+        \begin{multicols}{3}
+            \question \exMultiplicationFractions{4}{5}{2}{8}
+            \question \exMultiplicationFractions{12}{5}{3}{11}
+            \question \exMultiplicationFractions{9}{8}{7}{9}
+            \question \exMultiplicationFractions{8}{15}{1}{3}
+            \question \exMultiplicationFractions{3}{6}{4}{11}
+            \question \exMultiplicationFractions{13}{12}{1}{11}
+            \question \exMultiplicationFractions{6}{12}{1}{2}
+            \question \exMultiplicationFractions{12}{5}{6}{4}
+            \question \exMultiplicationFractions{15}{12}{2}{10}
+            \question \exMultiplicationFractions{14}{10}{15}{3}
+            \question \exMultiplicationFractions{1}{5}{1}{1}
+            \question \exMultiplicationFractions{15}{7}{4}{15}
+            \question \exMultiplicationFractions{12}{11}{11}{5}
+            \question \exMultiplicationFractions{11}{15}{15}{1}
+            \question \exMultiplicationFractions{8}{6}{2}{4}
         \end{multicols}
 
     \clearpage
-    \exercicetitre{Divisions de fractions}\vspace{-1.5em}
-        \begin{multicols}{3}\small
-        \begin{luacode}
-            question() division_fractions(3, 9, 2, 9)
-            question() division_fractions(12, 5, 1, 1)
-            question() division_fractions(2, 1, 10, 3)
-            question() division_fractions(15, 10, 12, 15)
-            question() division_fractions(5, 5, 10, 2)
-            question() division_fractions(5, 2, 1, 3)
-            question() division_fractions(1, 2, 1, 14)
-            question() division_fractions(4, 10, 5, 6)
-            question() division_fractions(2, 8, 12, 7)
-            question() division_fractions(8, 6, 12, 10)
-            question() division_fractions(1, 10, 7, 10)
-            question() division_fractions(15, 6, 11, 11)
-            question() division_fractions(6, 12, 9, 1)
-            question() division_fractions(6, 15, 10, 10)
-        \end{luacode}
+    \exercicetitre{Divisions de fractions}
+        \newcommand{\exDivisionFractions}[4]{
+            $\dfrac{\mathstrut#1}{\mathstrut#2} \div \dfrac{\mathstrut#3}{\mathstrut#4} = $
+        }
+        \begin{multicols}{3}
+            \question \exDivisionFractions{3}{9}{2}{9}
+            \question \exDivisionFractions{12}{5}{1}{1}
+            \question \exDivisionFractions{2}{1}{10}{3}
+            \question \exDivisionFractions{15}{10}{12}{15}
+            \question \exDivisionFractions{5}{5}{10}{2}
+            \question \exDivisionFractions{5}{2}{1}{3}
+            \question \exDivisionFractions{1}{2}{1}{14}
+            \question \exDivisionFractions{4}{10}{5}{6}
+            \question \exDivisionFractions{2}{8}{12}{7}
+            \question \exDivisionFractions{8}{6}{12}{10}
+            \question \exDivisionFractions{1}{10}{7}{10}
+            \question \exDivisionFractions{15}{6}{11}{11}
+            \question \exDivisionFractions{6}{12}{9}{1}
+            \question \exDivisionFractions{6}{15}{10}{10}
         \end{multicols}
-        
 \end{questions}
 
 \clearpage
 \CORRECTIONS
 
 \begin{questions}
-
-    \exercicetitre{Additionner des fractions}\vspace{-1.5em}
-        \begin{multicols}{2}\small
-        \begin{luacode}
-            question() addition_fraction_corrige(20,4,2,4)
-            question() addition_fraction_corrige(19,12,10,8)
-            question() addition_fraction_corrige(17,3,5,5)
-            question() addition_fraction_corrige(20,5,6,14)
-            question() addition_fraction_corrige(9,16,6,16)
-            question() addition_fraction_corrige(20,18,17,14)
-            question() addition_fraction_corrige(15,7,7,8)
-            question() addition_fraction_corrige(5,4,3,5)
-            question() addition_fraction_corrige(7,4,9,6)
-            question() addition_fraction_corrige(16,19,14,12)
-            question() addition_fraction_corrige(1,19,17,20)
-            question() addition_fraction_corrige(3,2,14,11)
-            question() addition_fraction_corrige(18,19,7,18)
-            question() addition_fraction_corrige(17,3,12,12)
-            question() addition_fraction_corrige(9,19,19,14)
-        \end{luacode}
+    \exercicetitre{Additionner des fractions}
+        \newcommand{\corAdditionFraction}[4]{%
+            % notation : a/b + c/d
+            % si les dénominateurs sont égaux
+            \ifnumcomp{#2}{=}{#4}{
+                $\dfrac{\mathstrut#1}{\mathstrut#2} + \dfrac{\mathstrut#3}{\mathstrut#4} = \dfrac{\pgfmathparse{int(#1+#3)}\pgfmathresult}{#2}$
+            }{%
+                % si b > d et b % d = 0
+                \pgfmathsetmacro{\modulo}{int(mod(#2,#4))}%
+                \ifboolexpr{
+                    test {\ifnumgreater{#2}{#4}}
+                    and
+                    test {\ifnumequal{\modulo}{0}}
+                }{%
+                    $\dfrac{\mathstrut#1}{\mathstrut#2} + \dfrac{\mathstrut#3}{\mathstrut#4} 
+                    = \dfrac{\mathstrut#1}{\mathstrut#2} + \dfrac{\mathstrut\pgfmathparse{int(#3*#2/#4)}}{\mathstrut#2} 
+                    = \dfrac{\pgfmathparse{int(#1+#3*#2/#4)}\pgfmathresult}{#2}$
+                }{}%
+                % si d > b et d % b = 0
+                \pgfmathsetmacro{\modulo}{int(mod(#4,#2))}%
+                \ifboolexpr{
+                    test {\ifnumgreater{#4}{#2}}
+                    and
+                    test {\ifnumequal{\modulo}{0}}
+                }{
+                    $\dfrac{\mathstrut#1}{\mathstrut#2} + \dfrac{\mathstrut#3}{\mathstrut#4} 
+                    = \dfrac{\mathstrut\pgfmathparse{int(#1*#4/#2)}\pgfmathresult}{\mathstrut#4} + \dfrac{\mathstrut#3}{\mathstrut#4} 
+                    = \dfrac{\pgfmathparse{int(#1*#4/#2+#3)}\pgfmathresult}{#4}$
+                }{}%
+                % cas général
+                \pgfmathsetmacro{\moduloA}{int(mod(#2,#4))}%
+                \pgfmathsetmacro{\moduloB}{int(mod(#4,#2))}%
+                \ifboolexpr{
+                    not ( test {\ifnumequal{\moduloA}{0}} )
+                    and
+                    not ( test {\ifnumequal{\moduloB}{0}} )
+                }{
+                    $\dfrac{\mathstrut#1}{\mathstrut#2} + \dfrac{\mathstrut#3}{\mathstrut#4}
+                    = \dfrac{\pgfmathparse{int(#1*#4)}\pgfmathresult}{\pgfmathparse{int(#2*#4)}\pgfmathresult} + \dfrac{\pgfmathparse{int(#2*#3)}\pgfmathresult}{\pgfmathparse{int(#2*#4)}\pgfmathresult}
+                    = \dfrac{\pgfmathparse{int(#1*#4+#2*#3)}\pgfmathresult}{\pgfmathparse{int(#2*#4)}\pgfmathresult}$
+                }{}%
+            }
+        }
+        \begin{multicols}{2}
+            \question \corAdditionFraction{20}{4}{2}{4}
+            \question \corAdditionFraction{19}{12}{10}{8}
+            \question \corAdditionFraction{17}{3}{5}{5}
+            \question \corAdditionFraction{20}{5}{6}{14}
+            \question \corAdditionFraction{9}{16}{6}{16}
+            \question \corAdditionFraction{20}{18}{17}{14}
+            \question \corAdditionFraction{15}{7}{7}{8}
+            \question \corAdditionFraction{5}{4}{3}{5}
+            \question \corAdditionFraction{7}{4}{9}{6}
+            \question \corAdditionFraction{16}{19}{14}{12}
+            \question \corAdditionFraction{1}{19}{17}{20}
+            \question \corAdditionFraction{3}{2}{14}{11}
+            \question \corAdditionFraction{18}{19}{7}{18}
+            \question \corAdditionFraction{17}{3}{12}{12}
+            \question \corAdditionFraction{9}{19}{19}{14}
         \end{multicols}
 
-    \exercicetitre{Trouver une fraction égale à une autre}\vspace{-1.5em}
-        \begin{multicols}{3}\small
-        \begin{luacode}
-            question() fraction_egale_corrige(3,5,9)
-            question() fraction_egale_corrige(9,17,63)
-            question() fraction_egale_corrige(5,13,45)
-            question() fraction_egale_corrige(17,6,136)
-            question() fraction_egale_corrige(7,18,28)
-            question() fraction_egale_corrige(16,8,64)
-            question() fraction_egale_corrige(9,20,72)
-            question() fraction_egale_corrige(20,11,80)
-            question() fraction_egale_corrige(10,12,90)
-            question() fraction_egale_corrige(2,20,12)
-            question() fraction_egale_corrige(6,2,48)
-            question() fraction_egale_corrige(12,11,72)
-            question() fraction_egale_corrige(6,15,18)
-            question() fraction_egale_corrige(6,12,30)
-            question() fraction_egale_corrige(3,18,12)
-            question() fraction_egale_corrige(10,14,70)
-            question() fraction_egale_corrige(18,3,126)
-            question() fraction_egale_corrige(16,2,48)
-            question() fraction_egale_corrige(2,12,16)
-            question() fraction_egale_corrige(20,13,160)
-            question() fraction_egale_corrige(12,19,108)
-        \end{luacode}
+    \exercicetitre{Trouver une fraction égale à une autre}
+        \newcommand{\corFractionEgale}[3]{
+            \begin{tikzpicture}[baseline]
+                \node at (0,0) {$\dfrac{\mathstrut#1}{\mathstrut#2} = \dfrac{\mathstrut#3}{\mathstrut \textcolor{rouge}{\pgfmathparse{int(#2*#3/#1)}\pgfmathresult}}$};
+                \draw[rouge,-Latex] (-0.45,0.6) arc(180:0:0.5 and 0.15) node[midway,above]{\small $\times\pgfmathparse{int(#3/#1)}\pgfmathresult$};
+            \end{tikzpicture}
+        }
+        \begin{multicols}{3}
+            \question \corFractionEgale{3}{5}{9}
+            \question \corFractionEgale{9}{17}{63}
+            \question \corFractionEgale{5}{13}{45}
+            \question \corFractionEgale{17}{6}{136}
+            \question \corFractionEgale{7}{18}{28}
+            \question \corFractionEgale{16}{8}{64}
+            \question \corFractionEgale{9}{20}{72}
+            \question \corFractionEgale{20}{11}{80}
+            \question \corFractionEgale{10}{12}{90}
+            \question \corFractionEgale{2}{20}{12}
+            \question \corFractionEgale{6}{2}{48}
+            \question \corFractionEgale{12}{11}{72}
+            \question \corFractionEgale{6}{15}{18}
+            \question \corFractionEgale{6}{12}{30}
+            \question \corFractionEgale{3}{18}{12}
+            \question \corFractionEgale{10}{14}{70}
+            \question \corFractionEgale{18}{3}{126}
+            \question \corFractionEgale{16}{2}{48}
+            \question \corFractionEgale{2}{12}{16}
+            \question \corFractionEgale{20}{13}{160}
+            \question \corFractionEgale{12}{19}{108}
         \end{multicols}
 
-    \clearpage
-    \exercicetitre{Multiplication de fractions}\vspace{-1.5em}
-        \begin{multicols}{2}\small
-        \begin{luacode}
-            question() multiplication_fractions_corrige(4, 5, 2, 8)
-            question() multiplication_fractions_corrige(12, 5, 3, 11)
-            question() multiplication_fractions_corrige(9, 8, 7, 9)
-            question() multiplication_fractions_corrige(8, 15, 1, 3)
-            question() multiplication_fractions_corrige(3, 6, 4, 11)
-            question() multiplication_fractions_corrige(13, 12, 1, 11)
-            question() multiplication_fractions_corrige(6, 12, 1, 2)
-            question() multiplication_fractions_corrige(12, 5, 6, 4)
-            question() multiplication_fractions_corrige(15, 12, 2, 10)
-            question() multiplication_fractions_corrige(14, 10, 15, 3)
-            question() multiplication_fractions_corrige(1, 5, 1, 1)
-            question() multiplication_fractions_corrige(15, 7, 4, 15)
-            question() multiplication_fractions_corrige(12, 11, 11, 5)
-            question() multiplication_fractions_corrige(11, 15, 15, 1)
-            question() multiplication_fractions_corrige(8, 6, 2, 4)
-        \end{luacode}
+
+    \exercicetitre{Multiplication de fractions}
+        \newcommand{\corMultiplicationFractions}[4]{
+            $\dfrac{\mathstrut#1}{\mathstrut#2} \times \dfrac{\mathstrut#3}{\mathstrut#4} = \dfrac{#1 \times #3}{#2 \times #4} = \dfrac{\pgfmathparse{int(#1*#3)}\pgfmathresult}{\pgfmathparse{int(#2*#4)}\pgfmathresult}$
+        }
+        \begin{multicols}{2}
+            \question \corMultiplicationFractions{4}{5}{2}{8}
+            \question \corMultiplicationFractions{12}{5}{3}{11}
+            \question \corMultiplicationFractions{9}{8}{7}{9}
+            \question \corMultiplicationFractions{8}{15}{1}{3}
+            \question \corMultiplicationFractions{3}{6}{4}{11}
+            \question \corMultiplicationFractions{13}{12}{1}{11}
+            \question \corMultiplicationFractions{6}{12}{1}{2}
+            \question \corMultiplicationFractions{12}{5}{6}{4}
+            \question \corMultiplicationFractions{15}{12}{2}{10}
+            \question \corMultiplicationFractions{14}{10}{15}{3}
+            \question \corMultiplicationFractions{1}{5}{1}{1}
+            \question \corMultiplicationFractions{15}{7}{4}{15}
+            \question \corMultiplicationFractions{12}{11}{11}{5}
+            \question \corMultiplicationFractions{11}{15}{15}{1}
+            \question \corMultiplicationFractions{8}{6}{2}{4}
         \end{multicols}
 
-    \exercicetitre{Divisions de fractions}\vspace{-1.5em}
-        \begin{multicols}{2}\small
-        \begin{luacode}
-            questionX() division_fractions_corrige(3, 9, 2, 9)
-            questionX() division_fractions_corrige(12, 5, 1, 1)
-            questionX() division_fractions_corrige(2, 1, 10, 3)
-            questionX() division_fractions_corrige(15, 10, 12, 15)
-            questionX() division_fractions_corrige(5, 5, 10, 2)
-            questionX() division_fractions_corrige(5, 2, 1, 3)
-            questionX() division_fractions_corrige(1, 2, 1, 14)
-            questionX() division_fractions_corrige(4, 10, 5, 6)
-            questionX() division_fractions_corrige(2, 8, 12, 7)
-            questionX() division_fractions_corrige(8, 6, 12, 10)
-            questionX() division_fractions_corrige(1, 10, 7, 10)
-            questionX() division_fractions_corrige(15, 6, 11, 11)
-            questionX() division_fractions_corrige(6, 12, 9, 1)
-            questionX() division_fractions_corrige(6, 15, 10, 10)
-        \end{luacode}
+    \exercicetitre{Divisions de fractions}
+        \newcommand{\corDivisionFractions}[4]{
+            $\dfrac{\mathstrut#1}{\mathstrut#2} \div \dfrac{\mathstrut#3}{\mathstrut#4} = \dfrac{\mathstrut#1}{\mathstrut#2} \times \dfrac{\mathstrut#4}{\mathstrut#3} = \dfrac{#1 \times #4}{#2 \times #3} = \dfrac{\pgfmathparse{int(#1*#4)}\pgfmathresult}{\pgfmathparse{int(#2*#3)}\pgfmathresult}$
+        }
+        \begin{multicols}{2}
+            \questionX \corDivisionFractions{3}{9}{2}{9}
+            \questionX \corDivisionFractions{12}{5}{1}{1}
+            \questionX \corDivisionFractions{2}{1}{10}{3}
+            \questionX \corDivisionFractions{15}{10}{12}{15}
+            \questionX \corDivisionFractions{5}{5}{10}{2}
+            \questionX \corDivisionFractions{5}{2}{1}{3}
+            \questionX \corDivisionFractions{1}{2}{1}{14}
+            \questionX \corDivisionFractions{4}{10}{5}{6}
+            \questionX \corDivisionFractions{2}{8}{12}{7}
+            \questionX \corDivisionFractions{8}{6}{12}{10}
+            \questionX \corDivisionFractions{1}{10}{7}{10}
+            \questionX \corDivisionFractions{15}{6}{11}{11}
+            \questionX \corDivisionFractions{6}{12}{9}{1}
+            \questionX \corDivisionFractions{6}{15}{10}{10}
         \end{multicols}
 
 \end{questions}

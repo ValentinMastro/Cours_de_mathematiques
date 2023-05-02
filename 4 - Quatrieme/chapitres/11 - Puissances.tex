@@ -1,112 +1,6 @@
 \documentclass[../Cours.tex]{subfiles}
-\usepackage{multicol}
 
 \begin{document}
-
-\begin{luacode}
-    function nom_prefixe(exposant_prefixe)
-        if exposant_prefixe == 15 then return "peta" end
-        if exposant_prefixe == 12 then return "tera" end
-        if exposant_prefixe == 9 then return "giga" end
-        if exposant_prefixe == 6 then return "mega" end
-        if exposant_prefixe == 3 then return "kilo" end
-        if exposant_prefixe == 2 then return "hecto" end
-        if exposant_prefixe == 1 then return "deca" end
-        if exposant_prefixe == -1 then return "deci" end
-        if exposant_prefixe == -2 then return "centi" end
-        if exposant_prefixe == -3 then return "milli" end
-        if exposant_prefixe == -6 then return "micro" end
-        if exposant_prefixe == -9 then return "nano" end
-        if exposant_prefixe == -12 then return "pico" end
-        if exposant_prefixe == -15 then return "femto" end
-    end
-
-    function prefixe(exposant_prefixe)
-        if exposant_prefixe == 0 then return "" end
-        return "\\" .. nom_prefixe(exposant_prefixe)
-    end
-
-    function parenthese_nombre_negatif(n)
-        if n < 0 then return "(-" .. math.abs(n) .. ")" 
-        else return math.abs(n) end
-    end
-
-    function combinaison_puissance(a, b)
-        local aa = parenthese_nombre_negatif(a)
-        local bb = parenthese_nombre_negatif(b)
-        local cc = parenthese_nombre_negatif(a+b)
-        return "(on combine les puissances de 10 $\\Rightarrow " .. aa .. " + " .. bb .. " = " .. cc .. "$)"
-    end  
-    
-    function conversion_puissances(nombre, unite, exposant_prefixe1, exposant_prefixe2)
-        tex.print("Convertir \\qty{".. nombre .. "}{" .. prefixe(exposant_prefixe1) .. unite .. "} en \\unit{" .. prefixe(exposant_prefixe2) .. unite .. "}\\\\")
-        tex.print("\\renewcommand{\\arraystretch}{1.65}")
-        tex.print("\\begin{tabularx}{\\linewidth}{{>{$}l<{$}}R}")
-
-        local i = string.find(nombre, "e")
-        local num = tonumber(string.sub(nombre, 1, i-1))
-        local expo = tonumber(string.sub(nombre, i+1, -1))
-
-        -- étape 0 : énoncé
-        local afficher_expo = "\\times 10^{" .. expo .. "}"
-        if expo == 0 then afficher_expo = "" end
-        tex.print("\\textcolor{rouge}{\\num{" .. num .. "}} " .. afficher_expo .. "~\\unit{" .. prefixe(exposant_prefixe1) .. unite .. "}&\\\\")
-
-        local decal = math.floor(math.log(num, 10))
-        local direction = "droite"
-        if decal < 0 then direction = "gauche" end 
-        local mantisse = num / math.pow(10,decal)
-
-        if decal ~= 0 then
-            if expo ~= 0 then
-                -- étape 1 : passage à l'écriture scientifique
-                tex.print("=\\textcolor{rouge}{\\num{" .. mantisse .. "} \\times 10^{" .. decal .. "}} \\times 10^{" .. expo .. "}~\\unit{" .. prefixe(exposant_prefixe1) .. unite  .."} & \\makecell[l]{\\textcolor{rouge}{(passage à l'écriture scientifique :} \\\\ \\textcolor{rouge}{la virgule est décalée " .. math.abs(decal) .. " fois vers la " .. direction .. " $\\Rightarrow \\times 10^{" .. decal .. "}$)}}\\\\")
-        
-                -- étape 2 : combinaison des puissances
-                tex.print("=\\num{" .. mantisse .. "} \\times 10^{" .. expo + decal .. "}~\\unit{\\textcolor{vert}{" .. prefixe(exposant_prefixe1) .. "}" .. unite .. "}&" .. combinaison_puissance(decal, expo) .. "\\\\")
-                expo = expo + decal
-            else
-                -- étape 1 : passage à l'écriture scientifique
-                tex.print("=\\textcolor{rouge}{\\num{" .. mantisse .. "} \\times 10^{" .. decal .. "}}~\\unit{\\textcolor{vert}{" .. prefixe(exposant_prefixe1) .. "}" .. unite  .."} & \\makecell[l]{\\textcolor{rouge}{(passage à l'écriture scientifique :} \\\\ \\textcolor{rouge}{la virgule est décalée " .. math.abs(decal) .. " fois vers la " .. direction .. " $\\Rightarrow \\times 10^{" .. decal .. "}$)}}\\\\")
-                expo = decal
-            end
-        end
-
-        afficher_expo = "\\times 10^{" .. expo .. "}"
-        if expo == 0 then afficher_expo = "" end
-
-        if exposant_prefixe1 ~= 0 then
-            -- étape 3 : remplacement du préfixe
-            tex.print("=\\num{" .. mantisse .. "}" .. afficher_expo .. " \\times \\textcolor{vert}{10^{" .. exposant_prefixe1 .. "}}~\\unit{" .. unite .. "}&(dans la tableau, \\textcolor{vert}{" .. nom_prefixe(exposant_prefixe1) .. " vaut $10^{" .. exposant_prefixe1 .. "}$})\\\\")
-    
-            if expo ~= 0 then
-                -- étape 4 : combinaison des puissances
-                tex.print("=\\num{" .. mantisse .. "} \\times 10^{" .. expo + exposant_prefixe1 .. "}~\\unit{" .. unite .. "}&" .. combinaison_puissance(expo, exposant_prefixe1) .. "\\\\")
-                expo = expo + exposant_prefixe1
-            end
-            expo = exposant_prefixe1
-        end
-
-        afficher_expo = "\\times 10^{" .. expo .. "}"
-        if expo == 0 then afficher_expo = "" end
-
-        if exposant_prefixe2 ~= 0 then 
-            -- étape 5 : ajout du nouveau préfixe
-            tex.print("=\\num{" .. mantisse .. "}" .. afficher_expo .. " \\times \\textcolor{bleu}{10^{" .. -exposant_prefixe2 .. "}}~\\unit{\\textcolor{bleu}{" .. prefixe(exposant_prefixe2) .. "}" .. unite .. "}&(dans la tableau, \\qty{1}{" .. prefixe(exposant_prefixe2) .. unite .. "} vaut $10^{" .. exposant_prefixe2 .. "}$~\\unit{" .. unite .. "}, \\textcolor{bleu}{donc \\qty{1}{" .. unite .."} vaut $10^{" .. -exposant_prefixe2 .. "}$~\\unit{" .. prefixe(exposant_prefixe2) .. unite .. "}})\\\\")
-
-            if expo ~= 0 then
-                -- étape 6 : combinaison des puissances
-                tex.print("=\\num{" .. mantisse .. "} \\times 10^{" .. expo - exposant_prefixe2 .. "}~\\unit{" .. prefixe(exposant_prefixe2) .. unite .. "}&" .. combinaison_puissance(expo, -exposant_prefixe2) .. "\\\\")
-                expo = expo - exposant_prefixe2
-            end
-        end
-        
-        tex.print("\\end{tabularx}")
-        tex.print("\\renewcommand{\\arraystretch}{1}")
-    end
-\end{luacode}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapitre{Puissances}
 
@@ -152,19 +46,12 @@
 
 \begin{listedexemples}
 \begin{multicols}{2}
-\begin{luacode}
-    function decalage_virgule(nombre, decal)
-        local res = nombre * math.pow(10, decal)
-        if res == math.floor(res) then res = math.floor(res) end
-        tex.print("$\\num{" .. nombre .. "} \\times 10^{" .. decal .. "} = \\num{" .. res .. "}$")
-    end
-    item() decalage_virgule(1.234, 2)
-    item() decalage_virgule(96.76, -3)
-    item() decalage_virgule(39.42649, 4)
-    item() decalage_virgule(0.003825, -1)
-    item() decalage_virgule(1.9274, 5)
-    item() decalage_virgule(10.218, -3)
-\end{luacode}
+    \item $\num{1.234} \times 10^2 = \num{123.4}$
+    \item $\num{96.76} \times 10^-3 = \num{0.09676}$
+    \item $\num{39.42649} \times 10^4 = \num{394264.9}$
+    \item $\num{0.003825} \times 10^{-1} = \num{0.0003825}$
+    \item $\num{1.9274} \times 10^5 = \num{192740}$
+    \item $\num{10.218} \times 10^{-3} = \num{0.010218}$
 \end{multicols}
 \end{listedexemples}
 
@@ -178,21 +65,14 @@
 
 \begin{listedexemples}
 \begin{multicols}{2}
-\begin{luacode}
-    function ecriture_scientifique(nombre)
-        local exposant = math.floor(math.log(nombre, 10))
-        local res = nombre / math.pow(10, exposant)
-        tex.print("$\\num{" .. nombre .. "} = \\num{" .. res .. "} \\times 10^{" .. exposant .. "}$")
-    end
-    item() ecriture_scientifique(120546)
-    item() ecriture_scientifique(0.436)
-    item() ecriture_scientifique(540000)
-    item() ecriture_scientifique(0.00876)
-    item() ecriture_scientifique(0.0715)
-    item() ecriture_scientifique(12.34)
-    item() ecriture_scientifique(0.00016)
-    item() ecriture_scientifique(6.725)
-\end{luacode}
+    \item $\num{120546} = \num{1.20546} \times 10^{5}$
+    \item $\num{0.436} = \num{4.36} \times 10^{-1}$ 
+    \item $\num{540000} = \num{5.4} \times 10^{5}$
+    \item $\num{0.00876} = \num{8.76} \times 10^{-3}$ 
+    \item $\num{0.0715} = \num{7.15} \times 10^{-2}$ 
+    \item $\num{12.34} = \num{1.234} \times 10^{1}$
+    \item $\num{0.00016} = \num{1.6} \times 10^{-4}$ 
+    \item $\num{6.725} = \num{6.725} \times 10^{0}$
 \end{multicols}
 \end{listedexemples}
 
@@ -237,21 +117,70 @@
 \begin{listedexemples}
     \small
     \item[] \fbox{Cas n°1}
-    \begin{luacode}
-        item() conversion_puissances("1e0", "\\octet", 9, 0)
-        item() conversion_puissances("30e0", "\\metre", 3, 0)
-    \end{luacode}
+        Convertir \qty{1e0}{\giga\octet} en \unit{\octet}\\
+        \renewcommand{\arraystretch}{1.65}
+        \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+            \textcolor{rouge}{\num{1}} ~\unit{\giga\octet}&\\
+            =\num{1.0} \times \textcolor{vert}{10^{9}}~\unit{\octet}&(dans le tableau, \textcolor{vert}{giga vaut $10^{9}$})\\
+        \end{tabularx}
+        \renewcommand{\arraystretch}{1}
+        
+        Convertir \qty{30e0}{\kilo\metre} en \unit{\metre}\\
+        \renewcommand{\arraystretch}{1.65}
+        \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+            \textcolor{rouge}{\num{30}} ~\unit{\kilo\metre}&\\
+            =\textcolor{rouge}{\num{3.0} \times 10^{1}}~\unit{\textcolor{vert}{\kilo}\metre} & \makecell[l]{\textcolor{rouge}{(passage à l'écriture scientifique :} \\ \textcolor{rouge}{la virgule est décalée 1 fois vers la droite $\Rightarrow \times 10^{1}$)}}\\
+            =\num{3.0}\times 10^{1} \times \textcolor{vert}{10^{3}}~\unit{\metre}&(dans le tableau, \textcolor{vert}{kilo vaut $10^{3}$})\\
+            =\num{3.0} \times 10^{4}~\unit{\metre}&(on combine les puissances de 10 $\Rightarrow 1 + 3 = 4$)\\
+        \end{tabularx}
+        \renewcommand{\arraystretch}{1}
+
     \clearpage
     \item[] \fbox{Cas n°2}
-    \begin{luacode}
-        item() conversion_puissances("5e0", "\\volt", 0, -3)
-        item() conversion_puissances("101300e0", "\\pascal", 0, 2)
-    \end{luacode}
+        Convertir \qty{5e0}{\volt} en \unit{\milli\volt}\\
+        \renewcommand{\arraystretch}{1.65}
+        \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+            \textcolor{rouge}{\num{5}} ~\unit{\volt}&\\
+            =\num{5.0} \times \textcolor{bleu}{10^{3}}~\unit{\textcolor{bleu}{\milli}\volt}&(dans le tableau, \qty{1}{\milli\volt} vaut $10^{-3}$~\unit{\volt}, \textcolor{bleu}{donc \qty{1}{\volt} vaut $10^{3}$~\unit{\milli\volt}})\\
+        \end{tabularx}
+        \renewcommand{\arraystretch}{1}
+        
+        Convertir \qty{101300e0}{\pascal} en \unit{\hecto\pascal}\\
+        \renewcommand{\arraystretch}{1.65}
+        \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+            \textcolor{rouge}{\num{101300}} ~\unit{\pascal}&\\
+            =\textcolor{rouge}{\num{1.013} \times 10^{5}}~\unit{\textcolor{vert}{}\pascal} & \makecell[l]{\textcolor{rouge}{(passage à l'écriture scientifique :} \\ \textcolor{rouge}{la virgule est décalée 5 fois vers la droite $\Rightarrow \times 10^{5}$)}}\\
+            =\num{1.013}\times 10^{5} \times \textcolor{bleu}{10^{-2}}~\unit{\textcolor{bleu}{\hecto}\pascal}&(dans le tableau, \qty{1}{\hecto\pascal} vaut $10^{2}$~\unit{\pascal}, \textcolor{bleu}{donc \qty{1}{\pascal} vaut $10^{-2}$~\unit{\hecto\pascal}})\\
+            =\num{1.013} \times 10^{3}~\unit{\hecto\pascal}&(on combine les puissances de 10 $\Rightarrow 5 + (-2) = 3$)\\
+        \end{tabularx}
+        \renewcommand{\arraystretch}{1}
+        
     \item[] \fbox{Cas n°3}
-    \begin{luacode}
-        item() conversion_puissances("398.76e-6", "\\volt", -9, 9)
-        item() conversion_puissances("0.00078e-1", "\\metre", -1, 1)
-    \end{luacode}
+        Convertir \qty{398.76e-6}{\nano\volt} en \unit{\giga\volt}\\
+        \renewcommand{\arraystretch}{1.65}
+        \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+            \textcolor{rouge}{\num{398.76}} \times 10^{-6}~\unit{\nano\volt}&\\
+            =\textcolor{rouge}{\num{3.9876} \times 10^{2}} \times 10^{-6}~\unit{\nano\volt} & \makecell[l]{\textcolor{rouge}{(passage à l'écriture scientifique :} \\ \textcolor{rouge}{la virgule est décalée 2 fois vers la droite $\Rightarrow \times 10^{2}$)}}\\
+            =\num{3.9876} \times 10^{-4}~\unit{\textcolor{vert}{\nano}\volt}&(on combine les puissances de 10 $\Rightarrow 2 + (-6) = (-4)$)\\
+            =\num{3.9876}\times 10^{-4} \times \textcolor{vert}{10^{-9}}~\unit{\volt}&(dans le tableau, \textcolor{vert}{nano vaut $10^{-9}$})\\
+            =\num{3.9876} \times 10^{-13}~\unit{\volt}&(on combine les puissances de 10 $\Rightarrow (-4) + (-9) = (-13)$)\\
+            =\num{3.9876}\times 10^{-9} \times \textcolor{bleu}{10^{-9}}~\unit{\textcolor{bleu}{\giga}\volt}&(dans le tableau, \qty{1}{\giga\volt} vaut $10^{9}$~\unit{\volt}, \textcolor{bleu}{donc \qty{1}{\volt} vaut $10^{-9}$~\unit{\giga\volt}})\\
+            =\num{3.9876} \times 10^{-18}~\unit{\giga\volt}&(on combine les puissances de 10 $\Rightarrow (-9) + (-9) = (-18)$)\\
+        \end{tabularx}
+        \renewcommand{\arraystretch}{1}
+        
+        Convertir \qty{0.00078e-1}{\deci\metre} en \unit{\deca\metre}\\
+        \renewcommand{\arraystretch}{1.65}
+        \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+            \textcolor{rouge}{\num{0.00078}} \times 10^{-1}~\unit{\deci\metre}&\\
+            =\textcolor{rouge}{\num{7.8} \times 10^{-4}} \times 10^{-1}~\unit{\deci\metre} & \makecell[l]{\textcolor{rouge}{(passage à l'écriture scientifique :} \\ \textcolor{rouge}{la virgule est décalée 4 fois vers la gauche $\Rightarrow \times 10^{-4}$)}}\\
+            =\num{7.8} \times 10^{-5}~\unit{\textcolor{vert}{\deci}\metre}&(on combine les puissances de 10 $\Rightarrow (-4) + (-1) = (-5)$)\\
+            =\num{7.8}\times 10^{-5} \times \textcolor{vert}{10^{-1}}~\unit{\metre}&(dans le tableau, \textcolor{vert}{deci vaut $10^{-1}$})\\
+            =\num{7.8} \times 10^{-6}~\unit{\metre}&(on combine les puissances de 10 $\Rightarrow (-5) + (-1) = (-6)$)\\
+            =\num{7.8}\times 10^{-1} \times \textcolor{bleu}{10^{-1}}~\unit{\textcolor{bleu}{\deca}\metre}&(dans le tableau, \qty{1}{\deca\metre} vaut $10^{1}$~\unit{\metre}, \textcolor{bleu}{donc \qty{1}{\metre} vaut $10^{-1}$~\unit{\deca\metre}})\\
+            =\num{7.8} \times 10^{-2}~\unit{\deca\metre}&(on combine les puissances de 10 $\Rightarrow (-1) + (-1) = (-2)$)\\
+        \end{tabularx}
+        \renewcommand{\arraystretch}{1}    
 \end{listedexemples}
 
 \clearpage
@@ -268,10 +197,12 @@ $n$ est appelé l'exposant}
 \formule{$$a^{-n} = \dfrac{1}{a^n} ~~~~~~ a^n \times a^p = a^{n+p} ~~~~~~ \dfrac{a^n}{a^p} = a^{n-p} ~~~~~~ \left(a^n\right)^p = a^{n\times p} $$}
 
 \begin{listedexemples}
+\begin{multicols}{2}
     \item $2^{-4} = \dfrac{1}{2^4}$
     \item $3^2 \times 3^7 = 3^9$
     \item $\dfrac{4^2}{4^8} = 4^{2-8} = 4^{-6}$
     \item $\left(5^2\right)^4 = 5^{2 \times 4} $
+\end{multicols}
     \item $\dfrac{6^2 \times 6^3}{6^6} = \dfrac{6^{2+3}}{6^6} = \dfrac{6^5}{6^6} = 6^{5-6} = 6^{-1}$
     \item $\left( 7^2 \times 7^4 \right)^7 = \left(7^{2+4}\right)^7 = \left(7^6\right)^7 = 7^{6 \times 7} = 7^{42}$
 \end{listedexemples}
@@ -284,10 +215,12 @@ $n$ est appelé l'exposant}
 \end{itemize}}
 
 \begin{listedexemples}
+\begin{multicols}{2}
     \item[*] $(-2)^5 < 0$
     \item[*] $(-6)^6 > 0$
     \item[*] $0^3 = 0$ (positif et négatif)
     \item[*] $7^3 > 0$ (la base est positive)
+\end{multicols}
 \end{listedexemples}
 
 
@@ -398,19 +331,7 @@ $n$ est appelé l'exposant}
         \vspace{1em}
         \question L'article L234-1 du code de la route dispose que : << Même en l'absence de tout signe d'ivresse manifeste, le fait de conduire un véhicule sous l'empire d'un état alcoolique caractérisé par une concentration d'alcool dans le sang égale ou supérieure à 0,80 gramme par litre [...] est puni de deux ans d'emprisonnement et de 4 500 euros d'amende. >>
             \subquestion Un policier procède à un contrôle sanguin. Dans l'échantillon de \qty{235}{\milli\litre} de sang prélevé, il y a \qty{190}{\milli\gram} d'alcool détecté. La personne contrôlée enfreint-elle l'article L234-1 ?
-            \subquestion À partir de quelle concentration d'alcool dans le sang est-il interdit de conduire ? À quelle consommation cela correspond-il concrètement ?
-
-    \exercicetitre{Accords pythagoriciens}
-        \begin{center}
-            \begin{tabularx}{0.5\linewidth}{|l|C|}
-                Note & fréquence (\unit{\hertz}) \\
-                ré & \num{293.33} \\
-                
-            \end{tabularx}
-        \end{center}
-
-
-        
+            \subquestion À partir de quelle concentration d'alcool dans le sang est-il interdit de conduire ? À quelle consommation cela correspond-il concrètement ?        
 \end{questions}
 
 %%%%%%%%%%%%%% CORRECTIONS %%%%%%%%%%%%%%%%%
@@ -419,58 +340,214 @@ $n$ est appelé l'exposant}
 \begin{questions}
     \exercicetitre{Écrire les nombres suivants avec la notation scientifique}\vspace{-1.5em}
     \begin{multicols}{2}
-    \begin{luacode}
-        question() ecriture_scientifique(34.5)
-        question() ecriture_scientifique(17.897654)
-        question() ecriture_scientifique(0.0000123)
-        question() ecriture_scientifique(9823.12)
-        question() ecriture_scientifique(0.100234010)
-        question() ecriture_scientifique(2871.9273)
-    \end{luacode}
+        \question $\num{34.5} = \num{3.45e1}$
+        \question $\num{17.897654} = \num{1.7897654e1}$
+        \question $\num{0.0000123} = \num{1.23e-5}$
+        \question $\num{9823.12} = \num{9.82312e3}$
+        \question $\num{0.100234010} = \num{1.00234010e-1}$
+        \question $\num{2871.9273} = \num{2.8719273e3}$
     \end{multicols}
     
     \exercicetitre{Écrire les nombres suivants avec l'écriture décimale}\vspace{-1.5em}
     \begin{multicols}{2}
-    \begin{luacode}
-        question() decalage_virgule(4.2, 3)
-        question() decalage_virgule(6.07, -2)
-        question() decalage_virgule(4.23, 2)
-        question() decalage_virgule(8.923, -3)
-        question() decalage_virgule(9.98, 2)
-        question() decalage_virgule(2, 6)
-    \end{luacode}
+        \question  $\num{4.2e3} = \num{4200}$
+        \question  $\num{6.07e-2} = \num{0.0607}$
+        \question  $\num{4.23e2} = \num{423}$
+        \question  $\num{8.923e-3} = \num{0.008923}$
+        \question  $\num{9.98e2} = \num{998}$
+        \question  $\num{2e6} = \num{2000000}$
     \end{multicols}
     
     \exercicetitre{Convertir les quantités suivantes en mètres}
-    \begin{luacode}
-        question() conversion_puissances("4.2e0", "\\metre", 3, 0)
-        question() conversion_puissances("2.5e0", "\\metre", 9, 0)
-        question() conversion_puissances("9.8e0", "\\metre", -3, 0)
-        question() conversion_puissances("8.1e0", "\\metre", -9, 0)
-    \end{luacode}
+        \question~Convertir \qty{4.2e0}{\kilo\metre} en \unit{\metre}\\
+            \renewcommand{\arraystretch}{1.65}
+            \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+                \textcolor{rouge}{\num{4.2}} ~\unit{\kilo\metre}&\\
+                =\num{4.2} \times \textcolor{vert}{10^{3}}~\unit{\metre}&(dans le tableau, \textcolor{vert}{kilo vaut $10^{3}$})\\
+            \end{tabularx}
+            \renewcommand{\arraystretch}{1}
+            
+        \question~Convertir \qty{2.5e0}{\giga\metre} en \unit{\metre}\\
+            \renewcommand{\arraystretch}{1.65}
+            \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+                \textcolor{rouge}{\num{2.5}} ~\unit{\giga\metre}&\\
+                =\num{2.5} \times \textcolor{vert}{10^{9}}~\unit{\metre}&(dans le tableau, \textcolor{vert}{giga vaut $10^{9}$})\\
+            \end{tabularx}
+            \renewcommand{\arraystretch}{1}
+            
+        \question~Convertir \qty{9.8e0}{\milli\metre} en \unit{\metre}\\
+            \renewcommand{\arraystretch}{1.65}
+            \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+                \textcolor{rouge}{\num{9.8}} ~\unit{\milli\metre}&\\
+                =\num{9.8} \times \textcolor{vert}{10^{-3}}~\unit{\metre}&(dans le tableau, \textcolor{vert}{milli vaut $10^{-3}$})\\
+            \end{tabularx}
+            \renewcommand{\arraystretch}{1}
+            
+        \question~Convertir \qty{8.1e0}{\nano\metre} en \unit{\metre}\\
+            \renewcommand{\arraystretch}{1.65}
+            \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+                \textcolor{rouge}{\num{8.1}} ~\unit{\nano\metre}&\\
+                =\num{8.1} \times \textcolor{vert}{10^{-9}}~\unit{\metre}&(dans le tableau, \textcolor{vert}{nano vaut $10^{-9}$})\\
+            \end{tabularx}
+            \renewcommand{\arraystretch}{1}
     
     \exercicetitre{Convertir les quantités suivantes selon l'unité demandée}
-    \begin{luacode}
-        question() conversion_puissances("2.3e0", "\\metre", 0, -2)
-        question() conversion_puissances("0.02e0", "\\metre", 0, 3)
-        question() conversion_puissances("0.002e0", "\\metre", 0, -9)
-        question() conversion_puissances("18.258e0", "\\metre", 0, 6)
-        question() conversion_puissances("0.035e0", "\\metre", 0, 1)
-        question() conversion_puissances("9275.729e0", "\\metre", 0, 2)
-    \end{luacode}
+        \question~Convertir \qty{2.3e0}{\metre} en \unit{\centi\metre}\\
+            \renewcommand{\arraystretch}{1.65}
+            \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+                \textcolor{rouge}{\num{2.3}} ~\unit{\metre}&\\
+                =\num{2.3} \times \textcolor{bleu}{10^{2}}~\unit{\textcolor{bleu}{\centi}\metre}&(dans le tableau, \qty{1}{\centi\metre} vaut $10^{-2}$~\unit{\metre}, \textcolor{bleu}{donc \qty{1}{\metre} vaut $10^{2}$~\unit{\centi\metre}})\\
+            \end{tabularx}
+            \renewcommand{\arraystretch}{1}
+            
+        \question~Convertir \qty{0.02e0}{\metre} en \unit{\kilo\metre}\\
+            \renewcommand{\arraystretch}{1.65}
+            \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+                \textcolor{rouge}{\num{0.02}} ~\unit{\metre}&\\
+                =\textcolor{rouge}{\num{2.0} \times 10^{-2}}~\unit{\textcolor{vert}{}\metre} & \makecell[l]{\textcolor{rouge}{(passage à l'écriture scientifique :} \\ \textcolor{rouge}{la virgule est décalée 2 fois vers la gauche $\Rightarrow \times 10^{-2}$)}}\\
+                =\num{2.0}\times 10^{-2} \times \textcolor{bleu}{10^{-3}}~\unit{\textcolor{bleu}{\kilo}\metre}&(dans le tableau, \qty{1}{\kilo\metre} vaut $10^{3}$~\unit{\metre}, \textcolor{bleu}{donc \qty{1}{\metre} vaut $10^{-3}$~\unit{\kilo\metre}})\\
+                =\num{2.0} \times 10^{-5}~\unit{\kilo\metre}&(on combine les puissances de 10 $\Rightarrow (-2) + (-3) = (-5)$)\\
+            \end{tabularx}
+            \renewcommand{\arraystretch}{1}
+            
+        \question~Convertir \qty{0.002e0}{\metre} en \unit{\nano\metre}\\
+            \renewcommand{\arraystretch}{1.65}
+            \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+                \textcolor{rouge}{\num{0.002}} ~\unit{\metre}&\\
+                =\textcolor{rouge}{\num{2.0} \times 10^{-3}}~\unit{\textcolor{vert}{}\metre} & \makecell[l]{\textcolor{rouge}{(passage à l'écriture scientifique :} \\ \textcolor{rouge}{la virgule est décalée 3 fois vers la gauche $\Rightarrow \times 10^{-3}$)}}\\
+                =\num{2.0}\times 10^{-3} \times \textcolor{bleu}{10^{9}}~\unit{\textcolor{bleu}{\nano}\metre}&(dans le tableau, \qty{1}{\nano\metre} vaut $10^{-9}$~\unit{\metre}, \textcolor{bleu}{donc \qty{1}{\metre} vaut $10^{9}$~\unit{\nano\metre}})\\
+                =\num{2.0} \times 10^{6}~\unit{\nano\metre}&(on combine les puissances de 10 $\Rightarrow (-3)+ 9 = 6$)\\
+            \end{tabularx}
+            \renewcommand{\arraystretch}{1}
+            
+        \question~Convertir \qty{18.258e0}{\metre} en \unit{\mega\metre}\\
+            \renewcommand{\arraystretch}{1.65}
+            \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+                \textcolor{rouge}{\num{18.258}} ~\unit{\metre}&\\
+                =\textcolor{rouge}{\num{1.8258} \times 10^{1}}~\unit{\textcolor{vert}{}\metre} & \makecell[l]{\textcolor{rouge}{(passage à l'écriture scientifique :} \\ \textcolor{rouge}{la virgule est décalée 1 fois vers la droite $\Rightarrow \times 10^{1}$)}}\\
+                =\num{1.8258}\times 10^{1} \times \textcolor{bleu}{10^{-6}}~\unit{\textcolor{bleu}{\mega}\metre}&(dans le tableau, \qty{1}{\mega\metre} vaut $10^{6}$~\unit{\metre}, \textcolor{bleu}{donc \qty{1}{\metre} vaut $10^{-6}$~\unit{\mega\metre}})\\
+                =\num{1.8258} \times 10^{-5}~\unit{\mega\metre}&(on combine les puissances de 10 $\Rightarrow 1 + (-6) = (-5)$)\\
+            \end{tabularx}
+            \renewcommand{\arraystretch}{1}
+            
+        \question~
+        Convertir \qty{0.035e0}{\metre} en \unit{\deca\metre}\\
+            \renewcommand{\arraystretch}{1.65}
+            \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+                \textcolor{rouge}{\num{0.035}} ~\unit{\metre}&\\
+                =\textcolor{rouge}{\num{3.5} \times 10^{-2}}~\unit{\textcolor{vert}{}\metre} & \makecell[l]{\textcolor{rouge}{(passage à l'écriture scientifique :} \\ \textcolor{rouge}{la virgule est décalée 2 fois vers la gauche $\Rightarrow \times 10^{-2}$)}}\\
+                =\num{3.5}\times 10^{-2} \times \textcolor{bleu}{10^{-1}}~\unit{\textcolor{bleu}{\deca}\metre}&(dans le tableau, \qty{1}{\deca\metre} vaut $10^{1}$~\unit{\metre}, \textcolor{bleu}{donc \qty{1}{\metre} vaut $10^{-1}$~\unit{\deca\metre}})\\
+                =\num{3.5} \times 10^{-3}~\unit{\deca\metre}&(on combine les puissances de 10 $\Rightarrow (-2) + (-1) = (-3)$)\\
+            \end{tabularx}
+            \renewcommand{\arraystretch}{1}
+            
+        \question~Convertir \qty{9275.729e0}{\metre} en \unit{\hecto\metre}\\
+            \renewcommand{\arraystretch}{1.65}
+            \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+                \textcolor{rouge}{\num{9275.729}} ~\unit{\metre}&\\
+                =\textcolor{rouge}{\num{9.275729} \times 10^{3}}~\unit{\textcolor{vert}{}\metre} & \makecell[l]{\textcolor{rouge}{(passage à l'écriture scientifique :} \\ \textcolor{rouge}{la virgule est décalée 3 fois vers la droite $\Rightarrow \times 10^{3}$)}}\\
+                =\num{9.275729}\times 10^{3} \times \textcolor{bleu}{10^{-2}}~\unit{\textcolor{bleu}{\hecto}\metre}&(dans le tableau, \qty{1}{\hecto\metre} vaut $10^{2}$~\unit{\metre}, \textcolor{bleu}{donc \qty{1}{\metre} vaut $10^{-2}$~\unit{\hecto\metre}})\\
+                =\num{9.275729} \times 10^{1}~\unit{\hecto\metre}&(on combine les puissances de 10 $\Rightarrow 3 + (-2) = 1$)\\
+            \end{tabularx}
+            \renewcommand{\arraystretch}{1}
     
     \exercicetitre{Convertir les quantités suivantes}
-    \begin{luacode}
-        question() conversion_puissances("398.76e-6", "\\volt", -9, 9)
-        question() conversion_puissances("0.00078e-1", "\\metre", -1, 1)
-        question() conversion_puissances("1.35e-9", "\\gram", 6, -2)
-        question() conversion_puissances("0.00056e-5", "\\metre", 3, -9)
-        question() conversion_puissances("1.0058e-9", "\\watt", -6, 2)
-        question() conversion_puissances("9.61e18", "\\metre", -3, 6)
-        question() conversion_puissances("49005.4e7", "\\litre", -6, -2)
-        question() conversion_puissances("8.56e9", "\\metre", -9, 9) 
-    \end{luacode}
-
+        \question~Convertir \qty{398.76e-6}{\nano\volt} en \unit{\giga\volt}\\
+            \renewcommand{\arraystretch}{1.65}
+            \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+                \textcolor{rouge}{\num{398.76}} \times 10^{-6}~\unit{\nano\volt}&\\
+                =\textcolor{rouge}{\num{3.9876} \times 10^{2}} \times 10^{-6}~\unit{\nano\volt} & \makecell[l]{\textcolor{rouge}{(passage à l'écriture scientifique :} \\ \textcolor{rouge}{la virgule est décalée 2 fois vers la droite $\Rightarrow \times 10^{2}$)}}\\
+                =\num{3.9876} \times 10^{-4}~\unit{\textcolor{vert}{\nano}\volt}&(on combine les puissances de 10 $\Rightarrow 2 + (-6) = (-4)$)\\
+                =\num{3.9876}\times 10^{-4} \times \textcolor{vert}{10^{-9}}~\unit{\volt}&(dans le tableau, \textcolor{vert}{nano vaut $10^{-9}$})\\
+                =\num{3.9876} \times 10^{-13}~\unit{\volt}&(on combine les puissances de 10 $\Rightarrow (-4) + (-9) = (-13)$)\\
+                =\num{3.9876}\times 10^{-9} \times \textcolor{bleu}{10^{-9}}~\unit{\textcolor{bleu}{\giga}\volt}&(dans le tableau, \qty{1}{\giga\volt} vaut $10^{9}$~\unit{\volt}, \textcolor{bleu}{donc \qty{1}{\volt} vaut $10^{-9}$~\unit{\giga\volt}})\\
+                =\num{3.9876} \times 10^{-18}~\unit{\giga\volt}&(on combine les puissances de 10 $\Rightarrow (-9) + (-9) = (-18)$)\\
+            \end{tabularx}
+            \renewcommand{\arraystretch}{1}
+            
+        \question~Convertir \qty{0.00078e-1}{\deci\metre} en \unit{\deca\metre}\\
+            \renewcommand{\arraystretch}{1.65}
+            \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+                \textcolor{rouge}{\num{0.00078}} \times 10^{-1}~\unit{\deci\metre}&\\
+                =\textcolor{rouge}{\num{7.8} \times 10^{-4}} \times 10^{-1}~\unit{\deci\metre} & \makecell[l]{\textcolor{rouge}{(passage à l'écriture scientifique :} \\ \textcolor{rouge}{la virgule est décalée 4 fois vers la gauche $\Rightarrow \times 10^{-4}$)}}\\
+                =\num{7.8} \times 10^{-5}~\unit{\textcolor{vert}{\deci}\metre}&(on combine les puissances de 10 $\Rightarrow (-4) + (-1) = (-5)$)\\
+                =\num{7.8}\times 10^{-5} \times \textcolor{vert}{10^{-1}}~\unit{\metre}&(dans le tableau, \textcolor{vert}{deci vaut $10^{-1}$})\\
+                =\num{7.8} \times 10^{-6}~\unit{\metre}&(on combine les puissances de 10 $\Rightarrow (-5) + (-1) = (-6)$)\\
+                =\num{7.8}\times 10^{-1} \times \textcolor{bleu}{10^{-1}}~\unit{\textcolor{bleu}{\deca}\metre}&(dans le tableau, \qty{1}{\deca\metre} vaut $10^{1}$~\unit{\metre}, \textcolor{bleu}{donc \qty{1}{\metre} vaut $10^{-1}$~\unit{\deca\metre}})\\
+                =\num{7.8} \times 10^{-2}~\unit{\deca\metre}&(on combine les puissances de 10 $\Rightarrow (-1) + (-1) = (-2)$)\\
+            \end{tabularx}
+            \renewcommand{\arraystretch}{1}
+            
+        \question~Convertir \qty{1.35e-9}{\mega\gram} en \unit{\centi\gram}\\
+            \renewcommand{\arraystretch}{1.65}
+            \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+                \textcolor{rouge}{\num{1.35}} \times 10^{-9}~\unit{\mega\gram}&\\
+                =\num{1.35}\times 10^{-9} \times \textcolor{vert}{10^{6}}~\unit{\gram}&(dans le tableau, \textcolor{vert}{mega vaut $10^{6}$})\\
+                =\num{1.35} \times 10^{-3}~\unit{\gram}&(on combine les puissances de 10 $\Rightarrow (-9) + 6 = (-3)$)\\
+                =\num{1.35}\times 10^{6} \times \textcolor{bleu}{10^{2}}~\unit{\textcolor{bleu}{\centi}\gram}&(dans le tableau, \qty{1}{\centi\gram} vaut $10^{-2}$~\unit{\gram}, \textcolor{bleu}{donc \qty{1}{\gram} vaut $10^{2}$~\unit{\centi\gram}})\\
+                =\num{1.35} \times 10^{8}~\unit{\centi\gram}&(on combine les puissances de 10 $\Rightarrow 6 + 2 = 8$)\\
+            \end{tabularx}
+            \renewcommand{\arraystretch}{1}
+            
+        \question~Convertir \qty{0.00056e-5}{\kilo\metre} en \unit{\nano\metre}\\
+            \renewcommand{\arraystretch}{1.65}
+            \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+                \textcolor{rouge}{\num{0.00056}} \times 10^{-5}~\unit{\kilo\metre}&\\
+                =\textcolor{rouge}{\num{5.6} \times 10^{-4}} \times 10^{-5}~\unit{\kilo\metre} & \makecell[l]{\textcolor{rouge}{(passage à l'écriture scientifique :} \\ \textcolor{rouge}{la virgule est décalée 4 fois vers la gauche $\Rightarrow \times 10^{-4}$)}}\\
+                =\num{5.6} \times 10^{-9}~\unit{\textcolor{vert}{\kilo}\metre}&(on combine les puissances de 10 $\Rightarrow (-4) + (-5) = (-9)$)\\
+                =\num{5.6}\times 10^{-9} \times \textcolor{vert}{10^{3}}~\unit{\metre}&(dans le tableau, \textcolor{vert}{kilo vaut $10^{3}$})\\
+                =\num{5.6} \times 10^{-6}~\unit{\metre}&(on combine les puissances de 10 $\Rightarrow (-9) + 3 = (-6)$)\\
+                =\num{5.6}\times 10^{3} \times \textcolor{bleu}{10^{9}}~\unit{\textcolor{bleu}{\nano}\metre}&(dans le tableau, \qty{1}{\nano\metre} vaut $10^{-9}$~\unit{\metre}, \textcolor{bleu}{donc \qty{1}{\metre} vaut $10^{9}$~\unit{\nano\metre}})\\
+                =\num{5.6} \times 10^{12}~\unit{\nano\metre}&(on combine les puissances de 10 $\Rightarrow 3 + 9 = 12$)\\
+            \end{tabularx}
+            \renewcommand{\arraystretch}{1}
+            
+        \question~Convertir \qty{1.0058e-9}{\micro\watt} en \unit{\hecto\watt}\\
+            \renewcommand{\arraystretch}{1.65}
+            \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+                \textcolor{rouge}{\num{1.0058}} \times 10^{-9}~\unit{\micro\watt}&\\
+                =\num{1.0058}\times 10^{-9} \times \textcolor{vert}{10^{-6}}~\unit{\watt}&(dans le tableau, \textcolor{vert}{micro vaut $10^{-6}$})\\
+                =\num{1.0058} \times 10^{-15}~\unit{\watt}&(on combine les puissances de 10 $\Rightarrow (-9) + (-6) = (-15)$)\\
+                =\num{1.0058}\times 10^{-6} \times \textcolor{bleu}{10^{-2}}~\unit{\textcolor{bleu}{\hecto}\watt}&(dans le tableau, \qty{1}{\hecto\watt} vaut $10^{2}$~\unit{\watt}, \textcolor{bleu}{donc \qty{1}{\watt} vaut $10^{-2}$~\unit{\hecto\watt}})\\
+                =\num{1.0058} \times 10^{-8}~\unit{\hecto\watt}&(on combine les puissances de 10 $\Rightarrow (-6) + (-2) = (-8)$)\\
+            \end{tabularx}
+            \renewcommand{\arraystretch}{1}
+            
+        \question~Convertir \qty{9.61e18}{\milli\metre} en \unit{\mega\metre}\\
+            \renewcommand{\arraystretch}{1.65}
+            \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+                \textcolor{rouge}{\num{9.61}} \times 10^{18}~\unit{\milli\metre}&\\
+                =\num{9.61}\times 10^{18} \times \textcolor{vert}{10^{-3}}~\unit{\metre}&(dans le tableau, \textcolor{vert}{milli vaut $10^{-3}$})\\
+                =\num{9.61} \times 10^{15}~\unit{\metre}&(on combine les puissances de 10 $\Rightarrow 18 + (-3) = 15$)\\
+                =\num{9.61}\times 10^{-3} \times \textcolor{bleu}{10^{-6}}~\unit{\textcolor{bleu}{\mega}\metre}&(dans le tableau, \qty{1}{\mega\metre} vaut $10^{6}$~\unit{\metre}, \textcolor{bleu}{donc \qty{1}{\metre} vaut $10^{-6}$~\unit{\mega\metre}})\\
+                =\num{9.61} \times 10^{-9}~\unit{\mega\metre}&(on combine les puissances de 10 $\Rightarrow (-3) + (-6) = (-9)$)\\
+            \end{tabularx}
+            \renewcommand{\arraystretch}{1}
+            
+        \question~Convertir \qty{49005.4e7}{\micro\litre} en \unit{\centi\litre}\\
+            \renewcommand{\arraystretch}{1.65}
+            \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+                \textcolor{rouge}{\num{49005.4}} \times 10^{7}~\unit{\micro\litre}&\\
+                =\textcolor{rouge}{\num{4.90054} \times 10^{4}} \times 10^{7}~\unit{\micro\litre} & \makecell[l]{\textcolor{rouge}{(passage à l'écriture scientifique :} \\ \textcolor{rouge}{la virgule est décalée 4 fois vers la droite $\Rightarrow \times 10^{4}$)}}\\
+                =\num{4.90054} \times 10^{11}~\unit{\textcolor{vert}{\micro}\litre}&(on combine les puissances de 10 $\Rightarrow 4 + 7 = 11$)\\
+                =\num{4.90054}\times 10^{11} \times \textcolor{vert}{10^{-6}}~\unit{\litre}&(dans le tableau, \textcolor{vert}{micro vaut $10^{-6}$})\\
+                =\num{4.90054} \times 10^{5}~\unit{\litre}&(on combine les puissances de 10 $\Rightarrow 11 + (-6) = 5$)\\
+                =\num{4.90054}\times 10^{-6} \times \textcolor{bleu}{10^{2}}~\unit{\textcolor{bleu}{\centi}\litre}&(dans le tableau, \qty{1}{\centi\litre} vaut $10^{-2}$~\unit{\litre}, \textcolor{bleu}{donc \qty{1}{\litre} vaut $10^{2}$~\unit{\centi\litre}})\\
+                =\num{4.90054} \times 10^{-4}~\unit{\centi\litre}&(on combine les puissances de 10 $\Rightarrow (-6) + 2 = (-4)$)\\
+            \end{tabularx}
+            \renewcommand{\arraystretch}{1}
+            
+        \question~Convertir \qty{8.56e9}{\nano\metre} en \unit{\giga\metre}\\
+            \renewcommand{\arraystretch}{1.65}
+            \begin{tabularx}{\linewidth}{{>{$}l<{$}}R}
+                \textcolor{rouge}{\num{8.56}} \times 10^{9}~\unit{\nano\metre}&\\
+                =\num{8.56}\times 10^{9} \times \textcolor{vert}{10^{-9}}~\unit{\metre}&(dans le tableau, \textcolor{vert}{nano vaut $10^{-9}$})\\
+                =\num{8.56} \times 10^{0}~\unit{\metre}&(on combine les puissances de 10 $\Rightarrow 9 + (-9)= 0$)\\
+                =\num{8.56}\times 10^{-9} \times \textcolor{bleu}{10^{-9}}~\unit{\textcolor{bleu}{\giga}\metre}&(dans le tableau, \qty{1}{\giga\metre} vaut $10^{9}$~\unit{\metre}, \textcolor{bleu}{donc \qty{1}{\metre} vaut $10^{-9}$~\unit{\giga\metre}})\\
+                =\num{8.56} \times 10^{-18}~\unit{\giga\metre}&(on combine les puissances de 10 $\Rightarrow (-9) + (-9) = (-18)$)\\
+            \end{tabularx}
+            \renewcommand{\arraystretch}{1}
+    
     \exercicetitre{Calculs entre nombres en écriture scientifique}
         \noindent\begin{minipage}{0.5\linewidth}
         \begin{align*}
@@ -628,7 +705,7 @@ $n$ est appelé l'exposant}
 \end{questions}
 
 \clearpage
-\small
+\begin{comment}
 
 On donne la formule suivante : 
 $$F_{A/B} = G \times \dfrac{M_A \times M_B}{{d_{A/B}}^2}$$
@@ -714,6 +791,6 @@ Quand on calcule $F_{\mbox{Terre/Tintin}}$, en fait on calcule le \emph{poids} d
 Qu'on utilise la première ou la deuxième formule, on obtiendra le même résultat.
 
 Ensuite, il faut faire la même chose pour la Lune.
-
+\end{comment}
 
 \end{document}
