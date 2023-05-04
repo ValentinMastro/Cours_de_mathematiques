@@ -74,46 +74,49 @@
 \clearpage
 \begin{questions}
     \exercice Multiplier ou diviser par 1, 10, 100, etc.
+        \newcommand{\multiplicationDecimale}{%
+            \pgfmathsetmacro{\varA}{random(1,99)/pow(10,random(-2,3))}%
+            \pgfmathsetmacro{\varB}{int(pow(10,random(1,3)))}%
+            $\num{\varA} \times \varB = $
+        }
         \begin{multicols}{3}
-        \begin{luacode}
-            for i = 1,15
-            do
-                nombre = int(math.random(10,999) / math.pow(10, math.random(-2,3)))
-                facteur = int(math.pow(10, math.random(1,4)))
-                
-                operateurs = {"\\times", "\\div"}
-                op = objet_aleatoire_dans(operateurs)
-                
-                tex.print("\\question $\\num{" .. nombre .. "}" .. op .. " " .. facteur .. " = $")
-            end
-        \end{luacode}
+            \foreach \i in {1,...,15} {
+                \questionX \multiplicationDecimale
+            }
         \end{multicols}
+        
     \exercice Poser les multiplications suivantes 
+        \newcommand{\multiplicationPosee}{%
+            \pgfmathsetmacro{\varA}{random(1,999)/pow(10,random(-1,3))}%
+            \pgfmathsetmacro{\varB}{random(1,999)/pow(10,random(-1,3))}%
+            $\num{\varA} \times \num{\varB} = $
+        }
         \begin{multicols}{3}
-        \begin{luacode}
-            for i = 1,15
-            do
-                a = math.random(100,999) / math.pow(10, math.random(-1,3))
-                b = math.random(100,999) / math.pow(10, math.random(-1,3))
-                tex.print("\\question $\\num{" .. int(a) .. "} \\times \\num{" .. int(b) .. "} =$")
-            end
-        \end{luacode}
+            \foreach \i in {1,...,15} {
+                \questionX \multiplicationPosee
+            }
         \end{multicols}
+        
     \exercice Convertir 
+        \newcommand{\convertion}[3]{
+            $\qty{#1}{#2} = ~~~\unit{#3}$
+        }
         \begin{multicols}{3}
-        \begin{luacode}
-            unites = {"\\metre", "\\gram", "\\second", "\\candela", "\\kelvin", "\\ampere", "\\mole"}
-            prefixes = {"" , "\\kilo", "\\hecto", "\\deca", "\\deci", "\\centi", "\\milli"}
-
-            for i = 1,15 
-            do
-                melanger(unites)
-                melanger(prefixes)
-                nombre = math.random(100,999) / math.pow(10, math.random(0,4))
-                if nombre==math.floor(nombre) then nombre = math.floor(nombre) end
-                tex.print("\\question $\\qty{" .. nombre .. "}{" .. prefixes[1] .. unites[1] .. "} = ~~~\\unit{" .. prefixes[2] .. unites[1] .. "}$") 
-            end
-        \end{luacode}
+            \questionX \convertion{0.0871}{\deca\gram}{\milli\gram}
+            \questionX \convertion{0.257}{\kilo\metre}{\milli\metre}
+            \questionX \convertion{0.0237}{\milli\candela}{\kilo\candela}
+            \questionX \convertion{529}{\milli\mole}{\kilo\mole}
+            \questionX \convertion{0.863}{\metre}{\kilo\metre}
+            \questionX \convertion{0.0336}{\deca\gram}{\gram}
+            \questionX \convertion{94.3}{\hecto\ampere}{\centi\ampere}
+            \questionX \convertion{620}{\milli\mole}{\mole}
+            \questionX \convertion{179}{\centi\second}{\milli\second}
+            \questionX \convertion{5.13}{\hecto\mole}{\mole}
+            \questionX \convertion{0.0973}{\centi\candela}{\kilo\candela}
+            \questionX \convertion{0.0201}{\centi\gram}{\gram}
+            \questionX \convertion{96.1}{\deci\candela}{\milli\candela}
+            \questionX \convertion{4.16}{\hecto\mole}{\mole}
+            \questionX \convertion{235}{\gram}{\kilo\gram}
         \end{multicols}
 \end{questions}
 
