@@ -1,5 +1,6 @@
 \documentclass["../Cours.tex"]{subfiles}
 
+
 \begin{document}
 \chapitre{Solides de l'espace, volumes et contenance}
 
@@ -32,9 +33,9 @@
 \vfill
 
 \begin{tabularx}{\linewidth}{*{21}{|X}|}
-    \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & & \small{\unit{\kilo\litre}} & \small{\unit{\hecto\litre}} & \small{\unit{\deca\litre}} & \small{\unit{\litre}} & \small{\unit{\deci\litre}} & \small{\unit{\centi\litre}} & \small{\unit{\milli\litre}} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\\cline{12-18}
+    \multicolumn{11}{c|}{} & \small{\unit{\kilo\litre}} & \small{\unit{\hecto\litre}} & \small{\hspace{-0.4em}\unit{\deca\litre}} & \small{\unit{\litre}} & \small{\unit{\deci\litre}} & \small{\unit{\centi\litre}} & \small{\hspace{-0.3em}\unit{\milli\litre}} & \multicolumn{3}{c}{}\\\cline{12-18}
     \multicolumn{3}{|c|}{\unit{\km\cube}} & \multicolumn{3}{c|}{\unit{\hecto\metre\cube}} & \multicolumn{3}{c|}{\unit{\deca\metre\cube}} & \multicolumn{3}{c|}{\unit{\metre\cube}} & \multicolumn{3}{c|}{\unit{\dm\cube}} & \multicolumn{3}{c|}{\unit{\cm\cube}} & \multicolumn{3}{c|}{\unit{\mm\cube}} \\\hline
-     & & & & & & & & & & & & & & & & & & & & \\[2cm]
+     & & & & & & & & & & & & & & & & & & & & \\[5cm]
 \end{tabularx}
 
 \vfill
@@ -45,17 +46,27 @@
 \partie{Solides de l'espace}
 \souspartie{Polyèdres}
 
-\definition{Un polyèdre est un solide dont toutes les faces sont des polygones}
+\definition{Un polyèdre est un solide dont toutes les faces sont des polygones.}
+
+\nomenclature{\vspace{-2ex}%
+    \begin{itemize}
+        \item Un tétraèdre a 4 faces.
+        \item Un hexaèdre a 6 faces.
+        \item Un octaèdre a 8 faces.
+        \item Un décaèdre a 10 faces.
+    \end{itemize}
+}
 
 \soussouspartie{Le cube}
 
 \definition{Un cube (aussi appelé hexaèdre régulier) est un polyèdre à 6 faces, 8 sommets et 12 arêtes. Toutes les faces sont des carrés.}
 
-\formule{Si le cube est d'arête $c$ : $$V_{cube} = c \times c \times c$$}
+\formule{Si le cube est d'arête $c$ : 
+\[ \curs{V}_{cube} = c^3 = c \times c \times c \]}
 
 \begin{figure}[h!]
     \centering
-    \begin{tikzpicture}
+    \begin{tikzpicture}[scale=1]
         \draw (0,3) -- (3,3) -- (3,0) -- (0,0) -- cycle;
         \draw (1,4) -- (4,4)  (4,1) -- (4,4);
         \draw (0,3) -- (1,4) (3,3) -- (4,4) (3,0) -- (4,1);
@@ -65,15 +76,17 @@
     \label{fig:chapitre4_cube}
 \end{figure}
 
+\clearpage
 \soussouspartie{Le pavé droit}
 
 \definition{Un pavé droit (ou parallélépipède rectangle) est un hexaèdre (un polyèdre à 6 faces) dont toutes les faces sont des rectangles. Il possède 8 sommets et 12 arêtes.}
 
-\formule{Si le pavé droit est de longueur $L$, de largeur $\ell$ et de hauteur $h$ : $$V_{\mbox{pavé droit}} = L \times \ell \times h$$}
+\formule{Si le pavé droit est de longueur $L$, de largeur $\ell$ et de hauteur $h$ : 
+\[ \curs{V}_{\mbox{pavé droit}} = L \times \ell \times h \]}
 
 \begin{figure}[h!]
     \centering
-    \begin{tikzpicture}
+    \begin{tikzpicture}[xscale=1.3,yscale=0.75]
         \draw[thick,red] (0,0) -- (0,3) (5,0) -- (5,3) (6,1) -- (6,4);
         \draw[thick,green] (0,0) -- (5,0) (0,3) -- (5,3);
         \draw[thick,] (5,0) -- (6,1) (5,3) -- (6,4) (0,3) -- (1,4);
@@ -86,13 +99,17 @@
     \label{fig:chapitre4_pavedroit}
 \end{figure}
 
+\vspace{-3ex}
 \soussouspartie{La pyramide}
 
 \definition{Une pyramide est un polyèdre dont une face appelée la base est un polygone, et dont tous les sommets de la base sont reliés en un point appelé l'apex.}
 
+\formule{Si la pyramide a une hauteur $h$ et base d'aire $\curs{A}_{base}$ :  
+\[ \curs{V}_{\mbox{pyramide}} = \frac{1}{3} \curs{A}_{base} \times h  \]}
+
 \begin{figure}[h!]
     \centering
-    \begin{tikzpicture}
+    \begin{tikzpicture}[xscale=1.2,yscale=0.75]
         \coordinate (A) at (0,0);
         \coordinate (B) at (4,0);
         \coordinate (C) at (2,-2);
@@ -101,7 +118,7 @@
         \draw[thick] (D) -- (A) -- (C) -- (B) -- (D) -- (C);
         \draw[dashed,thick] (A) -- (B);
         \draw[latex-] ($(D)+(0.2,0)$) -- ($(D)+(2,0)$);
-        \node[anchor=west] at ($(D)+(2,0)$) {apex};
+        \node[anchor=west] at ($(D)+(2,0)$) {\textit{apex}};
         \draw[latex-] ($(C)+(0.5,1)$) -- ($(C)+(2.5,1)$);
         \node[anchor=west] at ($(C)+(2.5,1)$) {base};
     \end{tikzpicture}
@@ -109,15 +126,18 @@
     \label{fig:chapitre4_pyramidebasetriangulaire}
 \end{figure}
 
-\formule{$$V_{\mbox{pyramide}} = $$}
-
+\clearpage
 \soussouspartie{Le prisme droit}
 
 \definition{Un prisme droit est un polyèdre dont deux des faces - les bases - sont superposables (de même dimensions) et parallèles, et dont toutes les faces latérales sont des rectangles.}
 
+\formule{Si le prisme droit est de hauteur $h$ et d'aire $\curs{A}_{base}$ : 
+\[ \curs{V}_{\mbox{prisme droit}} = \curs{A}_{base} \times h \]}
+
+\vspace{-2ex}
 \begin{figure}[h!]
     \centering
-    \begin{tikzpicture}[scale=3]
+    \begin{tikzpicture}[xscale=2.8,yscale=2.5]
         \coordinate (A) at (0,0);
         \coordinate (B) at (0.2,0.3);
         \coordinate (C) at (0.6,0.3); 
@@ -143,12 +163,11 @@
         \draw (-0.1,0.5) node[anchor=east] {hauteur};
         
     \end{tikzpicture}
-    \caption{Représentation en perspective cavalière d'un prisme droit à base pentagonale}
+    \caption{\scalebox{0.99}[1]{Représentation en perspective cavalière d'un prisme droit à base pentagonale}}
     \label{fig:my_label}
 \end{figure}
 
-\clearpage
-
+\vspace{-6ex}
 \souspartie{Solides de révolution}
 
 \definition{Un solide de révolution est engendré par une surface plane tournant autour d'un axe.}
@@ -156,6 +175,9 @@
 \soussouspartie{Le cylindre de révolution}
 
 \definition{Un cylindre est un solide de révolution obtenu en faisant tourner un rectangle autour d'un de ses côtés.}
+
+\formule{Si un cylindre a un rayon $r$ et une hauteur $h$ : 
+\[ \curs{V}_{cylindre} = \pi r^2 \times h \]}
 
 \begin{figure}[h!]
     \centering
@@ -218,14 +240,17 @@
         \draw (C) ellipse (1.5 and 0.5);
         \draw[dashed] (B) ellipse (1.5 and 0.5);
     \end{tikzpicture}
-    \caption{Construction d'un cylindre par révolution autour d'un des côtés du rectangle}
+    \caption{\scalebox{0.99}[1]{Construction d'un cylindre par révolution autour d'un des côtés du rectangle}}
     \label{fig:chapitre4_cylindre}
 \end{figure}
 
-
+\clearpage
 \soussouspartie{Le cône de révolution}
 
 \definition{Un cône est un solide de révolution obtenu en faisant tourner un triangle rectangle autour d'un des deux côtés qui ne sont pas l'hypoténuse.}
+
+\formule{Si un cône a un rayon $r$ et une hauteur $h$ : 
+\[ \curs{V}_{cône} = \frac{1}{3} \pi r^2 \times h \]}
 
 \begin{figure}[h!]
     \centering
@@ -282,6 +307,11 @@
 
 \definition{Une sphère est constituée de l'ensemble des points  à égale distance de son centre.\\ Une boule est constituée de l'ensemble des points situées à une distance inférieure ou égale}
 
+\formule{Si une sphère a un rayon $r$ : \hspace{5em} \( \curs{A}_{sphère} = 4 \pi r^2 \)}
+
+\formule{Si une boule a un rayon $r$ :  \hspace{6em} \( \curs{V}_{boule} = \frac{4}{3} \pi r^3 \)}
+
+\vfill
 \begin{figure}[h!]
     \centering
     \begin{tikzpicture}[scale=0.5]
@@ -298,5 +328,92 @@
     \caption{Sphère et boule en perspective cavalière}
     \label{fig:chapitre4_sphere_boule}
 \end{figure}
+
+\clearpage
+\EXERCICES 
+\begin{questions}
+    \exercicetitre{Brevet 2018 Physique-Chimie}
+        Dans cette partie, on s’intéresse au poids de la solution d’alginate de sodium contenue dans la bille figurant sur la photo. Déterminer la valeur du poids de la solution d’alginate de sodium contenue dans la bille figurant sur la photo, à l’aide des données suivantes :
+        \begin{itemize}
+            \item Les photos sont à l’échelle $1/2$ : \qty{1}{\centi\metre} sur la photo représente \qty{2}{\centi\metre} en réalité.   
+            \item La masse volumique de la solution d’alginate de sodium a pour valeur \qty{1.1}{\gram\per\centi\metre\cubed}.
+            \item Pour calculer le volume $V$ d’une bille de rayon $R$, de diamètre $D$, il est possible d’utiliser l’une des relations suivantes :
+            \begin{itemize}
+                \item $V=\num{0.52} \times D^3$
+                \item $V=\num{4.2} \times R^3$
+                \item $V=\frac{4}{3} \pi R^3 $
+            \end{itemize}
+            \item L’intensité de la pesanteur a pour valeur $g = \qty{9.8}{\newton\per\kilo\gram}$.
+            \item Si besoin, le segment gradué ci-joint est utilisable.
+        \end{itemize}
+        Le candidat est invité à présenter sa démarche de résolution.\\ 
+        Toute initiative sera valorisée.
+
+        \begin{center}
+            \includegraphics[scale=0.4]{4 - Quatrieme/chapitres/Screenshot_20230507_132345.png} \hspace{0.1\linewidth}
+            \begin{tikzpicture}
+                \draw (0,-0.5) rectangle (2,2.6);
+                \foreach \x in {0,1,2} {
+                    \draw (0,\x) -- +(1,0) node[below,rotate=90]{\x};
+                }
+                \foreach \x in {0.5,1.5,2.5} {
+                    \draw (0,\x) -- +(0.5,0);
+                }
+                \foreach \x in {0,0.5,1,1.5,2} {
+                    \foreach \xx in {0.1,0.2,0.3,0.4} {
+                        \draw (0,{\x+\xx}) -- +(0.25,0);
+                    }
+                }
+            \end{tikzpicture}
+        \end{center}
+\end{questions}
+
+\clearpage
+\CORRECTIONS
+\begin{questions}
+    \exercice On demande de calculer le \emph{poids} de la solution d'alginate de sodium. Pour calculer le poids, on utilise la formule $P= m \times g$. Mais on ne connaît pas $m$ la masse.\\
+    Pour la calculer la masse, on peut utiliser la masse volumique $\rho$ donnée dans l'énoncé : $m = \rho \times V$. Mais on ne connaît pas $V$ le volume.\\
+    Pour calculer le volume, on peut utiliser une des formules données dans l'énoncé, par exemple celle-ci : $V=\num{0.52} \times D^3$. Mais on ne connaît pas $D$ le diamètre.\\
+    Toutefois, grâce au schéma donné dans l'énoncé, on peut mesurer le diamètre.\\
+
+\fbox{
+    \begin{minipage}{\linewidth}
+        \textbf{Étapes de raisonnement}
+        \begin{enumerate}
+            \item Mesurer le diamètre.
+            \item Calculer le volume en utilisant le diamètre
+            \item Calculer la masse en utilisant la masse volumique et le volume
+            \item Calculer le poids en utilisant la masse et l'intensité de la pesanteur $g$.
+        \end{enumerate}
+    \end{minipage}
+}
+
+    \begin{enumerate}
+        \item Sur le schéma, je mesure que $D=\qty{1.9}{\centi\metre}$. Comme on est à l'échelle $1/2$, la vraie valeur est 2 fois plus grande, donc le vrai diamètre vaut $D=\qty{3.8}{\centi\metre}$.
+
+        \item Je calcule le volume :
+        \begin{align*}
+            V &= \num{0.52} \times D^3 \\ 
+            V &= \num{0.52} \times \num{3.8}^3 \\ 
+            V &\approx \qty{28.5}{\centi\metre\cubed}
+        \end{align*}
+
+        \item Je calcule la masse : 
+        \begin{align*}
+            m &= \rho \times V \\ 
+            m &= \num{1.1} \times \num{28.5} \\
+            m &= \qty{31.4}{\gram}
+        \end{align*}
+
+        \item Je calcule le poids : 
+        \begin{align*}
+            P &= m \times g \\ 
+            P &= \qty{31.4}{\gram} \times \num{9.8} \\ 
+            P &= \qty{31.4e-3}{\kilo\gram} \times \num{9.8} \\ 
+            \Aboxed{P &= \qty{0.307}{\newton}}
+        \end{align*}
+
+    \end{enumerate}
+\end{questions}
 
 \end{document}

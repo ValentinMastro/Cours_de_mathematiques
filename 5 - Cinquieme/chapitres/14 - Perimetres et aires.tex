@@ -464,4 +464,128 @@ Calculer le périmètre d'un quart de cercle de rayon \qty{3}{\centi\metre}.
         \subquestion Combien coûte les \qty{40}{\metre\squared} ?
 \end{questions}
 
+\clearpage
+\CORRECTIONS
+\begin{questions}
+    \exercice 
+    \begin{center}
+        \begin{tikzpicture}
+            \tikzmath{ \c=0.2; }
+            \draw[fill=green!10!white] (0,0) -- ++(0,4.2) -- ++(4.6,0) -- ++(0,-2.1) node[midway,rouge]{\bfseries\textbackslash} -- ++(1.4,0) -- ++(0,-2.1) node[midway,rouge]{\bfseries\textbackslash} -- cycle; 
+            \filldraw[rouge] (0,0) rectangle +(\c,\c);
+            \filldraw[rouge] (0,4.2) rectangle +(\c,-\c);
+            \filldraw[rouge] (4.6,4.2) rectangle +(-\c,-\c);
+            \filldraw[rouge] (6,2.1) rectangle +(-\c,-\c);
+            \filldraw[rouge] (6,0) rectangle +(-\c,\c);
+            \draw[Latex-Latex] (-0.3,0) -- +(0,4.2) node[midway,left,anchor=east]{\qty{4.2}{\centi\metre}};
+            \draw[Latex-Latex] (0,4.5) -- +(4.6,0) node[midway,above]{\qty{4.6}{\centi\metre}};
+            \draw[Latex-Latex] (4.8,2.3) -- +(1.2,0) node[midway,above]{\qty{1.4}{\centi\metre}};
+        \end{tikzpicture}
+    \end{center}
+
+    Pour calculer le périmètre, on va additionner les longueurs de tous les segments qui forment le pourtour de cette figure.
+
+    \begin{align*}
+        \curs{P} &= \qty{4.2}{\centi\metre} + \qty{4.6}{\centi\metre} + \qty{1.4}{\centi\metre} + \mbox{(~les deux longueurs codées par \textcolor{rouge}{\textbackslash}~)}
+    \end{align*}
+
+    Or, les deux longueurs codées par \textcolor{rouge}{\textbackslash} font la même longueur que le segment à gauche de la figure de \qty{4.2}{\centi\metre}.
+
+    \begin{align*}
+        &\curs{P} = \qty{4.2}{\centi\metre} + \qty{4.6}{\centi\metre} + \qty{1.4}{\centi\metre} + \textcolor{rouge}{\qty{4.2}{\centi\metre}} \\
+        &\boxed{\curs{P} = \qty{14.4}{\centi\metre}}
+    \end{align*}
+
+    \exercice 
+    \begin{align*}
+        \curs{P}_{\mbox{carré}} &= 4 \times \qty{42}{\milli\metre} = \qty{168}{\milli\metre} = \qty{16.8}{\centi\metre} \\
+        \curs{P}_{\mbox{triangle équilatéral}} &= 3 \times \qty{5.6}{\centi\metre} = \qty{16.8}{\centi\metre}
+    \end{align*}
+
+    Nous pouvons en conclure que les deux figures ont le même périmètre.
+
+    \exercice 
+    La forme décrite correspond à un rectangle de longueur $L = \qty{81}{\centi\metre}$ et de largeur $\ell = \qty{60}{\centi\metre}$.
+    \begin{align*}
+        \curs{P}_{\mbox{rectangle}} &= 2 \times L + 2 \times \ell \\
+        &= 2 \times \qty{81}{\centi\metre} + 2 \times \qty{60}{\centi\metre} \\ 
+        &= \qty{282}{\centi\metre} \\
+        &= \boxed{\qty{2.82}{\metre}}
+    \end{align*}
+    Il faudra donc \qty{2.82}{\metre} pour construire ce cadre en métal.
+
+    \exercice 
+    \question 
+    \begin{align*}
+        \curs{P}_{\mbox{carré}} &= 4 \times \mbox{côté} = \qty{38}{\centi\metre} \\
+        \mbox{côté} &= \qty{38}{\centi\metre} \div 4 = \boxed{\qty{9.5}{\centi\metre}}
+    \end{align*}
+    \question 
+    \begin{align*}
+        \curs{P}_{\mbox{triangle équilatéral}} &= 3 \times \mbox{côté} = \qty{54}{\centi\metre} \\
+        \mbox{côté} &= \qty{54}{\centi\metre} \div 3 = \boxed{\qty{18}{\centi\metre}}
+    \end{align*}
+    \question 
+    \begin{align*}
+        \curs{P}_{\mbox{losange}} &= 4 \times \mbox{côté} = \qty{32}{\centi\metre} \\
+        \mbox{côté} &= \qty{32}{\centi\metre} \div 4 = \boxed{\qty{8}{\centi\metre}}
+    \end{align*}
+
+    \exercice Le périmètre de la figure de gauche est composé de trois côtés d'un carré et d'un demi-cercle de rayon \qty{2.5}{\centi\metre}.
+
+    \begin{center}
+        \begin{align*}
+            \curs{P} &= 3 \times \qty{5}{\metre} + \frac{1}{2} \times 2 \times \pi \times \qty{2.5}{\centi\metre} \\
+            &= 15 + \pi \times \qty{2.5}{\centi\metre} \\
+            &\approx \boxed{\qty{22.85}{\centi\metre}}
+        \end{align*}
+    \end{center}
+
+    Le périmètre de la figure de droite est constitué de deux demi-cercles de rayon \qty{5}{\centi\metre} et d'un segment de longueur \qty{10}{\centi\metre}.
+
+    \begin{center}
+        \begin{align*}
+            \curs{P} &= \qty{10}{\metre} + 2 \times \left({\color{rouge} \frac{1}{2} \times 2 \times \pi \times \qty{5}{\metre} }\right) \\
+            &= \boxed{\qty{41.42}{\metre}}
+        \end{align*}
+    \end{center}
+
+    \exercice 
+    Le codage \textcolor{rouge}{//} correspond à \qty{25}{\centi\metre}. Le côté en haut du rectangle est composé de trois morceaux : le premier codé \textcolor{rouge}{/}, le deuxième codé \textcolor{rouge}{//} valant \qty{25}{\centi\metre} et le troisième codé comme le premier. Les trois ensembles font \qty{42}{\centi\metre}.\\
+    On peut en conclure que le codage \textcolor{rouge}{/} correspond à $\dfrac{42-25}{2}=\qty{8.5}{\centi\metre}$.\\
+    Le demi-cercle a pour diamètre \qty{25}{\centi\metre} donc pour rayon \qty{12.5}{\centi\metre}.
+    
+    \begin{align*}
+        \curs{P} &= 2 \times \qty{25}{\centi\metre} + 2 \times \qty{8.5}{\centi\metre} + \qty{42}{\centi\metre} + \frac{1}{2} \times 2 \times \pi \times \qty{12.5}{\centi\metre} \\
+        &\boxed{\approx \qty{148.27}{\centi\metre}}
+    \end{align*}
+
+    \exercice
+    Le côté du haut mesure $6+2=\qty{8}{\centi\metre}$, ceux de gauche et de droite \qty{3}{\centi\metre}, puis la figure est également composée de deux demi-cercles, le plus grand a un diamètre de \qty{6}{\centi\metre}, donc un rayon de \qty{3}{\centi\metre}, et le plus petit a un diamètre de \qty{2}{\centi\metre}, donc un rayon de \qty{1}{\centi\metre}.
+
+    \begin{align*}
+        \curs{P} &= 2 \times \qty{3}{\centi\metre} + \qty{8}{\centi\metre} + \frac{1}{2} \times 2 \times \pi \times \qty{3}{\centi\metre} + \frac{1}{2} \times 2 \times \pi \times \qty{1}{\centi\metre} \\
+        &\boxed{\approx \qty{26.57}{\centi\metre} }
+    \end{align*}
+
+    \exercice Le périmètre de cette figure est composé de 4 éléments, un grand demi-cercle de rayon \qty{4}{\centi\metre}, un moyen demi-cercle de rayon \qty{2}{\centi\metre} et deux petits demi-cercles de rayon \qty{1}{\centi\metre}.
+
+    \begin{align*}
+        \curs{P} &= \underbrace{\textcolor{vert}{\frac{1}{2} \times} 2 \times \pi \times \qty{4}{\centi\metre}}_{\mbox{grand \textcolor{vert}{demi}-cercle}} + \underbrace{ \textcolor{vert}{\frac{1}{2} \times} 2 \times \pi \times \qty{2}{\centi\metre}}_{\mbox{moyen \textcolor{vert}{demi}-cercle}} + \underbrace{ \textcolor{rouge}{2 \times} \textcolor{vert}{\frac{1}{2} \times} 2 \times \pi \times \qty{1}{\centi\metre}}_{\mbox{\textcolor{rouge}{deux} petits \textcolor{vert}{demi}-cercle}} \\
+        &= 4 \times \pi + 2 \times \pi + 2 \times \pi \unit{\centi\metre} \\
+        &= 8 \times \pi \unit{\centi\metre} \\ 
+        &\boxed{\approx \qty{25.13}{\centi\metre}}
+    \end{align*}
+
+    \setcounter{exercice}{18}
+    \exercice En utilisant le tableau de conversion :
+    \question \( \qty{3,2}{km\squared} = \qty{320000000}{dm\squared} \)
+    \question \( \qty{80}{dm\squared} = \qty{0.008}{dam\squared} \)
+    \question \( \qty{3,9876}{ha} = \qty{398760000}{cm\squared} \)
+    \question \( \qty{5,2764}{dam\squared} = \qty{527640000}{mm\squared} \)
+    \question \( \qty{7,2846}{m\squared} = \qty{72846}{cm\squared} \)
+    \question \( \qty{1,0023}{km\squared} = \qty{1002300}{m\squared} \)
+    \question \( \qty{549.2}{mm\squared} = \qty{0.0005492}{m\squared} \)
+\end{questions}
+
 \end{document}
