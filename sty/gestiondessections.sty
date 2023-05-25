@@ -67,6 +67,20 @@
     }
 }
 
+\newcommand{\titreProbleme}[2]{
+    % #1 : numéro du problème
+    % #2 : titre du problème
+    \clearpage
+    
+    {\sffamily%
+    \Huge%
+    \begin{tikzpicture}
+        \node[anchor=west] at (0,0) {\textbf{Problème #1}};
+        \node[anchor=west] at (0,-1) {\textbf{#2}};
+    \end{tikzpicture}%
+    }
+}
+
 \definecolor{blanc}{HTML}{ffffff}
 \definecolor{rouge}{HTML}{bb0000}
 \definecolor{vert}{HTML}{008800}
@@ -79,6 +93,7 @@
 \definecolor{marron}{HTML}{804000}
 
 \newcounter{chapitre}
+\newcounter{probleme}
 \newcounter{partie}
 \newcounter{souspartie}
 \newcounter{soussouspartie}
@@ -99,6 +114,13 @@
             \protect\noindent\hspace{1.5em}Thème : \NomDuTheme\protect\par%
         }%
     }%
+}
+
+\newcommand{\probleme}[1]{
+    \stepcounter{probleme}
+    \setcounter{partie}{0}
+    \titreProbleme{\theprobleme}{#1}
+    \addcontentsline{toc}{chapter}{Problème \theprobleme~-~#1}
 }
 
 \newcommand{\partie}[1]{

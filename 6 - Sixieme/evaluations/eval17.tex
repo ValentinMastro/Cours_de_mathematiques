@@ -1,0 +1,53 @@
+\documentclass{../../vmqcm}
+\usepackage[tracking=true]{microtype}
+\VMQCMgraine{127}
+\setlength{\VMQCMLargeurEnonce}{0.35\textwidth}
+
+%%%%%%%%%%%%%%%
+%% QUESTIONS %%
+%%%%%%%%%%%%%%%
+
+\directlua{eval = require("eval17.lua")}
+
+\newcommand{\questionA}{%
+    \directlua{eval.qA()}
+}
+
+\newcommand{\questionB}{
+    \directlua{eval.qB()}
+}
+
+\newcommand{\questionC}{
+    \directlua{eval.qC()}
+}
+
+\newcommand{\questionD}{
+    \directlua{eval.qD()}
+}
+
+\newcommand{\questionE}{
+    \directlua{eval.qE()}
+}
+
+\newcommand{\questionF}{
+    \directlua{eval.qF()}
+}
+
+\newcommand{\questionG}{
+    \directlua{eval.qG()}
+}
+
+\begin{document}
+\renewcommand{\VMQCMCalculatrice}{Calculatrice interdite}
+
+\foreach \n in {1,...,1}{%
+\begin{VMQCM}{Évaluation n°17- 6ème}
+    \questionA\questionA\questionA
+    \questionC\questionC\questionC\questionC\questionC
+    \questionB\questionB
+    \questionD\questionD\questionD\questionD\questionD
+    \questionE\questionE\questionE\questionE\questionE
+\end{VMQCM}%
+}
+
+\end{document}

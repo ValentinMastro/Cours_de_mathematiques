@@ -64,6 +64,9 @@
 % Gérer l'espacement du texte
 \newcommand\spacedstyle[1]{\SetTracking{encoding=*}{#1}\lsstyle}
 \newcommand\normalstyle{\SetTracking{encoding=*}{0}\lsstyle}
+\newcommand{\compresser}[2]{%
+    \spacedstyle{#1}#2\normalstyle%
+}
 
 \newcommand{\VMQCMAjouterSolution}[1]{%
     \directlua{solutions[\theVMQCMNumeroQuestion] = "#1"}%
