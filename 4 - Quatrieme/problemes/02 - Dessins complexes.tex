@@ -230,7 +230,7 @@ Intervention proposée : réduire le poids / considérer la chirurgie bariatriqu
         \item La pince du milieu a pour dimension $p_1 = (h/2+\num{1.5})-(t/2+\num{1.5})-8$.
         \item Construire un segment horizontal $[PP']$ de longueur $p_1$ centré au point $A$.
         \item $[AB]$ et $[EF]$ sont sécants en $P''$. Tracer le triangle $PP'P''$.
-    \end{itemize} 
+    \end{itemize}
     \subquestion 
     \begin{itemize}
         \item Placer les points $Q$ et $Q'$ respectivement à \qty{8}{\cm} et \qty{10}{\cm} du coin supérieur gauche du rectangle. 
@@ -251,6 +251,69 @@ Intervention proposée : réduire le poids / considérer la chirurgie bariatriqu
         \item La médiatrice et $[EF]$ sont sécants en $T''$. Tracer le triangle $TT'T''$.
     \end{itemize}
 \end{questions}
+
+\clearpage
+\PARTIETITRE{Dessins sur scratch}
+
+Le programme suivant construit un carré de 100 pas de côté :
+
+\begin{center}
+    \begin{scratch}[scale=0.8]
+        \blockinit{Quand \greenflag est cliqué}
+        \blockpen{Effacer tout}
+        \blockmove{aller à x: \ovalnum{0} y: \ovalnum{0}}
+        \blockmove{s'orienter à \ovalnum{90}°}
+        \blockpen{Stylo en position d'écriture}
+        \blockrepeat{Répéter \ovalnum{4} fois} {
+            \blockmove{Avancer de \ovalnum{100}}
+            \blockmove{Tourner \turnright{} de \ovalnum{90} degrés}
+        }
+        \blockpen{Relever le stylo}
+    \end{scratch}
+\end{center}
+
+\question 
+    \subquestion Construire un hexagone régulier (tous les côtés et tous les angles égaux)
+    \subquestion Construire un rectangle de dimensions $60\times40$.
+    \subquestion Construire un trapèze.
+
+\question Reproduire les figures suivantes à l'aide de scratch.
+
+\begin{center}
+    \begin{tikzpicture}
+        \foreach \x in {1,2,3,4} {
+            \draw (\x,0) rectangle (\x+3,1);
+        }
+    \end{tikzpicture}
+    
+    \bigskip
+    \begin{tikzpicture}
+        \foreach \x in {1,2,3,4} {
+            \draw (\x,0) rectangle (\x+5,1);
+        }
+    \end{tikzpicture}
+
+    \bigskip
+    \begin{tikzpicture}
+        \foreach \x in {1,2,3,4} {
+            \draw (\x,0) rectangle (\x+1.5,1);
+        }
+    \end{tikzpicture}
+
+    \bigskip
+    \begin{tikzpicture}[rotate=-45]
+        \foreach \x in {1,2,3,4} {
+            \draw (\x,\x) rectangle (\x+1,\x+1);
+        }
+    \end{tikzpicture}
+
+    \bigskip
+    \begin{tikzpicture}[rotate=-45]
+        \foreach \x in {1,2,3,4} {
+            \draw (0,0) rectangle (\x,\x);
+        }
+    \end{tikzpicture}
+\end{center}
 
 }
 

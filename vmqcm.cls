@@ -112,7 +112,7 @@ Prénom:
 \setcounter{VMQCMTotalPoints}{0}%
 \setcounter{VMQCMPointsQuestion}{0}%
 \directlua{solutions = {}}%
-\tabularx{\textwidth}{@{}p{0.013\textwidth}|p{\VMQCMLargeurEnonce}|C|C|C|C|C|p{0.02\textwidth} @{}} & \centering Question & \centering A & \centering B & \centering C & \centering D & \centering E & ~ \\\hline}{\endtabularx%
+\tabularx{\textwidth}{@{}p{0.013\textwidth}|p{\VMQCMLargeurEnonce}|C|C|C|C|C|@{}p{0.02\textwidth} @{}} & \centering Question & \centering A & \centering B & \centering C & \centering D & \centering E & ~ \\\hline}{\endtabularx%
     \vfill
     % À la fin du document, on affiche la grille de réponse (incluant le niveau [6ème, 5ème, ...], la classe [A, B, C, ...], et le numéro d'élève, ainsi que les réponses aux questions) et le QR code de réponse
     \makebox[\linewidth]{\rule{\paperwidth}{1pt}}
